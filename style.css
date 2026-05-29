@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Roboto, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+h1, h2, h3, h4, h5, h6, span {
+  color: #242424;
+  text-align: center;
+  line-height: 1.25;
+}
+
+h1 {
+  font-size: 36px;
+}
+
+p {
+  line-height: 1.5;
+  font-size: 16px;
+}
+
+a {
+  text-decoration: none;
+  position: relative;
+  transition: opacity 300ms ease;
+}
+
+
+nav {
+  height: 100px;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 12px;
+}
+
+
+.nav__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.logo {
+  width: 60px;
+  height: auto;
+  flex-direction: row;
+}
+
+#home {
+  background-color: rgba(115, 66, 214, 0.1)
+}
+
+.home {
+  height: calc(100vh - 80px);
+}
+
+.home__container {
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.home__description {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.home__img--wrapper {
+  padding: 20px;
+  z-index: 50;
+}
+
+.home__logo {
+  width: 80px;
+  height: auto;
+  display: block;
+}
+
+.container {
+  padding: 54px 20px;
+}
+
+.row {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.row__column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.no-cursor {
+  cursor: not-allowed;
+}
+
+.join-btn-fixed {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 1000;
+
+  background: linear-gradient(
+    90deg,
+    #5b21ff,
+    #1477ff,
+    #00c98d
+  );
+
+  color: white;
+  text-decoration: none;
+
+  padding: 14px 28px;
+  border-radius: 999px;
+
+  font-size: 16px;
+  font-weight: 700;
+
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+
+  transition: all 0.25s ease;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.join-btn-fixed:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.22);
+}
+
+
+
