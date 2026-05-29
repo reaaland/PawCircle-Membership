@@ -6,6 +6,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: Roboto, sans-serif;
     background-color: rgba(115, 66, 214, 0.1)
