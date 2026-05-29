@@ -59,7 +59,7 @@ nav {
   gap: 24px;
 }
 
-.logo {
+.nav__logo--img {
   width: 60px;
   height: auto;
   flex-direction: row;
