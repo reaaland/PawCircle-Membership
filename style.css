@@ -8,6 +8,7 @@
 
 body {
   font-family: Roboto, sans-serif;
+    background-color: rgba(115, 66, 214, 0.1)
 }
 
 html {
@@ -35,7 +36,6 @@ a {
   transition: opacity 300ms ease;
 }
 
-
 nav {
   height: 100px;
   width: 100%;
@@ -61,9 +61,7 @@ nav {
   flex-direction: row;
 }
 
-#home {
-  background-color: rgba(115, 66, 214, 0.1)
-}
+
 
 .home {
   height: calc(100vh - 80px);
