@@ -32,6 +32,7 @@ body {
 .container {
     padding: 96px 0;
 }
+
 a {
   display: inline;
   text-decoration: none;
@@ -39,19 +40,35 @@ a {
 img {
     width: 100%;
 }
+
 h1 {
   font-size: 48px;
   color: #1a202c;
-  line-height: 1.25;  
+  line-height: 1.25;
+  margin-bottom: 16px;
+}
+
+h2 {
+  margin-bottom: 16px;
 }
 
 .purple {
-    color: #6415ff;
+  background: linear-gradient(
+    90deg,
+    #5b21ff,
+    #1477ff,
+    #00c98d
+  );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 p {
  font-size: 18px;
  line-height: 1.5;
+ margin-bottom: 16px;
 }
 
 .section__tag {
@@ -213,8 +230,17 @@ nav {
 
 
 
-.header {
-  height: calc(100vh - 80px);
+#header {
+  min-height: 90vh;
+  #header {
+  background:
+    radial-gradient(circle at top left,
+    rgba(91,33,255,.08),
+    transparent 35%),
+    radial-gradient(circle at bottom right,
+    rgba(0,201,141,.08),
+    transparent 35%);
+}
 }
 
 .header__container {
@@ -228,6 +254,24 @@ nav {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.trust__badges {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.trust-badges span {
+  background: #f7fafc;
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-size: 48px;
+  font-weight: 700;
+  color: #243e63;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
 }
 
 .header__img--wrapper {
@@ -260,7 +304,23 @@ nav {
   cursor: not-allowed;
 }
 
-.join-btn-fixed, .header__join-btn {
+.header__join-btn {
+  background: linear-gradient(
+    90deg,
+    #5b21ff,
+    #1477ff,
+    #00c98d
+  );
+
+  color: white;
+  padding: 14px 28px;
+  border-radius: 999px;
+  font-size: 16px;
+  font-weight: 700;
+  margin-top: 24px;
+}
+
+.join-btn-fixed {
   position: fixed;
   bottom: 24px;
   right: 24px;
@@ -275,20 +335,13 @@ nav {
 
   color: white;
   text-decoration: none;
-
   padding: 14px 28px;
   border-radius: 999px;
-
   font-size: 16px;
   font-weight: 700;
 
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-
-  transition: all 0.25s ease;
-
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,.15);
+  transition: all .25s ease;
 }
 
 .join-btn-fixed:hover {
