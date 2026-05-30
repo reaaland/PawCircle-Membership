@@ -158,7 +158,7 @@
     <div class="pricing-card">
       <h3>Future Standard Membership</h3>
 
-      <p class="price">$1/month + tax</p>
+      <p class="price">$1/month</p>
 
       <p class="pricing__subtext">
         After founder memberships fill, new members receive one free month before membership begins.
@@ -166,21 +166,169 @@
 
       <ul>
         <li>One free month</li>
-        <li>$12.89/year including tax</li>
+        <li>$12.00/year</li>
         <li>Simple monthly membership</li>
         <li>No booking commissions</li>
       </ul>
     </div>
-
+      <p class="pricing__disclaimer">
+  * Membership pricing shown before applicable sales tax. Taxes are calculated at checkout based on location.
+</p>
   </div>
 </div>
 </section>
 
   
 <section id="services">
-    <h2>Services</h2>
-  
+   <div class="container">
+    <div class="row">
+  <section id="service-request">
+  <div class="container">
+    <div class="row">
+
+```
+  <div class="request-card">
+
+    <h2>Find Pet Care</h2>
+    <p class="request__subtitle">
+      Tell caregivers what you need and when you need help.
+    </p>
+
+    <form class="request-form">
+
+      <!-- Service Type -->
+      <div class="form__group">
+        <label for="service">
+          Service Needed
+        </label>
+
+        <select id="service" required>
+          <option value="">
+            Select a service
+          </option>
+          <option>Dog Walking</option>
+          <option>Drop-In Visits</option>
+          <option>Pet Sitting</option>
+          <option>House Sitting</option>
+          <option>Overnight Care</option>
+          <option>Boarding</option>
+          <option>Puppy Care</option>
+          <option>Senior Pet Care</option>
+          <option>Transportation</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <!-- Name -->
+      <div class="form__group">
+        <label for="name">
+          Full Name
+        </label>
+
+        <input
+          type="text"
+          id="name"
+          placeholder="Enter your name"
+          required
+        >
+      </div>
+
+      <!-- Username -->
+      <div class="form__group">
+        <label for="username">
+          Username
+        </label>
+
+        <input
+          type="text"
+          id="username"
+          placeholder="@username"
+        >
+      </div>
+
+      <!-- Email -->
+      <div class="form__group">
+        <label for="email">
+          Email Address
+        </label>
+
+        <input
+          type="email"
+          id="email"
+          placeholder="you@email.com"
+          required
+        >
+      </div>
+
+      <!-- Phone -->
+      <div class="form__group">
+        <label for="phone">
+          Phone Number
+        </label>
+
+        <input
+          type="tel"
+          id="phone"
+          placeholder="(555) 555-5555"
+        >
+      </div>
+
+      <!-- Date Range -->
+      <div class="form__row">
+        <div class="form__group">
+          <label for="start-date">
+            Care Needed From
+          </label>
+
+          <input
+            type="date"
+            id="start-date"
+            required
+          >
+        </div>
+
+        <div class="form__group">
+          <label for="end-date">
+            Care Needed Until
+          </label>
+
+          <input
+            type="date"
+            id="end-date"
+            required
+          >
+        </div>
+      </div>
+
+      <!-- Notes -->
+      <div class="form__group">
+        <label for="details">
+          Additional Details
+        </label>
+
+        <textarea
+          id="details"
+          rows="5"
+          placeholder="Tell caregivers about your pet, schedule, special needs, or anything helpful..."
+        ></textarea>
+      </div>
+
+      <button class="btn" type="submit">
+        Find Pet Care
+      </button>
+
+    </form>
+  </div>
+
+   </div>
+  </div>
+</section>
+
+</section>
+
  <section id="providers">
+   <div class="container">
+    <div class="row">
   <div class="providers__top">
     <h2>Meet Local Providers</h2>
     <select onchange="sortProviders(event)">
