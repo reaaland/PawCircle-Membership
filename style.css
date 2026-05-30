@@ -232,7 +232,6 @@ nav {
 
 #header {
   min-height: 90vh;
-  #header {
   background:
     radial-gradient(circle at top left,
     rgba(91,33,255,.08),
@@ -240,17 +239,21 @@ nav {
     radial-gradient(circle at bottom right,
     rgba(0,201,141,.08),
     transparent 35%);
-}
+
 }
 
 .header__container {
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
   padding: 96px 32px;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .header__description {
+  width: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -275,12 +278,15 @@ nav {
 }
 
 .header__img--wrapper {
+  width: 50%;
+  display: flex;
+  justify-content: center;
   padding: 20px;
   z-index: 50;
 }
 
 .header__logo {
-  width: 120px;
+  max-width: 360px;
   margin-top: 32px;
 }
 
@@ -416,4 +422,36 @@ nav {
   right: 18px;
 }
 
+
+@media (max-width: 768px) {
+
+.nav__links {
+    display: none;
+  }
+
+  .btn__menu {
+    display: block;
+    font-size: 28px;
+  }
+
+  .nav__logo--img {
+    height: 36px;
+    width: 36px;
+  }
+}
+
+  .header__container {
+    flex-direction: column;
+    text-align: center;
+    gap: 40px;
+  }
+
+  .header__description,
+  .header__img--wrapper {
+    width: 100%;
+  }
+
+  .header__logo {
+    max-width: 220px;
+  }
 
