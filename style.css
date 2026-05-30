@@ -267,11 +267,11 @@ nav {
   margin-top: 24px;
 }
 
-.trust-badges span {
+.trust__badges span {
   background: #f7fafc;
   padding: 10px 18px;
   border-radius: 999px;
-  font-size: 48px;
+  font-size: 16px;
   font-weight: 700;
   color: #243e63;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
@@ -326,7 +326,7 @@ nav {
   margin-top: 24px;
 }
 
-.join-btn-fixed {
+.join__btn-fixed {
   position: fixed;
   bottom: 24px;
   right: 24px;
@@ -438,7 +438,15 @@ nav {
     height: 36px;
     width: 36px;
   }
-}
+
+  .header__join-btn {
+  background: linear-gradient(
+    90deg,
+    #5b21ff,
+    #1477ff,
+    #00c98d
+  );
+
 
   .header__container {
     flex-direction: column;
@@ -455,3 +463,4 @@ nav {
     max-width: 220px;
   }
 
+} }

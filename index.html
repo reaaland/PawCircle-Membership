@@ -10,7 +10,7 @@
 </head>
 
 <body>
-  <header id="home">
+  <header id="header">
   <nav>
     <div class="nav__container">
       <div class="nav__logo">
@@ -26,12 +26,14 @@
         <a href="#login" class="nav__link">Login</a>
         <a href="#join" class="nav__link nav__link--primary">Join PawCircle</a>
       </div>
-    </div>
-      <button class="btn__menu" onclick="openMenu()">
-      <i class="fa-solid fa-bars"></i>
+      <button class="header__join-btn">
+   Join PawCircle
   </button>
-  </div>
-  </nav>
+    </div>
+     <button class="btn__menu" onclick="openMenu()">
+  <i class="fa-solid fa-bars"></i>
+</button>
+</nav>
   <div class="menu">
     <button class="btn__menu btn__menu--close" onclick="closeMenu()">
         <i class="fa-solid fa-times"></i>
@@ -44,8 +46,7 @@
     <a href="#login" class="menu__link" onclick="closeMenu()">login</a>
     <a href="#join" class="menu__link menu__link--primary" onclick="closeMenu()">Join PawCircle</a>
   </div>
-  </div>
- 
+    </div> 
   <section id="header">
     <div class="header__container">
     <div class="header__description">
@@ -65,14 +66,10 @@
   <p>
     Meet locally, communicate directly, and decide what works best for you.
   </p>
-
-  <button class="header__join-btn">
-   Join PawCircle
-  </button>
-</div>
+  </div>
 
       <div class="join__btn-fixed">
-       <a href="#membership" class="join-btn">Join PawCircle</a>
+       <a href="#membership" class="join__btn-fixed">Join PawCircle</a>
     </div>
 
     <figure class="header__img--wrapper">
