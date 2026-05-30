@@ -417,6 +417,110 @@ nav {
   border: none;
 }
 
+/* ABOUT */
+
+.about__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  margin-top: 40px;
+}
+
+.about__card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 32px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+.about__card h3 {
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+
+.about__card p {
+  margin-bottom: 16px;
+}
+
+/* PRICING */
+
+.pricing__intro {
+  max-width: 700px;
+  margin: 16px auto 40px;
+  text-align: center;
+}
+
+.pricing__wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  margin-top: 40px;
+}
+
+.pricing-card {
+  background: #fff;
+  border-radius: 24px;
+  padding: 36px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  position: relative;
+}
+
+.pricing-card--featured {
+  border: 2px solid #6415ff;
+  transform: scale(1.03);
+}
+
+.pricing__badge {
+  display: inline-block;
+  background: #6415ff;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.price {
+  font-size: 40px;
+  font-weight: 800;
+  color: #6415ff;
+  margin: 16px 0;
+}
+
+.pricing__subtext {
+  margin-bottom: 24px;
+  color: #4a5568;
+}
+
+.pricing-card ul {
+  margin: 24px 0;
+  padding-left: 20px;
+}
+
+.pricing-card li {
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+
+.btn {
+  display: inline-block;
+  background: #6415ff;
+  color: #fff;
+  padding: 14px 24px;
+  border-radius: 999px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 300ms ease;
+}
+
+.btn:hover {
+  background: #4c0fc9;
+  transform: translateY(-2px);
+}
+
+
+
 .btn__menu--close {
   position: fixed;
   top: 24px;
@@ -530,6 +634,23 @@ footer {
 
   .header__logo {
     max-width: 220px;
+  }
+  .about__grid,
+  .pricing__wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .pricing-card--featured {
+    transform: none;
+  }
+
+  .price {
+    font-size: 32px;
+  }
+
+  .about__card,
+  .pricing-card {
+    padding: 28px;
   }
 
 } }
