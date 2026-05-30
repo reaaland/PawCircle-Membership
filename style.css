@@ -395,6 +395,7 @@ nav {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 24px;
 }
 .menu__link {
   color: #1a202c;
@@ -736,7 +737,7 @@ grid-template-columns: 1fr;
 
 @media (max-width: 600px) {
   .form__row {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
   
