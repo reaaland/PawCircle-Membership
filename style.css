@@ -682,6 +682,8 @@ footer {
     #1477ff,
     #00c98d
   );
+  }
+
   .header__container {
     flex-direction: column;
     text-align: center;
@@ -733,7 +735,7 @@ grid-template-columns: 1fr;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 20px;
-}}}
+}}
 
 @media (max-width: 600px) {
   .form__row {
