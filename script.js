@@ -60,6 +60,22 @@ function renderProviders(providerList) {
     .join("");
 }
 
+function searchProviders(event) {
+  const searchValue = event.target.value.toLowerCase();
+
+  const filteredProviders = providers.filter((provider) => {
+    return (
+      provider.firstName.toLowerCase().includes(searchValue) ||
+      provider.lastName.toLowerCase().includes(searchValue) ||
+      provider.city.toLowerCase().includes(searchValue) ||
+      provider.state.toLowerCase().includes(searchValue) ||
+      provider.service.toLowerCase().includes(searchValue)
+    );
+  });
+
+  renderProviders(filteredProviders);
+}
+
 function sortProviders(event) {
   const sortValue = event.target.value;
 

@@ -26,7 +26,7 @@
         <a href="#home" class="nav__link">Home</a>
         <a href="#about" class="nav__link">About</a>
         <a href="#pricing" class="nav__link">Pricing</a>
-        <a href="#Services" class="nav__link">Services</a>
+        <a href="#services" class="nav__link">Services</a>
         <a href="#login" class="nav__link">Login</a>
         <a href="#join" class="nav__link nav__link--primary">Join PawCircle</a>
       </div>
@@ -330,7 +330,16 @@
    <div class="container">
     <div class="row">
   <div class="providers__top">
-    <h2>Meet Local Providers</h2>
+  <h2>Meet Local Providers</h2>
+
+  <div class="providers__controls">
+    <input 
+      type="text" 
+      class="provider-search" 
+      placeholder="Search by name, city, or service..."
+      oninput="searchProviders(event)"
+    >
+
     <select onchange="sortProviders(event)">
       <option value="">Sort providers</option>
       <option value="AZ">Name A-Z</option>
@@ -342,6 +351,7 @@
       <option value="OLDEST">Oldest members</option>
     </select>
   </div>
+</div>
   <div class="providers"></div>
 </section>
 
