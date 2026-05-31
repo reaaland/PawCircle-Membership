@@ -346,7 +346,7 @@ nav {
   transition: all .25s ease;
 }
 
-.join-btn-fixed:hover {
+.join-btn-fixed {
   transform: translateY(-3px);
   box-shadow: 0 12px 25px rgba(0, 0, 0, 0.22);
 }
