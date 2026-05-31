@@ -771,7 +771,6 @@ padding: 28px;
 
 .form__row {
 grid-template-columns: 1fr;
-  box-sizing: border-box;
 }
 
 .form__group input,
@@ -793,3 +792,14 @@ grid-template-columns: 1fr;
   }
 }
   
+@media (max-width: 600px) {
+  .form__row {
+    grid-template-columns: 1fr;
+  }
+
+  .provider-search,
+  .providers__controls select {
+    width: 100%;
+    min-width: 0;
+  }
+}
