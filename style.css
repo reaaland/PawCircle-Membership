@@ -551,13 +551,15 @@ nav {
 
 #join {
   padding: 96px 32px;
+  background: rgba(100, 21, 255, 0.03);
+  border-radius: 32px;
 }
 
 .join-form {
   width: 100%;
   max-width: 520px;
   margin-top: 40px;
-
+  max-width: 580px;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -591,6 +593,23 @@ nav {
 #join .btn {
   margin-top: 12px;
   align-self: flex-start;
+}
+
+.reminder {
+  text-align: center;
+  font-size: 14px;
+  opacity: 0.7;
+  margin-top: 24px;
+}
+
+.reminder span {
+ background: none;
+ display: flex;
+ padding: 2px 0px;
+ border-radius: 999px;
+ font-size: 16px;
+ font-weight: 700;
+ color: #243e63;
 }
 
 .request-card {
