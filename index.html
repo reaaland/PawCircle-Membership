@@ -25,7 +25,7 @@
       <div class="nav__links">
         <a href="#home" class="nav__link">Home</a>
         <a href="#about" class="nav__link">About</a>
-        <a href="#pricing" class="nav__link">Pricing</a>
+        <a href="#membership" class="nav__link">Membership</a>
         <a href="#services" class="nav__link">Services</a>
         <a href="#login" class="nav__link">Login</a>
         <a href="#join" class="nav__link nav__link--primary">Join PawCircle</a>
@@ -44,7 +44,7 @@
     <a href="#home" class="menu__link" onclick="closeMenu()">Home
         </a>
     <a href="#about" class="menu__link" onclick="closeMenu()">About</a>
-    <a href="#pricing" class="menu__link" onclick="closeMenu()">Pricing</a>
+    <a href="#membership" class="menu__link" onclick="closeMenu()">Membership</a>
     <a href="#services" class="menu__link" onclick="closeMenu()">Services</a>
     <a href="#login" class="menu__link" onclick="closeMenu()">Login</a>
     <a href="#join" class="menu__link menu__link--primary" onclick="closeMenu()">Join PawCircle</a>
@@ -119,7 +119,7 @@
 </div>
 </section>
 
-<section id="pricing">
+<section id="membership">
   <div class="container">
     <div class="row">
 
@@ -179,15 +179,113 @@
 </div>
 </section>
 
+<section id="join">
+  <div class="container">
+    <div class="row row__column">
+
+      <h2>Join PawCircle</h2>
+
+      <p>
+        Start connecting with trusted local pet owners and caregivers.
+      </p>
+
+      <form class="join-form">
+
+        <div class="form__group">
+          <label for="member-type">
+            Membership Type
+          </label>
+
+          <select id="member-type" required>
+            <option value="">
+              Select membership type
+            </option>
+            <option value="owner">
+              Pet Owner
+            </option>
+            <option value="provider">
+              Pet Service Provider
+            </option>
+            <option value="both">
+              Both Pet Owner & Provider
+            </option>
+          </select>
+        </div>
+
+        <!-- Full Name -->
+      <form class="join-form">
+        <!-- Name -->
+      <div class="form__group">
+        <label for="name">
+          Full Name
+        </label>
+
+        <input
+          type="text"
+          id="name"
+          placeholder="Enter your name"
+          required
+        >
+      </div>
+
+      <!-- Username -->
+      <div class="form__group">
+        <label for="username">
+          Username
+        </label>
+
+        <input
+          type="text"
+          id="username"
+          placeholder="@username"
+        >
+      </div>
+
+      <!-- Email -->
+      <div class="form__group">
+        <label for="email">
+          Email Address
+        </label>
+
+        <input
+          type="email"
+          id="email"
+          placeholder="you@email.com"
+          required
+        >
+      </div>
+
+      <!-- Phone -->
+      <div class="form__group">
+        <label for="phone">
+          Phone Number
+        </label>
+
+        <input
+          type="tel"
+          id="phone"
+          placeholder="(555) 555-5555"
+        >
+      </div>
+
+      <button class="btn" type="submit">
+        Find Pet Care
+      </button>
+
+    </form>
+  </div>
+
+   </div>
+  </div>
+</section>
+
+
   
 <section id="services">
    <div class="container">
     <div class="row">
-  <section id="service-request">
-  <div class="container">
-    <div class="row">
-
-      
+  <h2>Find a local Pet Service Provider</h2>
+ 
   <div class="request-card">
 
     <h2>Find Pet Care</h2>
@@ -370,8 +468,8 @@
       <div class="footer__list--column">
         <h4>Explore</h4>
         <a href="#home" class="footer__link">Home</a>
-        <a href="#services" class="footer__link">Services</a>
         <a href="#membership" class="footer__link">Membership</a>
+        <a href="#services" class="footer__link">Services</a>
         <a href="#join" class="footer__link footer__link--primary">Join PawCircle</a>
       </div>
 
