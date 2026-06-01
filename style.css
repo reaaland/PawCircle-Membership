@@ -595,21 +595,14 @@ nav {
   align-self: flex-start;
 }
 
-.reminder {
+.join__benefits {
+  display: block;
   text-align: center;
-  font-size: 14px;
-  opacity: 0.7;
   margin-top: 24px;
-}
-
-.reminder span {
- background: none;
- display: flex;
- padding: 2px 0px;
- border-radius: 999px;
- font-size: 16px;
- font-weight: 700;
- color: #243e63;
+  line-height: 1.8;
+  font-size: 18px;
+  font-weight: 500;
+   color: #64748b;
 }
 
 .request-card {
