@@ -121,3 +121,33 @@ function closeMenu() {
 }
 
 getProviders();
+
+const memberCount = 425; // change this manually for now
+
+function updatePricingCards() {
+  const founderCard = document.querySelector(".founder-card");
+  const pioneerCard = document.querySelector(".pioneer-card");
+  const regularCards = document.querySelectorAll(".regular-card");
+
+  if (memberCount < 500) {
+    founderCard.classList.add("active");
+    pioneerCard.classList.add("inactive");
+    regularCards.forEach(card => card.classList.add("inactive"));
+  } 
+  else if (memberCount < 1500) {
+    founderCard.style.display = "none";
+    pioneerCard.classList.add("active");
+    pioneerCard.classList.remove("inactive");
+    regularCards.forEach(card => card.classList.add("inactive"));
+  } 
+  else {
+    founderCard.style.display = "none";
+    pioneerCard.style.display = "none";
+    regularCards.forEach(card => {
+      card.classList.add("active");
+      card.classList.remove("inactive");
+    });
+  }
+}
+
+updatePricingCards();
