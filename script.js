@@ -125,9 +125,9 @@ getProviders();
 const memberCount = 425; // change this manually for now
 
 function updatePricingCards() {
-  const founderCard = document.querySelector(".founder-card");
-  const pioneerCard = document.querySelector(".pioneer-card");
-  const regularCards = document.querySelectorAll(".regular-card");
+  const founderCard = document.querySelector(".founder__card");
+  const pioneerCard = document.querySelector(".pioneer__card");
+  const regularCards = document.querySelectorAll(".regular__card");
 
   if (memberCount < 500) {
     founderCard.classList.add("active");
