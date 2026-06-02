@@ -41,9 +41,9 @@ function renderProviders(providerList) {
   providersWrapper.innerHTML = providerList
     .map(
       (provider) => `
-        <div class="provider-card">
+        <div className="provider-card">
           <img 
-            class="provider-card__img" 
+            className="provider-card__img" 
             src="${provider.photo}" 
             alt="${provider.firstName} ${provider.lastName}"
           >
