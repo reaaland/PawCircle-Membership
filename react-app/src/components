@@ -1,0 +1,33 @@
+components/Navbar.jsx
+function Navbar() {
+  return (
+    <nav>
+      <h2>PawCircle</h2>
+    </nav>
+  );
+}
+
+export default Navbar;
+
+components/Header.jsx
+function Header() {
+  return (
+    <header>
+      <h1>Find Trusted Pet Care</h1>
+      <p>Simple memberships. Direct connections.</p>
+    </header>
+  );
+}
+
+export default Header;
+
+components/Footer.jsx
+function Footer() {
+  return (
+    <footer>
+      <p>© 2026 PawCircle LLC</p>
+    </footer>
+  );
+}
+
+export default Footer;
