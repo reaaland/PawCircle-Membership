@@ -2,7 +2,9 @@ components/Navbar.jsx
 function Navbar() {
   return (
     <nav>
-      <h2>PawCircle</h2>
+      <div className="nav__container">
+        <h1>PawCircle</h1>
+      </div>
     </nav>
   );
 }
