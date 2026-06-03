@@ -84,7 +84,7 @@ p {
      color: #6415ff;
      letter-spacing: 1.6px;
      font-weight: 700;
-     text-transform: uppercase;
+     text-transhtmlForm: uppercase;
 }
 .section__title {
   font-size: 48px;
@@ -349,7 +349,7 @@ nav {
 }
 
 .join__btn--fixed {
-  transform: translateY(-3px);
+  transhtmlForm: translateY(-3px);
   box-shadow: 0 12px 25px rgba(0, 0, 0, 0.22);
 }
 
@@ -379,7 +379,7 @@ nav {
   z-index: 4;
   visibility: hidden;
   opacity: 0;
-  transform: translateX(300%);
+  transhtmlForm: translateX(300%);
   transition: all 300ms;
 }
 .menu--open {
@@ -389,7 +389,7 @@ nav {
 .menu--open .menu {
   visibility: visible;
   opacity: 1;
-  transform: translateX(0);
+  transhtmlForm: translateX(0);
 }
 .menu__links {
   width: 100%;
@@ -479,7 +479,7 @@ nav {
 
 .pricing__card--featured {
   border: 2px solid #6415ff;
-  transform: scale(1.03);
+  transhtmlForm: scale(1.03);
 }
 
 .pricing__badge {
@@ -550,7 +550,7 @@ pricing__card.inactive .btn {
 
 .btn:hover {
   background: #4c0fc9;
-  transform: translateY(-2px);
+  transhtmlForm: translateY(-2px);
 }
 
 .btn__menu--close {
@@ -567,7 +567,7 @@ pricing__card.inactive .btn {
   border-radius: 32px;
 }
 
-.join__form {
+.join__htmlForm {
   width: 100%;
   max-width: 520px;
   margin-top: 40px;
@@ -587,7 +587,7 @@ pricing__card.inactive .btn {
   max-width: 600px;
 }
 
-#join .form__group {
+#join .htmlForm__group {
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -630,39 +630,39 @@ box-shadow: 0 12px 30px rgba(0,0,0,0.08);
 margin: 12px 0 32px;
 }
 
-.request__form {
+.request__htmlForm {
 display: flex;
 flex-direction: column;
 gap: 20px;
 }
 
-.form__group {
+.htmlForm__group {
 display: flex;
 flex-direction: column;
 }
 
-.form__group label {
+.htmlForm__group label {
 font-weight: 700;
 margin-bottom: 8px;
 }
 
-.form__group input,
-.form__group select,
-.form__group textarea {
+.htmlForm__group input,
+.htmlForm__group select,
+.htmlForm__group textarea {
 padding: 16px;
 border: 2px solid #e2e8f0;
 border-radius: 12px;
 font-size: 16px;
 }
 
-.form__group input:focus,
-.form__group select:focus,
-.form__group textarea:focus {
+.htmlForm__group input:focus,
+.htmlForm__group select:focus,
+.htmlForm__group textarea:focus {
 outline: none;
 border-color: #6415ff;
 }
 
-.form__row {
+.htmlForm__row {
 display: grid;
 grid-template-columns: 1fr 1fr;
 gap: 20px;
@@ -681,11 +681,11 @@ gap: 20px;
   padding: 24px;
   text-align: center;
   box-shadow: 0 10px 30px rgba(0,0,0,.08);
-  transition: transform 300ms ease, box-shadow 300ms ease;
+  transition: transhtmlForm 300ms ease, box-shadow 300ms ease;
 }
 
 .provider__card:hover {
-  transform: translateY(-4px);
+  transhtmlForm: translateY(-4px);
   box-shadow: 0 16px 36px rgba(0,0,0,.12);
 }
 
@@ -832,7 +832,7 @@ footer {
   }
 
   .pricing__card--featured {
-    transform: none;
+    transhtmlForm: none;
   }
 
   .price {
@@ -847,31 +847,31 @@ footer {
 padding: 28px;
 }
 
-.form__row {
+.htmlForm__row {
 grid-template-columns: 1fr;
 }
 
-.form__group input,
-.form__group select,
-.form__group textarea {
+.htmlForm__group input,
+.htmlForm__group select,
+.htmlForm__group textarea {
   width: 100%;
   max-width: 100%;
 }
 
-.form__row {
+.htmlForm__row {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 20px;
 }}
 
 @media (max-width: 600px) {
-  .form__row {
+  .htmlForm__row {
         grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
   
 @media (max-width: 600px) {
-  .form__row {
+  .htmlForm__row {
     grid-template-columns: 1fr;
   }
 

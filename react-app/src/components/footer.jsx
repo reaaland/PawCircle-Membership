@@ -32,7 +32,7 @@ function Footer() {
         <a href="#" className="footer__link">Privacy</a>
       </div>
       <p className="footer__disclaimer">
-        PawCircle connects pet owners and pet caregivers. Members are responsible for screening, agreements, payments, and pet care decisions.
+        PawCircle connects pet owners and pet caregivers. Members are responsible htmlFor screening, agreements, payments, and pet care decisions.
       </p>
     </div>
 

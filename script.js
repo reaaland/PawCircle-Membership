@@ -122,7 +122,7 @@ function closeMenu() {
 
 getProviders();
 
-const memberCount = 425; // change this manually for now
+const memberCount = 425; // change this manually htmlFor now
 
 function updatePricingCards() {
   const founderCard = document.querySelector(".founder__card");
@@ -132,18 +132,18 @@ function updatePricingCards() {
   if (memberCount < 500) {
     founderCard.classList.add("active");
     pioneerCard.classList.add("inactive");
-    regularCards.forEach(card => card.classList.add("inactive"));
+    regularCards.htmlForEach(card => card.classList.add("inactive"));
   } 
   else if (memberCount < 1500) {
     founderCard.style.display = "none";
     pioneerCard.classList.add("active");
     pioneerCard.classList.remove("inactive");
-    regularCards.forEach(card => card.classList.add("inactive"));
+    regularCards.htmlForEach(card => card.classList.add("inactive"));
   } 
   else {
     founderCard.style.display = "none";
     pioneerCard.style.display = "none";
-    regularCards.forEach(card => {
+    regularCards.htmlForEach(card => {
       card.classList.add("active");
       card.classList.remove("inactive");
     });

@@ -21,7 +21,7 @@ function Hero() {
               </div>
 
               <p>
-                Meet locally, communicate directly, and decide what works best for you.
+                Meet locally, communicate directly, and decide what works best htmlFor you.
               </p>
             </div>
 
