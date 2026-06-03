@@ -57,5 +57,5 @@ function Membership() {
     )
 }
 
-export default MEmbership;
+export default Membership;
  

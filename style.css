@@ -38,7 +38,7 @@ body {
 }
 
 .container {
-    padding: 96px 0;
+    padding: 48px;
 }
 
 a {
@@ -425,7 +425,7 @@ nav {
 .about__grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 32px;
+  padding-top: 32px;
   margin-top: 40px;
 }
 
