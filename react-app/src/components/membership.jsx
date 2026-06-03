@@ -14,42 +14,46 @@ function Membership() {
 
   <div className="pricing__card founder__card pricing__card--featured">
     <span className="pricing__badge">First 500 Members</span>
-    <h3>Founder Membership</h3>
+    <span className="founder-paw">
+      <i className="fa-solid fa-paw"></i>
+    </span>
     <p className="price">$1/month</p>
-    <p className="pricing__subtext">Lock in Founder Member pricing htmlFor life while your membership stays active.</p>
+    <p className="pricing__subtext">Lock in Founder Member pricing for life while your membership stays active.</p>
   </div>
 
   <div className="pricing__card  pioneer__card">
     <span className="pricing__badge">Next 1000 Members</span>
-    <h3>Pioneer Membership</h3>
+    <span className="pioneer-paw">
+      <i className="fa-solid fa-paw"></i>
+    </span>
     <p className="price">$1/month</p>
-    <p className="pricing__subtext">One free month behtmlFore membership begins.</p>
+    <p className="pricing__subtext">One free month before membership begins.</p>
   </div>
 
   <div className="pricing__card regular__card">
   <span className="pricing__badge">Coming Later</span>
     <h3>Pet Owner Membership</h3>
     <p className="price">$1/month</p>
-    <p className="pricing__subtext">htmlFor members looking htmlFor pet services.</p>
+    <p className="pricing__subtext">For members looking for pet services.</p>
   </div>
 
    <div className="pricing__card regular__card">
     <span className="pricing__badge">Coming Later</span>
     <h3>Pet Service Provider Membership</h3>
     <p className="price">$1.50/month</p>
-    <p className="pricing__subtext">htmlFor members looking to grow their pet business.</p>
+    <p className="pricing__subtext">For members looking to grow their pet business.</p>
   </div>
 
    <div className="pricing__card regular__card">
     <span className="pricing__badge">Coming Later</span>
     <h3>Owner + Provider Membership</h3>
     <p className="price">$2/month</p>
-    <p className="pricing__subtext">htmlFor members who want both options.</p>
+    <p className="pricing__subtext">For members who want both options.</p>
   </div>
 
 </div>
       <p className="pricing__disclaimer">
-  * Membership pricing shown behtmlFore applicable sales tax. Taxes are calculated at checkout based on location.
+  * Membership pricing shown before applicable sales tax. Taxes are calculated at checkout based on location.
 </p>
   </div>
   </div>

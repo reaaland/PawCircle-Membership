@@ -12,9 +12,9 @@ function Services() {
               Tell caregivers what you need and when you need help.
             </p>
 
-            <htmlForm className="request__htmlForm">
-              <div className="htmlForm__group">
-                <label htmlhtmlFor="service">Service Needed</label>
+            <form className="request__form">
+              <div className="form__group">
+                <label htmlFor="service">Service Needed</label>
 
                 <select id="service" required>
                   <option value="">Select a service</option>
@@ -31,8 +31,8 @@ function Services() {
                 </select>
               </div>
 
-              <div className="htmlForm__group">
-                <label htmlhtmlFor="name">Full Name</label>
+              <div className="form__group">
+                <label htmlFor="name">Full Name</label>
 
                 <input
                   type="text"
@@ -42,18 +42,14 @@ function Services() {
                 />
               </div>
 
-              <div className="htmlForm__group">
-                <label htmlhtmlFor="username">Username</label>
+              <div className="form__group">
+                <label htmlFor="username">Username</label>
 
-                <input
-                  type="text"
-                  id="username"
-                  placeholder="@username"
-                />
+                <input type="text" id="username" placeholder="@username" />
               </div>
 
-              <div className="htmlForm__group">
-                <label htmlhtmlFor="email">Email Address</label>
+              <div className="form__group">
+                <label htmlFor="email">Email Address</label>
 
                 <input
                   type="email"
@@ -63,32 +59,28 @@ function Services() {
                 />
               </div>
 
-              <div className="htmlForm__group">
-                <label htmlhtmlFor="phone">Phone Number</label>
+              <div className="form__group">
+                <label htmlFor="phone">Phone Number</label>
 
-                <input
-                  type="tel"
-                  id="phone"
-                  placeholder="(555) 555-5555"
-                />
+                <input type="tel" id="phone" placeholder="(555) 555-5555" />
               </div>
 
-              <div className="htmlForm__row">
-                <div className="htmlForm__group">
-                  <label htmlhtmlFor="start-date">Care Needed From</label>
+              <div className="form__row">
+                <div className="form__group">
+                  <label htmlFor="start-date">Care Needed From</label>
 
                   <input type="date" id="start-date" required />
                 </div>
 
-                <div className="htmlForm__group">
-                  <label htmlhtmlFor="end-date">Care Needed Until</label>
+                <div className="form__group">
+                  <label htmlFor="end-date">Care Needed Until</label>
 
                   <input type="date" id="end-date" required />
                 </div>
               </div>
 
-              <div className="htmlForm__group">
-                <label htmlhtmlFor="details">Additional Details</label>
+              <div className="form__group">
+                <label htmlFor="details">Additional Details</label>
 
                 <textarea
                   id="details"
@@ -100,7 +92,7 @@ function Services() {
               <button className="btn" type="submit">
                 Find Pet Care
               </button>
-            </htmlForm>
+            </form>
           </div>
         </div>
       </div>

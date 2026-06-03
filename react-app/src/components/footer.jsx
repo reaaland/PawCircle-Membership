@@ -1,3 +1,5 @@
+import logo from "../assets/PC_Logo.png";
+
 function Footer() {
     return (
         <footer>
@@ -7,7 +9,11 @@ function Footer() {
 
       <div className="footer__container">
         <a href="#home">
-          <img src="Assets/PC_Logo.png" className="footer__logo--img" alt="PawCircle Logo"/>
+        <img
+        src={logo}
+        className="footer__logo--img"
+        alt="PawCircle Logo"
+        />
         </a>
       </div>
 
@@ -32,7 +38,7 @@ function Footer() {
         <a href="#" className="footer__link">Privacy</a>
       </div>
       <p className="footer__disclaimer">
-        PawCircle connects pet owners and pet caregivers. Members are responsible htmlFor screening, agreements, payments, and pet care decisions.
+        PawCircle connects pet owners and pet caregivers. Members are responsible for screening, agreements, payments, and pet care decisions.
       </p>
     </div>
 

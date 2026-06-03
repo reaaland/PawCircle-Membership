@@ -470,7 +470,8 @@ nav {
 }
 
 .pricing__card {
-  background: #fff;
+  background: #f7fafc;
+  border: 1px solid #e2e8f0;
   border-radius: 24px;
   padding: 36px;
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
@@ -478,8 +479,57 @@ nav {
 }
 
 .pricing__card--featured {
+  transform: scale(1.03);
+}
+
+.founder__card {
+ .founder__card {
+  background: linear-gradient(180deg, #fff8dc, #fffdf5);
+  border: 2px solid #d4af37;
+}
+
+.founder__card .pricing__badge {
+  background: #d4af37;
+  color: white;
+}
+
+.founder-paw {
+  color: #d4af37;
+  margin-right: 8px;
+}
+}
+
+.founder__card .pricing__badge {
+  background: #d4af37;
+  color: white;
+}
+
+.pioneer__card,
+.regular__card {
+  background: #f8fafc;
+  opacity: 0.6;
+  filter: grayscale(100%);
+  pointer-events: none;
+}
+
+.pioneer__card {
+  background: #f8fafc;
+  border: 2px solid #cbd5e1;
+}
+
+.pioneer__card .pricing__badge {
+  background: #64748b;
+  color: white;
+}
+
+.pioneer-paw {
+  color: #c0c0c0;
+  margin-right: 8px;
+}
+
+.pricing__card--featured {
   border: 2px solid #6415ff;
-  transhtmlForm: scale(1.03);
+  transform: scale(1.03);
 }
 
 .pricing__badge {
@@ -521,7 +571,7 @@ nav {
   pointer-events: none;
 }
 
-pricing__card.inactive .btn {
+.pricing__card.inactive .btn {
   display: none;
 }
 

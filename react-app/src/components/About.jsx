@@ -32,7 +32,7 @@ function About() {
               </p>
 
               <p>
-                Membership helps keep the plathtmlForm afhtmlFordable, community-focused,
+                Membership helps keep the platform affordable, community-focused,
                 and centered on real connections — without booking fees,
                 commissions, or surprise costs.
               </p>
@@ -40,7 +40,7 @@ function About() {
 
             <p className="about__disclaimer">
               PawCircle helps members connect and does not provide pet care services
-              directly. Members are responsible htmlFor screening providers, agreements,
+              directly. Members are responsible for screening providers, agreements,
               payment, and pet care decisions.
             </p>
           </div>
