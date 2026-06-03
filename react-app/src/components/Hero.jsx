@@ -1,5 +1,5 @@
 import React from "react";
-import trailWalk from "../../ass";
+import trailWalk from "../assets/dog walking on trail.jpg";
 
 function Hero() {
   return (
