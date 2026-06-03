@@ -288,10 +288,6 @@ nav {
   object-fit: cover;
 }
 
-.container {
-  padding: 54px 20px;
-}
-
 .header__row {
   width: 100%;
   max-width: 1200px;
@@ -379,7 +375,7 @@ nav {
   z-index: 4;
   visibility: hidden;
   opacity: 0;
-  transForm: translateX(300%);
+  transform: translateX(300%);
   transition: all 300ms;
 }
 .menu--open {
@@ -610,7 +606,7 @@ nav {
   border-radius: 32px;
 }
 
-.join__htmlForm {
+.join__form {
   width: 100%;
   max-width: 520px;
   margin-top: 40px;
@@ -630,7 +626,7 @@ nav {
   max-width: 600px;
 }
 
-#join .htmlForm__group {
+#join .form__group {
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -673,39 +669,39 @@ box-shadow: 0 12px 30px rgba(0,0,0,0.08);
 margin: 12px 0 32px;
 }
 
-.request__htmlForm {
+.request__form {
 display: flex;
 flex-direction: column;
 gap: 20px;
 }
 
-.htmlForm__group {
+.Form__group {
 display: flex;
 flex-direction: column;
 }
 
-.htmlForm__group label {
+.form__group label {
 font-weight: 700;
 margin-bottom: 8px;
 }
 
-.htmlForm__group input,
-.htmlForm__group select,
-.htmlForm__group textarea {
+.Form__group input,
+.Form__group select,
+.Form__group textarea {
 padding: 16px;
 border: 2px solid #e2e8f0;
 border-radius: 12px;
 font-size: 16px;
 }
 
-.htmlForm__group input:focus,
-.htmlForm__group select:focus,
-.htmlForm__group textarea:focus {
+.form__group input:focus,
+.form__group select:focus,
+.form__group textarea:focus {
 outline: none;
 border-color: #6415ff;
 }
 
-.htmlForm__row {
+form__row {
 display: grid;
 grid-template-columns: 1fr 1fr;
 gap: 20px;
@@ -724,7 +720,7 @@ gap: 20px;
   padding: 24px;
   text-align: center;
   box-shadow: 0 10px 30px rgba(0,0,0,.08);
-  transition: transhtmlForm 300ms ease, box-shadow 300ms ease;
+  transition: transform 300ms ease, box-shadow 300ms ease;
 }
 
 .provider__card:hover {
@@ -890,31 +886,31 @@ footer {
 padding: 28px;
 }
 
-.htmlForm__row {
+.form__row {
 grid-template-columns: 1fr;
 }
 
-.htmlForm__group input,
-.htmlForm__group select,
-.htmlForm__group textarea {
+.form__group input,
+.form__group select,
+.form__group textarea {
   width: 100%;
   max-width: 100%;
 }
 
-.htmlForm__row {
+.form__row {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 20px;
 }}
 
 @media (max-width: 600px) {
-  .htmlForm__row {
+  .form__row {
         grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
   
 @media (max-width: 600px) {
-  .htmlForm__row {
+  .form__row {
     grid-template-columns: 1fr;
   }
 
