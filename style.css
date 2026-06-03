@@ -232,8 +232,8 @@ nav {
 }
 
 #header {
-  min-height: 90vh;
- }
+  min-height: auto;
+}
 
 .header__container {
   width: 100%;
