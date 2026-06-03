@@ -82,9 +82,9 @@ p {
 .section__tag {
     font-size: 16px;
      color: #6415ff;
-     letter-spacing: 1.6px;
-     font-weight: 700;
-     text-transhtmlForm: uppercase;
+    letter-spacing: 1.6px;
+    font-weight: 700;
+    text-transform: uppercase;
 }
 .section__title {
   font-size: 48px;
@@ -349,7 +349,7 @@ nav {
 }
 
 .join__btn--fixed {
-  transhtmlForm: translateY(-3px);
+  transform: translateY(-3px);
   box-shadow: 0 12px 25px rgba(0, 0, 0, 0.22);
 }
 
@@ -379,7 +379,7 @@ nav {
   z-index: 4;
   visibility: hidden;
   opacity: 0;
-  transhtmlForm: translateX(300%);
+  transForm: translateX(300%);
   transition: all 300ms;
 }
 .menu--open {
@@ -389,7 +389,7 @@ nav {
 .menu--open .menu {
   visibility: visible;
   opacity: 1;
-  transhtmlForm: translateX(0);
+  transform: translateX(0);
 }
 .menu__links {
   width: 100%;
@@ -483,7 +483,6 @@ nav {
 }
 
 .founder__card {
- .founder__card {
   background: linear-gradient(180deg, #fff8dc, #fffdf5);
   border: 2px solid #d4af37;
 }
@@ -493,15 +492,9 @@ nav {
   color: white;
 }
 
-.founder-paw {
-  color: #d4af37;
+.founder-paw, .founder-paw i {
+  color: #d4af37 !important;
   margin-right: 8px;
-}
-}
-
-.founder__card .pricing__badge {
-  background: #d4af37;
-  color: white;
 }
 
 .pioneer__card,
@@ -522,7 +515,7 @@ nav {
   color: white;
 }
 
-.pioneer-paw {
+.pioneer-paw, .pioneer-paw i {
   color: #c0c0c0;
   margin-right: 8px;
 }
@@ -600,7 +593,7 @@ nav {
 
 .btn:hover {
   background: #4c0fc9;
-  transhtmlForm: translateY(-2px);
+  transform: translateY(-2px);
 }
 
 .btn__menu--close {
@@ -735,7 +728,7 @@ gap: 20px;
 }
 
 .provider__card:hover {
-  transhtmlForm: translateY(-4px);
+  transform: translateY(-4px);
   box-shadow: 0 16px 36px rgba(0,0,0,.12);
 }
 
@@ -882,7 +875,7 @@ footer {
   }
 
   .pricing__card--featured {
-    transhtmlForm: none;
+    transform: none;
   }
 
   .price {

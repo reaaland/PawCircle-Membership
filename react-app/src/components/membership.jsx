@@ -14,19 +14,27 @@ function Membership() {
 
   <div className="pricing__card founder__card pricing__card--featured">
     <span className="pricing__badge">First 500 Members</span>
-    <span className="founder-paw">
-      <i className="fa-solid fa-paw"></i>
-    </span>
-    <p className="price">$1/month</p>
+  <h3>
+  <span className="founder-paw">
+    <i className="fa-solid fa-paw"></i>
+  </span>
+  Founder Membership
+</h3>
+
+<p className="price">$1/month</p>
     <p className="pricing__subtext">Lock in Founder Member pricing for life while your membership stays active.</p>
   </div>
 
   <div className="pricing__card  pioneer__card">
-    <span className="pricing__badge">Next 1000 Members</span>
-    <span className="pioneer-paw">
-      <i className="fa-solid fa-paw"></i>
-    </span>
-    <p className="price">$1/month</p>
+   <span className="pricing__badge">Next 10,000 Members</span>
+   <h3>
+  <span className="pioneer-paw">
+    <i className="fa-solid fa-paw"></i>
+  </span>
+  Pioneer Membership
+</h3>
+
+<p className="price">$1/month</p>
     <p className="pricing__subtext">One free month before membership begins.</p>
   </div>
 
