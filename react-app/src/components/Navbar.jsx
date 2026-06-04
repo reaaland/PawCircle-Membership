@@ -2,6 +2,7 @@ import logo from "../assets/PC_Logo.png";
 
 function Navbar() {
   return (
+    
     <div className="nav__container">
 
       <div className="nav__logo">
