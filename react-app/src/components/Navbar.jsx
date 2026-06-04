@@ -1,10 +1,11 @@
+import { useState } from "react";
 import logo from "../assets/PC_Logo.png";
 
 function Navbar() {
-  return (
-    
-    <div className="nav__container">
+  const [menuOpen, setMenuOpen] = useState(false);
 
+  return (
+    <nav className="nav__container">
       <div className="nav__logo">
         <img className="nav__logo--img" src={logo} alt="PawCircle Logo" />
 
@@ -21,10 +22,26 @@ function Navbar() {
         <a href="#login" className="nav__link">Login</a>
         <a href="#join" className="nav__link nav__link--primary">Join PawCircle</a>
       </div>
-        <button className="btn__menu">
+
+      <button className="btn__menu" onClick={() => setMenuOpen(true)}>
         <i className="fa-solid fa-bars"></i>
-        </button>
-    </div>
+      </button>
+
+      {menuOpen && (
+        <div className="menu__backdrop">
+          <button className="btn__menu btn__menu--close" onClick={() => setMenuOpen(false)}
+            >
+              
+            ×
+          </button>
+
+          <a href="#about" onClick={() => setMenuOpen(false)}>About</a>
+          <a href="#services" onClick={() => setMenuOpen(false)}>Services</a>
+          <a href="#membership" onClick={() => setMenuOpen(false)}>Membership</a>
+          <a href="#join" onClick={() => setMenuOpen(false)}>Join</a>
+        </div>
+      )}
+    </nav>
   );
 }
 

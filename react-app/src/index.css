@@ -417,6 +417,34 @@ nav {
   border: none;
 }
 
+.menu__backdrop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 70%;
+  max-width: 320px;
+  height: 100vh;
+  background: white;
+  z-index: 1000;
+  padding: 80px 32px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.12);
+}
+
+.menu__backdrop a {
+  font-size: 20px;
+  font-weight: 700;
+  color: #243e63;
+}
+
+.btn__menu--close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+}
+
 /* ABOUT */
 
 .about__grid {
@@ -488,7 +516,7 @@ nav {
   color: white;
 }
 
-.founder-paw, .founder-paw i {
+.founder-paw {
   color: #d4af37 !important;
   margin-right: 8px;
 }
@@ -511,8 +539,8 @@ nav {
   color: white;
 }
 
-.pioneer-paw, .pioneer-paw i {
-  color: #c0c0c0;
+.pioneer-paw  {
+  color: #c0c0c0  !important;
   margin-right: 8px;
 }
 

@@ -1,3 +1,6 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPaw } from "@fortawesome/free-solid-svg-icons";
+
 function Membership() {
     return (
 <section id="membership">
@@ -16,7 +19,7 @@ function Membership() {
     <span className="pricing__badge">First 500 Members</span>
   <h3>
   <span className="founder-paw">
-    <i className="fa-solid fa-paw"></i>
+    <FontAwesomeIcon icon={faPaw} className="founder-paw" />
   </span>
   Founder Membership
 </h3>
@@ -29,7 +32,7 @@ function Membership() {
    <span className="pricing__badge">Next 10,000 Members</span>
    <h3>
   <span className="pioneer-paw">
-    <i className="fa-solid fa-paw"></i>
+  <FontAwesomeIcon icon={faPaw} className="pioneer-paw" />
   </span>
   Pioneer Membership
 </h3>
