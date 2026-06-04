@@ -3,7 +3,7 @@ import trailWalk from "../assets/dog walking on trail.jpg";
 
 function Hero() {
   return (
-    <section id="header">
+    <section id="#home">
       <div className="container">
         <div className="row">
           <div className="header__container">
