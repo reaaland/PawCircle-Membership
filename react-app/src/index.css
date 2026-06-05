@@ -462,13 +462,18 @@ nav {
 } 
 
 
-.founder-paw {
-  fill: #d4af37 !important;
+.founder-paw,
+.founder-paw path {
   color: #d4af37 !important;
+  fill: #d4af37 !important;
+}
+
+.founder-paw {
   font-size: 24px;
   margin-right: 10px;
   vertical-align: middle;
 }
+
 
 
 .pioneer__card,
@@ -489,9 +494,13 @@ nav {
   color: white;
 }
 
-.pioneer-paw {
-  fill: #c0c0c0 !important;
+.pioneer-paw,
+.pioneer-paw path {
   color: #c0c0c0 !important;
+  fill: #c0c0c0 !important;
+}
+
+.pioneer-paw {
   font-size: 24px;
   margin-right: 8px;
   vertical-align: middle;
