@@ -16,16 +16,15 @@ function Navbar() {
       </div>
 
       <div className="nav__links">
-  <Link to="/" className="nav__link">Home</Link>
-  <Link to="/about" className="nav__link">About</Link>
-
-  <a href="#membership" className="nav__link">Membership</a>
-  <a href="#services" className="nav__link">Services</a>
-  <a href="#login" className="nav__link">Login</a>
-  <a href="#join" className="nav__link nav__link--primary">
-    Join PawCircle
-  </a>
-</div>
+        <Link to="/" className="nav__link">Home</Link>
+        <Link to="/about" className="nav__link">About</Link>
+        <Link to="/membership" className="nav__link">Membership</Link>
+        <Link to="/services" className="nav__link">Services</Link>
+        <Link to="/login" className="nav__link">Login</Link>
+        <Link to="/join" className="nav__link nav__link--primary">
+          Join PawCircle
+        </Link>
+      </div>
 
       <button className="btn__menu" onClick={() => setMenuOpen(true)}>
         <i className="fa-solid fa-bars"></i>
@@ -33,19 +32,19 @@ function Navbar() {
 
       {menuOpen && (
         <div className="menu__backdrop">
-  <button
-    className="btn__menu btn__menu--close"
-    onClick={() => setMenuOpen(false)}
-  >
-    ×
-  </button>
+          <button
+            className="btn__menu btn__menu--close"
+            onClick={() => setMenuOpen(false)}
+          >
+            ×
+          </button>
 
-  <Link to="/" onClick={() => setMenuOpen(false)}>Home</Link>
-  <Link to="/about" onClick={() => setMenuOpen(false)}>About</Link>
-  <a href="#services" onClick={() => setMenuOpen(false)}>Services</a>
-  <a href="#membership" onClick={() => setMenuOpen(false)}>Membership</a>
-  <a href="#join" onClick={() => setMenuOpen(false)}>Join</a>
-</div>
+          <Link to="/" onClick={() => setMenuOpen(false)}>Home</Link>
+          <Link to="/about" onClick={() => setMenuOpen(false)}>About</Link>
+          <Link to="/membership" onClick={() => setMenuOpen(false)}> Membership</Link>
+          <Link to="/services" onClick={() => setMenuOpen(false)}>Services</Link>
+          <Link to="/join" onClick={() => setMenuOpen(false)}>Join</Link>
+        </div>
       )}
     </nav>
   );

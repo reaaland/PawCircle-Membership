@@ -10,7 +10,7 @@ function Home() {
     <>
       <Hero />
       <About />
-      <Membership />
+      <Membership featuredOnly />
       <Join />
       <Services />
       <Providers />
