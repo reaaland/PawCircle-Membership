@@ -56,13 +56,14 @@ function About({ fullVersion }) {
               </>
             )}
 
-            
+          </div>
+
           <p className="about__disclaimer">
             PawCircle helps members connect and does not provide pet care services
             directly. Members are responsible for screening providers, agreements,
             payment, and pet care decisions.
           </p>
-          </div>
+          
         </div>
       </div>
     </section>

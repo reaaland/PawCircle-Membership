@@ -59,7 +59,7 @@ h1 {
 
 h2 {
   margin-bottom: 16px;
-  padding: 24px 0;
+  padding: 56px 0;
   text-align: center;
 }
 
@@ -241,10 +241,11 @@ nav {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 56px 32px;
+  padding: 24px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 0;
 }
 
 .hero__subtitle {
@@ -402,8 +403,8 @@ nav {
 .about__grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  padding-top: 32px;
-  margin-top: 40px;
+  padding-top: 0px;
+  margin-top: 0px;
   gap: 32px;
 }
 
@@ -428,7 +429,9 @@ nav {
   text-align: center;
   font-size: 14px;
   opacity: 0.7;
-  margin-top: 24px;
+  margin-top: 40px auto 0;
+  color: #64748b;
+  line-height: 1.6;
 }
 
 /* Membership */
