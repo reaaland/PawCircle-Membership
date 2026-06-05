@@ -7,6 +7,7 @@ import Join from "./components/Join";
 import Services from "./components/Services";
 import Providers from "./components/Providers";
 import Footer from "./components/Footer";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 function App() {
   return (
