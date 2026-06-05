@@ -1,9 +1,11 @@
 import Hero from "../components/Hero";
 import About from "../components/About";
 import Membership from "../components/Membership";
-import Join from "../components/Join";
 import Services from "../components/Services";
 import Providers from "../components/Providers";
+import JoinButton from "../components/JoinButton";
+import { Link } from "react-router-dom";
+import CTASection from "../components/CTASection";
 
 function Home() {
   return (
@@ -11,8 +13,7 @@ function Home() {
       <Hero />
       <About />
       <Membership featuredOnly />
-      <Join />
-      <Services />
+      <CTASection />
       <Providers />
     </>
   );

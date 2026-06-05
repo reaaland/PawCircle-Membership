@@ -4,4 +4,6 @@ function MembershipPage() {
   return <Membership featuredOnly showRegularPlans />;
 }
 
+<JoinButton />
+
 export default MembershipPage;

@@ -21,7 +21,7 @@ function Hero() {
               </div>
 
               <p>
-                Meet locally, communicate directly, and decide what works best for you.
+              Building local pet care connections, one community at a time.
               </p>
             </div>
 

@@ -646,6 +646,96 @@ nav {
    color: #64748b;
 }
 
+.modal__backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 24px;
+}
+
+.agreement__modal {
+  background: white;
+  max-width: 520px;
+  width: 100%;
+  border-radius: 20px;
+  padding: 32px;
+  position: relative;
+}
+
+.agreement__modal label {
+  display: block;
+  margin: 16px 0;
+}
+
+.agreement__modal h3 {
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.agreement__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.agreement__paws {
+  margin-left: 10px;
+}
+
+.agreement__paws svg {
+  color: #d4af37;
+  margin-left: 4px;
+}
+
+.agreement__modal .btn {
+  width: 100%;
+  margin-top: 24px;
+}
+
+.modal__close {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  border: none;
+  background: transparent;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.cta__section {
+  padding: 64px 20px;
+}
+
+.cta__wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.cta__card {
+  background: white;
+  border-radius: 24px;
+  padding: 40px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+.cta__card h2 {
+  margin-bottom: 16px;
+}
+
+.cta__card p {
+  margin-bottom: 24px;
+}
+
 .request__card {
 max-width: 800px;
 margin: 0 auto;

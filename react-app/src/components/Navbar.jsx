@@ -43,7 +43,9 @@ function Navbar() {
           <Link to="/about" onClick={() => setMenuOpen(false)}>About</Link>
           <Link to="/membership" onClick={() => setMenuOpen(false)}> Membership</Link>
           <Link to="/services" onClick={() => setMenuOpen(false)}>Services</Link>
-          <Link to="/join" onClick={() => setMenuOpen(false)}>Join</Link>
+          <Link to="/join" onClick={() => setMenuOpen(false)}>
+            Join
+          </Link>
         </div>
       )}
     </nav>
