@@ -31,8 +31,8 @@ function Membership() {
   <div className="pricing__card  pioneer__card">
    <span className="pricing__badge">Next 10,000 Members</span>
    <h3>
-  <span className="pioneer-paw">
-  <FontAwesomeIcon icon={faPaw} className="pioneer-paw" />
+  <span>
+  <FontAwesomeIcon icon={faPaw} className="pioneer-paw" /> 
   </span>
   Pioneer Membership
 </h3>

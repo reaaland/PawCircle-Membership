@@ -462,12 +462,14 @@ nav {
 } 
 
 
-svg.founder-paw {
+.founder-paw {
+  fill: #d4af37 !important;
   color: #d4af37 !important;
   font-size: 24px;
   margin-right: 10px;
   vertical-align: middle;
 }
+
 
 .pioneer__card,
 .regular__card {
@@ -487,14 +489,12 @@ svg.founder-paw {
   color: white;
 }
 
-.pioneer-paw  {
-  color: #c0c0c0  !important;
+.pioneer-paw {
+  fill: #c0c0c0 !important;
+  color: #c0c0c0 !important;
+  font-size: 24px;
   margin-right: 8px;
-}
-
-.pioneer-paw svg {
-  color: #c0c0c0 ;
-  fill: #c0c0c0 ;
+  vertical-align: middle;
 }
 
 .pricing__card--featured {
