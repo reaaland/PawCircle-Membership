@@ -1,4 +1,4 @@
-function About() {
+function About({ fullVersion }) {
   return (
     <section id="about">
       <div className="container">
@@ -37,12 +37,29 @@ function About() {
                 commissions, or surprise costs.
               </p>
             </div>
+            {fullVersion && (
+              <>
+                <div className="about__card">
+                  <h3>Our Mission</h3>
 
-            <p className="about__disclaimer">
-              PawCircle helps members connect and does not provide pet care services
-              directly. Members are responsible for screening providers, agreements,
-              payment, and pet care decisions.
-            </p>
+                  <p>
+                    PawCircle was created to help pet owners and pet caregivers connect
+                    directly within their communities through a simple membership model.
+                  </p>
+                  <p>
+                    Our goal is to create an affordable, community-focused platform where
+                    members can communicate directly, build trusted relationships, and
+                    choose the pet care solutions that work best for them.
+                  </p>
+                </div>
+
+                <p className="about__disclaimer">
+                  PawCircle helps members connect and does not provide pet care services
+                  directly. Members are responsible for screening providers, agreements,
+                  payment, and pet care decisions.
+                </p>
+              </>
+            )}
           </div>
         </div>
       </div>
