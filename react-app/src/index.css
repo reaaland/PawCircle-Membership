@@ -426,7 +426,7 @@ nav {
 .about__disclaimer {
   display: flex;
   text-align: center;
-  font-size: 8px;
+  font-size: 14px;
   opacity: 0.7;
   margin-top: 24px;
 }
@@ -442,8 +442,8 @@ nav {
 .pricing__wrapper {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 32px;
-  margin-top: 40px;
+  gap: 24px;
+  margin-top: 56px;
 }
 
 .pricing__card {
@@ -461,12 +461,14 @@ nav {
 
 .founder__card {
   background: linear-gradient(180deg, #fff8dc, #fffdf5);
-  border: 2px solid #d4af37;
+  border: 3px solid #d4af37;
+  box-shadow: 0 20px 40px rgba(212, 175, 55, 0.18);
 }
 
 .founder__card .pricing__badge {
   background: #d4af37 !important;
   color: white; 
+  font-weight: 700;
 } 
 
 
@@ -564,7 +566,7 @@ nav {
 
 .pricing__disclaimer {
   text-align: center;
-  font-size: 24px;
+  font-size: 14px;
   opacity: 0.7;
   margin-top: 24px;
 }
