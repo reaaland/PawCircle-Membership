@@ -87,6 +87,7 @@ function Membership({ featuredOnly, showRegularPlans }) {
               </>
             )}
           </div>
+          
           <p className="pricing__disclaimer">
             * Membership pricing shown before applicable sales tax. Taxes are calculated at checkout based on location.
           </p>
