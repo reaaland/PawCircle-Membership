@@ -244,6 +244,11 @@ nav {
   justify-content: space-between;
 }
 
+.hero__subtitle {
+  margin-top: 32px;
+  font-weight: bold;
+}
+
 .header__description {
   width: 50%;
   display: flex;
@@ -418,7 +423,7 @@ nav {
 .about__disclaimer {
   display: flex;
   text-align: center;
-  font-size: 14px;
+  font-size: 8px;
   opacity: 0.7;
   margin-top: 24px;
 }

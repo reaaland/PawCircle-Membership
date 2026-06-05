@@ -20,7 +20,7 @@ function Hero() {
                 <span>✔ No hidden fees</span>
               </div>
 
-              <p>
+              <p className="hero__subtitle">
               Building local pet care connections, one community at a time.
               </p>
             </div>

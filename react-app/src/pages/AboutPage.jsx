@@ -4,5 +4,4 @@ function AboutPage() {
   return <About fullVersion />;
 }
 
-<JoinButton />
 export default AboutPage;
