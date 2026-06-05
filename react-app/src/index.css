@@ -38,7 +38,7 @@ body {
 }
 
 .container {
-    padding: 48px;
+    padding: 0px 24px;
 }
 
 a {
@@ -368,9 +368,9 @@ nav {
 
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   gap: 24px;
+  padding-top: 120px;
 
   box-shadow: -10px 0 30px rgba(0, 0, 0, 0.12);
 }
@@ -396,6 +396,7 @@ nav {
   grid-template-columns: repeat(2, 1fr);
   padding-top: 32px;
   margin-top: 40px;
+  gap: 32px;
 }
 
 .about__card {
@@ -456,13 +457,16 @@ nav {
 }
 
 .founder__card .pricing__badge {
-  background: #d4af37;
-  color: white;
-}
+  background: #d4af37 !important;
+  color: white; 
+} 
 
-.founder-paw {
+
+svg.founder-paw {
   color: #d4af37 !important;
-  margin-right: 8px;
+  font-size: 24px;
+  margin-right: 10px;
+  vertical-align: middle;
 }
 
 .pioneer__card,
@@ -486,6 +490,11 @@ nav {
 .pioneer-paw  {
   color: #c0c0c0  !important;
   margin-right: 8px;
+}
+
+.pioneer-paw svg {
+  color: #c0c0c0 ;
+  fill: #c0c0c0 ;
 }
 
 .pricing__card--featured {
@@ -799,6 +808,9 @@ footer {
 
 
 @media (max-width: 768px) {
+.container {
+  padding: 32px 20px;
+}
 
  .nav__links {
     display: none;
@@ -825,7 +837,7 @@ footer {
   .header__container {
     flex-direction: column;
     text-align: center;
-    gap: 40px;
+    padding: 32px 20px;
   }
 
   .header__description,
