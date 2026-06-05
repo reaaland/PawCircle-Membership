@@ -21,10 +21,10 @@ function Membership() {
 
   <h3>
   <FontAwesomeIcon
-    icon={faPaw}
-    className="founder-paw"
-    style={{ color: "#d4af37" }}
-  />
+  icon={faPaw}
+  className="founder-paw"
+  style={{ color: "#d4af37" }}
+/>
   Founder Membership
 </h3>
 
@@ -36,10 +36,10 @@ function Membership() {
    <span className="pricing__badge">Next 10,000 Members</span>
 <h3>
   <FontAwesomeIcon
-    icon={faPaw}
-    className="pioneer-paw"
-    style={{ color: "#c0c0c0" }}
-  />
+  icon={faPaw}
+  className="pioneer-paw"
+  style={{ color: "#c0c0c0" }}
+/>
   Pioneer Membership
 </h3>
 
