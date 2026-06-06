@@ -11,26 +11,33 @@ function FounderCard() {
         Founder Membership
       </h3>
       <p className="price">$1/month</p>
-      <p className="pricing__subtext">Lock in Founder Member pricing for life while your membership stays active.</p>
-
-      <JoinButton text="Join as Founder" />
+      <p className="pricing__subtext">
+        Lock in Founder Member pricing for life while your membership stays active.
+      </p>
+       <JoinButton
+          text="Join as a Founder"
+          membershipType="founder"
+          />
     </div>
-
   );
- }
+}
+
+
 
 function PioneerCard() {
   return (
     <div className="pricing__card pioneer__card">
-      <span className="pricing__badge">Next 10,000 Members</span>
+      <span className="pricing__badge">Next 1,000 Members</span>
       <h3>
         <FontAwesomeIcon icon={faPaw} className="pioneer-paw" />
         Pioneer Membership
       </h3>
       <p className="price">$1/month</p>
       <p className="pricing__subtext">One free month before membership begins.</p>
-
-      <JoinButton text="Join as Founder" />
+      <JoinButton
+        text="Join as a Pioneer"
+        membershipType="pioneer"
+      />
     </div>
   );
 }
@@ -38,12 +45,13 @@ function PioneerCard() {
 function ClientPlan() {
   return (
     <div className="pricing__card regular__card">
-      <span className="pricing__badge">Coming Later</span>
       <h3>Pet Owner Membership</h3>
       <p className="price">$1/month</p>
       <p className="pricing__subtext">For members looking for pet services.</p>
-
-      <JoinButton text="Join as Founder" />
+      <JoinButton
+        text="Join as a Pet Owner"
+        membershipType="owner"
+      />
     </div>
   );
 }
@@ -51,12 +59,13 @@ function ClientPlan() {
 function ProviderPlan() {
   return (
     <div className="pricing__card regular__card">
-      <span className="pricing__badge">Coming Later</span>
       <h3>Pet Service Provider Membership</h3>
       <p className="price">$1.50/month</p>
       <p className="pricing__subtext">For members looking to grow their pet business.</p>
-
-      <JoinButton text="Join as Founder" />
+      <JoinButton
+        text="Join as a Provider"
+        membershipType="provider"
+      />
     </div>
   );
 }
@@ -64,33 +73,36 @@ function ProviderPlan() {
 function BothPlan() {
   return (
     <div className="pricing__card regular__card">
-      <span className="pricing__badge">Coming Later</span>
       <h3>Owner + Provider Membership</h3>
       <p className="price">$2/month</p>
       <p className="pricing__subtext">For members who want both options.</p>
-
-      <JoinButton text="Join as Founder" />
+     <JoinButton
+      text="Join as a Pet Owner + Provider"
+      membershipType="both"
+      />
     </div>
   );
 }
 
-function Membership({ featuredOnly, showRegularPlans }) {
+function Membership() {
+  const memberCount = 325; // later from Supabase
+
   return (
     <section id="membership">
       <div className="container">
         <div className="row">
           <h2>Simple, Transparent Pricing</h2>
+
           <p className="pricing__intro">
             One simple membership to start. As PawCircle grows, membership options may expand to better support pet owners and pet service providers.
           </p>
+
           <div className="pricing__wrapper">
-            {featuredOnly && (
-              <>
-                <FounderCard />
-                <PioneerCard />
-              </>
-            )}
-            {showRegularPlans && (
+            {memberCount < 500 && <FounderCard />}
+
+            {memberCount >= 500 && memberCount < 1500 && <PioneerCard />}
+
+            {memberCount >= 1500 && (
               <>
                 <ClientPlan />
                 <ProviderPlan />
@@ -98,7 +110,7 @@ function Membership({ featuredOnly, showRegularPlans }) {
               </>
             )}
           </div>
-          
+
           <p className="pricing__disclaimer">
             * Membership pricing shown before applicable sales tax. Taxes are calculated at checkout based on location.
           </p>
@@ -109,4 +121,3 @@ function Membership({ featuredOnly, showRegularPlans }) {
 }
 
 export default Membership;
- 

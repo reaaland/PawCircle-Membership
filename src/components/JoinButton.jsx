@@ -1,8 +1,14 @@
 import { Link } from "react-router-dom";
 
-function JoinButton({ text = "Join PawCircle" }) {
+function JoinButton({
+  text = "Join PawCircle",
+  membershipType = "",
+}) {
   return (
-    <Link to="/join" className="btn">
+    <Link
+      to={`/join?membership=${membershipType}`}
+      className="btn"
+    >
       {text}
     </Link>
   );
