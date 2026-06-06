@@ -41,7 +41,7 @@ function AgreementModal({ onClose }) {
             checked={termsAccepted}
             onChange={(e) => setTermsAccepted(e.target.checked)}
           />
-          I agree to the <Link to="/terms">Terms of Conduct</Link>.
+          <span>I agree to the <Link to="/terms">Terms of Conduct</Link>.  </span>
         </label>
 
         <label>
@@ -50,7 +50,7 @@ function AgreementModal({ onClose }) {
             checked={privacyAccepted}
             onChange={(e) => setPrivacyAccepted(e.target.checked)}
           />
-          I acknowledge the <Link to="/privacy">Privacy Policy</Link>.
+          <span>I acknowledge the <Link to="/privacy">Privacy Policy</Link>.  </span>
         </label>
 
         <label>
@@ -59,8 +59,8 @@ function AgreementModal({ onClose }) {
             checked={conductAccepted}
             onChange={(e) => setConductAccepted(e.target.checked)}
           />
-          I agree to follow the{" "}
-          <Link to="/code-of-conduct">Code of Conduct</Link>.
+         <span> I agree to follow the{" "}
+          <Link to="/code-of-conduct">Code of Conduct</Link>. </span>
         </label>
 
         <button
