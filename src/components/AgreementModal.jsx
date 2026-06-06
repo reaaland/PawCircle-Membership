@@ -3,18 +3,18 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaw } from "@fortawesome/free-solid-svg-icons";
 
-function AgreementModal({ onClose }) {
+function AgreementModal({ onClose, paymentLink }) {
   const [termsAccepted, setTermsAccepted] = useState(false);
   const [privacyAccepted, setPrivacyAccepted] = useState(false);
   const [conductAccepted, setConductAccepted] = useState(false);
 
-  const allAccepted = termsAccepted && privacyAccepted && conductAccepted;
+  const allAccepted =
+    termsAccepted && privacyAccepted && conductAccepted;
 
   function handleContinue() {
-    if (!allAccepted) return;
+    if (!allAccepted || !paymentLink) return;
 
-    // Later this will become Stripe checkout
-    onClose();
+    window.location.href = paymentLink;
   }
 
   return (
@@ -35,45 +35,50 @@ function AgreementModal({ onClose }) {
           secure checkout.
         </p>
 
-    <div className="agreement__choices">
-       <label className="agreement__choice">
-          <input
-            type="checkbox"
-            checked={termsAccepted}
-            onChange={(e) => setTermsAccepted(e.target.checked)}
-          />
-          <span>I agree to the <Link to="/terms">Terms of Conduct</Link>.  
-          </span>
-        </label>
+        <div className="agreement__choices">
+          <label className="agreement__choice">
+            <input
+              type="checkbox"
+              checked={termsAccepted}
+              onChange={(e) => setTermsAccepted(e.target.checked)}
+            />
+            <span>
+              I agree to the <Link to="/terms">Terms of Conduct</Link>.
+            </span>
+          </label>
 
-        <label className="agreement__choice">
-          <input
-            type="checkbox"
-            checked={privacyAccepted}
-            onChange={(e) => setPrivacyAccepted(e.target.checked)}
-          />
-          <span>I acknowledge the <Link to="/privacy">Privacy Policy</Link>.  
-          </span>
-        </label>
+          <label className="agreement__choice">
+            <input
+              type="checkbox"
+              checked={privacyAccepted}
+              onChange={(e) => setPrivacyAccepted(e.target.checked)}
+            />
+            <span>
+              I acknowledge the <Link to="/privacy">Privacy Policy</Link>.
+            </span>
+          </label>
 
-        <label className="agreement__choice">
-          <input
-            type="checkbox"
-            checked={conductAccepted}
-            onChange={(e) => setConductAccepted(e.target.checked)}
-          />
-         <span> I agree to follow the{" "}
-          <Link to="/code-of-conduct">Code of Conduct</Link>. </span>
-        </label>
-
-      </div>
+          <label className="agreement__choice">
+            <input
+              type="checkbox"
+              checked={conductAccepted}
+              onChange={(e) => setConductAccepted(e.target.checked)}
+            />
+            <span>
+              I agree to follow the{" "}
+              <Link to="/code-of-conduct">Code of Conduct</Link>.
+            </span>
+          </label>
+        </div>
 
         <button
           className="btn"
-          disabled={!allAccepted}
           onClick={handleContinue}
+          disabled={!allAccepted || !paymentLink}
         >
-          Agree & Continue to Checkout
+          {paymentLink
+            ? "I Agree — Continue to Payment"
+            : "Payment Coming Soon"}
         </button>
       </div>
     </div>

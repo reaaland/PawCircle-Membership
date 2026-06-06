@@ -8,6 +8,26 @@ function Join() {
 
   const membership = searchParams.get("membership");
 
+  const paymentLinks = {
+    founder: {
+      url: "https://buy.stripe.com/YOUR_FOUNDER_PAYMENT_LINK",
+      active: false,
+    },
+    pioneer: {
+      url: "https://buy.stripe.com/YOUR_PIONEER_PAYMENT_LINK",
+      active: false,
+    },
+    standard: {
+      url: "",
+      active: false,
+    },
+  };
+
+  const selectedMembership = paymentLinks[membership];
+
+  const selectedPaymentLink =
+    selectedMembership?.active ? selectedMembership.url : "";
+
   function handleSubmit(e) {
     e.preventDefault();
     setShowAgreement(true);
@@ -120,6 +140,7 @@ function Join() {
           {showAgreement && (
             <AgreementModal
               onClose={() => setShowAgreement(false)}
+              paymentLink={selectedPaymentLink}
             />
           )}
         </div>
