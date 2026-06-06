@@ -1,8 +1,12 @@
 import { useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import AgreementModal from "./AgreementModal";
 
 function Join() {
   const [showAgreement, setShowAgreement] = useState(false);
+  const [searchParams] = useSearchParams();
+
+  const membership = searchParams.get("membership");
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -17,6 +21,30 @@ function Join() {
 
           <p>Start connecting pet owners and caregivers directly.</p>
 
+          {membership && (
+            <p className="join__selected">
+              Selected membership: {membership}
+            </p>
+          )}
+
+          {membership === "founder" && (
+            <button className="btn" disabled>
+              Founder Checkout Coming Soon
+            </button>
+          )}
+
+          {membership === "pioneer" && (
+            <button className="btn" disabled>
+              Pioneer Checkout Coming Soon
+            </button>
+          )}
+
+          {membership === "standard" && (
+            <button className="btn" disabled>
+              Standard Pricing Coming Soon
+            </button>
+          )}
+
           <form className="join-form" onSubmit={handleSubmit}>
             <div className="form__group">
               <label htmlFor="member__type">Membership Type</label>
@@ -24,6 +52,7 @@ function Join() {
                 <option value="">Select membership type</option>
                 <option value="founder">Founder Membership</option>
                 <option value="pioneer">Pioneer Membership</option>
+                <option value="standard">Standard Membership</option>
               </select>
             </div>
 
@@ -84,7 +113,7 @@ function Join() {
             </div>
 
             <button className="btn" type="submit">
-              Continue to Secure Checkout
+              Continue
             </button>
           </form>
 
