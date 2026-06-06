@@ -689,6 +689,10 @@ nav {
   text-align: left;
 }
 
+.agreement__modal label span {
+  flex: 1;
+}
+
 .agreement__modal label input[type="checkbox"] {
   width: 18px;
   height: 18px;
