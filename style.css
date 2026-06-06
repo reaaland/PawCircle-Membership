@@ -814,6 +814,16 @@ footer .container {
   text-decoration: none;
 }
 
+.footer__column {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer__column a {
+  display: block;
+}
+
 .footer__copyright {
   color: white;
   text-align: center;

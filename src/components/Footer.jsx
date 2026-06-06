@@ -13,7 +13,7 @@ function Footer() {
             </p>
           </div>
 
-          <div>
+          <div className="footer__column">
             <h4>Explore</h4>
             <a href="/">Home</a>
             <a href="/services">Services</a>
@@ -21,14 +21,14 @@ function Footer() {
             <a href="/join">Join PawCircle</a>
           </div>
 
-          <div>
+          <div className="footer__column">
             <h4>Company</h4>
             <a href="/about">About</a>
             <a href="/contact">Contact</a>
             <a href="/faq">FAQ</a>
           </div>
 
-          <div>
+          <div className="footer__column">
             <h4>Legal</h4>
             <a href="/terms">Terms of Conduct</a>
             <a href="/privacy">Privacy Policy</a>
