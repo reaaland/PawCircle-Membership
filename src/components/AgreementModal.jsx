@@ -35,25 +35,28 @@ function AgreementModal({ onClose }) {
           secure checkout.
         </p>
 
-        <label>
+    <div className="agreement__choices">
+       <label className="agreement__choice">
           <input
             type="checkbox"
             checked={termsAccepted}
             onChange={(e) => setTermsAccepted(e.target.checked)}
           />
-          <span>I agree to the <Link to="/terms">Terms of Conduct</Link>.  </span>
+          <span>I agree to the <Link to="/terms">Terms of Conduct</Link>.  
+          </span>
         </label>
 
-        <label>
+        <label className="agreement__choice">
           <input
             type="checkbox"
             checked={privacyAccepted}
             onChange={(e) => setPrivacyAccepted(e.target.checked)}
           />
-          <span>I acknowledge the <Link to="/privacy">Privacy Policy</Link>.  </span>
+          <span>I acknowledge the <Link to="/privacy">Privacy Policy</Link>.  
+          </span>
         </label>
 
-        <label>
+        <label className="agreement__choice">
           <input
             type="checkbox"
             checked={conductAccepted}
@@ -62,6 +65,8 @@ function AgreementModal({ onClose }) {
          <span> I agree to follow the{" "}
           <Link to="/code-of-conduct">Code of Conduct</Link>. </span>
         </label>
+
+      </div>
 
         <button
           className="btn"

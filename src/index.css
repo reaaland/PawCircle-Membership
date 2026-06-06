@@ -679,28 +679,38 @@ nav {
   position: relative;
 }
 
-.agreement__modal label {
-  display: flex !important;
-  align-items: flex-start;
-  justify-content: flex-start;
-  gap: 10px;
+.agreement__intro {
+  max-width: 420px;
+  margin: 0 auto 24px;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.agreement__choice {
+  display: grid !important;
+  grid-template-columns: 24px 1fr;
+  align-items: start;
+  column-gap: 14px;
   margin: 18px 0;
-  line-height: 1.4;
   text-align: left;
 }
 
-.agreement__modal label span {
-  flex: 1;
+.agreement__choice input[type="checkbox"] {
+  width: 18px !important;
+  height: 18px !important;
+  margin: 3px 0 0 0 !important;
 }
 
-.agreement__modal label input[type="checkbox"] {
-  width: 18px;
-  height: 18px;
-  margin-top: 3px;
-  flex: 0 0 auto;
+.agreement__choice span {
+  line-height: 1.4;
 }
 
-.agreement__modal label a {
+.agreement__choices {
+  max-width: 420px;
+  margin: 24px auto;
+}
+
+.agreement__choice a {
   display: inline !important;
   width: auto !important;
   padding: 0 !important;
@@ -709,6 +719,7 @@ nav {
   font-weight: 600;
   text-decoration: none;
 }
+
 
 .agreement__modal label a:hover {
   text-decoration: underline;
