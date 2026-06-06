@@ -680,8 +680,29 @@ nav {
 }
 
 .agreement__modal label {
-  display: block;
-  margin: 16px 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 18px 0;
+  line-height: 1.4;
+  text-align: left;
+}
+
+.agreement__modal input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+
+.agreement__modal label a {
+  color: #2563eb;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.agreement__modal label a:hover {
+  text-decoration: underline;
 }
 
 .agreement__modal h3 {
