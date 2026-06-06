@@ -680,22 +680,27 @@ nav {
 }
 
 .agreement__modal label {
-  display: flex;
+  display: flex !important;
   align-items: flex-start;
+  justify-content: flex-start;
   gap: 10px;
   margin: 18px 0;
   line-height: 1.4;
   text-align: left;
 }
 
-.agreement__modal input[type="checkbox"] {
+.agreement__modal label input[type="checkbox"] {
   width: 18px;
   height: 18px;
   margin-top: 3px;
-  flex-shrink: 0;
+  flex: 0 0 auto;
 }
 
 .agreement__modal label a {
+  display: inline !important;
+  width: auto !important;
+  padding: 0 !important;
+  margin: 0 !important;
   color: #2563eb;
   font-weight: 600;
   text-decoration: none;
@@ -708,14 +713,6 @@ nav {
 .agreement__modal h3 {
   text-align: center;
   margin-bottom: 12px;
-}
-
-.agreement__item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 14px 0;
-  border-bottom: 1px solid #e5e7eb;
 }
 
 .agreement__paws {
