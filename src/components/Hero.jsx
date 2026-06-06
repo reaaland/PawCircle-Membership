@@ -1,4 +1,4 @@
-import React from "react";
+import { Link } from "react-router-dom";
 import trailWalk from "../assets/dog walking on trail.jpg";
 
 function Hero() {
@@ -7,7 +7,6 @@ function Hero() {
       <div className="container">
         <div className="row">
           <div className="header__container">
-
             <div className="header__description">
               <h1>
                 Find Local <span className="purple">Pet Care</span> — Without Booking Fees
@@ -21,13 +20,13 @@ function Hero() {
               </div>
 
               <p className="hero__subtitle">
-              Building local pet care connections, one community at a time.
+                Building local pet care connections, one community at a time.
               </p>
             </div>
 
-            <a href="#membership" className="join__btn-fixed">
+            <Link to="/join" className="join__btn-fixed">
               Join PawCircle
-            </a>
+            </Link>
 
             <figure className="header__img--wrapper">
               <img
@@ -36,7 +35,6 @@ function Hero() {
                 alt="Trail walk with dogs"
               />
             </figure>
-
           </div>
         </div>
       </div>
@@ -45,4 +43,3 @@ function Hero() {
 }
 
 export default Hero;
-
