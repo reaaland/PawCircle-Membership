@@ -3,7 +3,6 @@ import About from "../components/About";
 import Membership from "../components/Membership";
 import Providers from "../components/Providers";
 import CTASection from "../components/CTASection";
-import Footer from "../components/Footer";
 
 function Home() {
   return (
@@ -13,7 +12,6 @@ function Home() {
       <Membership featuredOnly />
       <CTASection />
       <Providers />
-      <Footer/>
     </>
   );
 }
