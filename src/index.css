@@ -47,7 +47,7 @@ a {
   text-decoration: none;
 }
 img {
-    width: 100%;
+    max-width: 100%;
 }
 
 h1 {
@@ -893,27 +893,20 @@ footer {
   margin-bottom: 12px;
 }
 
-.footer__content h4 {
-  color: white;
-}
-
 .footer__content a {
   display: block;
   color: #cbd5e1;
-  text-decoration: none;
 }
 
-.footer__content p {
-  color: #cbd5e1;
+.footer__content h4,
+.footer__copyright {
+  color: white;
 }
 
 .footer__copyright {
-  color: white;
   text-align: center;
   padding-top: 24px;
-  font-size: 14px;
 }
-
 
 @media (max-width: 768px) {
 .container {
