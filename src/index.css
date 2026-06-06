@@ -878,6 +878,7 @@ footer {
   gap: 40px;
   padding-bottom: 32px;
   border-bottom: 1px solid #333;
+  align-items: start;
 }
 
 .footer__content > div {
@@ -891,11 +892,17 @@ footer {
   height: 72px;
   object-fit: contain;
   margin-bottom: 12px;
+  filter: grayscale(1) invert(1);
 }
 
 .footer__content a {
   display: block;
   color: #cbd5e1;
+}
+
+.footer__content p {
+  color: #cbd5e1;
+  max-width: 280px;
 }
 
 .footer__content h4,
@@ -985,7 +992,7 @@ grid-template-columns: 1fr;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 20px;
-}}
+}
 
 .footer__content {
     grid-template-columns: 1fr;
@@ -995,7 +1002,7 @@ grid-template-columns: 1fr;
   .footer__logo {
     margin: 0 auto 12px;
   }
-
+}
   
 @media (max-width: 600px) {
   .form__row {
