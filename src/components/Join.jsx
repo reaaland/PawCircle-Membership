@@ -15,7 +15,7 @@ function Join() {
     },
     pioneer: {
       url: "https://buy.stripe.com/3cIeVd2KW6tSd5JdHocAo02",
-      active: false,
+      active: true,
     },
     standard: {
       url: "",
