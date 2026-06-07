@@ -11,11 +11,14 @@ function AgreementModal({ onClose, paymentLink }) {
   const allAccepted =
     termsAccepted && privacyAccepted && conductAccepted;
 
-  function handleContinue() {
-    if (!allAccepted || !paymentLink) return;
+  function handleContinue(e) {
+  e.preventDefault();
+  e.stopPropagation();
 
-    window.location.href = paymentLink;
-  }
+  if (!allAccepted || !paymentLink) return;
+
+  window.location.assign(paymentLink);
+}
 
   return (
     <div className="modal__backdrop">
@@ -75,7 +78,7 @@ function AgreementModal({ onClose, paymentLink }) {
           </label>
         </div>
 
-        <button
+       <button
           type="button"
           className="btn"
           onClick={handleContinue}

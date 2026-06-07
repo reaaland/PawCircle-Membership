@@ -10,7 +10,7 @@ function Join() {
 
   const paymentLinks = {
     founder: {
-      url: "https://buy.stripe.com/YOUR_FOUNDER_PAYMENT_LINK",
+      url: "https://buy.stripe.com/00w5kDetE9G43v90UCcAo01",
       active: true,
     },
     pioneer: {
