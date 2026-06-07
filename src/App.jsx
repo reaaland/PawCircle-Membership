@@ -7,7 +7,7 @@ import MembershipPage from "./pages/MembershipPage";
 import ServicesPage from "./pages/ServicesPage";
 import JoinPage from "./pages/JoinPage";
 import Dashboard from "./components/Dashboard";
-import ProvidersPage from "./pages/ProvidersPage";
+import ProviderPage from "./pages/ProviderPage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 
@@ -22,9 +22,8 @@ function App() {
     <Route path="/membership" element={<MembershipPage />} />
     <Route path="/services" element={<ServicesPage />} />
     <Route path="/join" element={<JoinPage />} />
-    <Route path="/join" element={<JoinPage />} />
-    <Route path="/dashboard" element={<Dashboard />} />
-    <Route path="/providers" element={<ProvidersPage />} />
+     <Route path="/dashboard" element={<Dashboard />} />
+    <Route path="/providers" element={<ProviderPage />} />
   </Routes>
 
   <Footer />

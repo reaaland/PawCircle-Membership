@@ -1,8 +1,8 @@
-// src/pages/ProvidersPage.jsx
+// src/pages/ProviderPage.jsx
 import Providers from "../components/Providers";
 
-function ProvidersPage() {
+function ProviderPage() {
   return <Providers />;
 }
 
-export default ProvidersPage;
+export default ProviderPage;
