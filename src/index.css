@@ -451,6 +451,11 @@ nav {
   border-color: #6415ff;
 }
 
+.login__modal form {
+  display: flex;
+  flex-direction: column;
+}
+
 .login__modal .btn {
   width: 100%;
   margin-top: 8px;

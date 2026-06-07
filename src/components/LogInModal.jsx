@@ -1,4 +1,15 @@
+import { useNavigate } from "react-router-dom";
+
 function LogInModal({ onClose }) {
+  const navigate = useNavigate();
+
+  function handleLogin(e) {
+    e.preventDefault();
+
+    onClose();
+    navigate("/");
+  }
+
   return (
     <div className="modal__backdrop">
       <div className="login__modal">
@@ -7,12 +18,16 @@ function LogInModal({ onClose }) {
         </button>
 
         <h2>Member Login</h2>
-        <p>Login access will be available soon for PawCircle members.</p>
+        <p>Log in to access your PawCircle member account.</p>
 
-        <input type="email" placeholder="Email address" />
-        <input type="password" placeholder="Password" />
+        <form onSubmit={handleLogin}>
+          <input type="email" placeholder="Email address" required />
+          <input type="password" placeholder="Password" required />
 
-        <button className="btn">Login</button>
+          <button className="btn" type="submit">
+            Login
+          </button>
+        </form>
       </div>
     </div>
   );
