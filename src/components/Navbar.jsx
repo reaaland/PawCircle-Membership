@@ -1,11 +1,13 @@
 import { useState } from "react";
 import logo from "../assets/PC_Logo.png";
 import { Link } from "react-router-dom";
+import LoginModal from "./LoginModal";
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
+
     <nav className="nav__container">
       <div className="nav__logo">
         <img className="nav__logo--img" src={logo} alt="PawCircle Logo" />
@@ -20,7 +22,9 @@ function Navbar() {
         <Link to="/about" className="nav__link">About</Link>
         <Link to="/membership" className="nav__link">Membership</Link>
         <Link to="/services" className="nav__link">Services</Link>
-        <Link to="/login" className="nav__link">Login</Link>
+        <button className="nav__link">
+          Login
+        </button>
         <Link to="/join" className="nav__link nav__link--primary">
           Join PawCircle
         </Link>
@@ -48,6 +52,7 @@ function Navbar() {
           </Link>
         </div>
       )}
+       <LoginModal />
     </nav>
   );
 }
