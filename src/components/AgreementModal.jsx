@@ -20,7 +20,11 @@ function AgreementModal({ onClose, paymentLink }) {
   return (
     <div className="modal__backdrop">
       <div className="agreement__modal">
-        <button className="modal__close" onClick={onClose}>
+        <button
+          type="button"
+          className="modal__close"
+          onClick={onClose}
+        >
           ×
         </button>
 
@@ -72,12 +76,13 @@ function AgreementModal({ onClose, paymentLink }) {
         </div>
 
         <button
+          type="button"
           className="btn"
           onClick={handleContinue}
           disabled={!allAccepted || !paymentLink}
         >
           {paymentLink
-            ? "I Agree — Continue to Payment"
+            ? "Agree & Continue to Checkout"
             : "Payment Coming Soon"}
         </button>
       </div>

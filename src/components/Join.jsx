@@ -11,7 +11,7 @@ function Join() {
   const paymentLinks = {
     founder: {
       url: "https://buy.stripe.com/YOUR_FOUNDER_PAYMENT_LINK",
-      active: false,
+      active: true,
     },
     pioneer: {
       url: "https://buy.stripe.com/YOUR_PIONEER_PAYMENT_LINK",
@@ -45,24 +45,6 @@ function Join() {
             <p className="join__selected">
               Selected membership: {membership}
             </p>
-          )}
-
-          {membership === "founder" && (
-            <button className="btn" disabled>
-              Founder Checkout Coming Soon
-            </button>
-          )}
-
-          {membership === "pioneer" && (
-            <button className="btn" disabled>
-              Pioneer Checkout Coming Soon
-            </button>
-          )}
-
-          {membership === "standard" && (
-            <button className="btn" disabled>
-              Standard Pricing Coming Soon
-            </button>
           )}
 
           <form className="join-form" onSubmit={handleSubmit}>
