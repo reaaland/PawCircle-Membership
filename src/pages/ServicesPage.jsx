@@ -1,6 +1,72 @@
-import React from "react";
-import Services from "../components/Services";
+import { Link } from "react-router-dom";
 
-export default function ServicesPage() {
-	return <Services />;
+function ServicesPage() {
+  return (
+
+	
+    <section id="services-page">
+      <div className="container">
+        <h2>Find Local Pet Care</h2>
+
+        <p className="services-page__intro">
+          Tell caregivers what kind of help you need and when you need it.
+          PawCircle helps members connect directly with local pet caregivers.
+        </p>
+
+        <div className="request__card">
+          <h3>Pet Care Request</h3>
+
+          <form className="request__form">
+            <div className="form__group">
+              <label>Service Needed</label>
+              <select>
+                <option>Select a service</option>
+                <option>Dog Walking</option>
+                <option>Pet Sitting</option>
+                <option>Drop-In Visits</option>
+                <option>Cat Care</option>
+                <option>Pet Taxi</option>
+                <option>Boarding</option>
+              </select>
+            </div>
+
+            <div className="form__row">
+              <div className="form__group">
+                <label>Full Name</label>
+                <input type="text" placeholder="Enter your name" />
+              </div>
+
+              <div className="form__group">
+                <label>Email</label>
+                <input type="email" placeholder="Enter your email" />
+              </div>
+            </div>
+
+            <div className="form__row">
+              <div className="form__group">
+                <label>Start Date</label>
+                <input type="date" />
+              </div>
+
+              <div className="form__group">
+                <label>End Date</label>
+                <input type="date" />
+              </div>
+            </div>
+
+            <div className="form__group">
+              <label>Details</label>
+              <textarea placeholder="Share details about your pet care needs"></textarea>
+            </div>
+
+            <button type="submit" className="btn">
+              Submit Request
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  );
 }
+
+export default ServicesPage;
