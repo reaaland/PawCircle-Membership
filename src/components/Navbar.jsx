@@ -6,8 +6,9 @@ import LogInModal from "./LogInModal";
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  return (
+   return (
 
     <nav className="nav__container">
       <div className="nav__logo">
@@ -23,15 +24,31 @@ function Navbar() {
         <Link to="/about" className="nav__link">About</Link>
         <Link to="/membership" className="nav__link">Membership</Link>
         <Link to="/services" className="nav__link">Services</Link>
-      <span
-        className="nav__link"
-         onClick={() => setShowLogin(true)}
-        >
-          Login
-      </span>
-        <Link to="/join" className="nav__link nav__link--primary">
-          Join PawCircle
-        </Link>
+     {isLoggedIn ? (
+  <>
+    <Link to="/dashboard" className="nav__link">Dashboard</Link>
+    <Link to="/providers" className="nav__link">Providers</Link>
+    <span
+      className="nav__link"
+      onClick={() => setIsLoggedIn(false)}
+    >
+      Logout
+    </span>
+  </>
+) : (
+  <>
+    <span
+      className="nav__link"
+      onClick={() => setShowLogin(true)}
+    >
+      Login
+    </span>
+
+    <Link to="/join" className="nav__link nav__link--primary">
+      Join PawCircle
+    </Link>
+  </>
+)}
       </div>
 
       <button className="btn__menu" onClick={() => setMenuOpen(true)}>
@@ -49,25 +66,52 @@ function Navbar() {
 
           <Link to="/" onClick={() => setMenuOpen(false)}>Home</Link>
           <Link to="/about" onClick={() => setMenuOpen(false)}>About</Link>
-          <Link to="/membership" onClick={() => setMenuOpen(false)}> Membership</Link>
+          <Link to="/membership" onClick={() => setMenuOpen(false)}>Membership</Link>
           <Link to="/services" onClick={() => setMenuOpen(false)}>Services</Link>
-          <span
-             onClick={() => {
-              setMenuOpen(false);
-              setShowLogin(true);
-            }}
-            >
-            Login
-          </span>
-          <Link to="/join" onClick={() => setMenuOpen(false)}>
-            Join
-          </Link>
+       {isLoggedIn ? (
+  <>
+    <Link to="/dashboard" onClick={() => setMenuOpen(false)}>
+      Dashboard
+    </Link>
+
+    <Link to="/providers" onClick={() => setMenuOpen(false)}>
+      Providers
+    </Link>
+
+    <span
+      onClick={() => {
+        setMenuOpen(false);
+        setIsLoggedIn(false);
+      }}
+    >
+      Logout
+    </span>
+  </>
+) : (
+  <>
+    <span
+      onClick={() => {
+        setMenuOpen(false);
+        setShowLogin(true);
+      }}
+    >
+      Login
+    </span>
+
+    <Link to="/join" onClick={() => setMenuOpen(false)}>
+      Join
+    </Link>
+  </>
+)}
          
         </div>
       )}
-      {showLogin && (
-       <LogInModal onClose={() => setShowLogin(false)} />
-      )}
+       {showLogin && (
+  <LogInModal
+    onClose={() => setShowLogin(false)}
+    onLogin={() => setIsLoggedIn(true)}
+  />
+)}
     </nav>
   );
 }

@@ -1,11 +1,12 @@
 import { useNavigate } from "react-router-dom";
 
-function LogInModal({ onClose }) {
+function LogInModal({ onClose, onLogin }) {
   const navigate = useNavigate();
 
   function handleLogin(e) {
     e.preventDefault();
 
+    onLogin();
     onClose();
     navigate("/dashboard");
   }
