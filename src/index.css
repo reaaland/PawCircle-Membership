@@ -384,11 +384,29 @@ nav {
   box-shadow: -10px 0 30px rgba(0, 0, 0, 0.12);
 }
 
+
+.menu__backdrop span {
+  font-size: 24px;
+  font-weight: 700;
+  color: #14345c;
+  cursor: pointer;
+}
+
+.menu__backdrop span:hover {
+  color: #0ca6cc;
+  transition: 300ms ease;
+}
+
 .menu__backdrop a {
-  font-size: 20px;
+  font-size: 24px;
   font-weight: 700;
   color: #243e63;
   text-decoration: none;
+}
+
+.menu__backdrop a:hover {
+   color: #0ca6cc;
+  transition: 300ms ease;
 }
 
 .btn__menu--close {

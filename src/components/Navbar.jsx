@@ -1,10 +1,11 @@
 import { useState } from "react";
 import logo from "../assets/PC_Logo.png";
 import { Link } from "react-router-dom";
-import LoginModal from "./LoginModal";
+import LogInModal from "./LogInModal";
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [showLogin, setShowLogin] = useState(false);
 
   return (
 
@@ -22,9 +23,12 @@ function Navbar() {
         <Link to="/about" className="nav__link">About</Link>
         <Link to="/membership" className="nav__link">Membership</Link>
         <Link to="/services" className="nav__link">Services</Link>
-        <button className="nav__link">
+      <span
+        className="nav__link"
+         onClick={() => setShowLogin(true)}
+        >
           Login
-        </button>
+      </span>
         <Link to="/join" className="nav__link nav__link--primary">
           Join PawCircle
         </Link>
@@ -47,12 +51,23 @@ function Navbar() {
           <Link to="/about" onClick={() => setMenuOpen(false)}>About</Link>
           <Link to="/membership" onClick={() => setMenuOpen(false)}> Membership</Link>
           <Link to="/services" onClick={() => setMenuOpen(false)}>Services</Link>
+          <span
+             onClick={() => {
+              setMenuOpen(false);
+              setShowLogin(true);
+            }}
+            >
+            Login
+          </span>
           <Link to="/join" onClick={() => setMenuOpen(false)}>
             Join
           </Link>
+         
         </div>
       )}
-       <LoginModal />
+      {showLogin && (
+       <LogInModal onClose={() => setShowLogin(false)} />
+      )}
     </nav>
   );
 }
