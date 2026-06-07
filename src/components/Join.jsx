@@ -14,7 +14,7 @@ function Join() {
       active: true,
     },
     pioneer: {
-      url: "https://buy.stripe.com/YOUR_PIONEER_PAYMENT_LINK",
+      url: "https://buy.stripe.com/3cIeVd2KW6tSd5JdHocAo02",
       active: false,
     },
     standard: {
