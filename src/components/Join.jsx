@@ -6,7 +6,7 @@ function Join() {
   const [showAgreement, setShowAgreement] = useState(false);
   const [searchParams] = useSearchParams();
 
-  const membership = searchParams.get("membership");
+  const membership = searchParams.get("membership") || "founder";
 
   const paymentLinks = {
     founder: {
@@ -50,12 +50,11 @@ function Join() {
           <form className="join-form" onSubmit={handleSubmit}>
             <div className="form__group">
               <label htmlFor="member__type">Membership Type</label>
-              <select id="member__type" required>
-                <option value="">Select membership type</option>
-                <option value="founder">Founder Membership</option>
-                <option value="pioneer">Pioneer Membership</option>
-                <option value="standard">Standard Membership</option>
-              </select>
+            <select id="member__type" value={membership} required>
+            <option value="founder">Founder Membership</option>
+            <option value="pioneer">Pioneer Membership</option>
+            <option value="standard">Standard Membership</option>
+          </select>
             </div>
 
             <div className="form__group">
