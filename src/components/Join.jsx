@@ -19,6 +19,12 @@ function Join() {
       url: "https://buy.stripe.com/3cIeVd2KW6tSd5JdHocAo02",
       active: false,
     },
+    // Future Standard Membership Pricing Tables
+    // Pet Owner
+    // Provider
+    // Pet Owner + Provider
+    // Stripe Pricing Tables already created
+    // Activate after Pioneer closes (1500 members)
     standard: {
       type: "pricingTable",
       active: false,
