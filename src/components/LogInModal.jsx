@@ -7,7 +7,7 @@ function LogInModal({ onClose }) {
     e.preventDefault();
 
     onClose();
-    navigate("/");
+    navigate("/dashboard");
   }
 
   return (

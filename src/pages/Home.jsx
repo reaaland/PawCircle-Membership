@@ -11,8 +11,7 @@ function Home() {
       <About />
       <Membership featuredOnly />
       <CTASection />
-      <Providers />
-    </>
+          </>
   );
 }
 
