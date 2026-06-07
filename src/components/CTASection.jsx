@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import JoinButton from "./JoinButton";
 
+
 function CTASection() {
   return (
     <section className="cta__section">
