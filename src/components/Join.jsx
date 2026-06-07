@@ -8,25 +8,29 @@ function Join() {
 
   const membership = searchParams.get("membership") || "founder";
 
-  const paymentLinks = {
+  const paymentOptions = {
     founder: {
+      type: "link",
       url: "https://buy.stripe.com/00w5kDetE9G43v90UCcAo01",
       active: true,
     },
     pioneer: {
+      type: "link",
       url: "https://buy.stripe.com/3cIeVd2KW6tSd5JdHocAo02",
-      active: true,
+      active: false,
     },
     standard: {
-      url: "",
+      type: "pricingTable",
       active: false,
     },
   };
 
-  const selectedMembership = paymentLinks[membership];
+  const selectedMembership = paymentOptions[membership];
 
   const selectedPaymentLink =
-    selectedMembership?.active ? selectedMembership.url : "";
+    selectedMembership?.type === "link" && selectedMembership?.active
+      ? selectedMembership.url
+    : "";
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -41,16 +45,11 @@ function Join() {
 
           <p>Start connecting pet owners and caregivers directly.</p>
 
-          {membership && (
-            <p className="join__selected">
-              Selected membership: {membership}
-            </p>
-          )}
 
           <form className="join-form" onSubmit={handleSubmit}>
             <div className="form__group">
               <label htmlFor="member__type">Membership Type</label>
-            <select id="member__type" value={membership} required>
+            <select id="member__type" value={membership} required disabled>
             <option value="founder">Founder Membership</option>
             <option value="pioneer">Pioneer Membership</option>
             <option value="standard">Standard Membership</option>
