@@ -416,6 +416,46 @@ nav {
   font-size: 32px;
 }
 
+.login__modal {
+  background: white;
+  max-width: 420px;
+  width: 100%;
+  border-radius: 24px;
+  padding: 36px;
+  position: relative;
+  text-align: center;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.25);
+}
+
+.login__modal h2 {
+  padding: 0;
+  margin-bottom: 12px;
+}
+
+.login__modal p {
+  color: #64748b;
+  margin-bottom: 24px;
+}
+
+.login__modal input {
+  width: 100%;
+  padding: 16px;
+  margin-bottom: 16px;
+  border: 2px solid #e2e8f0;
+  border-radius: 14px;
+  font-size: 16px;
+}
+
+.login__modal input:focus {
+  outline: none;
+  border-color: #6415ff;
+}
+
+.login__modal .btn {
+  width: 100%;
+  margin-top: 8px;
+}
+
 /* ABOUT */
 
 .about__grid {
@@ -819,7 +859,7 @@ flex-direction: column;
 gap: 20px;
 }
 
-.Form__group {
+.form__group {
 display: flex;
 flex-direction: column;
 }
@@ -829,9 +869,9 @@ font-weight: 700;
 margin-bottom: 8px;
 }
 
-.Form__group input,
-.Form__group select,
-.Form__group textarea {
+.form__group input,
+.form__group select,
+.form_group textarea {
 padding: 16px;
 border: 2px solid #e2e8f0;
 border-radius: 12px;
@@ -845,7 +885,7 @@ outline: none;
 border-color: #6415ff;
 }
 
-form__row {
+.form__row {
 display: grid;
 grid-template-columns: 1fr 1fr;
 gap: 20px;
@@ -967,11 +1007,23 @@ footer {
 }
 
 @media (max-width: 768px) {
-.container {
-  padding: 32px 20px;
-}
+  .container {
+    padding: 32px 20px;
+  }
 
- .nav__links {
+  section {
+    padding: 0 20px;
+  }
+
+  h1 {
+    font-size: 40px;
+  }
+
+  .section__title {
+    font-size: 40px;
+  }
+
+  .nav__links {
     display: none;
   }
 
@@ -982,15 +1034,6 @@ footer {
   .nav__logo--img {
     height: 36px;
     width: 36px;
-  }
-
-  .header__join-btn {
-  background: linear-gradient(
-    90deg,
-    #5b21ff,
-    #1477ff,
-    #00c98d
-  );
   }
 
   .header__container {
@@ -1004,11 +1047,10 @@ footer {
     width: 100%;
   }
 
-  .header__logo {
-    max-width: 220px;
-  }
   .about__grid,
-  .pricing__wrapper {
+  .pricing__wrapper,
+  .cta__wrapper,
+  .footer__content {
     grid-template-columns: 1fr;
   }
 
@@ -1021,32 +1063,23 @@ footer {
   }
 
   .about__card,
-  .pricing__card {
+  .pricing__card,
+  .request__card {
     padding: 28px;
   }
- .request__card {
-padding: 28px;
-}
 
-.form__row {
-grid-template-columns: 1fr;
-}
-
-.form__group input,
-.form__group select,
-.form__group textarea {
-  width: 100%;
-  max-width: 100%;
-}
-
-.form__row {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 20px;
-}
-
-.footer__content {
+  .form__row {
     grid-template-columns: 1fr;
+  }
+
+  .form__group input,
+  .form__group select,
+  .form__group textarea {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .footer__content {
     text-align: center;
   }
 
@@ -1054,15 +1087,34 @@ grid-template-columns: 1fr;
     margin: 0 auto 12px;
   }
 }
-  
+
 @media (max-width: 600px) {
-  .form__row {
-     grid-template-columns: repeat(2, minmax(0, 1fr));
+  h1 {
+    font-size: 34px;
+  }
+
+  .section__title {
+    font-size: 34px;
+  }
+
+  .menu__backdrop {
+    width: 100%;
   }
 
   .provider__search,
   .providers__controls select {
     width: 100%;
     min-width: 0;
+  }
+
+  .providers__controls {
+    width: 100%;
+  }
+
+  .join__btn-fixed {
+    right: 16px;
+    bottom: 16px;
+    padding: 12px 20px;
+    font-size: 14px;
   }
 }

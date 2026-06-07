@@ -1,16 +1,18 @@
 function LogInModal({ onClose }) {
   return (
     <div className="modal__backdrop">
-      <div className="modal">
-        <button
-          className="modal__close"
-          onClick={onClose}
-        >
+      <div className="login__modal">
+        <button className="modal__close" onClick={onClose}>
           ×
         </button>
 
-        <h2>Login</h2>
-        <p>Member login coming soon.</p>
+        <h2>Member Login</h2>
+        <p>Login access will be available soon for PawCircle members.</p>
+
+        <input type="email" placeholder="Email address" />
+        <input type="password" placeholder="Password" />
+
+        <button className="btn">Login</button>
       </div>
     </div>
   );
