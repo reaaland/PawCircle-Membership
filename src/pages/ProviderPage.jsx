@@ -1,8 +1,31 @@
-// src/pages/ProviderPage.jsx
 import Providers from "../components/Providers";
 
-function ProviderPage() {
-  return <Providers />;
+function ProvidersPage() {
+  return (
+    <>
+      <section className="page__hero">
+        <div className="container">
+          <div className="row">
+            <span className="section__tag">Preview Feature</span>
+
+            <h1>Future PawCircle Provider Directory</h1>
+
+            <p>
+              Preview how PawCircle members will be able to browse local pet
+              caregivers, compare services, and connect directly after launch.
+            </p>
+
+            <p className="preview__notice">
+              Example profiles shown for demonstration purposes only. These do
+              not represent active PawCircle members.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <Providers />
+    </>
+  );
 }
 
-export default ProviderPage;
+export default ProvidersPage;
