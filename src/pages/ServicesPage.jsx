@@ -16,10 +16,10 @@ function ServicesPage() {
 			<span>Pet Sitting</span>
 		</div>
 
-		<div className="services__photo-card">
-			<img src={petTaxi} alt="Pet Taxi" />
-			<span>Pet Taxi</span>
-		</div>
+		<div className="services__photo-card services__photo-card--taxi">
+      <img src={petTaxi} alt="Pet Taxi" />
+    <span>Pet Taxi</span>
+    </div>
 
 		<div className="services__photo-card services__photo-card--boarding">
     <img src={sleepyPup} alt="Boarding" />

@@ -936,6 +936,10 @@ nav {
   object-position: center top;
 }
 
+.services__photo-card--taxi img {
+  object-position: center 70%;
+}
+
 .services__photo-card span {
   position: absolute;
   bottom: 16px;
@@ -1314,6 +1318,10 @@ gap: 20px;
   .services__photo-card--cat img {
     object-position: center 25%;
   }
+  
+  .services__photo-card--taxi img {
+  object-position: center 70%;
+}
 }
 
   .request__card {
