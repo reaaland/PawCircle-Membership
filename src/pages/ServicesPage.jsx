@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import houseSitting from "../assets/house_sitting.jpg";
 import petTaxi from "../assets/Pet_Taxi.jpg";
 import sleepyPup from "../assets/Sleepy_pup.jpg";
+import catWindow from "../assets/cat_window.png";
+
 
 function ServicesPage() {
   return (
@@ -19,10 +21,16 @@ function ServicesPage() {
 			<span>Pet Taxi</span>
 		</div>
 
-		<div className="services__photo-card">
-			<img src={sleepyPup} alt="Boarding" />
-			<span>Boarding</span>
-		</div>
+		<div className="services__photo-card services__photo-card--boarding">
+    <img src={sleepyPup} alt="Boarding" />
+    <span>Boarding</span>
+    </div>
+
+    <div className="services__photo-card services__photo-card--cat">
+      <img src={catWindow} alt="Cat Care" />
+      <span>Cat Care</span>
+    </div>
+
 		</div>
 
         <h2>Find Local Pet Care</h2>

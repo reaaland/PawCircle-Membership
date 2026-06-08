@@ -27,7 +27,7 @@ function Services() {
           </Link>
         </div>
 
-        <img src={servicesImg} alt="Dog walking on a trail" />
+        <img src={servicesImg} alt="walking in the snow.jpeg" />
       </div>
     </section>
   );
