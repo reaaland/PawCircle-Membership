@@ -7,6 +7,7 @@ import MembershipPage from "./pages/MembershipPage";
 import ServicesPage from "./pages/ServicesPage";
 import JoinPage from "./pages/JoinPage";
 import Dashboard from "./components/Dashboard";
+import ProviderPage from "./pages/ProviderPage";
 import FAQPage from "./pages/FAQPage";
 import CodeOfConductPage from "./pages/CodeOfConductPage";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
