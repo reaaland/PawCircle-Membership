@@ -1,17 +1,26 @@
-function Contact() {
+function ContactPage() {
   return (
-    <section className="Company">
+    <section className="contact-page">
       <div className="container">
-        <h1>Contact</h1>
+        <div className="row row__narrow">
+          <div className="contact__card">
+            <h1>Contact PawCircle</h1>
 
-        <p>Effective Date: July 1, 2026</p>
+            <p className="contact__intro">
+              Questions about PawCircle? Send us an email.
+            </p>
 
-        <p>
-          Frequently asked questions will go here.
-        </p>
+            <a
+              className="contact__email"
+              href="mailto:hello@pawcirclemembership.com"
+            >
+              hello@pawcirclemembership.com
+            </a>
+          </div>
+        </div>
       </div>
     </section>
   );
 }
 
-export default Contact;
+export default ContactPage;
