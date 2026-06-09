@@ -84,7 +84,7 @@ p {
      color: #6415ff;
      letter-spacing: 1.6px;
      font-weight: 700;
-     text-transhtmlForm: uppercase;
+     text-transform: uppercase;
 }
 .section__title {
   font-size: 48px;
@@ -133,23 +133,17 @@ nav {
 .nav__logo {
     display: flex;
     align-items: center;
-    gap: 8px;
-    flex-shrink: 0;
 }
 .nav__logo--title {
-  font-weight:800;
+  font-weight:900;
   font-size: 24px;
   margin-left: 12px;
   padding-bottom: 2px;
   letter-spacing: 0.6px;
-  white-space: nowrap;
-  margin-right: 28px;
 }
 .nav__logo--img {
   height: 40px;
   width: 40px;
-  width: 42px;
-  height: auto;
 }
 
 .nav__container {
@@ -165,7 +159,7 @@ nav {
 .nav__links {
   display: flex;
   align-items: center;
-  gap: 28px;
+  gap: 24px;
 }
 
 .nav__link {
@@ -354,7 +348,7 @@ nav {
 }
 
 .join__btn--fixed {
-  transhtmlForm: translateY(-3px);
+  transform: translateY(-3px);
   box-shadow: 0 12px 25px rgba(0, 0, 0, 0.22);
 }
 
@@ -384,7 +378,7 @@ nav {
   z-index: 4;
   visibility: hidden;
   opacity: 0;
-  transhtmlForm: translateX(300%);
+  transform: translateX(300%);
   transition: all 300ms;
 }
 .menu--open {
@@ -394,7 +388,7 @@ nav {
 .menu--open .menu {
   visibility: visible;
   opacity: 1;
-  transhtmlForm: translateX(0);
+  transform: translateX(0);
 }
 .menu__links {
   width: 100%;
@@ -484,7 +478,7 @@ nav {
 
 .pricing__card--featured {
   border: 2px solid #6415ff;
-  transhtmlForm: scale(1.03);
+  transform: scale(1.03);
 }
 
 .pricing__badge {
@@ -837,8 +831,22 @@ footer .container {
   font-size: 14px;
 }
 
+  @media (max-width: 950px) {
+  .nav__links,
+  .nav__join,
+  .nav__join-btn,
+  .nav__cta {
+    display: none;
+  }
 
-@media (max-width: 950px) {
+  .btn__menu {
+    display: block;
+    font-size: 28px;
+  }
+}
+
+
+@media (max-width: 768px) {
 
 .nav__links {
     display: none;
@@ -895,7 +903,7 @@ footer .container {
     padding: 28px;
   }
  .request__card {
-padding: 28px;
+  padding: 28px;
 }
 
   .footer__content {
