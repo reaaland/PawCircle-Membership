@@ -29,8 +29,7 @@ function Navbar() {
      {isLoggedIn ? (
   <>
     <Link to="/dashboard" className="nav__link">Dashboard</Link>
-    <Link to="/providers" className="nav__link">Providers</Link>
-    <span
+        <span
       className="nav__link"
       onClick={() => setIsLoggedIn(false)}
     >
@@ -70,8 +69,7 @@ function Navbar() {
           <Link to="/about" onClick={() => setMenuOpen(false)}>About</Link>
           <Link to="/membership" onClick={() => setMenuOpen(false)}>Membership</Link>
           <Link to="/services" onClick={() => setMenuOpen(false)}>Services</Link>
-          <Link to="/providers" className="nav__link">Providers</Link>
-       {isLoggedIn ? (
+      {isLoggedIn ? (
   <>
     <Link to="/dashboard" onClick={() => setMenuOpen(false)}>
       Dashboard

@@ -831,17 +831,19 @@ footer .container {
   font-size: 14px;
 }
 
-  @media (max-width: 950px) {
-  .nav__links,
-  .nav__join,
-  .nav__join-btn,
-  .nav__cta {
+@media (max-width: 950px) {
+  .nav__links {
     display: none;
   }
 
   .btn__menu {
     display: block;
     font-size: 28px;
+  }
+
+  .nav__logo--img {
+    height: 36px;
+    width: 36px;
   }
 }
 
