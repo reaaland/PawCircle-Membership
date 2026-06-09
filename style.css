@@ -133,17 +133,23 @@ nav {
 .nav__logo {
     display: flex;
     align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
 }
 .nav__logo--title {
-  font-weight:900;
-  font-size: 24px;
+  font-weight:800;
+  font-size: 28px;
   margin-left: 12px;
   padding-bottom: 2px;
   letter-spacing: 0.6px;
+  white-space: nowrap;
+  margin-right: 28px;
 }
 .nav__logo--img {
   height: 40px;
   width: 40px;
+  width: 42px;
+  height: auto;
 }
 
 .nav__container {
@@ -159,7 +165,7 @@ nav {
 .nav__links {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 28px;
 }
 
 .nav__link {
