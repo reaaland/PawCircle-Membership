@@ -101,6 +101,16 @@ function FAQPage() {
             </div>
 
             <div className="faq__item">
+            <h2>Are membership payments refundable?</h2>
+            <p>
+              Membership fees already paid are non-refundable unless required by law.
+              To avoid future billing, members should cancel before their next renewal
+              date.
+            </p>
+            </div> 
+
+
+            <div className="faq__item">
               <h2>How do I contact PawCircle?</h2>
               <p>Questions may be sent to hello@pawcirclemembership.com.</p>
             </div>
