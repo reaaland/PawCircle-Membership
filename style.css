@@ -549,7 +549,7 @@ pricing__card.inactive .btn {
 
 .btn:hover {
   background: #4c0fc9;
-  transhtmlForm: translateY(-2px);
+  transform: translateY(-2px);
 }
 
 .btn__menu--close {
@@ -680,11 +680,11 @@ gap: 20px;
   padding: 24px;
   text-align: center;
   box-shadow: 0 10px 30px rgba(0,0,0,.08);
-  transition: transhtmlForm 300ms ease, box-shadow 300ms ease;
+  transition: transform 300ms ease, box-shadow 300ms ease;
 }
 
 .provider__card:hover {
-  transhtmlForm: translateY(-4px);
+  transform: translateY(-4px);
   box-shadow: 0 16px 36px rgba(0,0,0,.12);
 }
 
@@ -893,7 +893,7 @@ footer .container {
   }
 
   .pricing__card--featured {
-    transhtmlForm: none;
+    tranform: none;
   }
 
   .price {
@@ -937,7 +937,7 @@ grid-template-columns: 1fr;
 
   
 @media (max-width: 600px) {
-  .htmlForm__row {
+  .html__row {
         grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
