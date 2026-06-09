@@ -5,6 +5,10 @@ function CodeOfConductPage() {
         <div className="row row__narrow">
           <h1>Code of Conduct</h1>
 
+          <p className="legal__date">
+            Effective Date: July 1, 2026
+          </p>
+
           <p className="legal__intro">
             PawCircle is committed to creating a respectful membership
             community.
