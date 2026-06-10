@@ -11,42 +11,42 @@ function ServicesPage() {
       image: sleepyPup,
       description:
         "Regular walks, exercise, and companionship tailored to your pet's routine.",
-      button: "Find Dog Walkers",
+      button: "Find Providers",
     },
     {
       title: "Pet Sitting",
       image: houseSitting,
       description:
         "In-home care that allows pets to remain comfortable in familiar surroundings.",
-      button: "Find Pet Sitters",
+      button: "Find Providers",
     },
     {
       title: "Cat Care",
       image: catWindow,
       description:
         "Drop-in visits, feeding, litter maintenance, medication support, and playtime.",
-      button: "Find Cat Care Providers",
+      button: "Find Providers",
     },
     {
       title: "Pet Taxi",
       image: petTaxi,
       description:
         "Transportation for veterinary appointments, grooming visits, daycare, and more.",
-      button: "Find Pet Taxi Providers",
+      button: "Find Providers",
     },
     {
       title: "Boarding",
       image: sleepyPup,
       description:
         "Overnight care provided in a caregiver's home when available.",
-      button: "Find Boarding Providers",
+      button: "Find Providers",
     },
     {
       title: "Farm & Hobby Farm Care",
       image: houseSitting,
       description:
         "Care for chickens, ducks, goats, sheep, and other farm animals while you're away. Services vary based on each provider's experience and comfort level.",
-      button: "Find Farm & Hobby Farm Care Providers",
+      button: "Find Providers",
     },
   ];
 
