@@ -14,6 +14,9 @@ import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
 import TermsOfUsePage from "./pages/TermsOfUsePage";
 import ContactPage from "./pages/ContactPage";
 import Messages from "./components/Messages";
+import Profile from "./components/Profile";
+import MembershipDetails from "./components/MembershipDetails";
+import AccountSettings from "./components/AccountSettings";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 
@@ -36,6 +39,9 @@ function App() {
     <Route path="/terms" element={<TermsOfUsePage />} />
     <Route path="/contact" element={<ContactPage />} />
     <Route path="/messages" element={<Messages />} />
+    <Route path="/profile" element={<Profile />} />
+    <Route path="/details" element={<MembershipDetails />} />
+    <Route path="/account" element={<AccountSettings />} />
   </Routes>
 
   <Footer />

@@ -9,7 +9,7 @@ function Dashboard() {
         </h2>
 
         <p className="dashboard__intro">
-          Manage your membership and find local pet care providers.
+          Find pet care, connect with members, and manage your PawCircle account.
         </p>
 
         <div className="dashboard__cards">
@@ -18,25 +18,25 @@ function Dashboard() {
             <p>Search local providers by name, city, or service.</p>
           </Link>
 
-          <div className="dashboard__card">
+          <Link to="/profile" className="dashboard__card">
             <h3>My Profile</h3>
-            <p>Coming soon.</p>
-          </div>
-
-          <Link to="/messages" className="dashboard__card">
-          <h3>Messages</h3>
-          <p>Start conversations with pet owners and providers.</p>
+            <p>Create and manage your PawCircle member profile.</p>
           </Link>
 
-          <div className="dashboard__card">
-            <h3>Membership</h3>
-            <p>View your PawCircle membership details soon.</p>
-          </div>
+          <Link to="/messages" className="dashboard__card">
+            <h3>Messages</h3>
+            <p>Start conversations with pet owners and pet service providers.</p>
+          </Link>
 
-          <div className="dashboard__card">
+          <Link to="/details" className="dashboard__card">
+            <h3>Membership</h3>
+            <p>View your membership type, status, and renewal details.</p>
+          </Link>
+
+          <Link to="/account" className="dashboard__card">
             <h3>Account Settings</h3>
-            <p>Manage account preferences soon.</p>
-          </div>
+            <p>Manage notification, privacy, and account preferences.</p>
+          </Link>
         </div>
       </div>
     </section>
