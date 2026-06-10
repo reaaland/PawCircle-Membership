@@ -272,8 +272,6 @@ nav {
   transition: 300ms ease;
 }
 
-
-
 #header {
   min-height: auto;
   padding-bottom: 0;
@@ -1240,6 +1238,64 @@ gap: 20px;
 
 .messages__back:hover {
   text-decoration: underline;
+}
+
+footer {
+  background: #000;
+  padding: 48px 24px 24px;
+}
+
+footer .container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.footer__content {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 40px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid #333;
+}
+
+.footer__logo {
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+  margin-bottom: 16px;
+}
+
+.footer__content p,
+.footer__content a {
+  color: #cbd5e1;
+}
+
+.footer__content a {
+  display: block;
+  margin-bottom: 10px;
+  text-decoration: none;
+}
+
+.footer__content h4 {
+  color: white;
+  margin-bottom: 12px;
+}
+
+.footer__column {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer__column a {
+  display: block;
+}
+
+.footer__copyright {
+  color: white;
+  text-align: center;
+  padding-top: 24px;
+  font-size: 14px;
 }
 
 .legal-page {
