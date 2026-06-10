@@ -1,21 +1,10 @@
-const [isLoading, setIsLoading] = useState(false);
-
-function handleAction() {
-  setIsLoading(true);
-
-  setTimeout(() => {
-    setIsLoading(false);
-    // do action
-  }, 800);
+function PawLoader({ text }) {
+  return (
+    <div className="loading__container">
+      <div className="loading__paw">🐾</div>
+      <p>{text}</p>
+    </div>
+  );
 }
 
-{isLoading ? (
-  <PawLoader text="Opening Membership Agreement..." />
-) : (
-  <button
-    className="btn"
-    onClick={handleContinue}
-  >
-    Continue
-  </button>
-)}
+export default PawLoader;
