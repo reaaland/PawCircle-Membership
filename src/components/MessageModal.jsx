@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 function MessageModal({ provider, onClose }) {
   const [message, setMessage] = useState("");
   const [isSent, setIsSent] = useState(false);
+  const [isSending, setIsSending] = useState(false);
   const navigate = useNavigate();
 
   function handleSubmit(e) {
@@ -11,10 +12,13 @@ function MessageModal({ provider, onClose }) {
 
     if (!message.trim()) return;
 
-    setIsSent(true);
-    setMessage("");
+    setIsSending(true);
 
-
+    setTimeout(() => {
+      setIsSending(false);
+      setIsSent(true);
+      setMessage("");
+    }, 1200);
   }
 
   return (
@@ -26,12 +30,10 @@ function MessageModal({ provider, onClose }) {
 
         <h2>Contact {provider.name}</h2>
 
-        <p className="message__provider-service">
-        {provider.service}
-        </p>
+        <p className="message__provider-service">{provider.service}</p>
 
         <p className="message__provider-location">
-        {provider.city}, {provider.state}
+          {provider.city}, {provider.state}
         </p>
 
         <p className="message__note">
@@ -40,33 +42,39 @@ function MessageModal({ provider, onClose }) {
         </p>
 
         <div className="message__preferences">
-        <p>
-        <strong>Preferred Communication:</strong>{" "}
-        {provider.preferredCommunication || "PawCircle Messages"}
-        </p>
+          <p>
+            <strong>Preferred Communication:</strong>{" "}
+            {provider.preferredCommunication || "PawCircle Messages"}
+          </p>
 
-        <p>
-        <strong>Contact Information:</strong>{" "}
-        {provider.contactInfo || "Shared after initial conversation"}
-        </p>
+          <p>
+            <strong>Contact Information:</strong>{" "}
+            {provider.contactInfo || "Shared after initial conversation"}
+          </p>
         </div>
 
-        {isSent && (
-        <div className="message__success">
-            ✓ Your message has been sent. {provider.name} can now respond through <span className="purple">PawCircle</span> Messages.
-        </div>
-        )}
+        {isSending ? (
+          <div className="loading__container">
+            <div className="loading__paw">🐾</div>
+            <p>Sending PawCircle Message...</p>
+          </div>
+        ) : isSent ? (
+          <>
+            <div className="message__success">
+              ✓ Your message has been sent. {provider.name} can now respond
+              through <span className="purple">PawCircle</span> Messages.
+            </div>
 
-        {isSent ? (
-          <button
-            className="btn"
-            onClick={() => {
-              onClose();
-              navigate("/messages");
-            }}
-          >
-            View Conversation
-          </button>
+            <button
+              className="btn"
+              onClick={() => {
+                onClose();
+                navigate("/messages");
+              }}
+            >
+              View Conversation
+            </button>
+          </>
         ) : (
           <form className="message__form" onSubmit={handleSubmit}>
             <label htmlFor="message">Your Message</label>
@@ -79,18 +87,18 @@ function MessageModal({ provider, onClose }) {
             />
 
             <div className="message__actions">
-                <button type="submit">
-                    Send Message
-                </button>
+              <button type="submit" className="btn">
+                Send Message
+              </button>
 
-                <button
-                    type="button"
-                    className="btn btn--secondary"
-                    onClick={onClose}
-                >
-                    Close
-                </button>
-                </div>
+              <button
+                type="button"
+                className="btn btn--secondary"
+                onClick={onClose}
+              >
+                Close
+              </button>
+            </div>
           </form>
         )}
       </div>

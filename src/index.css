@@ -1074,6 +1074,26 @@ gap: 20px;
   padding-top: 16px;
   border-top: 1px solid #e5e7eb;
 }
+.provider__contact-btn {
+  margin-top: 12px;
+  width: 100%;
+  transition: all 300ms ease;
+}
+
+.provider__contact-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(124, 58, 237, 0.25);
+}
+
+.provider__contact-btn:active {
+  transform: translateY(0);
+}
+
+.provider__card .btn {
+  margin-top: 12px;
+  width: 100%;
+  text-align: center;
+}
 
 .modal__overlay {
   position: fixed;
@@ -1086,8 +1106,9 @@ gap: 20px;
   justify-content: center;
   align-items: center;
   z-index: 9999;
+  overflow-y: auto;
+  padding: 40px 0;
 }
-
 .message__modal {
   background: white;
   width: 90%;
@@ -1110,7 +1131,7 @@ gap: 20px;
 
 .message__form textarea {
   width: 100%;
-  min-height: 140px;
+  min-height: 110px;
   margin: 12px 0;
 }
 
@@ -1118,6 +1139,24 @@ gap: 20px;
   display: flex;
   gap: 12px;
   margin-top: 16px;
+}
+
+.message__actions button {
+  flex: 1;
+}
+
+.message__actions .btn {
+  display: inline-block;
+  text-align: center;
+}
+
+.btn--secondary {
+  background: #e5e7eb;
+  color: #243e63;
+}
+
+.btn--secondary:hover {
+  background: #d1d5db;
 }
 
 #dashboard {
