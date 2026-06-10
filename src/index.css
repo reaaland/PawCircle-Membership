@@ -1095,6 +1095,57 @@ gap: 20px;
   text-align: center;
 }
 
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    #e5e7eb 25%,
+    #f3f4f6 50%,
+    #e5e7eb 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 12px;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.provider__card--skeleton {
+  pointer-events: none;
+}
+
+.skeleton__img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin: 0 auto 16px;
+}
+
+.skeleton__title {
+  height: 24px;
+  width: 70%;
+  margin: 0 auto 12px;
+}
+
+.skeleton__text {
+  height: 16px;
+  width: 90%;
+  margin: 10px auto;
+}
+
+.skeleton__button {
+  height: 42px;
+  width: 100%;
+  margin-top: 20px;
+}
+
 .modal__overlay {
   position: fixed;
   top: 0;

@@ -5,14 +5,46 @@ import MessageModal from "./MessageModal";
 function Providers() {
   const [selectedProvider, setSelectedProvider] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [sortOption, setSortOption] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 1000);
+    }, 800);
 
     return () => clearTimeout(timer);
   }, []);
+
+  const filteredProviders = providers.filter((provider) =>
+  provider.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+  provider.city.toLowerCase().includes(searchTerm.toLowerCase()) ||
+  provider.service.toLowerCase().includes(searchTerm.toLowerCase())
+);
+
+  const sortedProviders = [...filteredProviders].sort((a, b) => {
+   if (sortOption === "NEAREST") {
+    return (a.distanceMiles || 999) - (b.distanceMiles || 999);
+  }
+
+  if (sortOption === "AZ") {
+    return a.name.localeCompare(b.name);
+  }
+
+  if (sortOption === "ZA") {
+    return b.name.localeCompare(a.name);
+  }
+
+  if (sortOption === "NEWEST") {
+    return new Date(b.memberSince) - new Date(a.memberSince);
+  }
+
+  if (sortOption === "OLDEST") {
+    return new Date(a.memberSince) - new Date(b.memberSince);
+  }
+
+  return 0;
+});
 
   return (
     <section id="providers">
@@ -26,9 +58,14 @@ function Providers() {
                 type="text"
                 className="provider__search"
                 placeholder="Search by name, city, or service..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
               />
 
-              <select>
+              <select
+                value={sortOption}
+                onChange={(e) => setSortOption(e.target.value)}
+              >
                 <option value="">Sort providers</option>
                 <option value="NEAREST">Nearest to Me</option>
                 <option value="AZ">Name A-Z</option>
@@ -56,7 +93,7 @@ function Providers() {
             </div>
           ) : (
             <div className="providers">
-              {providers.map((provider) => (
+              {sortedProviders.map((provider) => (
                 <div className="provider__card" key={provider.id}>
                   <img
                     src={provider.image}
@@ -75,6 +112,10 @@ function Providers() {
                   <p>
                     {provider.city}, {provider.state}, {provider.country}
                   </p>
+
+                  {provider.distanceMiles && (
+                  <p>{provider.distanceMiles} miles away</p>
+                  )}
 
                   <p>{provider.experience}</p>
 
