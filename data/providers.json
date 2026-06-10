@@ -1,0 +1,53 @@
+[
+  {
+    "id": 1,
+    "name": "Sarah M.",
+    "service": "Dog Walking • Drop-In Visits",
+    "city": "Rochester",
+    "state": "MN",
+    "country": "United States",
+    "zipCode": "55904",
+    "distanceMiles": 2.4,
+    "serviceRadiusMiles": 15,
+    "experience": "5+ years experience",
+    "memberSince": "2026-07-01",
+    "membershipLevel": "Founder",
+    "bio": "Experienced with puppies, senior dogs, and daily walks.",
+    "image": "https://randomuser.me/api/portraits/women/44.jpg",
+    "profileType": "Example Profile"
+  },
+  {
+    "id": 2,
+    "name": "Michael R.",
+    "service": "Pet Sitting • Boarding",
+    "city": "Austin",
+    "state": "TX",
+    "country": "United States",
+    "zipCode": "78701",
+    "distanceMiles": 8.5,
+    "serviceRadiusMiles": 20,
+    "experience": "3+ years experience",
+    "memberSince": "2026-07-01",
+    "membershipLevel": "Founder",
+    "bio": "Home-based care with a fenced yard and flexible schedule.",
+    "image": "https://randomuser.me/api/portraits/men/32.jpg",
+    "profileType": "Example Profile"
+  },
+  {
+    "id": 3,
+    "name": "Emily K.",
+    "service": "Cat Care • Drop-In Visits",
+    "city": "Portland",
+    "state": "OR",
+    "country": "United States",
+    "zipCode": "97205",
+    "distanceMiles": 20.4,
+    "serviceRadiusMiles": 10,
+    "experience": "7+ years experience",
+    "memberSince": "2026-07-01",
+    "membershipLevel": "Founder",
+    "bio": "Cat-focused care including medication support and play visits.",
+    "image": "https://randomuser.me/api/portraits/women/65.jpg",
+    "profileType": "Example Profile"
+  }
+]
