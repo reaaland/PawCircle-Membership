@@ -24,11 +24,7 @@ function handleContinue() {
       url: "https://buy.stripe.com/00w5kDetE9G43v90UCcAo01",
       active: true,
     },
-    pioneer: {
-      type: "link",
-      url: "https://buy.stripe.com/3cIeVd2KW6tSd5JdHocAo02",
-      active: false,
-    },
+  
     // Future Standard Membership Pricing Tables
     // Pet Owner
     // Provider

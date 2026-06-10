@@ -22,26 +22,6 @@ function FounderCard() {
   );
 }
 
-
-
-function PioneerCard() {
-  return (
-    <div className="pricing__card pioneer__card">
-      <span className="pricing__badge">Next 1,000 Members</span>
-      <h3>
-        <FontAwesomeIcon icon={faPaw} className="pioneer-paw" />
-        Pioneer Membership
-      </h3>
-      <p className="price">$1.25/month or $12/year</p>
-      <p className="pricing__subtext">One free month before membership begins.</p>
-      <JoinButton
-        text="Join as a Pioneer"
-        membershipType="pioneer"
-      />
-    </div>
-  );
-}
-
 function ClientPlan() {
   return (
     <div className="pricing__card regular__card">
