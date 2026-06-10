@@ -7,9 +7,9 @@
 - [ ] Test Founder → Standard automatic switch
 
 ## Dashboard
-- [ ] Complete My Profile
+- [ x] Complete My Profile
 - [ ] Complete Messages
-- [ ] Complete Membership card
+- [ X] Complete Membership card
 
 ## Communication
 - [ ] Member messaging system

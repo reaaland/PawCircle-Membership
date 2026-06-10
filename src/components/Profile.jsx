@@ -11,22 +11,38 @@ function Profile() {
             <form className="profile__form">
               <div className="form__group">
                 <label htmlFor="displayName">Display Name</label>
-                <input type="text" id="displayName" placeholder="Your name" />
+                <input
+                  type="text"
+                  id="displayName"
+                  placeholder="Your name"
+                />
               </div>
 
               <div className="form__group">
                 <label htmlFor="username">Username</label>
-                <input type="text" id="username" placeholder="@username" />
+                <input
+                  type="text"
+                  id="username"
+                  placeholder="@username"
+                />
               </div>
 
               <div className="form__group">
                 <label htmlFor="city">City</label>
-                <input type="text" id="city" placeholder="Your city" />
+                <input
+                  type="text"
+                  id="city"
+                  placeholder="Your city"
+                />
               </div>
 
               <div className="form__group">
                 <label htmlFor="state">State</label>
-                <input type="text" id="state" placeholder="State" />
+                <input
+                  type="text"
+                  id="state"
+                  placeholder="State"
+                />
               </div>
 
               <div className="form__group">
@@ -39,48 +55,67 @@ function Profile() {
               </div>
 
               <div className="form__group">
-  <label>Services Comfortable Offering</label>
+                <label>Services</label>
 
-  <div className="checkbox__group">
-    <label>
-      <input type="checkbox" /> Dog Walking
-    </label>
+                <p className="profile__helper">
+                  Select all services you offer, are seeking, or are comfortable providing.
+                </p>
 
-    <label>
-      <input type="checkbox" /> Drop-In Visits
-    </label>
+                <div className="services__checkboxes">
+                  <label><input type="checkbox" /> Dog Walking</label>
+                  <label><input type="checkbox" /> Drop-In Visits</label>
 
-    <label>
-      <input type="checkbox" /> Pet Sitting
-    </label>
+                  <label><input type="checkbox" /> Pet Sitting</label>
+                  <label><input type="checkbox" /> Overnight Care</label>
 
-    <label>
-      <input type="checkbox" /> Overnight Care
-    </label>
+                  <label><input type="checkbox" /> House Sitting</label>
+                  <label><input type="checkbox" /> Boarding</label>
 
-    <label>
-      <input type="checkbox" /> Boarding
-    </label>
+                  <label><input type="checkbox" /> Cat Care</label>
+                  <label><input type="checkbox" /> Pet Taxi</label>
 
-    <label>
-      <input type="checkbox" /> Cat Care
-    </label>
+                  <label><input type="checkbox" /> Medication Support</label>
+                  <label><input type="checkbox" /> Puppy Care</label>
 
-    <label>
-      <input type="checkbox" /> Pet Taxi
-    </label>
+                  <label><input type="checkbox" /> Senior Pet Care</label>
+                  <label><input type="checkbox" /> Small Animal Care</label>
 
-    <label>
-      <input type="checkbox" /> Medication Support
-    </label>
-  </div>
-</div>
+                  <label><input type="checkbox" /> Reptile Care</label>
+                  <label><input type="checkbox" /> Bird Care</label>
+
+                  <label><input type="checkbox" /> Farm Animal Care</label>
+                  <label><input type="checkbox" /> Hobby Farm Services</label>
+                </div>
+              </div>
+
+              <div className="form__group">
+                <label htmlFor="yearsExperience">
+                  Years of Experience
+                </label>
+
+                <input
+                  type="number"
+                  id="yearsExperience"
+                  min="0"
+                  placeholder="0"
+                />
+              </div>
+
+              <div className="form__group">
+                <label htmlFor="experience">Experience</label>
+
+                <textarea
+                  id="experience"
+                  placeholder="Tell members about your experience caring for pets, animals, farm animals, or related services."
+                ></textarea>
+              </div>
 
               <div className="form__group">
                 <label htmlFor="bio">Bio</label>
+
                 <textarea
                   id="bio"
-                  placeholder="Share a little about yourself, your pets, or your pet services."
+                  placeholder="Introduce yourself to the PawCircle community."
                 ></textarea>
               </div>
 
