@@ -1,9 +1,22 @@
+import { Link, useNavigate } from "react-router-dom";
+
 function Profile() {
+    const navigate = useNavigate();
+
+function handleSave() {
+  navigate("/dashboard");
+}
   return (
     <section id="profile">
       <div className="container">
         <div className="row row__column">
-          <h2>My Profile</h2>
+         <div className="page__header">
+            <h2>My Profile</h2>
+
+            <Link to="/dashboard" className="page__close">
+                ✕
+            </Link>
+            </div>
 
           <div className="profile__card">
             <h3>Member Information</h3>
@@ -120,7 +133,7 @@ function Profile() {
                 ></textarea>
               </div>
 
-              <button className="btn" type="button">
+              <button className="btn" type="button" onClick={handleSave}>
                 Save Profile
               </button>
             </form>

@@ -1,9 +1,17 @@
+import { Link } from "react-router-dom";
+
 function MembershipDetails() {
   return (
     <section id="membership-details">
       <div className="container">
         <div className="row row__column">
-          <h2>Membership Details</h2>
+          <div className="page__header">
+            <h2>Membership Details</h2>
+
+            <Link to="/dashboard" className="page__close">
+                ✕
+            </Link>
+           </div>
 
           <div className="membership-details__card">
             <h3>Founder Membership</h3>

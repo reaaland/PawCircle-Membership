@@ -1,9 +1,17 @@
+import { Link } from "react-router-dom";
+
 function AccountSettings() {
   return (
     <section id="account-settings">
       <div className="container">
         <div className="row row__column">
-          <h2>Account Settings</h2>
+          <div className="page__header">
+            <h2>Account Settings</h2>
+
+            <Link to="/dashboard" className="page__close">
+                ✕
+            </Link>
+          </div>
 
           <div className="settings__card">
             <h3>Notifications</h3>
