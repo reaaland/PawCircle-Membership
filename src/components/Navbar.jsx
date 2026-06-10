@@ -11,14 +11,14 @@ function Navbar() {
    return (
 
     <nav className="nav__container">
-      <div className="nav__logo">
+      <Link to="/" className="nav__logo">
         <img className="nav__logo--img" src={logo} alt="PawCircle Logo" />
 
         <div className="nav__logo--title">
           <span className="purple">PawCircle</span>
         </div>
-      </div>
-
+      </Link>
+      
       <div className="nav__links">
         <Link to="/" className="nav__link">Home</Link>
         <Link to="/about" className="nav__link">About</Link>
