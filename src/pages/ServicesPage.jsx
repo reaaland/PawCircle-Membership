@@ -4,92 +4,82 @@ import petTaxi from "../assets/Pet_Taxi.jpg";
 import sleepyPup from "../assets/Sleepy_pup.jpg";
 import catWindow from "../assets/cat_window.png";
 
-
 function ServicesPage() {
+  const services = [
+    {
+      title: "Dog Walking",
+      image: sleepyPup,
+      description:
+        "Regular walks, exercise, and companionship tailored to your pet's routine.",
+      button: "Find Dog Walkers",
+    },
+    {
+      title: "Pet Sitting",
+      image: houseSitting,
+      description:
+        "In-home care that allows pets to remain comfortable in familiar surroundings.",
+      button: "Find Pet Sitters",
+    },
+    {
+      title: "Cat Care",
+      image: catWindow,
+      description:
+        "Drop-in visits, feeding, litter maintenance, medication support, and playtime.",
+      button: "Find Cat Care Providers",
+    },
+    {
+      title: "Pet Taxi",
+      image: petTaxi,
+      description:
+        "Transportation for veterinary appointments, grooming visits, daycare, and more.",
+      button: "Find Pet Taxi Providers",
+    },
+    {
+      title: "Boarding",
+      image: sleepyPup,
+      description:
+        "Overnight care provided in a caregiver's home when available.",
+      button: "Find Boarding Providers",
+    },
+    {
+      title: "Farm & Hobby Farm Care",
+      image: houseSitting,
+      description:
+        "Care for chickens, ducks, goats, sheep, and other farm animals while you're away. Services vary based on each provider's experience and comfort level.",
+      button: "Find Farm & Hobby Farm Care Providers",
+    },
+  ];
+
   return (
-	
     <section id="services-page">
       <div className="container">
-		<div className="services__gallery">
-		<div className="services__photo-card">
-			<img src={houseSitting} alt="Pet Sitting" />
-			<span>Pet Sitting</span>
-		</div>
+        <div className="row">
+          <h1>Pet Care Services</h1>
 
-		<div className="services__photo-card services__photo-card--taxi">
-      <img src={petTaxi} alt="Pet Taxi" />
-    <span>Pet Taxi</span>
-    </div>
+          <p className="services-page__intro">
+            PawCircle helps pet owners and pet service providers connect
+            directly. Explore available services, discover local providers, and
+            start the conversation.
+          </p>
 
-		<div className="services__photo-card services__photo-card--boarding">
-    <img src={sleepyPup} alt="Boarding" />
-    <span>Boarding</span>
-    </div>
+          <div className="services-page__grid">
+            {services.map((service) => (
+              <div className="services-page__card" key={service.title}>
+                <img
+                  src={service.image}
+                  alt={service.title}
+                  className="services-page__img"
+                />
 
-    <div className="services__photo-card services__photo-card--cat">
-      <img src={catWindow} alt="Cat Care" />
-      <span>Cat Care</span>
-    </div>
+                <h2>{service.title}</h2>
+                <p>{service.description}</p>
 
-		</div>
-
-        <h2>Find Local Pet Care</h2>
-
-        <p className="services-page__intro">
-          Tell caregivers what kind of help you need and when you need it.
-          PawCircle helps members connect directly with local pet caregivers.
-        </p>
-
-        <div className="request__card">
-          <h3>Pet Care Request</h3>
-
-          <form className="request__form">
-            <div className="form__group">
-              <label>Service Needed</label>
-              <select>
-                <option>Select a service</option>
-                <option>Dog Walking</option>
-                <option>Pet Sitting</option>
-                <option>Drop-In Visits</option>
-                <option>Cat Care</option>
-                <option>Pet Taxi</option>
-                <option>Boarding</option>
-              </select>
-            </div>
-
-            <div className="form__row">
-              <div className="form__group">
-                <label>Full Name</label>
-                <input type="text" placeholder="Enter your name" />
+                <Link to="/providers" className="btn">
+                  {service.button}
+                </Link>
               </div>
-
-              <div className="form__group">
-                <label>Email</label>
-                <input type="email" placeholder="Enter your email" />
-              </div>
-            </div>
-
-            <div className="form__row">
-              <div className="form__group">
-                <label>Start Date</label>
-                <input type="date" />
-              </div>
-
-              <div className="form__group">
-                <label>End Date</label>
-                <input type="date" />
-              </div>
-            </div>
-
-            <div className="form__group">
-              <label>Details</label>
-              <textarea placeholder="Share details about your pet care needs"></textarea>
-            </div>
-
-            <button type="submit" className="btn">
-              Submit Request
-            </button>
-          </form>
+            ))}
+          </div>
         </div>
       </div>
     </section>
