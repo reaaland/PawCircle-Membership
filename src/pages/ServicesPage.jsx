@@ -3,19 +3,22 @@ import houseSitting from "../assets/house_sitting.jpg";
 import petTaxi from "../assets/Pet_Taxi.jpg";
 import sleepyPup from "../assets/Sleepy_pup.jpg";
 import catWindow from "../assets/cat_window.png";
+import riverwalk from "../assets/fun by the river.jpg";
+import hamsterdog from "../assets/hamster_dog_friends.JPG";
+import horseDog from "../assets/horse_dog playing.jpg";
 
 function ServicesPage() {
   const services = [
     {
       title: "Dog Walking",
-      image: sleepyPup,
+      image: riverwalk,
       description:
         "Regular walks, exercise, and companionship tailored to your pet's routine.",
       button: "Find Providers",
     },
     {
       title: "Pet Sitting",
-      image: houseSitting,
+      image: hamsterdog,
       description:
         "In-home care that allows pets to remain comfortable in familiar surroundings.",
       button: "Find Providers",
@@ -43,7 +46,7 @@ function ServicesPage() {
     },
     {
       title: "Farm & Hobby Farm Care",
-      image: houseSitting,
+      image: horseDog,
       description:
         "Care for chickens, ducks, goats, sheep, and other farm animals while you're away. Services vary based on each provider's experience and comfort level.",
       button: "Find Providers",
