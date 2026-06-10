@@ -5,6 +5,16 @@ import AgreementModal from "./AgreementModal";
 function Join() {
   const [showAgreement, setShowAgreement] = useState(false);
   const [searchParams] = useSearchParams();
+  const [isLoading, setIsLoading] = useState(false);
+
+function handleContinue() {
+  setIsLoading(true);
+
+  setTimeout(() => {
+    setIsLoading(false);
+    setShowAgreement(true);
+  }, 800);
+}
 
   const membership = searchParams.get("membership") || "founder";
 
@@ -39,9 +49,9 @@ function Join() {
     : "";
 
   function handleSubmit(e) {
-    e.preventDefault();
-    setShowAgreement(true);
-  }
+  e.preventDefault();
+  handleContinue();
+}
 
   return (
     <section id="join">
@@ -118,9 +128,9 @@ function Join() {
               />
             </div>
 
-            <button className="btn" type="submit">
-              Continue
-            </button>
+            <button className="btn" type="submit" disabled={isLoading}>
+            {isLoading ? "🐾 Opening Membership Agreement..." : "Continue"}
+          </button>
           </form>
 
           {showAgreement && (
