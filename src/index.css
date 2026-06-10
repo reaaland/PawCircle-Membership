@@ -1069,6 +1069,57 @@ gap: 20px;
   border-color: #6415ff;
 }
 
+.provider__contact-preferences {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.modal__overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15, 23, 42, 0.55);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.message__modal {
+  background: white;
+  width: 90%;
+  max-width: 520px;
+  padding: 32px;
+  border-radius: 24px;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+}
+
+.modal__close {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  border: none;
+  background: transparent;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.message__form textarea {
+  width: 100%;
+  min-height: 140px;
+  margin: 12px 0;
+}
+
+.message__actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+}
+
 #dashboard {
   padding: 80px 32px;
   min-height: 70vh;
@@ -1106,6 +1157,68 @@ gap: 20px;
 
 .dashboard__card h3 {
   margin-bottom: 12px;
+}
+
+.messages {
+  padding: 80px 0;
+}
+
+.message-thread {
+  background: #fff;
+  border-radius: 20px;
+  padding: 32px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.message {
+  max-width: 70%;
+  padding: 16px;
+  border-radius: 16px;
+  margin-bottom: 16px;
+}
+
+.message--owner {
+  background: #f3e8ff;
+  margin-left: auto;
+}
+
+.message--provider {
+  background: #f7f7f7;
+}
+
+.message-form textarea,
+.message__form textarea {
+  width: 100%;
+  min-height: 120px;
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  resize: vertical;
+  margin: 12px 0;
+}
+
+.provider__contact-btn,
+.message-form button,
+.message__form button {
+  background: linear-gradient(135deg, #7c3aed, #ec4899);
+  color: white;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.messages__back {
+  display: inline-block;
+  margin-bottom: 24px;
+  text-decoration: none;
+  font-weight: 600;
+  color: #7c3aed;
+}
+
+.messages__back:hover {
+  text-decoration: underline;
 }
 
 .legal-page {

@@ -13,6 +13,7 @@ import CodeOfConductPage from "./pages/CodeOfConductPage";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
 import TermsOfUsePage from "./pages/TermsOfUsePage";
 import ContactPage from "./pages/ContactPage";
+import Messages from "./components/Messages";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 
@@ -34,6 +35,7 @@ function App() {
     <Route path="/privacy" element={<PrivacyPolicyPage />} />
     <Route path="/terms" element={<TermsOfUsePage />} />
     <Route path="/contact" element={<ContactPage />} />
+    <Route path="/messages" element={<Messages />} />
   </Routes>
 
   <Footer />

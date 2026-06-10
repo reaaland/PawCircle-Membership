@@ -1,6 +1,10 @@
+import { useState } from "react";
 import providers from "../data/providers.json";
+import MessageModal from "./MessageModal";
 
 function Providers() {
+  const [selectedProvider, setSelectedProvider] = useState(null);
+
   return (
     <section id="providers">
       <div className="container">
@@ -70,12 +74,40 @@ function Providers() {
 
                 <p>{provider.bio}</p>
 
+                <hr className="provider__divider" />
+
+                <div 
+                
+                className="provider__contact-preferences">
+                  <p>
+                    <strong>Preferred Communication:</strong>{" "}
+                    {provider.preferredCommunication || "PawCircle Messages"}
+                  </p>
+                  <p>
+                    <strong>Contact Info:</strong>{" "}
+                    {provider.contactInfo || "Shared after initial conversation"}
+                  </p>
+                </div>
+
                 <button className="btn">
                   View Profile
                 </button>
+
+              <button
+              className="provider__contact-btn"
+              onClick={() => setSelectedProvider(provider)}
+            >
+              Contact Provider
+            </button>
               </div>
             ))}
           </div>
+          {selectedProvider && (
+          <MessageModal
+            provider={selectedProvider}
+            onClose={() => setSelectedProvider(null)}
+          />
+        )}
         </div>
       </div>
     </section>

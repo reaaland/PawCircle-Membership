@@ -23,10 +23,10 @@ function Dashboard() {
             <p>Coming soon.</p>
           </div>
 
-          <div className="dashboard__card">
-            <h3>Messages</h3>
-            <p>Coming soon.</p>
-          </div>
+          <Link to="/messages" className="dashboard__card">
+          <h3>Messages</h3>
+          <p>Start conversations with pet owners and providers.</p>
+          </Link>
 
           <div className="dashboard__card">
             <h3>Membership</h3>
