@@ -10,7 +10,7 @@ function FounderCard() {
         <FontAwesomeIcon icon={faPaw} className="founder-paw" />
         Founder Membership
       </h3>
-      <p className="price">$1/month</p>
+      <p className="price">$1/month or $10/year</p>
       <p className="pricing__subtext">
         Lock in Founder Member pricing for life while your membership stays active.
       </p>
@@ -32,7 +32,7 @@ function PioneerCard() {
         <FontAwesomeIcon icon={faPaw} className="pioneer-paw" />
         Pioneer Membership
       </h3>
-      <p className="price">$1/month</p>
+      <p className="price">$1.25/month or $12/year</p>
       <p className="pricing__subtext">One free month before membership begins.</p>
       <JoinButton
         text="Join as a Pioneer"
@@ -46,7 +46,7 @@ function ClientPlan() {
   return (
     <div className="pricing__card regular__card">
       <h3>Pet Owner Membership</h3>
-      <p className="price">$1/month</p>
+      <p className="price">$1.50/month or $15/year</p>
       <p className="pricing__subtext">For members looking for pet services.</p>
       <JoinButton
         text="Join as a Pet Owner"
@@ -60,7 +60,7 @@ function ProviderPlan() {
   return (
     <div className="pricing__card regular__card">
       <h3>Pet Service Provider Membership</h3>
-      <p className="price">$1.50/month</p>
+      <p className="price">$1.50/month or $15/year</p>
       <p className="pricing__subtext">For members looking to grow their pet business.</p>
       <JoinButton
         text="Join as a Provider"
@@ -74,7 +74,7 @@ function BothPlan() {
   return (
     <div className="pricing__card regular__card">
       <h3>Owner + Provider Membership</h3>
-      <p className="price">$2/month</p>
+      <p className="price">$2/month or $20/year</p>
       <p className="pricing__subtext">For members who want both options.</p>
      <JoinButton
       text="Join as a Pet Owner + Provider"
