@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaw } from "@fortawesome/free-solid-svg-icons";
 import JoinButton from "./JoinButton";
+import { founderActive, membershipInfo } from "../config/membershipConfig";
 
 function FounderCard() {
   return (
@@ -9,14 +10,13 @@ function FounderCard() {
 
       <h3>
         <FontAwesomeIcon icon={faPaw} className="founder-paw" />
-        Founder Membership
+        {membershipInfo.founder.name}
       </h3>
 
-      <p className="price">$10/year</p>
+      <p className="price">{membershipInfo.founder.price}</p>
 
       <p className="pricing__subtext">
-        Lock in Founder Member pricing for life while your membership stays
-        active.
+        {membershipInfo.founder.description}
       </p>
 
       <JoinButton text="Join as a Founder" membershipType="founder" />
@@ -24,12 +24,12 @@ function FounderCard() {
   );
 }
 
-function ClientPlan() {
+function OwnerPlan() {
   return (
     <div className="pricing__card regular__card">
-      <h3>Pet Owner Membership</h3>
+      <h3>{membershipInfo.owner.name}</h3>
 
-      <p className="price">$1.50/month or $15/year</p>
+      <p className="price">{membershipInfo.owner.price}</p>
 
       <p className="pricing__subtext">
         For members looking for pet services.
@@ -43,15 +43,15 @@ function ClientPlan() {
 function ProviderPlan() {
   return (
     <div className="pricing__card regular__card">
-      <h3>Pet Service Provider Membership</h3>
+      <h3>{membershipInfo.provider.name}</h3>
 
-      <p className="price">$1.50/month or $15/year</p>
+      <p className="price">{membershipInfo.provider.price}</p>
 
       <p className="pricing__subtext">
-        For members looking to grow their pet business.
+        For members offering pet services.
       </p>
 
-      <JoinButton text="Join as a Provider" membershipType="provider" />
+      <JoinButton text="Join as a Pet Service Provider" membershipType="provider" />
     </div>
   );
 }
@@ -59,46 +59,23 @@ function ProviderPlan() {
 function BothPlan() {
   return (
     <div className="pricing__card regular__card">
-      <h3>Owner + Provider Membership</h3>
+      <h3>{membershipInfo.both.name}</h3>
 
-      <p className="price">$2/month or $20/year</p>
+      <p className="price">{membershipInfo.both.price}</p>
 
       <p className="pricing__subtext">
-        For members who want both options.
+        For members who are both pet owners and pet service providers.
       </p>
 
       <JoinButton
-        text="Join as a Pet Owner + Provider"
+        text="Join as Owner + Provider"
         membershipType="both"
       />
     </div>
   );
 }
 
-// Founder Membership
-// First 500 members
-// $10/year
-//
-// Standard Memberships
-// Display automatically when memberCount >= 500
-// Pet Owner: $1.50/month or $15/year
-// Pet Service Provider: $1.50/month or $15/year
-// Owner + Provider: $2/month or $20/year
-//
-// Stripe Pricing Tables
-const stripePricingTables = {
-  owner: "prctbl_1TgtKXGgktsetxqRUcLjBLie",
-  provider: "prctbl_1TgtMDGgktsetxqREu7vZP8J",
-  both: "prctbl_1TgtNzGgktsetxqR7UC17Bfu",
-};
-
 function Membership() {
-  // Temporary until Supabase is connected
-  const memberCount = 325;
-
-  // Future:
-  // const memberCount = membershipCount;
-
   return (
     <section id="membership">
       <div className="container">
@@ -114,13 +91,11 @@ function Membership() {
           </p>
 
           <div className="pricing__wrapper">
-            {/* Founder Membership */}
-            {memberCount < 500 && <FounderCard />}
+            {founderActive && <FounderCard />}
 
-            {/* Standard Memberships */}
-            {memberCount >= 500 && (
+            {!founderActive && (
               <>
-                <ClientPlan />
+                <OwnerPlan />
                 <ProviderPlan />
                 <BothPlan />
               </>
