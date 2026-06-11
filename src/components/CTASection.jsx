@@ -9,7 +9,7 @@ function CTASection() {
         <div className="row">
           <div className="cta__wrapper">
             <div className="cta__card">
-              <h2>Ready to Join PawCircle?</h2>
+              <h2>Ready to Join <span className="purple">PawCircle</span>?</h2>
               <p>Become one of our Founder or Pioneer members today.</p>
               
             </div>

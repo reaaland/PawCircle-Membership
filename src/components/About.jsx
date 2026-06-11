@@ -38,7 +38,7 @@ function About({ fullVersion }) {
               <h3>Our Mission</h3>
 
               <p>
-                PawCircle was created to help pet owners and pet caregivers
+                <span className="purple">PawCircle</span> was created to help pet owners and pet caregivers
                 connect directly within their communities through a simple
                 membership model.
               </p>
@@ -54,7 +54,7 @@ function About({ fullVersion }) {
               <h3>Our Vision</h3>
 
               <p>
-                PawCircle began with a simple idea: helping pet owners and pet
+                <span className="purple">PawCircle</span> began with a simple idea: helping pet owners and pet
                 caregivers connect directly in their communities.
               </p>
 
@@ -66,7 +66,7 @@ function About({ fullVersion }) {
               </p>
 
               <p>
-                As PawCircle grows, we hope to expand beyond the United States
+                As <span className="purple">PawCircle</span> grows, we hope to expand beyond the United States
                 and create a global community of pet lovers connected through
                 care and shared experiences.
               </p>
@@ -91,7 +91,7 @@ function About({ fullVersion }) {
 
           {fullVersion && (
             <p className="about__disclaimer">
-              PawCircle helps members connect and does not provide pet care
+              <span className="purple">PawCircle</span> helps members connect and does not provide pet care
               services directly. Members are responsible for screening providers,
               agreements, payment, and pet care decisions.
             </p>
