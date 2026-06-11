@@ -17,18 +17,22 @@ export const membershipInfo = {
     name: "Pet Owner Membership",
     price: "$1.50/month or $15/year",
     billing: "Monthly or Annual",
+    description: "For members looking for pet services.",
   },
 
   provider: {
     name: "Pet Service Provider Membership",
     price: "$1.50/month or $15/year",
     billing: "Monthly or Annual",
+    description: "For members offering pet services.",
   },
 
   both: {
     name: "Owner + Provider Membership",
     price: "$2/month or $20/year",
     billing: "Monthly or Annual",
+    description:
+      "For members who are both pet owners and pet service providers.",
   },
 };
 

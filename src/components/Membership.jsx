@@ -32,7 +32,7 @@ function OwnerPlan() {
       <p className="price">{membershipInfo.owner.price}</p>
 
       <p className="pricing__subtext">
-        For members looking for pet services.
+        {membershipInfo.owner.description}
       </p>
 
       <JoinButton text="Join as a Pet Owner" membershipType="owner" />
@@ -48,10 +48,13 @@ function ProviderPlan() {
       <p className="price">{membershipInfo.provider.price}</p>
 
       <p className="pricing__subtext">
-        For members offering pet services.
+        {membershipInfo.provider.description}
       </p>
 
-      <JoinButton text="Join as a Pet Service Provider" membershipType="provider" />
+      <JoinButton
+        text="Join as a Pet Service Provider"
+        membershipType="provider"
+      />
     </div>
   );
 }
@@ -64,13 +67,10 @@ function BothPlan() {
       <p className="price">{membershipInfo.both.price}</p>
 
       <p className="pricing__subtext">
-        For members who are both pet owners and pet service providers.
+        {membershipInfo.both.description}
       </p>
 
-      <JoinButton
-        text="Join as Owner + Provider"
-        membershipType="both"
-      />
+      <JoinButton text="Join as Owner + Provider" membershipType="both" />
     </div>
   );
 }
