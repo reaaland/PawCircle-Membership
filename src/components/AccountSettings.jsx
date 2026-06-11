@@ -9,35 +9,42 @@ function AccountSettings() {
             <h2>Account Settings</h2>
 
             <Link to="/dashboard" className="page__close">
-                ✕
+              ✕
             </Link>
           </div>
 
           <div className="settings__card">
             <h3>Notifications</h3>
+            <p>Choose which PawCircle updates you want to receive.</p>
 
-            <p>
-              Manage how you receive updates, messages, and important account
-              information.
-            </p>
+            <div className="services__checkboxes">
+              <label><input type="checkbox" /> New Messages</label>
+              <label><input type="checkbox" /> Message Replies</label>
+              <label><input type="checkbox" /> Membership Updates</label>
+              <label><input type="checkbox" /> PawCircle Announcements</label>
+            </div>
           </div>
 
           <div className="settings__card">
             <h3>Privacy Preferences</h3>
+            <p>Control how your profile and contact preferences appear to other members.</p>
 
-            <p>
-              Control profile visibility and decide how other members can
-              connect with you.
-            </p>
+            <div className="contact__visibility">
+              <label htmlFor="profileVisibility">Profile Visibility</label>
+              <select id="profileVisibility">
+                <option>Show my profile to PawCircle members</option>
+                <option>Only show my profile when I contact someone</option>
+              </select>
+            </div>
           </div>
 
           <div className="settings__card">
             <h3>Account Management</h3>
+            <p>Review your account and membership preferences.</p>
 
-            <p>
-              Review account information and membership preferences from one
-              central location.
-            </p>
+            <Link to="/details" className="btn">
+              View Membership Details
+            </Link>
           </div>
         </div>
       </div>

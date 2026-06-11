@@ -6,16 +6,6 @@
 - [ ] Activate Stripe pricing tables after Founder fills
 - [ ] Test Founder → Standard automatic switch
 
-## Dashboard
-- [ x] Complete My Profile
-- [ ] Complete Messages
-- [ X] Complete Membership card
-
-## Communication
-- [ ] Member messaging system
-- [ ] Contact preference settings
-- [ ] Member-to-member communication workflow
-
 ## Providers
 - [ ] Provider profile enhancements
 - [ ] Add real provider data
