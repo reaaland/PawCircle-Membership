@@ -18,6 +18,7 @@ import Profile from "./components/Profile";
 import MembershipDetails from "./components/MembershipDetails";
 import AccountSettings from "./components/AccountSettings";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import ScrollToTop from "./components/ScrollToTop";
 
 
 function App() {
@@ -42,6 +43,7 @@ function App() {
     <Route path="/profile" element={<Profile />} />
     <Route path="/details" element={<MembershipDetails />} />
     <Route path="/account" element={<AccountSettings />} />
+    <Route path="/scroll" element={<ScrollToTop />} />
   </Routes>
 
   <Footer />
