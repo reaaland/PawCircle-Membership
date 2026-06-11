@@ -36,6 +36,7 @@ export const membershipInfo = {
   },
 };
 
+
 export const stripePricingTables = {
   owner: "prctbl_1TgtKXGgktsetxqRUcLjBLie",
   provider: "prctbl_1TgtMDGgktsetxqREu7vZP8J",

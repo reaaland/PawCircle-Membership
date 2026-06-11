@@ -11,7 +11,10 @@ function Join() {
   const [searchParams] = useSearchParams();
   const [isLoading, setIsLoading] = useState(false);
 
-  const requestedMembership = searchParams.get("membership") || "founder";
+  const defaultMembership = founderActive ? "founder" : "owner";
+
+  const requestedMembership =
+    searchParams.get("membership") || defaultMembership;
 
   const paymentOptions = {
     founder: {
@@ -38,8 +41,8 @@ function Join() {
   };
 
   const membership = paymentOptions[requestedMembership]
-    ? requestedMembership
-    : "founder";
+  ? requestedMembership
+  : defaultMembership;
 
   const selectedMembership = paymentOptions[membership];
 
@@ -67,10 +70,20 @@ function Join() {
       <div className="container">
         <div className="row row__column">
           <h2>Join <span className="purple">PawCircle</span></h2>
-
-          <p>
-            Complete the form below to join <span className="purple">PawCircle</span> as a Founder Member and
-            lock in Founder pricing while your membership remains active.
+            <p>
+              {founderActive ? (
+              <>
+                Complete the form below to join{" "}
+                <span className="purple">PawCircle</span> as a Founder Member and lock in
+                Founder pricing while your membership remains active.
+              </>
+            ) : (
+              <>
+                Complete the form below to join{" "}
+                <span className="purple">PawCircle</span> and choose the membership that
+                best fits how you plan to use the community.
+              </>
+            )}
           </p>
 
           <form className="join-form" onSubmit={handleSubmit}>
@@ -78,9 +91,11 @@ function Join() {
               <label htmlFor="member__type">Membership Type</label>
 
               <select id="member__type" value={membership} required disabled>
-                <option value="founder">
-                  {membershipInfo.founder.name} - {membershipInfo.founder.price}
-                </option>
+               {founderActive && (
+              <option value="founder">
+                {membershipInfo.founder.name} - {membershipInfo.founder.price}
+               </option>
+            )}
 
                 <option value="owner">
                   {membershipInfo.owner.name} - {membershipInfo.owner.price}

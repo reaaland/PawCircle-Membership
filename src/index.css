@@ -843,6 +843,7 @@ nav {
 
 .cta__card {
   background: white;
+  min-height: 250px;
   border-radius: 24px;
   padding: 40px;
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
