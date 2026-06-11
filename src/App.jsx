@@ -24,6 +24,7 @@ import ScrollToTop from "./components/ScrollToTop";
 function App() {
   return (
 <Router>
+   <ScrollToTop />
   <Navbar />
 
   <Routes>
@@ -43,7 +44,7 @@ function App() {
     <Route path="/profile" element={<Profile />} />
     <Route path="/details" element={<MembershipDetails />} />
     <Route path="/account" element={<AccountSettings />} />
-    <Route path="/scroll" element={<ScrollToTop />} />
+
   </Routes>
 
   <Footer />
