@@ -1,3 +1,5 @@
+import sunsetWalk from "../assets/huskies_at_twilight.jpeg";
+
 function About({ fullVersion }) {
   return (
     <section id="about">
@@ -6,6 +8,14 @@ function About({ fullVersion }) {
           <h2>
             About <span className="purple">PawCircle</span>
           </h2>
+
+          <div className="about__hero">
+            <img
+              src={sunsetWalk}
+              alt="Walking dogs at sunset"
+              className="about__hero--img"
+            />
+          </div>
 
           <div className="about__grid">
             <div className="about__card">
