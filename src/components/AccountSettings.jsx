@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { availabilityStatuses } from "../Config/membershipConfig";
 
 function AccountSettings() {
   return (
@@ -64,21 +63,42 @@ function AccountSettings() {
             </p>
 
             <div className="availability__options">
-              {availabilityStatuses.map((status) => (
-                <label
-                  key={status.value}
-                  className="availability__option"
-                >
-                  <input
-                    type="radio"
-                    name="availabilityStatus"
-                    value={status.value}
-                    defaultChecked={status.value === "accepting"}
-                  />
+              <label className="availability__option">
+                <input
+                  type="radio"
+                  name="availability"
+                  value="accepting"
+                  defaultChecked
+                />
 
-                  <span>{status.label}</span>
-                </label>
-              ))}
+                <span className="status-circle status-circle--green"></span>
+
+                Accepting New Clients
+              </label>
+
+              <label className="availability__option">
+                <input
+                  type="radio"
+                  name="availability"
+                  value="limited"
+                />
+
+                <span className="status-circle status-circle--yellow"></span>
+
+                Limited Availability (Select Requests)
+              </label>
+
+              <label className="availability__option">
+                <input
+                  type="radio"
+                  name="availability"
+                  value="closed"
+                />
+
+                <span className="status-circle status-circle--red"></span>
+
+                Not Accepting New Clients
+              </label>
             </div>
           </div>
 
