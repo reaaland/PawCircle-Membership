@@ -1,16 +1,27 @@
 import { Link } from "react-router-dom";
+import dogKitten from "../assets/kitten_dog_toys.png";
 
 function Dashboard() {
   return (
     <section id="dashboard">
       <div className="container dashboard__container">
-        <h2>
-          Welcome to <span className="purple">PawCircle</span>
-        </h2>
+       <div className="dashboard__welcome">
+        <img
+          src={dogKitten}
+          alt="Dog and kitten together"
+          className="dashboard__welcome--img"
+        />
 
-        <p className="dashboard__intro">
-          Find pet care, connect with members, and manage your PawCircle account.
-        </p>
+        <div className="dashboard__welcome--content">
+          <h2>
+            Welcome Back to <span className="purple">PawCircle</span>
+          </h2>
+
+          <p className="dashboard__intro">
+            Connect with pet owners and pet service providers in your community.
+          </p>
+        </div>
+      </div>
 
         <div className="dashboard__cards">
           <Link to="/providers" className="dashboard__card">
