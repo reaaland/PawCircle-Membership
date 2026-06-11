@@ -1784,7 +1784,7 @@ footer .container {
     padding: 24px;
   }
 
-  footer {
+footer {
   background: #000;
   padding: 32px 20px 88px;
 }
@@ -1793,16 +1793,17 @@ footer .container {
   max-width: 1100px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
-  gap: 24px;
+  grid-template-columns: 1fr;
+  gap: 28px;
   padding-bottom: 24px;
   border-bottom: 1px solid #333;
-  align-items: center;
+  text-align: center;
 }
 
 .footer__content > div {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 10px;
 }
 
@@ -1811,7 +1812,6 @@ footer .container {
   height: 72px;
   object-fit: contain;
   margin: 0 auto 12px;
-  margin-bottom: 12px;
   filter: grayscale(1) invert(1);
 }
 
@@ -1824,6 +1824,7 @@ footer .container {
 .footer__content p {
   color: #cbd5e1;
   max-width: 280px;
+  margin: 0 auto;
 }
 
 .footer__content h4,
@@ -1883,19 +1884,37 @@ footer .container {
     .how__cards {
     grid-template-columns: 1fr;
 }
+
+.services-page__grid {
+  grid-template-columns: 1fr;
+}
+
+.services-page__card {
+  padding: 24px;
+}
+
+.services-page__img {
+  height: 200px;
+}
+
 }
 
 @media (max-width: 480px) {
+  .services-page__grid {
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.services-page__card {
+  padding: 22px;
+}
+
+.services-page__img {
+  height: 190px;
+}
+  
   .services__photo-card img {
     height: 200px;
-  }
-
-  .services__photo-card--boarding img {
-    object-position: center center;
-  }
-
-  .services__photo-card--cat img {
-    object-position: center top;
   }
 
   .faq-page {
