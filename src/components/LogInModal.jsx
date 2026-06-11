@@ -19,7 +19,7 @@ function LogInModal({ onClose, onLogin }) {
         </button>
 
         <h2>Member Login</h2>
-        <p>Log in to access your PawCircle member account.</p>
+        <p>Log in to access your <span className="purple">PawCircle</span>member account.</p>
 
         <form onSubmit={handleLogin}>
           <input type="email" placeholder="Email address" required />

@@ -31,7 +31,7 @@ function Dashboard() {
 
           <Link to="/profile" className="dashboard__card">
             <h3>My Profile</h3>
-            <p>Create and manage your PawCircle member profile.</p>
+            <p>Create and manage your <span className="purple">PawCircle</span> member profile.</p>
           </Link>
 
           <Link to="/messages" className="dashboard__card">

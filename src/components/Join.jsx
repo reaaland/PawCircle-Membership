@@ -66,10 +66,10 @@ function Join() {
     <section id="join">
       <div className="container">
         <div className="row row__column">
-          <h2>Join PawCircle</h2>
+          <h2>Join <span className="purple">PawCircle</span></h2>
 
           <p>
-            Complete the form below to join PawCircle as a Founder Member and
+            Complete the form below to join <span className="purple">PawCircle</span> as a Founder Member and
             lock in Founder pricing while your membership remains active.
           </p>
 

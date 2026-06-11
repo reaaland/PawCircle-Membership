@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import providers from "../data/providers.json";
 import MessageModal from "./MessageModal";
 
-
 function Providers() {
   const [selectedProvider, setSelectedProvider] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -10,10 +9,10 @@ function Providers() {
   const [searchTerm, setSearchTerm] = useState("");
 
   const statusLabels = {
-  accepting: "🟢 Accepting New Clients",
-  limited: "🟡 Limited Availability",
-  notAccepting: "🔴 Not Accepting New Clients",
-};
+    accepting: "🟢 Accepting New Clients",
+    limited: "🟡 Limited Availability",
+    notAccepting: "🔴 Not Accepting New Clients",
+  };
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -23,42 +22,53 @@ function Providers() {
     return () => clearTimeout(timer);
   }, []);
 
-  const filteredProviders = providers.filter((provider) =>
-  provider.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-  provider.city.toLowerCase().includes(searchTerm.toLowerCase()) ||
-  provider.service.toLowerCase().includes(searchTerm.toLowerCase())
-);
+  const filteredProviders = providers.filter((provider) => {
+    const search = searchTerm.toLowerCase();
+
+    return (
+      provider.name.toLowerCase().includes(search) ||
+      provider.city.toLowerCase().includes(search) ||
+      provider.service.toLowerCase().includes(search)
+    );
+  });
 
   const sortedProviders = [...filteredProviders].sort((a, b) => {
-   if (sortOption === "NEAREST") {
-    return (a.distanceMiles || 999) - (b.distanceMiles || 999);
-  }
+    if (sortOption === "NEAREST") {
+      return (a.distanceMiles || 999) - (b.distanceMiles || 999);
+    }
 
-  if (sortOption === "AZ") {
-    return a.name.localeCompare(b.name);
-  }
+    if (sortOption === "AZ") {
+      return a.name.localeCompare(b.name);
+    }
 
-  if (sortOption === "ZA") {
-    return b.name.localeCompare(a.name);
-  }
+    if (sortOption === "ZA") {
+      return b.name.localeCompare(a.name);
+    }
 
-  if (sortOption === "NEWEST") {
-    return new Date(b.memberSince) - new Date(a.memberSince);
-  }
+    if (sortOption === "NEWEST") {
+      return new Date(b.memberSince) - new Date(a.memberSince);
+    }
 
-  if (sortOption === "OLDEST") {
-    return new Date(a.memberSince) - new Date(b.memberSince);
-  }
+    if (sortOption === "OLDEST") {
+      return new Date(a.memberSince) - new Date(b.memberSince);
+    }
 
-  return 0;
-});
+    return 0;
+  });
 
   return (
     <section id="providers">
       <div className="container">
         <div className="row">
           <div className="providers__top">
-            <h2>Provider Directory Preview</h2>
+            <div>
+              <h2>Provider Directory Preview</h2>
+
+              <p className="preview__notice">
+                Browse sample <span className="purple">PawCircle</span>provider profiles. Full provider
+                listings will be available to members.
+              </p>
+            </div>
 
             <div className="providers__controls">
               <input
@@ -98,7 +108,7 @@ function Providers() {
                 </div>
               ))}
             </div>
-          ) : (
+          ) : sortedProviders.length > 0 ? (
             <div className="providers">
               {sortedProviders.map((provider) => (
                 <div className="provider__card" key={provider.id}>
@@ -121,16 +131,20 @@ function Providers() {
                   </p>
 
                   {provider.distanceMiles && (
-                  <p>{provider.distanceMiles} miles away</p>
+                    <p>{provider.distanceMiles} miles away</p>
                   )}
 
                   <p>{provider.experience}</p>
 
-                  <p>Service Area: {provider.serviceRadiusMiles} miles</p>
+                  {provider.serviceRadiusMiles && (
+                    <p>Service Area: {provider.serviceRadiusMiles} miles</p>
+                  )}
 
-                  <p className="provider__status">
-                  {statusLabels[provider.availabilityStatus]}
-                </p>
+                  {provider.availabilityStatus && (
+                    <p className="provider__status">
+                      {statusLabels[provider.availabilityStatus]}
+                    </p>
+                  )}
 
                   <p>
                     {provider.membershipLevel} Member • Since{" "}
@@ -150,8 +164,7 @@ function Providers() {
                   <div className="provider__contact-preferences">
                     <p>
                       <strong>Preferred Communication:</strong>{" "}
-                      {provider.preferredCommunication ||
-                        "PawCircle Messages"}
+                      {provider.preferredCommunication || "PawCircle Messages"}
                     </p>
 
                     <p>
@@ -160,8 +173,6 @@ function Providers() {
                         "Shared after initial conversation"}
                     </p>
                   </div>
-
-                  <button className="btn">View Profile</button>
 
                   <button
                     className="provider__contact-btn"
@@ -172,6 +183,11 @@ function Providers() {
                 </div>
               ))}
             </div>
+          ) : (
+            <p className="preview__notice">
+              No providers match your search. Try a different name, city, or
+              service.
+            </p>
           )}
 
           {selectedProvider && (

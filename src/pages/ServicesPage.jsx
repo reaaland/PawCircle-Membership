@@ -60,7 +60,7 @@ function ServicesPage() {
           <h1>Pet Care Services</h1>
 
           <p className="services-page__intro">
-            PawCircle helps pet owners and pet service providers connect
+            <span className="purple">PawCircle</span> helps pet owners and pet service providers connect
             directly. Explore available services, discover local providers, and
             start the conversation.
           </p>

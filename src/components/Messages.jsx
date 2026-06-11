@@ -43,7 +43,7 @@ function Messages() {
         </div>
 
         <p>
-          PawCircle Messages help pet owners and pet service providers make an
+          <span className="purple">PawCircle</span> Messages help pet owners and pet service providers make an
           initial connection. What happens next is up to you.
         </p>
 

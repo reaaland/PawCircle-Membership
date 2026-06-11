@@ -37,7 +37,7 @@ function MessageModal({ provider, onClose }) {
         </p>
 
         <p className="message__note">
-          Send a PawCircle Message to start the conversation. Members may choose
+          Send a <span className="purple">PawCircle</span> Message to start the conversation. Members may choose
           to share phone or email later at their own discretion.
         </p>
 
@@ -56,7 +56,7 @@ function MessageModal({ provider, onClose }) {
         {isSending ? (
           <div className="loading__container">
             <div className="loading__paw">🐾</div>
-            <p>Sending PawCircle Message...</p>
+            <p>Sending <span className="purple">PawCircle</span> Message...</p>
           </div>
         ) : isSent ? (
           <>
@@ -65,15 +65,9 @@ function MessageModal({ provider, onClose }) {
               through <span className="purple">PawCircle</span> Messages.
             </div>
 
-            <button
-              className="btn"
-              onClick={() => {
-                onClose();
-                navigate("/messages");
-              }}
-            >
-              View Conversation
-            </button>
+           <button className="btn" onClick={onClose}>
+            Close
+          </button>
           </>
         ) : (
           <form className="message__form" onSubmit={handleSubmit}>
