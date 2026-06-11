@@ -1,12 +1,11 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+
 
 function MessageModal({ provider, onClose }) {
   const [message, setMessage] = useState("");
   const [isSent, setIsSent] = useState(false);
   const [isSending, setIsSending] = useState(false);
-  const navigate = useNavigate();
-
+ 
   function handleSubmit(e) {
     e.preventDefault();
 
