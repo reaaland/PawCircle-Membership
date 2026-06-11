@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaw } from "@fortawesome/free-solid-svg-icons";
 import JoinButton from "./JoinButton";
-import { founderActive, membershipInfo } from "../config/membershipConfig";
+import { founderActive, membershipInfo } from "../Config/membershipConfig";
 
 function FounderCard() {
   return (
