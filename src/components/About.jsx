@@ -91,9 +91,12 @@ function About({ fullVersion }) {
 
           {fullVersion && (
             <p className="about__disclaimer">
-              <span className="purple">PawCircle</span> helps members connect and does not provide pet care
-              services directly. Members are responsible for screening providers,
-              agreements, payment, and pet care decisions.
+              <span className="purple">PawCircle</span> helps members connect directly and
+              does not provide pet care services. PawCircle does not conduct background
+              checks, verify credentials, employ pet service providers, or guarantee
+              services. Members are responsible for screening providers, checking
+              references, establishing agreements, handling payment arrangements, and
+              making pet care decisions.
             </p>
           )}
         </div>
