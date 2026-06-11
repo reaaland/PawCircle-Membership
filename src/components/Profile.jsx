@@ -53,32 +53,7 @@ function Profile() {
                 </select>
               </div>
 
-              <div className="form__group">
-                <label>Provider Availability</label>
-
-                <p className="profile__helper">
-                  Let pet owners know whether you are currently taking new
-                  client requests.
-                </p>
-
-                <div className="availability__options">
-                  {availabilityStatuses.map((status) => (
-                    <label
-                      key={status.value}
-                      className="availability__option"
-                    >
-                      <input
-                        type="radio"
-                        name="availabilityStatus"
-                        value={status.value}
-                        defaultChecked={status.value === "accepting"}
-                      />
-                      <span>{status.label}</span>
-                    </label>
-                  ))}
-                </div>
-              </div>
-
+             
               <div className="form__group">
                 <label>Contact Preferences</label>
 
