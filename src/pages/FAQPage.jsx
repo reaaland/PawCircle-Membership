@@ -90,25 +90,24 @@ function FAQPage() {
               </p>
             </div>
 
-            <div className="faq__item">
-              <h2>Can I cancel my membership?</h2>
-              <p>
-                Yes. Members may cancel anytime before their next renewal date to
-                prevent future billing. Membership fees already paid are non-refundable
-                unless required by law, and access continues through the end of the
-                current billing period
-                </p>
-            </div>
+                      <div className="faq__item">
+            <h2>Can I cancel my membership?</h2>
+            <p>
+              Yes. Members may cancel anytime before their next renewal date to
+              prevent future billing. Membership fees already paid are non-refundable
+              unless required by law, and access continues through the end of the
+              current billing period.
+            </p>
+          </div>
 
-            <div className="faq__item">
+          <div className="faq__item">
             <h2>Are membership payments refundable?</h2>
             <p>
               Membership fees already paid are non-refundable unless required by law.
               To avoid future billing, members should cancel before their next renewal
               date.
             </p>
-            </div> 
-
+          </div> 
 
             <div className="faq__item">
               <h2>How do I contact PawCircle?</h2>
