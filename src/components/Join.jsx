@@ -1,6 +1,10 @@
 import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import AgreementModal from "./AgreementModal";
+import {
+  founderActive,
+  membershipInfo,
+} from "../Config/membershipConfig";
 
 function Join() {
   const [showAgreement, setShowAgreement] = useState(false);
@@ -11,25 +15,25 @@ function Join() {
 
   const paymentOptions = {
     founder: {
-      label: "Founder Membership",
-      price: "$10/year",
+      label: membershipInfo.founder.name,
+      price: membershipInfo.founder.price,
       url: "https://buy.stripe.com/00w5kDetE9G43v90UCcAo01",
-      active: true,
+      active: founderActive,
     },
     owner: {
-      label: "Pet Owner Membership",
-      price: "$1.50/month or $15/year",
-      active: false,
+      label: membershipInfo.owner.name,
+      price: membershipInfo.owner.price,
+      active: !founderActive,
     },
     provider: {
-      label: "Pet Service Provider Membership",
-      price: "$1.50/month or $15/year",
-      active: false,
+      label: membershipInfo.provider.name,
+      price: membershipInfo.provider.price,
+      active: !founderActive,
     },
     both: {
-      label: "Owner + Provider Membership",
-      price: "$2/month or $20/year",
-      active: false,
+      label: membershipInfo.both.name,
+      price: membershipInfo.both.price,
+      active: !founderActive,
     },
   };
 
@@ -72,16 +76,22 @@ function Join() {
           <form className="join-form" onSubmit={handleSubmit}>
             <div className="form__group">
               <label htmlFor="member__type">Membership Type</label>
+
               <select id="member__type" value={membership} required disabled>
-                <option value="founder">Founder Membership - $10/year</option>
+                <option value="founder">
+                  {membershipInfo.founder.name} - {membershipInfo.founder.price}
+                </option>
+
                 <option value="owner">
-                  Pet Owner Membership - $1.50/month or $15/year
+                  {membershipInfo.owner.name} - {membershipInfo.owner.price}
                 </option>
+
                 <option value="provider">
-                  Pet Service Provider Membership - $1.50/month or $15/year
+                  {membershipInfo.provider.name} - {membershipInfo.provider.price}
                 </option>
+
                 <option value="both">
-                  Owner + Provider Membership - $2/month or $20/year
+                  {membershipInfo.both.name} - {membershipInfo.both.price}
                 </option>
               </select>
             </div>
