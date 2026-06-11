@@ -3,8 +3,8 @@
 ## Membership
 - [ ] Connect Supabase membership count
 - [ ] Replace hardcoded memberCount
-- [ ] Activate Stripe pricing tables after Founder fills
-- [ ] Test Founder → Standard automatic switch
+
+
 
 ## Providers
 - [ ] Provider profile enhancements
