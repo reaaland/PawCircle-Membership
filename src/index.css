@@ -1343,6 +1343,12 @@ gap: 20px;
   text-decoration: underline;
 }
 
+.provider__status {
+  margin: 8px 0;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
 footer {
   background: #000;
   padding: 48px 24px 24px;

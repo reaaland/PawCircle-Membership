@@ -2,11 +2,18 @@ import { useState, useEffect } from "react";
 import providers from "../data/providers.json";
 import MessageModal from "./MessageModal";
 
+
 function Providers() {
   const [selectedProvider, setSelectedProvider] = useState(null);
   const [loading, setLoading] = useState(true);
   const [sortOption, setSortOption] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
+
+  const statusLabels = {
+  accepting: "🟢 Accepting New Clients",
+  limited: "🟡 Limited Availability",
+  notAccepting: "🔴 Not Accepting New Clients",
+};
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -120,6 +127,10 @@ function Providers() {
                   <p>{provider.experience}</p>
 
                   <p>Service Area: {provider.serviceRadiusMiles} miles</p>
+
+                  <p className="provider__status">
+                  {statusLabels[provider.availabilityStatus]}
+                </p>
 
                   <p>
                     {provider.membershipLevel} Member • Since{" "}

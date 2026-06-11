@@ -37,3 +37,18 @@ export const stripePricingTables = {
   provider: "prctbl_1TgtMDGgktsetxqREu7vZP8J",
   both: "prctbl_1TgtNzGgktsetxqR7UC17Bfu",
 };
+
+export const availabilityStatuses = [
+  {
+    value: "accepting",
+    label: "🟢 Accepting New Clients",
+  },
+  {
+    value: "limited",
+    label: "🟡 Limited Availability (Select Requests)",
+  },
+  {
+    value: "notAccepting",
+    label: "🔴 Not Accepting New Clients",
+  },
+];

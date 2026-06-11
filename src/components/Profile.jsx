@@ -1,22 +1,24 @@
 import { Link, useNavigate } from "react-router-dom";
+import { availabilityStatuses } from "../Config/membershipConfig";
 
 function Profile() {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-function handleSave() {
-  navigate("/dashboard");
-}
+  function handleSave() {
+    navigate("/dashboard");
+  }
+
   return (
     <section id="profile">
       <div className="container">
         <div className="row row__column">
-         <div className="page__header">
+          <div className="page__header">
             <h2>My Profile</h2>
 
             <Link to="/dashboard" className="page__close">
-                ✕
+              ✕
             </Link>
-            </div>
+          </div>
 
           <div className="profile__card">
             <h3>Member Information</h3>
@@ -49,6 +51,32 @@ function handleSave() {
                   <option>Pet Service Provider</option>
                   <option>Pet Owner + Provider</option>
                 </select>
+              </div>
+
+              <div className="form__group">
+                <label>Provider Availability</label>
+
+                <p className="profile__helper">
+                  Let pet owners know whether you are currently taking new
+                  client requests.
+                </p>
+
+                <div className="availability__options">
+                  {availabilityStatuses.map((status) => (
+                    <label
+                      key={status.value}
+                      className="availability__option"
+                    >
+                      <input
+                        type="radio"
+                        name="availabilityStatus"
+                        value={status.value}
+                        defaultChecked={status.value === "accepting"}
+                      />
+                      <span>{status.label}</span>
+                    </label>
+                  ))}
+                </div>
               </div>
 
               <div className="form__group">
