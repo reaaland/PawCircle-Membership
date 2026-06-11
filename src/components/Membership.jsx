@@ -83,11 +83,9 @@ function Membership() {
           <h2>Simple, Transparent Pricing</h2>
 
           <p className="pricing__intro">
-            The first 500 members have the opportunity to join as Founder
-            Members and lock in Founder pricing while their membership remains
-            active. Once Founder Memberships are filled, standard membership
-            options will be available for pet owners, pet service providers, and
-            members who are both.
+            {founderActive
+              ? "The first 500 members have the opportunity to join as Founder Members and lock in Founder pricing while their membership remains active. Once Founder Memberships are filled, standard membership options will be available for pet owners, pet service providers, and members who are both."
+              : "Choose the PawCircle membership that best fits how you plan to use the community. Standard membership options are available for pet owners, pet service providers, and members who are both."}
           </p>
 
           <div className="pricing__wrapper">
