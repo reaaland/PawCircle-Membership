@@ -17,7 +17,7 @@ function Providers() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 800);
+    }, 1200);
 
     return () => clearTimeout(timer);
   }, []);
@@ -41,12 +41,12 @@ function Providers() {
       return b.name.localeCompare(a.name);
     }
 
-    if (sortOption === "NEWEST") {
-      return new Date(b.memberSince) - new Date(a.memberSince);
+    if (sortOption === "SERVICE") {
+      return a.service.localeCompare(b.service);
     }
 
-    if (sortOption === "OLDEST") {
-      return new Date(a.memberSince) - new Date(b.memberSince);
+    if (sortOption === "CITY") {
+      return a.city.localeCompare(b.city);
     }
 
     return 0;
@@ -83,8 +83,8 @@ function Providers() {
                 <option value="">Sort providers</option>
                 <option value="AZ">Name A-Z</option>
                 <option value="ZA">Name Z-A</option>
-                <option value="NEWEST">Newest members</option>
-                <option value="OLDEST">Oldest members</option>
+                <option value="SERVICE">Service A-Z</option>
+                <option value="CITY">City A-Z</option>
               </select>
             </div>
           </div>
