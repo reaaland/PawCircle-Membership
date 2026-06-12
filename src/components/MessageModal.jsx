@@ -23,7 +23,11 @@ function MessageModal({ provider, onClose }) {
   return (
     <div className="modal__overlay">
       <div className="message__modal">
-        <button className="modal__close" onClick={onClose}>
+        <button
+          className="modal__close"
+          onClick={onClose}
+          disabled={isSending}
+        >
           ×
         </button>
 

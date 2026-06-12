@@ -7,6 +7,16 @@ function Providers() {
   const [loading, setLoading] = useState(true);
   const [sortOption, setSortOption] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
+  const [openingProviderId, setOpeningProviderId] = useState(null);
+
+function handleContactProvider(provider) {
+  setOpeningProviderId(provider.id);
+
+  setTimeout(() => {
+    setSelectedProvider(provider);
+    setOpeningProviderId(null);
+  }, 800);
+}
 
   const statusLabels = {
     accepting: "🟢 Accepting New Clients",
@@ -60,10 +70,11 @@ function Providers() {
             <div>
               <h2>Provider Directory Preview</h2>
 
-             <p className="preview__notice">
-              Browse sample <span className="purple">PawCircle</span>{" "}
-                provider profiles. Full provider listings will be available to members, and
-                the public preview will be removed once PawCircle reaches 300 members.
+              <p className="preview__notice">
+                Browse sample <span className="purple">PawCircle</span>{" "}
+                provider profiles. Full provider listings will be available to
+                members, and the public preview will be removed once PawCircle
+                reaches 300 members.
               </p>
             </div>
 
@@ -132,12 +143,15 @@ function Providers() {
 
                   <p>{provider.bio}</p>
 
-                  <button
-                    className="provider__contact-btn"
-                    onClick={() => setSelectedProvider(provider)}
-                  >
-                    Contact Provider
-                  </button>
+                 <button
+                  className="provider__contact-btn"
+                  onClick={() => handleContactProvider(provider)}
+                  disabled={openingProviderId === provider.id}
+                >
+                  {openingProviderId === provider.id
+                    ? "🐾 Opening Message..."
+                    : "Contact Provider"}
+                </button>
                 </div>
               ))}
             </div>

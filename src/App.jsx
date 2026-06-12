@@ -29,7 +29,7 @@ import ComingSoonPage from "./pages/ComingSoonPage";
 function AppLayout() {
 const location = useLocation();
 const launchDate = new Date("June 27, 2026 09:00:00").getTime();
-const isBeforeLaunch = false;
+const isBeforeLaunch = new Date().getTime() < launchDate;
 const isComingSoon = location.pathname === "/coming-soon";
 const hideLayout = isBeforeLaunch || isComingSoon;
 
