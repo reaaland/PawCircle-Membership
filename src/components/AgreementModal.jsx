@@ -7,17 +7,22 @@ function AgreementModal({ onClose, paymentLink }) {
   const [acceptedTerms, setAcceptedTerms] = useState(false);
   const [acceptedPrivacy, setAcceptedPrivacy] = useState(false);
   const [acceptedCode, setAcceptedCode] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const allAccepted = acceptedTerms && acceptedPrivacy && acceptedCode;
 
   function handleContinue(e) {
-    e.preventDefault();
-    e.stopPropagation();
+  e.preventDefault();
+  e.stopPropagation();
 
-    if (!allAccepted || !paymentLink) return;
+  if (!allAccepted || !paymentLink) return;
 
+  setIsLoading(true);
+
+  setTimeout(() => {
     window.location.assign(paymentLink);
-  }
+  }, 800);
+}
 
   return (
     <div className="modal__backdrop">
@@ -85,12 +90,14 @@ function AgreementModal({ onClose, paymentLink }) {
         </div>
 
         <button
-          className="btn"
-          disabled={!allAccepted}
-          onClick={handleContinue}
-        >
-          Agree & Continue to Checkout
-        </button>
+      className="btn"
+      disabled={!allAccepted || isLoading}
+      onClick={handleContinue}
+    >
+      {isLoading
+        ? "🐾 Redirecting to Checkout..."
+        : "Agree & Continue to Checkout"}
+    </button>
       </div>
     </div>
   );
