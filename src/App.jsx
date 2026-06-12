@@ -19,6 +19,7 @@ import MembershipDetails from "./components/MembershipDetails";
 import AccountSettings from "./components/AccountSettings";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
+import ComingSoonPage from "./pages/ComingSoonPage";
 
 
 function App() {
@@ -44,6 +45,7 @@ function App() {
     <Route path="/profile" element={<Profile />} />
     <Route path="/details" element={<MembershipDetails />} />
     <Route path="/account" element={<AccountSettings />} />
+    <Route path="/coming-soon" element={<ComingSoonPage />} />
 
   </Routes>
 
