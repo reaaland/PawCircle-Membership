@@ -60,10 +60,10 @@ function Providers() {
             <div>
               <h2>Provider Directory Preview</h2>
 
-              <p className="preview__notice">
-                Browse sample <span className="purple">PawCircle</span>{" "}
-                provider profiles. Full provider listings will be available to
-                members.
+             <p className="preview__notice">
+              Browse sample <span className="purple">PawCircle</span>{" "}
+                provider profiles. Full provider listings will be available to members, and
+                the public preview will be removed once PawCircle reaches 300 members.
               </p>
             </div>
 
