@@ -463,12 +463,12 @@ nav {
 
 .about__hero--img {
   width: 100%;
-  height: 420px;
+  height: 400px;
   display: block;
   margin: 0 auto;
   border-radius: 24px;
   object-fit: cover;
-  object-position: center bottom;
+  object-position: center center;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
 }
 
@@ -590,34 +590,11 @@ nav {
   vertical-align: middle;
 }
 
-.pioneer__card,
 .regular__card {
   background: #f8fafc;
   opacity: 0.6;
   filter: grayscale(100%);
   pointer-events: none;
-}
-
-.pioneer__card {
-  background: #f8fafc;
-  border: 2px solid #cbd5e1;
-}
-
-.pioneer__card .pricing__badge {
-  background: #64748b;
-  color: white;
-}
-
-.pioneer-paw,
-.pioneer-paw path {
-  color: #c0c0c0 !important;
-  fill: #c0c0c0 !important;
-}
-
-.pioneer-paw {
-  font-size: 24px;
-  margin-right: 8px;
-  vertical-align: middle;
 }
 
 .pricing__badge {
@@ -896,7 +873,7 @@ nav {
 
 .services-page__img {
   width: 100%;
-  height: 220px;
+  height: 300px;
   object-fit: cover;
   border-radius: 18px;
   margin-bottom: 20px;
@@ -911,7 +888,7 @@ nav {
 }
 
 .services-page__img--cat {
-  object-position: center top;
+  object-position: center 20%;
 }
 
 .services-page__img--taxi {
@@ -919,7 +896,7 @@ nav {
 }
 
 .services-page__img--boarding {
-  object-position: center center;
+  object-position: center 20%;
 }
 
 .services-page__img--farm {
@@ -1943,7 +1920,7 @@ footer {
   .services__photo-card img {
     height: 200px;
   }
-
+ 
   .faq-page {
     padding: 72px 20px;
   }
@@ -1955,4 +1932,9 @@ footer {
   .faq__item {
     border-radius: 20px;
   }
+
+     .about__hero--img {
+    object-position: center 40%;
+  }
 }
+
