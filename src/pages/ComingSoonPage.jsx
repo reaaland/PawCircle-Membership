@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/PC_Logo.png";
+
 
 function ComingSoonPage() {
   const navigate = useNavigate();
@@ -69,8 +70,13 @@ function ComingSoonPage() {
           </div>
 
           <p className="coming-soon__founder">
-            Founder Memberships will be available to the first 500 members.
+            Be one of the first 500 Founder Members and lock in Founder pricing while
+            your membership remains active.
           </p>
+
+            <Link to="/join" className="btn coming-soon__btn">
+            Become a Founder Member
+            </Link>
         </div>
       </div>
     </section>

@@ -1669,6 +1669,72 @@ footer .container {
   text-decoration: underline;
 }
 
+.coming-soon {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 4rem 1rem;
+}
+
+.coming-soon__card {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.coming-soon__logo {
+  width: 180px;
+  max-width: 100%;
+  margin-bottom: 2rem;
+}
+
+.coming-soon h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.coming-soon h2 {
+  margin: 2rem 0;
+}
+
+.countdown {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin: 2rem 0;
+}
+
+.countdown div {
+  background: white;
+  border-radius: 12px;
+  padding: 1rem;
+  min-width: 100px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.countdown strong {
+  display: block;
+  font-size: 2rem;
+  color: #6c2cff;
+}
+
+.countdown span {
+  display: block;
+  margin-top: 0.25rem;
+}
+
+.coming-soon__founder {
+  font-weight: 600;
+  margin-top: 2rem;
+}
+
+.coming-soon__btn {
+  margin-top: 16px;
+  display: inline-block;
+}
+
 @media (max-width: 1050px) {
   .contact-page {
     padding: 96px 24px;
