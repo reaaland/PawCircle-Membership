@@ -902,6 +902,30 @@ nav {
   margin-bottom: 20px;
 }
 
+.services-page__img--walking {
+  object-position: center center;
+}
+
+.services-page__img--sitting {
+  object-position: center center;
+}
+
+.services-page__img--cat {
+  object-position: center top;
+}
+
+.services-page__img--taxi {
+  object-position: center center;
+}
+
+.services-page__img--boarding {
+  object-position: center center;
+}
+
+.services-page__img--farm {
+  object-position: center center;
+}
+
 .services-page__card {
   display: flex;
   flex-direction: column;

@@ -12,6 +12,7 @@ function ServicesPage() {
     {
       title: "Dog Walking",
       image: riverwalk,
+      imageClass: "services-page__img--walking",
       description:
         "Regular walks, exercise, and companionship tailored to your pet's routine.",
       button: "Find Providers",
@@ -19,6 +20,7 @@ function ServicesPage() {
     {
       title: "Pet Sitting",
       image: hamsterdog,
+      imageClass: "services-page__img--sitting",
       description:
         "In-home care that allows pets to remain comfortable in familiar surroundings.",
       button: "Find Providers",
@@ -26,6 +28,7 @@ function ServicesPage() {
     {
       title: "Cat Care",
       image: catWindow,
+      imageClass: "services-page__img--cat",
       description:
         "Drop-in visits, feeding, litter maintenance, medication support, and playtime.",
       button: "Find Providers",
@@ -33,6 +36,7 @@ function ServicesPage() {
     {
       title: "Pet Taxi",
       image: petTaxi,
+      imageClass: "services-page__img--taxi",
       description:
         "Transportation for veterinary appointments, grooming visits, daycare, and more.",
       button: "Find Providers",
@@ -40,6 +44,7 @@ function ServicesPage() {
     {
       title: "Boarding",
       image: sleepyPup,
+      imageClass: "services-page__img--boarding",
       description:
         "Overnight care provided in a caregiver's home when available.",
       button: "Find Providers",
@@ -47,6 +52,7 @@ function ServicesPage() {
     {
       title: "Farm & Hobby Farm Care",
       image: horseDog,
+      imageClass: "services-page__img--farm",
       description:
         "Care for chickens, ducks, goats, sheep, and other farm animals while you're away. Services vary based on each provider's experience and comfort level.",
       button: "Find Providers",
@@ -68,11 +74,11 @@ function ServicesPage() {
           <div className="services-page__grid">
             {services.map((service) => (
               <div className="services-page__card" key={service.title}>
-                <img
-                  src={service.image}
-                  alt={service.title}
-                  className="services-page__img"
-                />
+               <img
+              src={service.image}
+              alt={service.title}
+              className={`services-page__img ${service.imageClass}`}
+            />
 
                 <h2>{service.title}</h2>
                 <p>{service.description}</p>
