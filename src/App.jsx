@@ -17,40 +17,55 @@ import Messages from "./components/Messages";
 import Profile from "./components/Profile";
 import MembershipDetails from "./components/MembershipDetails";
 import AccountSettings from "./components/AccountSettings";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
 import ComingSoonPage from "./pages/ComingSoonPage";
 
+function AppLayout() {
+  const location = useLocation();
+  const isComingSoon = location.pathname === "/coming-soon";
+
+  return (
+    <>
+      <ScrollToTop />
+
+      {!isComingSoon && <Navbar />}
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/membership" element={<MembershipPage />} />
+        <Route path="/services" element={<ServicesPage />} />
+        <Route path="/join" element={<JoinPage />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/providers" element={<ProviderPage />} />
+        <Route path="/faq" element={<FAQPage />} />
+        <Route path="/code" element={<CodeOfConductPage />} />
+        <Route path="/privacy" element={<PrivacyPolicyPage />} />
+        <Route path="/terms" element={<TermsOfUsePage />} />
+        <Route path="/contact" element={<ContactPage />} />
+        <Route path="/messages" element={<Messages />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/details" element={<MembershipDetails />} />
+        <Route path="/account" element={<AccountSettings />} />
+        <Route path="/coming-soon" element={<ComingSoonPage />} />
+      </Routes>
+
+      {!isComingSoon && <Footer />}
+    </>
+  );
+}
 
 function App() {
   return (
-<Router>
-   <ScrollToTop />
-  <Navbar />
-
-  <Routes>
-    <Route path="/" element={<Home />} />
-    <Route path="/about" element={<AboutPage />} />
-    <Route path="/membership" element={<MembershipPage />} />
-    <Route path="/services" element={<ServicesPage />} />
-    <Route path="/join" element={<JoinPage />} />
-     <Route path="/dashboard" element={<Dashboard />} />
-    <Route path="/providers" element={<ProviderPage />} />
-    <Route path="/faq" element={<FAQPage />} />
-    <Route path="/code" element={<CodeOfConductPage />} />
-    <Route path="/privacy" element={<PrivacyPolicyPage />} />
-    <Route path="/terms" element={<TermsOfUsePage />} />
-    <Route path="/contact" element={<ContactPage />} />
-    <Route path="/messages" element={<Messages />} />
-    <Route path="/profile" element={<Profile />} />
-    <Route path="/details" element={<MembershipDetails />} />
-    <Route path="/account" element={<AccountSettings />} />
-    <Route path="/coming-soon" element={<ComingSoonPage />} />
-
-  </Routes>
-
-  <Footer />
-</Router>
+    <Router>
+      <AppLayout />
+    </Router>
   );
 }
 
