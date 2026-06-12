@@ -27,17 +27,20 @@ import ScrollToTop from "./components/ScrollToTop";
 import ComingSoonPage from "./pages/ComingSoonPage";
 
 function AppLayout() {
-  const location = useLocation();
-  const isComingSoon = location.pathname === "/coming-soon";
+const location = useLocation();
+const launchDate = new Date("June 27, 2026 09:00:00").getTime();
+const isBeforeLaunch = new Date().getTime() < launchDate;
+const isComingSoon = location.pathname === "/coming-soon";
+const hideLayout = isBeforeLaunch || isComingSoon;
 
   return (
     <>
       <ScrollToTop />
 
-      {!isComingSoon && <Navbar />}
+      {!hideLayout && <Navbar />}
 
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={isBeforeLaunch ? <ComingSoonPage /> : <Home />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/membership" element={<MembershipPage />} />
         <Route path="/services" element={<ServicesPage />} />
@@ -56,7 +59,7 @@ function AppLayout() {
         <Route path="/coming-soon" element={<ComingSoonPage />} />
       </Routes>
 
-      {!isComingSoon && <Footer />}
+      {!hideLayout && <Footer />}
     </>
   );
 }
