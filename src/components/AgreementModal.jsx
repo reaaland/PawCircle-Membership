@@ -98,8 +98,7 @@ function AgreementModal({ onClose, paymentLink }) {
           <span>
             <span>
               I understand that PawCircle is a membership platform designed to help
-              members connect with one another. PawCircle does not provide pet care
-              services, verify members, or guarantee services.
+              members connect with one another. PawCircle does <strong>not</strong> provide pet care services, verify members, or guarantee services.
             </span>
           </span>
         </label>
