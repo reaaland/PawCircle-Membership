@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import logo from "../assets/PC_Logo.png";
 
 
@@ -74,9 +74,9 @@ function ComingSoonPage() {
             your membership remains active.
           </p>
 
-            <Link to="/join" className="btn coming-soon__btn">
-            Become a Founder Member
-            </Link>
+            <button type="button" className="btn coming-soon__btn">
+              Founder Membership Opens June 27
+            </button>
         </div>
       </div>
     </section>
