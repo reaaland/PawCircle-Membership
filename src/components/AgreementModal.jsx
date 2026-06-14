@@ -7,9 +7,11 @@ function AgreementModal({ onClose, paymentLink }) {
   const [acceptedTerms, setAcceptedTerms] = useState(false);
   const [acceptedPrivacy, setAcceptedPrivacy] = useState(false);
   const [acceptedCode, setAcceptedCode] = useState(false);
+  const [acceptedDisclaimer, setAcceptedDisclaimer] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-  const allAccepted = acceptedTerms && acceptedPrivacy && acceptedCode;
+  const allAccepted =
+  acceptedTerms && acceptedPrivacy && acceptedCode && acceptedDisclaimer;
 
   function handleContinue(e) {
   e.preventDefault();
@@ -87,6 +89,20 @@ function AgreementModal({ onClose, paymentLink }) {
               .
             </span>
           </label>
+          <label className="agreement__choice">
+          <input
+            type="checkbox"
+            checked={acceptedDisclaimer}
+            onChange={(e) => setAcceptedDisclaimer(e.target.checked)}
+          />
+          <span>
+            <span>
+              I understand that PawCircle is a membership platform designed to help
+              members connect with one another. PawCircle does not provide pet care
+              services, verify members, or guarantee services.
+            </span>
+          </span>
+        </label>
         </div>
 
         <button
