@@ -65,6 +65,34 @@ function FAQPage() {
             </div>
 
             <div className="faq__item">
+              <h2>What should pet owners ask before choosing a provider?</h2>
+              <p>
+                Pet owners are encouraged to ask about experience, availability, services
+                offered, rates, references, emergency plans, and whether the provider is a
+                good fit for their pet’s needs, personality, and routine.
+              </p>
+            </div>
+
+            <div className="faq__item">
+              <h2>What should pet service providers share with pet owners?</h2>
+              <p>
+                Pet service providers are encouraged to clearly share their services,
+                availability, rates, experience, policies, communication preferences, and
+                any information that helps pet owners decide whether the arrangement is a
+                good fit.
+              </p>
+            </div>
+
+            <div className="faq__item">
+              <h2>Does PawCircle manage agreements between members?</h2>
+              <p>
+                No. PawCircle helps members connect directly. Any service details,
+                agreements, payments, meet-and-greets, cancellations, and expectations are
+                handled directly between the pet owner and pet service provider.
+              </p>
+            </div>
+
+            <div className="faq__item">
               <h2>Can I join as both a pet owner and service provider?</h2>
               <p>
                 Yes. PawCircle supports pet owners, pet service providers, and
