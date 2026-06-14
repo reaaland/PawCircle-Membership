@@ -27,20 +27,30 @@ import ScrollToTop from "./components/ScrollToTop";
 import ComingSoonPage from "./pages/ComingSoonPage";
 
 function AppLayout() {
-const location = useLocation();
-const launchDate = new Date("June 27, 2026 09:00:00").getTime();
-const isBeforeLaunch = new Date().getTime() < launchDate;
-const isComingSoon = location.pathname === "/coming-soon";
-const hideLayout = isBeforeLaunch || isComingSoon;
+  const location = useLocation();
+
+  const isLocalhost =
+    window.location.hostname === "localhost" ||
+    window.location.hostname === "127.0.0.1";
+
+  const launchDate = new Date("June 27, 2026 09:00:00").getTime();
+  const isBeforeLaunch = Date.now() < launchDate;
+
+  const isComingSoon = location.pathname === "/coming-soon";
+
+  // Show Coming Soon page on Vercel before launch
+  if (isBeforeLaunch && !isLocalhost) {
+    return <ComingSoonPage />;
+  }
 
   return (
     <>
       <ScrollToTop />
 
-      {!hideLayout && <Navbar />}
+      {!isComingSoon && <Navbar />}
 
       <Routes>
-        <Route path="/" element={isBeforeLaunch ? <ComingSoonPage /> : <Home />} />
+        <Route path="/" element={<Home />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/membership" element={<MembershipPage />} />
         <Route path="/services" element={<ServicesPage />} />
@@ -59,7 +69,7 @@ const hideLayout = isBeforeLaunch || isComingSoon;
         <Route path="/coming-soon" element={<ComingSoonPage />} />
       </Routes>
 
-      {!hideLayout && <Footer />}
+      {!isComingSoon && <Footer />}
     </>
   );
 }
