@@ -29,6 +29,11 @@ function Dashboard() {
             <p>Search local providers by name, city, or service.</p>
           </Link>
 
+            <Link to="/pet-owners" className="dashboard__card">
+              <h3>Find Pet Owners</h3>
+              <p>Search local pet owners by name, city, or pet care needs.</p>
+            </Link>
+
           <Link to="/profile" className="dashboard__card">
             <h3>My Profile</h3>
             <p>Create and manage your <span className="purple">PawCircle</span> member profile.</p>
