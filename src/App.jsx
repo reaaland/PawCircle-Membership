@@ -8,6 +8,7 @@ import ServicesPage from "./pages/ServicesPage";
 import JoinPage from "./pages/JoinPage";
 import Dashboard from "./components/Dashboard";
 import ProviderPage from "./pages/ProviderPage";
+import PetOwnersPage from "./pages/PetOwnersPage.jsx";
 import FAQPage from "./pages/FAQPage";
 import CodeOfConductPage from "./pages/CodeOfConductPage";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
@@ -57,6 +58,7 @@ function AppLayout() {
         <Route path="/join" element={<JoinPage />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/providers" element={<ProviderPage />} />
+        <Route path="/pet-owners" element={<PetOwnersPage />} />
         <Route path="/faq" element={<FAQPage />} />
         <Route path="/code" element={<CodeOfConductPage />} />
         <Route path="/privacy" element={<PrivacyPolicyPage />} />
