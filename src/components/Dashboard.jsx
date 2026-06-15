@@ -2,41 +2,50 @@ import { Link } from "react-router-dom";
 import dogKitten from "../assets/kitten_dog_toys.png";
 
 function Dashboard() {
+  const profileType = "both"; 
+
   return (
     <section id="dashboard">
       <div className="container dashboard__container">
-       <div className="dashboard__welcome">
-        <img
-          src={dogKitten}
-          alt="Dog and kitten together"
-          className="dashboard__welcome--img"
-        />
+        <div className="dashboard__welcome">
+          <img
+            src={dogKitten}
+            alt="Dog and kitten together"
+            className="dashboard__welcome--img"
+          />
 
-        <div className="dashboard__welcome--content">
-          <h2>
-            Welcome Back to <span className="purple">PawCircle</span>
-          </h2>
+          <div className="dashboard__welcome--content">
+            <h2>
+              Welcome Back to <span className="purple">PawCircle</span>
+            </h2>
 
-          <p className="dashboard__intro">
-            Connect with pet owners and pet service providers in your community.
-          </p>
+            <p className="dashboard__intro">
+              Connect with pet owners and pet service providers in your community.
+            </p>
+          </div>
         </div>
-      </div>
 
         <div className="dashboard__cards">
-          <Link to="/providers" className="dashboard__card">
-            <h3>Find Pet Care</h3>
-            <p>Search local providers by name, city, or service.</p>
-          </Link>
+          {(profileType === "owner" || profileType === "both") && (
+            <Link to="/providers" className="dashboard__card">
+              <h3>Find Pet Care</h3>
+              <p>Search local providers by name, city, or service.</p>
+            </Link>
+          )}
 
+          {(profileType === "provider" || profileType === "both") && (
             <Link to="/pet-owners" className="dashboard__card">
               <h3>Find Pet Owners</h3>
               <p>Search local pet owners by name, city, or pet care needs.</p>
             </Link>
+          )}
 
           <Link to="/profile" className="dashboard__card">
             <h3>My Profile</h3>
-            <p>Create and manage your <span className="purple">PawCircle</span> member profile.</p>
+            <p>
+              Create and manage your <span className="purple">PawCircle</span>{" "}
+              member profile.
+            </p>
           </Link>
 
           <Link to="/messages" className="dashboard__card">

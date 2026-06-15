@@ -53,7 +53,23 @@ function AccountSettings() {
               </select>
             </div>
           </div>
+          <div className="settings__card">
+            <h3>Pet Owner Preferences</h3>
 
+            <p>
+              Choose what types of pet care connections and support you may be looking
+              for through PawCircle.
+            </p>
+
+            <div className="services__checkboxes">
+              <label><input type="checkbox" /> Looking for Dog Walking</label>
+              <label><input type="checkbox" /> Looking for Drop-In Visits</label>
+              <label><input type="checkbox" /> Looking for Pet Sitting</label>
+              <label><input type="checkbox" /> Looking for Overnight Care</label>
+              <label><input type="checkbox" /> Looking for Cat Care</label>
+              <label><input type="checkbox" /> Looking for Pet Taxi</label>
+            </div>
+          </div>
           <div className="settings__card">
             <h3>Provider Availability</h3>
 
