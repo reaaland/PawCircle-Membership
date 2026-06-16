@@ -39,9 +39,7 @@ function ProviderPreview() {
             ))}
         </div>
 
-        <Link to="/membership" className="btn">
-        Join PawCircle
-        </Link>
+          <JoinButton text="Join PawCircle" membershipType="founder" />
                         
             <p className="provider-preview__disclaimer">
             Provider profiles shown are sample profiles for demonstration purposes and do not represent actual PawCircle members.
