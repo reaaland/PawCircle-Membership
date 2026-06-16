@@ -25,16 +25,29 @@ function AccountSettings() {
               <label><input type="checkbox" /> New Messages</label>
               <label><input type="checkbox" /> Message Replies</label>
               <label><input type="checkbox" /> Membership Updates</label>
-              <label><input type="checkbox" /> PawCircle Announcements</label>
             </div>
           </div>
 
           <div className="settings__card">
-            <h3>Privacy Preferences</h3>
+            <h3>Communication Preferences</h3>
 
             <p>
-              Control how your profile and contact preferences appear to other
-              PawCircle members.
+              Choose how you would like to communicate with other PawCircle
+              members after the first introduction.
+            </p>
+
+            <div className="services__checkboxes">
+              <label><input type="checkbox" /> In-App Messages</label>
+              <label><input type="checkbox" /> Email Notifications</label>
+              <label><input type="checkbox" /> Share Contact Information After Initial Conversation</label>
+            </div>
+          </div>
+
+          <div className="settings__card">
+            <h3>Profile Visibility</h3>
+
+            <p>
+              Control how your profile appears to other PawCircle members.
             </p>
 
             <div className="contact__visibility">
@@ -43,38 +56,35 @@ function AccountSettings() {
               </label>
 
               <select id="profileVisibility">
-                <option>
-                  Show my profile to PawCircle members
-                </option>
-
-                <option>
-                  Only show my profile when I contact someone
-                </option>
+                <option>Show my profile to PawCircle members</option>
+                <option>Only show my profile when I contact someone</option>
               </select>
             </div>
           </div>
+
           <div className="settings__card">
-            <h3>Pet Owner Preferences</h3>
+            <h3>Member Preferences</h3>
 
             <p>
-              Choose what types of pet care connections and support you may be looking
-              for through PawCircle.
+              Select the types of pet care services you are interested in
+              offering or finding through PawCircle.
             </p>
 
             <div className="services__checkboxes">
-              <label><input type="checkbox" /> Looking for Dog Walking</label>
-              <label><input type="checkbox" /> Looking for Drop-In Visits</label>
-              <label><input type="checkbox" /> Looking for Pet Sitting</label>
-              <label><input type="checkbox" /> Looking for Overnight Care</label>
-              <label><input type="checkbox" /> Looking for Cat Care</label>
-              <label><input type="checkbox" /> Looking for Pet Taxi</label>
+              <label><input type="checkbox" /> Dog Walking</label>
+              <label><input type="checkbox" /> Drop-In Visits</label>
+              <label><input type="checkbox" /> Pet Sitting</label>
+              <label><input type="checkbox" /> Overnight Care</label>
+              <label><input type="checkbox" /> Cat Care</label>
+              <label><input type="checkbox" /> Pet Taxi</label>
             </div>
           </div>
+
           <div className="settings__card">
-            <h3>Provider Availability</h3>
+            <h3>Availability Status</h3>
 
             <p>
-              Let pet owners know whether you are currently accepting new client
+              Let other members know whether you are currently accepting new
               requests.
             </p>
 
@@ -86,10 +96,8 @@ function AccountSettings() {
                   value="accepting"
                   defaultChecked
                 />
-
                 <span className="status-circle status-circle--green"></span>
-
-                Accepting New Clients
+                Accepting New Requests
               </label>
 
               <label className="availability__option">
@@ -98,10 +106,8 @@ function AccountSettings() {
                   name="availability"
                   value="limited"
                 />
-
                 <span className="status-circle status-circle--yellow"></span>
-
-                Limited Availability (Select Requests)
+                Limited Availability
               </label>
 
               <label className="availability__option">
@@ -110,10 +116,8 @@ function AccountSettings() {
                   name="availability"
                   value="closed"
                 />
-
                 <span className="status-circle status-circle--red"></span>
-
-                Not Accepting New Clients
+                Not Accepting New Requests
               </label>
             </div>
           </div>
