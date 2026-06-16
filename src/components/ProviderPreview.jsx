@@ -42,7 +42,7 @@ function ProviderPreview() {
         <Link to="/membership" className="btn">
         Join PawCircle
         </Link>
-
+                        
             <p className="provider-preview__disclaimer">
             Provider profiles shown are sample profiles for demonstration purposes and do not represent actual PawCircle members.
         </p>
