@@ -1524,6 +1524,10 @@ footer .container {
   margin-bottom: 16px;
 }
 
+.footer__logo-image {
+  filter: invert(100%);
+}
+
 .footer__content p,
 .footer__content a {
   color: #cbd5e1;
