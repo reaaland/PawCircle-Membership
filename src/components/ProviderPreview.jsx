@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import providers from "../data/providers.json";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPaw } from "@fortawesome/free-solid-svg-icons";
 
 function ProviderPreview() {
   const previewProviders = providers.slice(0, 3);
@@ -37,9 +39,9 @@ function ProviderPreview() {
             ))}
         </div>
 
-                <Link to="/membership" className="btn">
-            Join PawCircle to Access the Directory
-          </Link>
+         <Link to="/membership" className="btn">
+        <span className="paw-emoji">🐾</span> Join PawCircle
+         </Link>
 
             <p className="provider-preview__disclaimer">
             Provider profiles shown are sample profiles for demonstration purposes and do not represent actual PawCircle members.

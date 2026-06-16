@@ -553,6 +553,11 @@ nav {
   line-height: 1.5;
 }
 
+.paw-emoji {
+  color: white;
+  margin-right: 6px;
+}
+
 .pricing__intro {
   max-width: 700px;
   margin: 16px auto 40px;
