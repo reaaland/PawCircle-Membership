@@ -536,6 +536,23 @@ nav {
   margin-bottom: 0;
 }
 
+.provider-preview__grid {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin: 32px 0;
+}
+
+.provider-preview__disclaimer {
+  max-width: 700px;
+  margin: 16px auto 24px;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #666;
+  line-height: 1.5;
+}
+
 .pricing__intro {
   max-width: 700px;
   margin: 16px auto 40px;
@@ -948,15 +965,6 @@ border-color: #6415ff;
 display: grid;
 grid-template-columns: 1fr 1fr;
 gap: 20px;
-}
-
-.preview__notice {
-  margin-top: 20px;
-  padding: 16px 20px;
-  border-radius: 16px;
-  background: #f7f0ff;
-  color: #5b3f8c;
-  font-weight: 600;
 }
 
 .profile__type {

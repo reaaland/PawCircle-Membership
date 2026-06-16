@@ -17,7 +17,7 @@ function ProviderPreview() {
             and start conversations without booking fees or commissions.
           </p>
 
-          <div className="providers provider-preview__grid">
+          <div className="provider-preview__grid">
             {previewProviders.map((provider) => (
               <div className="provider__card" key={provider.id}>
                 <img
@@ -37,13 +37,13 @@ function ProviderPreview() {
             ))}
         </div>
 
-        <p className="provider-preview__disclaimer">
-            Provider profiles shown are sample profiles for demonstration purposes and do not represent actual PawCircle members.
-        </p>
-
-          <Link to="/membership" className="btn">
+                <Link to="/membership" className="btn">
             Join PawCircle to Access the Directory
           </Link>
+
+            <p className="provider-preview__disclaimer">
+            Provider profiles shown are sample profiles for demonstration purposes and do not represent actual PawCircle members.
+        </p>
         </div>
       </div>
     </section>
