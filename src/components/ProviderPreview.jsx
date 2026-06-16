@@ -39,9 +39,9 @@ function ProviderPreview() {
             ))}
         </div>
 
-         <Link to="/membership" className="btn">
-        <span className="paw-emoji">🐾</span> Join PawCircle
-         </Link>
+        <Link to="/membership" className="btn">
+        Join PawCircle
+        </Link>
 
             <p className="provider-preview__disclaimer">
             Provider profiles shown are sample profiles for demonstration purposes and do not represent actual PawCircle members.
