@@ -9,14 +9,14 @@ function Providers() {
   const [searchTerm, setSearchTerm] = useState("");
   const [openingProviderId, setOpeningProviderId] = useState(null);
 
-function handleContactProvider(provider) {
-  setOpeningProviderId(provider.id);
+  function handleContactProvider(provider) {
+    setOpeningProviderId(provider.id);
 
-  setTimeout(() => {
-    setSelectedProvider(provider);
-    setOpeningProviderId(null);
-  }, 800);
-}
+    setTimeout(() => {
+      setSelectedProvider(provider);
+      setOpeningProviderId(null);
+    }, 800);
+  }
 
   const statusLabels = {
     accepting: "🟢 Accepting New Clients",
@@ -68,13 +68,10 @@ function handleContactProvider(provider) {
         <div className="row">
           <div className="providers__top">
             <div>
-              <h2>Provider Directory Preview</h2>
+              <h2>Provider Directory</h2>
 
-              <p className="preview__notice">
-                Browse sample <span className="purple">PawCircle</span>{" "}
-                provider profiles. Full provider listings will be available to
-                members, and the public preview will be removed once PawCircle
-                reaches 300 members.
+              <p className="directory__notice">
+                Search provider profiles by name, city, or service.
               </p>
             </div>
 
@@ -156,9 +153,8 @@ function handleContactProvider(provider) {
               ))}
             </div>
           ) : (
-            <p className="preview__notice">
-              No providers match your search. Try a different name, city, or
-              service.
+            <p className="directory__notice">
+              No providers match your search. Try a different name, city, or service.
             </p>
           )}
 

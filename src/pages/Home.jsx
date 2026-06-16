@@ -4,6 +4,7 @@ import HowItWorks from "../components/HowItWorks";
 import Membership from "../components/Membership";
 import Services from "../components/Services";
 import CTASection from "../components/CTASection";
+import ProviderPreview from "../Components/ProviderPreview";
 
 
 function Home() {
@@ -12,8 +13,9 @@ function Home() {
       <Hero />
       <About />
       <HowItWorks />
-      <Membership featuredOnly />
       <Services />
+      <ProviderPreview />
+      <Membership featuredOnly />
       <CTASection />
     </>
   );
