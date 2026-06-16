@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import providers from "../data/providers.json";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaw } from "@fortawesome/free-solid-svg-icons";
-import JoinButton from "../Components/JoinButton";
+import JoinButton from "./JoinButton";
 
 function ProviderPreview() {
   const previewProviders = providers.slice(0, 3);
