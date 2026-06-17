@@ -1,5 +1,4 @@
 import Providers from "../components/Providers";
-import providers from "../data/providers";
 
 function ProvidersPage() {
   return (
@@ -7,9 +6,9 @@ function ProvidersPage() {
       <section className="page__hero">
         <div className="container">
           <div className="row">
-            <span className="section__tag">Preview Feature</span>
+            <span className="section__tag">Provider </span>
 
-            <h1>Future <span className="purple">PawCircle</span> Provider Directory</h1>
+            <h1><span className="purple">PawCircle</span> Provider Directory</h1>
 
             <p>
               Preview how <span className="purple">PawCircle</span> members will be able to browse local pet

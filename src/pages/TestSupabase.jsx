@@ -1,24 +1,32 @@
-import { useEffect } from "react";
-import { supabase } from "../lib/supabase";
+import { useEffect, useState } from "react";
+import { getProfiles } from "../Services/supabaseService";
+
+
 
 function TestSupabase() {
+  const [profiles, setProfiles] = useState([]);
+
   useEffect(() => {
-    async function testConnection() {
-      const { data, error } = await supabase
-        .from("profiles")
-        .select("*");
-
-      console.log(data);
-
-      if (error) {
-        console.error(error);
-      }
+    async function loadProfiles() {
+      const data = await getProfiles();
+      setProfiles(data);
     }
 
-    testConnection();
+    loadProfiles();
   }, []);
 
-  return <h1>Supabase Test</h1>;
+  return (
+    <div>
+      <h1>Supabase Test</h1>
+
+      {profiles.map((profile) => (
+        <div key={profile.id}>
+          <h3>{profile.full_name}</h3>
+          <p>{profile.profile_type}</p>
+        </div>
+      ))}
+    </div>
+  );
 }
 
 export default TestSupabase;

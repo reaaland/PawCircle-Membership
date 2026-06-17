@@ -1,13 +1,30 @@
 import { useState, useEffect } from "react";
-import providers from "../data/providers.json";
+import { getProviders } from "../Services/supabaseService";
 import MessageModal from "./MessageModal";
 
 function Providers() {
+  const [providers, setProviders] = useState([]);
   const [selectedProvider, setSelectedProvider] = useState(null);
   const [loading, setLoading] = useState(true);
   const [sortOption, setSortOption] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
   const [openingProviderId, setOpeningProviderId] = useState(null);
+
+  useEffect(() => {
+    async function loadProviders() {
+      const profiles = await getProviders();
+
+      setProviders(profiles); =>
+          profile.profile_type === "pet_provider" ||
+          profile.profile_type === "both"
+      );
+
+      setProviders(providerProfiles);
+      setLoading(false);
+    }
+
+    loadProviders();
+  }, []);
 
   function handleContactProvider(provider) {
     setOpeningProviderId(provider.id);
@@ -18,41 +35,23 @@ function Providers() {
     }, 800);
   }
 
-  const statusLabels = {
-    accepting: "🟢 Accepting New Clients",
-    limited: "🟡 Limited Availability",
-    notAccepting: "🔴 Not Accepting New Clients",
-  };
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 1200);
-
-    return () => clearTimeout(timer);
-  }, []);
-
   const filteredProviders = providers.filter((provider) => {
     const search = searchTerm.toLowerCase();
 
     return (
-      provider.name.toLowerCase().includes(search) ||
-      provider.city.toLowerCase().includes(search) ||
-      provider.service.toLowerCase().includes(search)
+      provider.full_name?.toLowerCase().includes(search) ||
+      provider.city?.toLowerCase().includes(search) ||
+      provider.bio?.toLowerCase().includes(search)
     );
   });
 
   const sortedProviders = [...filteredProviders].sort((a, b) => {
     if (sortOption === "AZ") {
-      return a.name.localeCompare(b.name);
+      return a.full_name.localeCompare(b.full_name);
     }
 
     if (sortOption === "ZA") {
-      return b.name.localeCompare(a.name);
-    }
-
-    if (sortOption === "SERVICE") {
-      return a.service.localeCompare(b.service);
+      return b.full_name.localeCompare(a.full_name);
     }
 
     if (sortOption === "CITY") {
@@ -91,7 +90,6 @@ function Providers() {
                 <option value="">Sort providers</option>
                 <option value="AZ">Name A-Z</option>
                 <option value="ZA">Name Z-A</option>
-                <option value="SERVICE">Service A-Z</option>
                 <option value="CITY">City A-Z</option>
               </select>
             </div>
@@ -116,45 +114,36 @@ function Providers() {
             <div className="providers">
               {sortedProviders.map((provider) => (
                 <div className="provider__card" key={provider.id}>
-                  <img
-                    src={provider.image}
-                    alt={provider.name}
-                    className="provider__img"
-                  />
+                  <h3>{provider.full_name}</h3>
 
-                  <h3>{provider.name}</h3>
-
-                  <p className="provider__service">{provider.service}</p>
+                  <p className="provider__service">
+                    {provider.profile_type === "both"
+                      ? "Pet Owner & Service Provider"
+                      : "Pet Service Provider"}
+                  </p>
 
                   <p>
                     {provider.city}, {provider.state}
                   </p>
 
-                  <p>{provider.experience}</p>
-
-                  {provider.availabilityStatus && (
-                    <p className="provider__status">
-                      {statusLabels[provider.availabilityStatus]}
-                    </p>
-                  )}
-
                   <p>{provider.bio}</p>
 
-                 <button
-                  className="provider__contact-btn"
-                  onClick={() => handleContactProvider(provider)}
-                  disabled={openingProviderId === provider.id}
-                >
-                  {openingProviderId === provider.id
-                    ? "🐾 Opening Message..."
-                    : "Contact Provider"}
-                </button>
+                  <button
+                    className="provider__contact-btn"
+                    onClick={() => handleContactProvider(provider)}
+                    disabled={openingProviderId === provider.id}
+                  >
+                    {openingProviderId === provider.id
+                      ? "🐾 Opening Message..."
+                      : "Contact Provider"}
+                  </button>
                 </div>
               ))}
             </div>
           ) : (
             <p className="directory__notice">
-              No providers match your search. Try a different name, city, or service.
+              No providers match your search. Try a different name, city, or
+              service.
             </p>
           )}
 
