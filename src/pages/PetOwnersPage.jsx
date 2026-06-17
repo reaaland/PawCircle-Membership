@@ -1,4 +1,5 @@
-import PetOwners from "../pages/PetOwnersPage";
+import PetOwners from "../components/PetOwners";
+
 
 function PetOwnersPage() {
   return (

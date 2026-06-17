@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import dogKitten from "../assets/kitten_dog_toys.png";
 
 function Dashboard() {
-  const profileType = "both"; 
+  const profileType = "both";
 
   return (
     <section id="dashboard">
@@ -20,23 +20,24 @@ function Dashboard() {
             </h2>
 
             <p className="dashboard__intro">
-              Connect with pet owners and pet service providers in your community.
+              Manage your profile, browse member directories, and make direct
+              pet care connections.
             </p>
           </div>
         </div>
 
         <div className="dashboard__cards">
-          {(profileType === "owner" || profileType === "both") && (
+          {(profileType === "pet_owner" || profileType === "both") && (
             <Link to="/providers" className="dashboard__card">
               <h3>Find Pet Care</h3>
-              <p>Search local providers by name, city, or service.</p>
+              <p>Search pet service provider profiles.</p>
             </Link>
           )}
 
-          {(profileType === "provider" || profileType === "both") && (
+          {(profileType === "pet_provider" || profileType === "both") && (
             <Link to="/pet-owners" className="dashboard__card">
-              <h3>Find Pet Owners</h3>
-              <p>Search local pet owners by name, city, or pet care needs.</p>
+              <h3>View Pet Owner Profiles</h3>
+              <p>Search pet owner profiles.</p>
             </Link>
           )}
 
@@ -49,8 +50,10 @@ function Dashboard() {
           </Link>
 
           <Link to="/messages" className="dashboard__card">
-            <h3>Messages</h3>
-            <p>Start conversations with pet owners and pet service providers.</p>
+            <h3>Introductions</h3>
+            <p>
+              View introduction messages from PawCircle members.
+            </p>
           </Link>
 
           <Link to="/details" className="dashboard__card">
