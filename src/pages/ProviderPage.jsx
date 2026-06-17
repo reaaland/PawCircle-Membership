@@ -1,4 +1,5 @@
 import Providers from "../components/Providers";
+import providers from "../data/providers";
 
 function ProvidersPage() {
   return (
