@@ -1,20 +1,31 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { signIn } from "../Services/authService";
 
 function LogInModal({ onClose, onLogin }) {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
-  function handleLogin(e) {
+  async function handleLogin(e) {
     e.preventDefault();
 
     setIsLoading(true);
+    setError("");
 
-    setTimeout(() => {
-      onLogin();
-      onClose();
-      navigate("/dashboard");
-    }, 800);
+    const { error } = await signIn(email, password);
+
+    if (error) {
+      setError(error.message);
+      setIsLoading(false);
+      return;
+    }
+
+    onLogin();
+    onClose();
+    navigate("/dashboard");
   }
 
   return (
@@ -36,8 +47,26 @@ function LogInModal({ onClose, onLogin }) {
         </p>
 
         <form onSubmit={handleLogin}>
-          <input type="email" placeholder="Email address" required />
-          <input type="password" placeholder="Password" required />
+          <input
+            type="email"
+            placeholder="Email address"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+
+          {error && (
+            <p className="form__error">
+              {error}
+            </p>
+          )}
 
           <button
             className="btn"
