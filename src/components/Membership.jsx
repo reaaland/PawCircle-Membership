@@ -1,7 +1,11 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaw } from "@fortawesome/free-solid-svg-icons";
 import JoinButton from "./JoinButton";
-import { founderActive, membershipInfo } from "../Config/membershipConfig";
+import { useState, useEffect } from "react";
+import {
+  getSiteSettings,
+  membershipInfo,
+} from "../Config/membershipConfig";
 
 function FounderCard() {
   return (
@@ -76,6 +80,34 @@ function BothPlan() {
 }
 
 function Membership() {
+  const [founderActive, setFounderActive] = useState(true);
+  const [loadingSettings, setLoadingSettings] = useState(true);
+
+  useEffect(() => {
+    async function loadSiteSettings() {
+      const settings = await getSiteSettings();
+
+      setFounderActive(settings.member_count < settings.founder_limit);
+      setLoadingSettings(false);
+    }
+
+    loadSiteSettings();
+  }, []);
+
+  if (loadingSettings) {
+    return (
+      <section id="membership">
+        <div className="container">
+          <div className="row">
+            <h2>Simple, Transparent Pricing</h2>
+
+            <p className="pricing__intro">Loading membership options...</p>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section id="membership">
       <div className="container">

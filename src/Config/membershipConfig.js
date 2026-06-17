@@ -1,8 +1,23 @@
-// Temporary until Supabase membership tracking is connected
-export const memberCount = 325;
+import { supabase } from "../lib/supabase";
 
-// Founder Membership is available for the first 500 members
-export const founderActive = memberCount < 500;
+export async function getSiteSettings() {
+  const { data, error } = await supabase
+    .from("site_settings")
+    .select("*")
+    .eq("id", 1)
+    .single();
+
+  if (error) {
+    console.error("Error loading site settings:", error.message);
+
+    return {
+      member_count: 0,
+      founder_limit: 500,
+    };
+  }
+
+  return data;
+}
 
 export const membershipInfo = {
   founder: {
