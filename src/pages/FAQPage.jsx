@@ -21,6 +21,25 @@ function FAQPage() {
             </div>
 
             <div className="faq__item">
+              <h2>Why doesn&apos;t PawCircle rank providers?</h2>
+              <p>
+                PawCircle is designed around connections, not rankings. Every
+                provider deserves the opportunity to be discovered without
+                competing against algorithms or review scores.
+              </p>
+              <p>
+                Instead of relying on star ratings, PawCircle encourages pet
+                owners and providers to connect directly, ask questions, discuss
+                experience, and decide whether they are a good fit for one
+                another.
+              </p>
+              <p>
+                Our goal is simple: direct connections, honest conversations,
+                and community-based relationships.
+              </p>
+            </div>
+
+            <div className="faq__item">
               <h2>Who is PawCircle for?</h2>
               <p>
                 PawCircle is for pet owners looking for care, pet service
@@ -67,28 +86,30 @@ function FAQPage() {
             <div className="faq__item">
               <h2>What should pet owners ask before choosing a provider?</h2>
               <p>
-                Pet owners are encouraged to ask about experience, availability, services
-                offered, rates, references, emergency plans, and whether the provider is a
-                good fit for their pet’s needs, personality, and routine.
+                Pet owners are encouraged to ask about experience, availability,
+                services offered, rates, references, emergency plans, and
+                whether the provider is a good fit for their pet&apos;s needs,
+                personality, and routine.
               </p>
             </div>
 
             <div className="faq__item">
               <h2>What should pet service providers share with pet owners?</h2>
               <p>
-                Pet service providers are encouraged to clearly share their services,
-                availability, rates, experience, policies, communication preferences, and
-                any information that helps pet owners decide whether the arrangement is a
-                good fit.
+                Pet service providers are encouraged to clearly share their
+                services, availability, rates, experience, policies,
+                communication preferences, and any information that helps pet
+                owners decide whether the arrangement is a good fit.
               </p>
             </div>
 
             <div className="faq__item">
               <h2>Does PawCircle manage agreements between members?</h2>
               <p>
-                No. PawCircle helps members connect directly. Any service details,
-                agreements, payments, meet-and-greets, cancellations, and expectations are
-                handled directly between the pet owner and pet service provider.
+                No. PawCircle helps members connect directly. Any service
+                details, agreements, payments, meet-and-greets, cancellations,
+                and expectations are handled directly between the pet owner and
+                pet service provider.
               </p>
             </div>
 
@@ -118,24 +139,37 @@ function FAQPage() {
               </p>
             </div>
 
-                      <div className="faq__item">
-            <h2>Can I cancel my membership?</h2>
-            <p>
-              Yes. Members may cancel anytime before their next renewal date to
-              prevent future billing. Membership fees already paid are non-refundable
-              unless required by law, and access continues through the end of the
-              current billing period.
-            </p>
-          </div>
+            <div className="faq__item">
+              <h2>Will PawCircle have a mobile app?</h2>
+              <p>
+                PawCircle is currently available through our website, which is
+                designed to work on desktop, tablet, and mobile devices.
+              </p>
+              <p>
+                As our community grows, we plan to continue improving PawCircle
+                and may explore additional features, including a dedicated
+                mobile app.
+              </p>
+            </div>
 
-          <div className="faq__item">
-            <h2>Are membership payments refundable?</h2>
-            <p>
-              Membership fees already paid are non-refundable unless required by law.
-              To avoid future billing, members should cancel before their next renewal
-              date.
-            </p>
-          </div> 
+            <div className="faq__item">
+              <h2>Can I cancel my membership?</h2>
+              <p>
+                Yes. Members may cancel anytime before their next renewal date
+                to prevent future billing. Membership fees already paid are
+                non-refundable unless required by law, and access continues
+                through the end of the current billing period.
+              </p>
+            </div>
+
+            <div className="faq__item">
+              <h2>Are membership payments refundable?</h2>
+              <p>
+                Membership fees already paid are non-refundable unless required
+                by law. To avoid future billing, members should cancel before
+                their next renewal date.
+              </p>
+            </div>
 
             <div className="faq__item">
               <h2>How do I contact PawCircle?</h2>
