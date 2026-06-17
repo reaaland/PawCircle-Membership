@@ -10,16 +10,22 @@ function Providers() {
   const [searchTerm, setSearchTerm] = useState("");
   const [openingProviderId, setOpeningProviderId] = useState(null);
 
- useEffect(() => {
-  async function loadProviders() {
-    const profiles = await getProviders();
+  useEffect(() => {
+    async function loadProviders() {
+      const profiles = await getProviders();
 
-    setProviders(profiles);
-    setLoading(false);
-  }
+      const availableProviders = profiles.filter(
+        (provider) =>
+          provider.availability === "accepting" ||
+          provider.availability === "limited"
+      );
 
-  loadProviders();
-}, []);
+      setProviders(availableProviders);
+      setLoading(false);
+    }
+
+    loadProviders();
+  }, []);
 
   function handleContactProvider(provider) {
     setOpeningProviderId(provider.id);
@@ -36,6 +42,8 @@ function Providers() {
     return (
       provider.full_name?.toLowerCase().includes(search) ||
       provider.city?.toLowerCase().includes(search) ||
+      provider.state?.toLowerCase().includes(search) ||
+      provider.zip_code?.toLowerCase().includes(search) ||
       provider.bio?.toLowerCase().includes(search)
     );
   });
@@ -65,7 +73,7 @@ function Providers() {
               <h2>Provider Directory</h2>
 
               <p className="directory__notice">
-                Search provider profiles by name, city, or service.
+                Search provider profiles by name, city, state, ZIP, or service.
               </p>
             </div>
 
@@ -73,7 +81,7 @@ function Providers() {
               <input
                 type="text"
                 className="provider__search"
-                placeholder="Search by name, city, or service..."
+                placeholder="Search by name, city, state, ZIP, or service..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
@@ -118,8 +126,12 @@ function Providers() {
                   </p>
 
                   <p>
-                    {provider.city}, {provider.state}
+                    {provider.city}, {provider.state} {provider.zip_code}
                   </p>
+
+                  {provider.service_radius_miles && (
+                    <p>Service area: {provider.service_radius_miles} miles</p>
+                  )}
 
                   <p>{provider.bio}</p>
 
@@ -137,8 +149,8 @@ function Providers() {
             </div>
           ) : (
             <p className="directory__notice">
-              No providers match your search. Try a different name, city, or
-              service.
+              No providers match your search. Try a different name, city, state,
+              ZIP, or service.
             </p>
           )}
 
