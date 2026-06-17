@@ -1,5 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { supabase } from "../lib/supabase";
+import { signOut } from "../Services/authService";
 import logo from "../assets/PC_Logo.png";
 import LogInModal from "./LogInModal";
 
@@ -10,7 +12,28 @@ function Navbar() {
 
   const navigate = useNavigate();
 
-  function handleLogout() {
+  useEffect(() => {
+    async function checkSession() {
+      const { data } = await supabase.auth.getSession();
+      setIsLoggedIn(!!data.session);
+    }
+
+    checkSession();
+
+    const { data: listener } = supabase.auth.onAuthStateChange(
+      (_event, session) => {
+        setIsLoggedIn(!!session);
+      }
+    );
+
+    return () => {
+      listener.subscription.unsubscribe();
+    };
+  }, []);
+
+  async function handleLogout() {
+    await signOut();
+
     setIsLoggedIn(false);
     setMenuOpen(false);
     navigate("/");
@@ -48,10 +71,7 @@ function Navbar() {
           </>
         ) : (
           <>
-            <span
-              className="nav__link"
-              onClick={() => setShowLogin(true)}
-            >
+            <span className="nav__link" onClick={() => setShowLogin(true)}>
               Login
             </span>
 
@@ -83,16 +103,14 @@ function Navbar() {
           <Link to="/services" onClick={() => setMenuOpen(false)}>
             Services
           </Link>
-          
+
           {isLoggedIn ? (
             <>
               <Link to="/dashboard" onClick={() => setMenuOpen(false)}>
                 Dashboard
               </Link>
 
-              <span onClick={handleLogout}>
-                Logout
-              </span>
+              <span onClick={handleLogout}>Logout</span>
             </>
           ) : (
             <>
