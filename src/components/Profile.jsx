@@ -1,10 +1,11 @@
-import { useState, useEffect  } from "react";
+import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { supabase } from "../lib/supabase";
 import { saveProfile } from "../Services/supabaseService";
 
 function Profile() {
   const navigate = useNavigate();
+  const [saving, setSaving] = useState(false);
 
   const [profile, setProfile] = useState({
     display_name: "",
@@ -18,7 +19,87 @@ function Profile() {
     experience: "",
     bio: "",
     availability: "accepting",
+    services: [],
+    contact_preferences: [],
+    contact_visibility: "after_conversation",
+
   });
+
+  useEffect(() => {
+    async function loadProfile() {
+      const { data: userData } = await supabase.auth.getUser();
+      const user = userData.user;
+
+      if (!user) {
+        return;
+      }
+
+      const { data, error } = await supabase
+        .from("profiles")
+        .select("*")
+        .eq("id", user.id)
+        .single();
+
+      if (error) {
+        return;
+      }
+
+      if (data) {
+        setProfile((prevProfile) => ({
+          ...prevProfile,
+          display_name: data.display_name || "",
+          username: data.username || "",
+          city: data.city || "",
+          state: data.state || "",
+          zip_code: data.zip_code || "",
+          service_radius_miles: data.service_radius_miles
+            ? String(data.service_radius_miles)
+            : "",
+          profile_type: data.profile_type || "pet_owner",
+          years_experience: data.years_experience
+            ? String(data.years_experience)
+            : "",
+          experience: data.experience || "",
+          bio: data.bio || "",
+          availability: data.availability || "accepting",
+          services: data.services || [],
+          contact_preferences: data.contact_preferences || [],
+          contact_visibility:data.contact_visibility ||"after_conversation",
+        }));
+      }
+    }
+
+    loadProfile();
+  }, []);
+
+  function handleContactPreferenceChange(preference) {
+    setProfile((prevProfile) => {
+    const alreadySelected =
+      prevProfile.contact_preferences.includes(preference);
+
+    return {
+      ...prevProfile,
+      contact_preferences: alreadySelected
+        ? prevProfile.contact_preferences.filter(
+            (item) => item !== preference
+          )
+        : [...prevProfile.contact_preferences, preference],
+    };
+  });
+}
+
+  function handleServiceChange(service) {
+  setProfile((prevProfile) => {
+    const alreadySelected = prevProfile.services.includes(service);
+
+    return {
+      ...prevProfile,
+      services: alreadySelected
+        ? prevProfile.services.filter((item) => item !== service)
+        : [...prevProfile.services, service],
+    };
+  });
+}
 
   function handleChange(e) {
     const { id, value } = e.target;
@@ -29,57 +110,15 @@ function Profile() {
     }));
   }
 
-  const [saving, setSaving] = useState(false);
-  useEffect(() => {
-  async function loadProfile() {
-  const { data: userData } = await supabase.auth.getUser();
-  const user = userData.user;
-
-    if (!user) {
-      return;
-    }
-
-    const { data, error } = await supabase
-      .from("profiles")
-      .select("*")
-      .eq("id", user.id)
-      .single();
-
-    if (error) {
-      return;
-    }
-
-    if (data) {
-      setProfile((prevProfile) => ({
-        ...prevProfile,
-        display_name: data.display_name || "",
-        username: data.username || "",
-        city: data.city || "",
-        state: data.state || "",
-        zip_code: data.zip_code || "",
-        service_radius_miles: data.service_radius_miles
-          ? String(data.service_radius_miles)
-          : "",
-        profile_type: data.profile_type || "pet_owner",
-        years_experience: data.years_experience
-          ? String(data.years_experience)
-          : "",
-        experience: data.experience || "",
-        bio: data.bio || "",
-        availability: data.availability || "accepting",
-      }));
-    }
-  }
-
-  loadProfile();
-}, []);
 
   async function handleSave() {
     setSaving(true);
+
     const { data: userData } = await supabase.auth.getUser();
     const user = userData.user;
 
     if (!user) {
+      setSaving(false);
       return;
     }
 
@@ -96,16 +135,19 @@ function Profile() {
 
     const { error } = await saveProfile(profileToSave);
 
-if (error) {
-  setSaving(false);
-  alert(error.message);
-  return;
-}
+    if (error) {
+      setSaving(false);
+      alert(error.message);
+      return;
+    }
 
-navigate("/dashboard");
-}
+    setTimeout(() => {
+      navigate("/dashboard");
+    }, 800);
+  }
 
   return (
+
     <section id="profile">
       <div className="container">
         <div className="row row__column">
@@ -277,22 +319,45 @@ navigate("/dashboard");
                   information should be shared.
                 </p>
 
-                <div className="services__checkboxes">
-                  <label><input type="checkbox" /> PawCircle Messages</label>
-                  <label><input type="checkbox" /> Text Message</label>
-                  <label><input type="checkbox" /> Phone Call</label>
-                  <label><input type="checkbox" /> Email</label>
+              <div className="services__checkboxes">
+                  {[
+                    "PawCircle Messages",
+                    "Text Message",
+                    "Phone Call",
+                    "Email",
+                  ].map((preference) => (
+                    <label key={preference}>
+                      <input
+                        type="checkbox"
+                        checked={profile.contact_preferences.includes(preference)}
+                        onChange={() =>
+                          handleContactPreferenceChange(preference)
+                        }
+                      />
+                      {preference}
+                    </label>
+                  ))}
                 </div>
 
                 <div className="contact__visibility">
-                  <label htmlFor="contactVisibility">
+                  <label htmlFor="contact_visibility">
                     Contact Information Visibility
                   </label>
 
-                  <select id="contactVisibility">
-                    <option>Share after initial PawCircle conversation</option>
-                    <option>Show contact information on my profile</option>
-                    <option>Only use PawCircle Messages</option>
+                  <select
+                    id="contact_visibility"
+                    value={profile.contact_visibility}
+                    onChange={handleChange}
+                  >
+                    <option value="after_conversation">
+                      Share after initial PawCircle conversation
+                    </option>
+                    <option value="show_on_profile">
+                      Show contact information on my profile
+                    </option>
+                    <option value="pawcircle_only">
+                      Only use PawCircle Messages
+                    </option>
                   </select>
                 </div>
               </div>
@@ -306,22 +371,33 @@ navigate("/dashboard");
                 </p>
 
                 <div className="services__checkboxes">
-                  <label><input type="checkbox" /> Dog Walking</label>
-                  <label><input type="checkbox" /> Drop-In Visits</label>
-                  <label><input type="checkbox" /> Pet Sitting</label>
-                  <label><input type="checkbox" /> Overnight Care</label>
-                  <label><input type="checkbox" /> House Sitting</label>
-                  <label><input type="checkbox" /> Boarding</label>
-                  <label><input type="checkbox" /> Cat Care</label>
-                  <label><input type="checkbox" /> Pet Taxi</label>
-                  <label><input type="checkbox" /> Medication Support</label>
-                  <label><input type="checkbox" /> Puppy Care</label>
-                  <label><input type="checkbox" /> Senior Pet Care</label>
-                  <label><input type="checkbox" /> Small Animal Care</label>
-                  <label><input type="checkbox" /> Reptile Care</label>
-                  <label><input type="checkbox" /> Bird Care</label>
-                  <label><input type="checkbox" /> Farm Animal Care</label>
-                  <label><input type="checkbox" /> Hobby Farm Services</label>
+                    {[
+                      "Dog Walking",
+                      "Drop-In Visits",
+                      "Pet Sitting",
+                      "Overnight Care",
+                      "House Sitting",
+                      "Boarding",
+                      "Cat Care",
+                      "Pet Taxi",
+                      "Medication Support",
+                      "Puppy Care",
+                      "Senior Pet Care",
+                      "Small Animal Care",
+                      "Reptile Care",
+                      "Bird Care",
+                      "Farm Animal Care",
+                      "Hobby Farm Services",
+                    ].map((service) => (
+                      <label key={service}>
+                        <input
+                          type="checkbox"
+                          checked={profile.services.includes(service)}
+                          onChange={() => handleServiceChange(service)}
+                        />
+                        {service}
+                      </label>
+                    ))}
                 </div>
               </div>
 
