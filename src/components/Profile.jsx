@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect  } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { supabase } from "../lib/supabase";
 import { saveProfile } from "../Services/supabaseService";
@@ -30,8 +30,52 @@ function Profile() {
   }
 
   const [saving, setSaving] = useState(false);
-  setSaving(true);
+  useEffect(() => {
+  async function loadProfile() {
+  const { data: userData } = await supabase.auth.getUser();
+  const user = userData.user;
+
+    if (!user) {
+      return;
+    }
+
+    const { data, error } = await supabase
+      .from("profiles")
+      .select("*")
+      .eq("id", user.id)
+      .single();
+
+    if (error) {
+      return;
+    }
+
+    if (data) {
+      setProfile((prevProfile) => ({
+        ...prevProfile,
+        display_name: data.display_name || "",
+        username: data.username || "",
+        city: data.city || "",
+        state: data.state || "",
+        zip_code: data.zip_code || "",
+        service_radius_miles: data.service_radius_miles
+          ? String(data.service_radius_miles)
+          : "",
+        profile_type: data.profile_type || "pet_owner",
+        years_experience: data.years_experience
+          ? String(data.years_experience)
+          : "",
+        experience: data.experience || "",
+        bio: data.bio || "",
+        availability: data.availability || "accepting",
+      }));
+    }
+  }
+
+  loadProfile();
+}, []);
+
   async function handleSave() {
+    setSaving(true);
     const { data: userData } = await supabase.auth.getUser();
     const user = userData.user;
 
@@ -53,6 +97,7 @@ function Profile() {
     const { error } = await saveProfile(profileToSave);
 
 if (error) {
+  setSaving(false);
   alert(error.message);
   return;
 }
