@@ -29,6 +29,8 @@ function Profile() {
     }));
   }
 
+  const [saving, setSaving] = useState(false);
+  setSaving(true);
   async function handleSave() {
     const { data: userData } = await supabase.auth.getUser();
     const user = userData.user;
@@ -50,10 +52,13 @@ function Profile() {
 
     const { error } = await saveProfile(profileToSave);
 
-    if (!error) {
-      navigate("/dashboard");
-    }
-  }
+if (error) {
+  alert(error.message);
+  return;
+}
+
+navigate("/dashboard");
+}
 
   return (
     <section id="profile">
@@ -307,8 +312,8 @@ function Profile() {
                 ></textarea>
               </div>
 
-              <button className="btn" type="button" onClick={handleSave}>
-                Save Profile
+              <button className="btn" type="button" onClick={handleSave} disabled={saving}>
+                {saving ? "🐾 Saving Profile..." : "Save Profile"}
               </button>
             </form>
           </div>
