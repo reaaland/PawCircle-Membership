@@ -1,8 +1,22 @@
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { getProfiles } from "../Services/supabaseService";
 import dogKitten from "../assets/kitten_dog_toys.png";
 
 function Dashboard() {
-  const profileType = "both";
+  const [profileType, setProfileType] = useState(null);
+
+  useEffect(() => {
+  async function loadProfile() {
+    const profiles = await getProfiles();
+
+    if (profiles.length > 0) {
+      setProfileType(profiles[0].profile_type);
+    }
+  }
+
+  loadProfile();
+}, []);
 
   return (
     <section id="dashboard">
