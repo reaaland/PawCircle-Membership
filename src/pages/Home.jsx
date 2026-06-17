@@ -5,6 +5,7 @@ import Membership from "../components/Membership";
 import Services from "../components/Services";
 import CTASection from "../components/CTASection";
 import ProviderPreview from "../components/ProviderPreview";
+import Footer from "../components/Footer";
 
 
 function Home() {
@@ -19,6 +20,7 @@ function Home() {
       <CTASection />
     </>
   );
+  <Footer/>
 }
 
 export default Home;

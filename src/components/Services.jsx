@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-function ServicesPage() {
+function Services() {
   const services = [
     {
       title: "Dog Walking",
@@ -68,4 +68,4 @@ function ServicesPage() {
   );
 }
 
-export default ServicesPage;
+export default Services;

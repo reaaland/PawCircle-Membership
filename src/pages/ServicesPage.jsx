@@ -8,7 +8,7 @@ import hamsterdog from "../assets/hamster_dog_friends.JPG";
 import horseDog from "../assets/horse_dog playing.jpg";
 
 function ServicesPage() {
-  const services = [
+    const services = [
     {
       title: "Dog Walking",
       image: riverwalk,
