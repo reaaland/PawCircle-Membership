@@ -1,11 +1,58 @@
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { availabilityStatuses } from "../Config/membershipConfig";
+import { supabase } from "../lib/supabase";
+import { saveProfile } from "../Services/supabaseService";
 
 function Profile() {
   const navigate = useNavigate();
 
-  function handleSave() {
-    navigate("/dashboard");
+  const [profile, setProfile] = useState({
+    display_name: "",
+    username: "",
+    city: "",
+    state: "",
+    zip_code: "",
+    service_radius_miles: "",
+    profile_type: "pet_owner",
+    years_experience: "",
+    experience: "",
+    bio: "",
+    availability: "accepting",
+  });
+
+  function handleChange(e) {
+    const { id, value } = e.target;
+
+    setProfile((prevProfile) => ({
+      ...prevProfile,
+      [id]: value,
+    }));
+  }
+
+  async function handleSave() {
+    const { data: userData } = await supabase.auth.getUser();
+    const user = userData.user;
+
+    if (!user) {
+      return;
+    }
+
+    const profileToSave = {
+      id: user.id,
+      ...profile,
+      service_radius_miles: profile.service_radius_miles
+        ? Number(profile.service_radius_miles)
+        : null,
+      years_experience: profile.years_experience
+        ? Number(profile.years_experience)
+        : null,
+    };
+
+    const { error } = await saveProfile(profileToSave);
+
+    if (!error) {
+      navigate("/dashboard");
+    }
   }
 
   return (
@@ -25,29 +72,45 @@ function Profile() {
 
             <form className="profile__form">
               <div className="form__group">
-                <label htmlFor="displayName">Display Name</label>
-                <input type="text" id="displayName" placeholder="Your name" />
+                <label htmlFor="display_name">Display Name</label>
+                <input
+                  type="text"
+                  id="display_name"
+                  value={profile.display_name}
+                  onChange={handleChange}
+                  placeholder="Your name"
+                />
               </div>
 
               <div className="form__group">
                 <label htmlFor="username">Username</label>
-                <input type="text" id="username" placeholder="@username" />
+                <input
+                  type="text"
+                  id="username"
+                  value={profile.username}
+                  onChange={handleChange}
+                  placeholder="@username"
+                />
               </div>
 
               <div className="form__group">
                 <label htmlFor="city">City</label>
-                <input type="text" id="city" placeholder="Your city" />
+                <input
+                  type="text"
+                  id="city"
+                  value={profile.city}
+                  onChange={handleChange}
+                  placeholder="Your city"
+                />
               </div>
 
               <div className="form__group">
                 <label htmlFor="state">State</label>
-                <input type="text" id="state" placeholder="State" />
-              </div>
-
-              <div className="form__group">
-                <label htmlFor="state">State</label>
-
-                <select id="state">
+                <select
+                  id="state"
+                  value={profile.state}
+                  onChange={handleChange}
+                >
                   <option value="">Select State</option>
                   <option value="AL">Alabama</option>
                   <option value="AK">Alaska</option>
@@ -101,11 +164,26 @@ function Profile() {
                   <option value="WY">Wyoming</option>
                 </select>
               </div>
-               
 
               <div className="form__group">
-                <label htmlFor="serviceRadiusMiles">Service Area</label>
-                <select id="serviceRadiusMiles">
+                <label htmlFor="zip_code">ZIP Code</label>
+                <input
+                  type="text"
+                  id="zip_code"
+                  value={profile.zip_code}
+                  onChange={handleChange}
+                  inputMode="numeric"
+                  placeholder="ZIP code"
+                />
+              </div>
+
+              <div className="form__group">
+                <label htmlFor="service_radius_miles">Service Area</label>
+                <select
+                  id="service_radius_miles"
+                  value={profile.service_radius_miles}
+                  onChange={handleChange}
+                >
                   <option value="">Select service area</option>
                   <option value="5">Within 5 miles</option>
                   <option value="10">Within 10 miles</option>
@@ -116,15 +194,31 @@ function Profile() {
               </div>
 
               <div className="form__group">
-                <label htmlFor="profileType">Profile Type</label>
-                <select id="profileType">
-                  <option>Pet Owner</option>
-                  <option>Pet Service Provider</option>
-                  <option>Pet Owner + Provider</option>
+                <label htmlFor="profile_type">Profile Type</label>
+                <select
+                  id="profile_type"
+                  value={profile.profile_type}
+                  onChange={handleChange}
+                >
+                  <option value="pet_owner">Pet Owner</option>
+                  <option value="pet_provider">Pet Service Provider</option>
+                  <option value="both">Pet Owner + Provider</option>
                 </select>
               </div>
 
-             
+              <div className="form__group">
+                <label htmlFor="availability">Availability Status</label>
+                <select
+                  id="availability"
+                  value={profile.availability}
+                  onChange={handleChange}
+                >
+                  <option value="accepting">Accepting New Requests</option>
+                  <option value="limited">Limited Availability</option>
+                  <option value="closed">Not Accepting New Requests</option>
+                </select>
+              </div>
+
               <div className="form__group">
                 <label>Contact Preferences</label>
 
@@ -182,10 +276,12 @@ function Profile() {
               </div>
 
               <div className="form__group">
-                <label htmlFor="yearsExperience">Years of Experience</label>
+                <label htmlFor="years_experience">Years of Experience</label>
                 <input
                   type="number"
-                  id="yearsExperience"
+                  id="years_experience"
+                  value={profile.years_experience}
+                  onChange={handleChange}
                   min="0"
                   placeholder="0"
                 />
@@ -195,6 +291,8 @@ function Profile() {
                 <label htmlFor="experience">Experience</label>
                 <textarea
                   id="experience"
+                  value={profile.experience}
+                  onChange={handleChange}
                   placeholder="Tell members about your experience caring for pets, animals, farm animals, or related services."
                 ></textarea>
               </div>
@@ -203,6 +301,8 @@ function Profile() {
                 <label htmlFor="bio">Bio</label>
                 <textarea
                   id="bio"
+                  value={profile.bio}
+                  onChange={handleChange}
                   placeholder="Introduce yourself to the PawCircle community."
                 ></textarea>
               </div>

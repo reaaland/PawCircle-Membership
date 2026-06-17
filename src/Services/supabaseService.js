@@ -32,3 +32,17 @@ export async function getPetOwners() {
       profile.profile_type === "both"
   );
 }
+
+export async function saveProfile(profile) {
+  const { data, error } = await supabase
+    .from("profiles")
+    .upsert(profile)
+    .select();
+
+  if (error) {
+    console.error("Error saving profile:", error);
+    return { data: null, error };
+  }
+
+  return { data, error: null };
+}
