@@ -10,21 +10,16 @@ function Providers() {
   const [searchTerm, setSearchTerm] = useState("");
   const [openingProviderId, setOpeningProviderId] = useState(null);
 
-  useEffect(() => {
-    async function loadProviders() {
-      const profiles = await getProviders();
+ useEffect(() => {
+  async function loadProviders() {
+    const profiles = await getProviders();
 
-      setProviders(profiles); =>
-          profile.profile_type === "pet_provider" ||
-          profile.profile_type === "both"
-      );
+    setProviders(profiles);
+    setLoading(false);
+  }
 
-      setProviders(providerProfiles);
-      setLoading(false);
-    }
-
-    loadProviders();
-  }, []);
+  loadProviders();
+}, []);
 
   function handleContactProvider(provider) {
     setOpeningProviderId(provider.id);
