@@ -1,10 +1,28 @@
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import {
-  founderActive,
+  getSiteSettings,
   membershipInfo,
 } from "../Config/membershipConfig";
 
 function MembershipDetails() {
+  const [founderActive, setFounderActive] = useState(true);
+const [loadingSettings, setLoadingSettings] = useState(true);
+
+useEffect(() => {
+  async function loadSiteSettings() {
+    const settings = await getSiteSettings();
+
+    setFounderActive(settings.member_count < settings.founder_limit);
+    setLoadingSettings(false);
+  }
+
+  loadSiteSettings();
+}, []);
+
+if (loadingSettings) {
+  return <div>Loading membership details...</div>;
+}
   return (
     <section id="membership-details">
       <div className="container">

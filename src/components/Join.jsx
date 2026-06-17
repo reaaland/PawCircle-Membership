@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import AgreementModal from "./AgreementModal";
 import {
-  founderActive,
+  getSiteSettings,
   membershipInfo,
 } from "../Config/membershipConfig";
 
@@ -10,6 +10,23 @@ function Join() {
   const [showAgreement, setShowAgreement] = useState(false);
   const [searchParams] = useSearchParams();
   const [isLoading, setIsLoading] = useState(false);
+  const [founderActive, setFounderActive] = useState(true);
+  const [loadingSettings, setLoadingSettings] = useState(true);
+
+  useEffect(() => {
+    async function loadSiteSettings() {
+      const settings = await getSiteSettings();
+
+      setFounderActive(settings.member_count < settings.founder_limit);
+      setLoadingSettings(false);
+    }
+
+    loadSiteSettings();
+  }, []);
+
+  if (loadingSettings) {
+  return <div>Loading membership options...</div>;
+}
 
   const defaultMembership = founderActive ? "founder" : "owner";
 

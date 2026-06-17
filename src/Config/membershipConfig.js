@@ -1,11 +1,12 @@
 import { supabase } from "../lib/supabase";
 
 export async function getSiteSettings() {
-  const { data, error } = await supabase
-    .from("site_settings")
-    .select("*")
-    .eq("id", 1)
-    .single();
+ const { data, error } = await supabase
+  .from("site_settings")
+  .select("member_count, founder_limit")
+  .eq("id", 1)
+  .maybeSingle();
+  console.log("Site settings:", data);
 
   if (error) {
     console.error("Error loading site settings:", error.message);
