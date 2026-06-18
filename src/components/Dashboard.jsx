@@ -48,14 +48,7 @@ function Dashboard() {
             </Link>
           )}
 
-          {(profileType === "pet_provider" || profileType === "both") && (
-            <Link to="/pet-owners" className="dashboard__card">
-              <h3>View Pet Owner Profiles</h3>
-              <p>Search pet owner profiles.</p>
-            </Link>
-          )}
-
-          <Link to="/profile" className="dashboard__card">
+           <Link to="/profile" className="dashboard__card">
             <h3>My Profile</h3>
             <p>
               Create and manage your <span className="purple">PawCircle</span>{" "}
@@ -64,9 +57,9 @@ function Dashboard() {
           </Link>
 
           <Link to="/messages" className="dashboard__card">
-            <h3>Introductions</h3>
+            <h3>Message Center</h3>
             <p>
-              View introduction messages from PawCircle members.
+              View incoming messages.
             </p>
           </Link>
 

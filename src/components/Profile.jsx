@@ -21,7 +21,8 @@ function Profile() {
     availability: "accepting",
     services: [],
     contact_preferences: [],
-    contact_visibility: "after_conversation",
+    contact_visibility: data.contact_visibility || "after_conversation",
+    profile_photo_url: "",
 
   });
 
@@ -65,6 +66,7 @@ function Profile() {
           services: data.services || [],
           contact_preferences: data.contact_preferences || [],
           contact_visibility:data.contact_visibility ||"after_conversation",
+          profile_photo_url: data.profile_photo_url || "",
         }));
       }
     }
@@ -171,6 +173,24 @@ function Profile() {
                   value={profile.display_name}
                   onChange={handleChange}
                   placeholder="Your name"
+                />
+              </div>
+
+              <div className="form__group">
+                <label htmlFor="profile_photo">Profile Photo</label>
+
+                {profile.profile_photo_url && (
+                  <img
+                    src={profile.profile_photo_url}
+                    alt="Profile"
+                    className="profile__photo-preview"
+                  />
+                )}
+
+                <input
+                  type="file"
+                  id="profile_photo"
+                  accept="image/*"
                 />
               </div>
 

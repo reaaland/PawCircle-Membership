@@ -116,8 +116,8 @@ if (loadingSettings) {
               </>
             )}
 
-            <Link to="/account" className="btn">
-              Account Settings
+            <Link to="/dashboard" className="btn">
+              Back to Dashboard
             </Link>
           </div>
         </div>
