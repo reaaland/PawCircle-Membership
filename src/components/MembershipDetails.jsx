@@ -69,7 +69,7 @@ if (loadingSettings) {
                   </p>
 
                   <p>
-                    <strong>Contact:</strong> Members choose when to share phone
+                    <strong>Contact:</strong> Members choose when to share phone 
                     or email
                   </p>
                 </div>
