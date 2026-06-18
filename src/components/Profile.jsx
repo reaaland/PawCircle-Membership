@@ -21,8 +21,8 @@ function Profile() {
     availability: "accepting",
     services: [],
     contact_preferences: [],
-    contact_visibility: data.contact_visibility || "after_conversation",
-    profile_photo_url: "",
+    contact_visibility: "after_conversation",
+    profile_image: "",
 
   });
 
@@ -66,7 +66,7 @@ function Profile() {
           services: data.services || [],
           contact_preferences: data.contact_preferences || [],
           contact_visibility:data.contact_visibility ||"after_conversation",
-          profile_photo_url: data.profile_photo_url || "",
+          profile_image: data.profile_image || "",
         }));
       }
     }
@@ -112,6 +112,36 @@ function Profile() {
     }));
   }
 
+  async function handlePhotoUpload(e) {
+    const file = e.target.files[0];
+
+      if (!file) return;
+
+    const { data: userData } = await supabase.auth.getUser();
+    const user = userData.user;
+
+       if (!user) return;
+
+    const filePath = `${user.id}/${Date.now()}-${file.name}`;
+
+    const { error: uploadError } = await supabase.storage
+      .from("profile-photos")
+      .upload(filePath, file);
+
+        if (uploadError) {
+          alert(uploadError.message);
+    return;
+  }
+
+  const { data } = supabase.storage
+    .from("profile-photos")
+    .getPublicUrl(filePath);
+
+  setProfile((prevProfile) => ({
+    ...prevProfile,
+    profile_image: data.publicUrl,
+  }));
+}
 
   async function handleSave() {
     setSaving(true);
@@ -179,9 +209,9 @@ function Profile() {
               <div className="form__group">
                 <label htmlFor="profile_photo">Profile Photo</label>
 
-                {profile.profile_photo_url && (
+                {profile.profile_image && (
                   <img
-                    src={profile.profile_photo_url}
+                    src={profile.profile_image}
                     alt="Profile"
                     className="profile__photo-preview"
                   />
@@ -191,6 +221,7 @@ function Profile() {
                   type="file"
                   id="profile_photo"
                   accept="image/*"
+                  onChange={handlePhotoUpload}
                 />
               </div>
 
