@@ -20,7 +20,7 @@ function Hero() {
               </div>
 
               <p className="hero__subtitle">
-                Building local pet care connections, one community at a time.
+                Helping pet owners and pet service providers connect, one community at a time.
               </p>
             </div>
 
