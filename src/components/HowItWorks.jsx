@@ -6,8 +6,7 @@ function HowItWorks() {
           <h2>How <span className="purple">PawCircle</span> Works</h2>
 
           <p className="how__intro">
-            <span className="purple">PawCircle</span> helps pet owners and pet service providers connect
-            directly through a simple membership community.
+            <span className="purple">PawCircle</span> helps pet owners and pet service providers connect directly through a simple membership community.
           </p>
 
           <div className="how__cards">
@@ -19,18 +18,16 @@ function HowItWorks() {
             </div>
 
             <div className="how__card">
-              <h3>Explore Member Profiles</h3>
+             <h3>Find Local Pet Care</h3>
               <p>
-              View member profiles, learn about experience and services, and discover
-              connections that fit your needs.
-            </p>
-            </div>
+                Browse provider profiles to learn about services, experience, and                 availability before making a direct introduction.
+              </p>
+          </div>
 
             <div className="how__card">
               <h3>3. Start a Conversation</h3>
               <p>
-                Send an introductory message through <span className="purple">PawCircle</span> and learn more
-                about the provider.
+                Send an introductory message through <span className="purple">PawCircle</span> and learn more about the provider.
               </p>
             </div>
 
