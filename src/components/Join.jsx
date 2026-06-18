@@ -96,9 +96,9 @@ function Join() {
               </>
             ) : (
               <>
-                Complete the form below to join{" "}
-                <span className="purple">PawCircle</span> and choose the membership that
-                best fits how you plan to use the community.
+               Complete the form below to join{" "}
+              <span className="purple">PawCircle</span> and choose the membership that best
+              fits your role as a pet owner, pet service provider, or both.
               </>
             )}
           </p>
