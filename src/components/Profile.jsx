@@ -194,19 +194,7 @@ function Profile() {
           <div className="profile__card">
             <h3>Member Information</h3>
 
-            <form className="profile__form">
-              <div className="form__group">
-                <label htmlFor="display_name">Display Name</label>
-                <input
-                  type="text"
-                  id="display_name"
-                  value={profile.display_name}
-                  onChange={handleChange}
-                  placeholder="Your name"
-                />
-              </div>
-
-              <div className="form__group">
+             <div className="form__group">
                 <label htmlFor="profile_photo">Profile Photo</label>
 
                 {profile.profile_image && (
@@ -225,7 +213,19 @@ function Profile() {
                 />
               </div>
 
+            <form className="profile__form">
               <div className="form__group">
+                <label htmlFor="display_name">Display Name</label>
+                <input
+                  type="text"
+                  id="display_name"
+                  value={profile.display_name}
+                  onChange={handleChange}
+                  placeholder="Your name"
+                />
+              </div>
+
+             <div className="form__group">
                 <label htmlFor="username">Username</label>
                 <input
                   type="text"
