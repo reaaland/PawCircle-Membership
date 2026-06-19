@@ -15,7 +15,7 @@ function MembershipSuccess() {
     <section className="success-page">
       <div className="container">
         <div className="row row__column">
-          <h1>Welcome to PawCircle!</h1>
+          <h1>Welcome to <span className="Purple">PawCircle</span>!</h1>
 
           <p>Your membership payment has been received.</p>
 
