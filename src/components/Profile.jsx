@@ -425,7 +425,7 @@ function Profile() {
                     {[
                       "Dog Walking",
                       "Drop-In Visits",
-                      "Pet Sitting",
+                      "Pet Day Care",
                       "Overnight Care",
                       "House Sitting",
                       "Boarding",
