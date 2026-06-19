@@ -79,8 +79,8 @@ if (loadingSettings) {
                 <h3>Available Membership Options</h3>
 
                 <p>
-                  Explore the membership options currently available through
-                  PawCircle.
+                  Explore the membership options currently available through <span className="Purple">
+                  PawCircle.</span>
                 </p>
 
                 <ul>

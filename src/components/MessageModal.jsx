@@ -41,8 +41,7 @@ function MessageModal({ provider, onClose }) {
         </p>
 
         <p className="message__note">
-          Send a <span className="purple">PawCircle</span> Message to start the conversation. Members may choose
-          to share phone or email later at their own discretion.
+          Send a <span className="purple">PawCircle</span> Message to start the conversation. Members may choose to share phone or email later at their own discretion.
         </p>
 
         <div className="message__preferences">

@@ -2,19 +2,12 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 function Messages() {
+  const selectedMember = {
+    display_name: "PawCircle Member",
+  };
+
   const [newMessage, setNewMessage] = useState("");
-  const [messages, setMessages] = useState([
-    {
-      id: 1,
-      sender: "owner",
-      text: "Hi! I am looking for someone to walk my Husky three days a week.",
-    },
-    {
-      id: 2,
-      sender: "provider",
-      text: "I'd be happy to discuss it. Feel free to message me here first.",
-    },
-  ]);
+  const [messages, setMessages] = useState([]);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -34,43 +27,53 @@ function Messages() {
   return (
     <section className="messages">
       <div className="container">
-       <div className="messages__header">
-        <Link to="/dashboard" className="messages__back">
+        <div className="messages__header">
+          <Link to="/dashboard" className="messages__back">
             ← Dashboard
-        </Link>
+          </Link>
 
-        <h1>Messages</h1>
+          <h1>Intro Messages</h1>
         </div>
 
         <p>
-          <span className="purple">PawCircle</span> Messages help pet owners and pet service providers make an
-          initial connection. What happens next is up to you.
+          <span className="purple">PawCircle</span> intro messages help pet
+          owners and pet service providers make an initial connection. What
+          happens next is up to you.
         </p>
 
         <div className="message-thread">
-          <h3>Conversation with Sarah M.</h3>
+          <h3>
+            Intro Message with{" "}
+            {selectedMember?.display_name || "PawCircle Member"}
+          </h3>
 
-          {messages.map((message) => (
-            <div
-              key={message.id}
-              className={`message ${
-                message.sender === "owner"
-                  ? "message--owner"
-                  : "message--provider"
-              }`}
-            >
-              <p>{message.text}</p>
-            </div>
-          ))}
+          {messages.length === 0 ? (
+            <p className="message-empty">
+              No intro message has been sent yet.
+            </p>
+          ) : (
+            messages.map((message) => (
+              <div
+                key={message.id}
+                className={`message ${
+                  message.sender === "owner"
+                    ? "message--owner"
+                    : "message--provider"
+                }`}
+              >
+                <p>{message.text}</p>
+              </div>
+            ))
+          )}
 
           <form className="message-form" onSubmit={handleSubmit}>
             <textarea
-              placeholder="Write your message..."
+              placeholder="Write your intro message..."
               value={newMessage}
               onChange={(e) => setNewMessage(e.target.value)}
             />
 
-            <button type="submit">Send Message</button>
+            <button type="submit">Send Intro Message</button>
           </form>
         </div>
       </div>
