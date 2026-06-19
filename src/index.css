@@ -541,7 +541,8 @@ nav {
 
 .directory__back {
   display: inline-block;
-  margin-bottom: 16px;
+  margin-top: 16px;
+  margin-bottom: 24px;
   font-weight: 700;
   color: #6415ff;
   text-decoration: none;
