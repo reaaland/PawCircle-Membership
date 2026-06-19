@@ -16,8 +16,7 @@ function ProviderPreview() {
           </h2>
 
           <p className="directory__notice">
-            PawCircle members can search provider profiles, connect directly,
-            and start conversations without booking fees or commissions.
+            <span className="purple">PawCircle</span>members can search provider profiles, send an introductory message, and connect directly.
           </p>
 
           <div className="provider-preview__grid">
