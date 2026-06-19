@@ -40,13 +40,13 @@ function ServicesPage() {
       image: onTheRun,
       imageClass: "services-page__img--daycare",
       description:
-      "A safe and engaging day of play, exercise, and companionship while you're away.",
+      "A safe and engaging day of play, exercise, and companionship while you're at work or away.",
       button: "Find Providers",
     },
     {
       title: "House Sitting",
       image: houseSitting,
-      imageClass: "house_sitting_fireplace.JPG",
+      imageClass: "services-page__img--house-sitting",
       description:
         "Overnight care in your home while you're away.",
       button: "Find Providers",
@@ -59,6 +59,15 @@ function ServicesPage() {
         "Overnight care provided in a caregiver's home when available.",
       button: "Find Providers",
     },
+    {
+      title: "Pet Taxi",
+      image: petTaxi,
+      imageClass: "services-page__img--pet-taxi",
+      description:
+        "Transportation for veterinary appointments, grooming visits, daycare, and more.",
+      button: "Find Providers",
+    },
+
     {
       title: "Farm & Hobby Farm Care",
       image: horseDog,

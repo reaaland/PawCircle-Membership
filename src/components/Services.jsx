@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 
+
 function Services() {
   const services = [
     {
@@ -9,7 +10,7 @@ function Services() {
       button: "Find Providers",
     },
     {
-      title: "Pet Sitting",
+      title: "Drop-in Vistis",
       description:
         "In-home care that allows pets to remain comfortable in familiar surroundings.",
       button: "Find Providers",
@@ -21,15 +22,26 @@ function Services() {
       button: "Find Providers",
     },
     {
-      title: "Pet Taxi",
-      description:
-        "Transportation for veterinary appointments, grooming visits, daycare, and more.",
+      title: "Pet Day Care",
+      description: "A safe and engaging day of play, exercise, and companionship while you're at work or away.",
       button: "Find Providers",
     },
+    {
+      title: "House sitting",
+      description: "Overnight care in your home while you're away.",
+      button: "Find Providers",
+    },
+
     {
       title: "Boarding",
       description:
         "Overnight care provided in a caregiver's home when available.",
+      button: "Find Providers",
+    },
+    {
+      title: "Pet Taxi",
+      description:
+        "Transportation for veterinary appointments, grooming visits, daycare, and more.",
       button: "Find Providers",
     },
     {
