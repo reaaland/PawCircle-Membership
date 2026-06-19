@@ -5,7 +5,7 @@ function TermsOfUsePage() {
         <div className="row row__narrow">
           <h1>Terms of Use</h1>
 
-          <p className="legal__date">Effective Date: July 1, 2026</p>
+          <p className="legal__date">Effective Date: June 27, 2026</p>
 
           <p className="legal__intro">
             These Terms of Use govern your access to and use of the PawCircle

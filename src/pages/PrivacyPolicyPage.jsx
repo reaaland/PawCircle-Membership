@@ -5,7 +5,7 @@ function PrivacyPolicyPage() {
         <div className="row row__narrow">
           <h1>Privacy Policy</h1>
 
-          <p className="legal__date">Effective Date: July 1, 2026</p>
+          <p className="legal__date">Effective Date: June 27, 2026</p>
 
           <p className="legal__intro">
             PawCircle LLC respects your privacy and is committed to protecting

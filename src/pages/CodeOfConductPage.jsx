@@ -6,7 +6,7 @@ function CodeOfConductPage() {
           <h1>Code of Conduct</h1>
 
           <p className="legal__date">
-            Effective Date: July 1, 2026
+            Effective Date: June 27, 2026
           </p>
 
           <p className="legal__intro">
