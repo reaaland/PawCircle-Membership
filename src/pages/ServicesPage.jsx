@@ -1,24 +1,26 @@
 import { Link } from "react-router-dom";
-import houseSitting from "../assets/house_sitting.jpg";
 import petTaxi from "../assets/Pet_Taxi.jpg";
 import sleepyPup from "../assets/Sleepy_pup.jpg";
 import catWindow from "../assets/cat_window.png";
-import riverwalk from "../assets/fun by the river.jpg";
+import walkInTheSnow from "../assets/walking in the snow.jpeg";
 import hamsterdog from "../assets/hamster_dog_friends.JPG";
 import horseDog from "../assets/horse_dog playing.jpg";
+import houseSitting from "../assets/house_sitting_fireplace.JPG";
+import onTheRun from "../assets/on_the_run.JPG";
+
 
 function ServicesPage() {
     const services = [
-    {
-      title: "Dog Walking",
-      image: riverwalk,
-      imageClass: "services-page__img--walking",
-      description:
-        "Regular walks, exercise, and companionship tailored to your pet's routine.",
-      button: "Find Providers",
+   {
+    title: "Dog Walking",
+    image: walkInTheSnow,
+    imageClass: "services-page__img--walking",
+    description:
+      "Regular walks, exercise, and companionship tailored to your pet's routine.",
+    button: "Find Providers",
     },
     {
-      title: "Pet Sitting",
+      title: "Drop-In Visits",
       image: hamsterdog,
       imageClass: "services-page__img--sitting",
       description:
@@ -34,11 +36,19 @@ function ServicesPage() {
       button: "Find Providers",
     },
     {
-      title: "Pet Taxi",
-      image: petTaxi,
-      imageClass: "services-page__img--taxi",
+      title: "Pet Day Care",
+      image: onTheRun,
+      imageClass: "services-page__img--daycare",
       description:
-        "Transportation for veterinary appointments, grooming visits, daycare, and more.",
+      "A safe and engaging day of play, exercise, and companionship while you're away.",
+      button: "Find Providers",
+    },
+    {
+      title: "House Sitting",
+      image: houseSitting,
+      imageClass: "house_sitting_fireplace.JPG",
+      description:
+        "Overnight care in your home while you're away.",
       button: "Find Providers",
     },
     {
@@ -54,7 +64,7 @@ function ServicesPage() {
       image: horseDog,
       imageClass: "services-page__img--farm",
       description:
-        "Care for chickens, ducks, goats, sheep, and other farm animals while you're away. Services vary based on each provider's experience and comfort level.",
+        "Care for chickens, ducks, goats, sheep, and other farm animals while you're away.",
       button: "Find Providers",
     },
   ];
