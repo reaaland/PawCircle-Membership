@@ -1,7 +1,30 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { supabase } from "../lib/supabase";
 import trailWalk from "../assets/dog walking on trail.jpg";
 
 function Hero() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    async function checkSession() {
+      const { data } = await supabase.auth.getSession();
+      setIsLoggedIn(!!data.session);
+    }
+
+    checkSession();
+
+    const { data: listener } = supabase.auth.onAuthStateChange(
+      (_event, session) => {
+        setIsLoggedIn(!!session);
+      }
+    );
+
+    return () => {
+      listener.subscription.unsubscribe();
+    };
+  }, []);
+
   return (
     <section id="header">
       <div className="container">
@@ -24,9 +47,11 @@ function Hero() {
               </p>
             </div>
 
-            <Link to="/join" className="join__btn-fixed">
-              Join PawCircle
-            </Link>
+            {!isLoggedIn && (
+              <Link to="/join" className="join__btn-fixed">
+                Join PawCircle
+              </Link>
+            )}
 
             <figure className="header__img--wrapper">
               <img

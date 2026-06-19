@@ -26,7 +26,6 @@ import {
 } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
 import ComingSoonPage from "./pages/ComingSoonPage";
-import TestSupabase from "./pages/TestSupabase";
 import MembershipSuccess from "./pages/MembershipSuccess";
 
 
@@ -71,9 +70,8 @@ function AppLayout() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/details" element={<MembershipDetails />} />
         <Route path="/account" element={<AccountSettings />} />
-        <Route path="/test-supabase" element={<TestSupabase />} />
         <Route path="/coming-soon" element={<ComingSoonPage />} />
-        <Route path="/membership-success"element={<MembershipSuccess />} />
+       <Route path="/membership-success" element={<MembershipSuccess />} />
       </Routes>
 
       {!isComingSoon && <Footer />}
