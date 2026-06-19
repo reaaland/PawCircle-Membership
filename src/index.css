@@ -535,6 +535,22 @@ nav {
   margin-bottom: 0;
 }
 
+.directory__header {
+  margin-bottom: 32px;
+}
+
+.directory__back {
+  display: inline-block;
+  margin-bottom: 16px;
+  font-weight: 700;
+  color: #6415ff;
+  text-decoration: none;
+}
+
+.directory__back:hover {
+  text-decoration: underline;
+}
+
 .provider-preview__grid {
   display: flex;
   justify-content: center;

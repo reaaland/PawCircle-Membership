@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { getProviders } from "../Services/supabaseService";
 import MessageModal from "./MessageModal";
 
@@ -68,6 +69,11 @@ function Providers() {
     <section id="providers">
       <div className="container">
         <div className="row">
+          <div className="directory__header">
+            <Link to="/dashboard" className="directory__back">
+              ← Dashboard
+            </Link>
+            </div>
           <div className="providers__top">
             <div>
               <h2>Provider Directory</h2>
