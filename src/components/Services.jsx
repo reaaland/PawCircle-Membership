@@ -26,7 +26,10 @@ function Services({ isLoggedIn = false }) {
                 <h2>{service.title}</h2>
                 <p>{service.description}</p>
 
-                <Link to={isLoggedIn ? "/providers" : "/join"} className="btn">
+                <Link
+                  to={isLoggedIn ? "/providers" : "/join"}
+                  className="btn"
+                >
                   {service.button}
                 </Link>
               </div>
