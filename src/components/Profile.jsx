@@ -198,7 +198,10 @@ function Profile() {
       years_experience: profile.years_experience
         ? Number(profile.years_experience)
         : null,
-    };
+     member_number: profile.member_number
+        ? Number(profile.member_number)
+        : null,
+        };
     
     const { error } = await saveProfile(profileToSave);
 
