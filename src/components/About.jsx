@@ -24,7 +24,7 @@ function About({ fullVersion }) {
               </h3>
 
               <p>
-                <span className="purple">PawCircle</span> helps pet owners and pet caregivers connect directly within their local community.
+                <span className="purple">PawCircle</span> is a membership platform that helps pet owners find local pet service providers and helps pet service providers build connections within their communities.
               </p>
 
               <p>
@@ -40,7 +40,7 @@ function About({ fullVersion }) {
               </p>
 
               <p>
-                Our goal is to provide an affordable and straightforward way for members to find one another, make an introduction, and connect directly for their pet care needs. No commissions, no rankings, and no booking fees—just direct connections between members.
+                Our goal is to provide an affordable and straightforward way for members to connect, make introductions, and communicate directly without booking fees, commissions, rankings, or platform-controlled transactions.
               </p>
             </div>
 
@@ -52,7 +52,7 @@ function About({ fullVersion }) {
               </p>
 
               <p>
-               We are launching in the United States with the goal of building a nationwide membership platform where pet owners can explore provider profiles, choose who they would like to contact, and make direct introductions on their own terms. Pet service providers can create professional profiles, showcase their services, and build connections with pet owners seeking local pet care.
+              We envision a nationwide membership community where pet owners can discover local pet care options and pet service providers can showcase their services, experience, and availability. PawCircle gives members a simple way to make introductions and build local connections without commissions, rankings, or booking fees.
               </p>
 
               <p>
@@ -64,12 +64,15 @@ function About({ fullVersion }) {
               <h3>Why Membership?</h3>
 
               <p>
-                <span className="purple">PawCircle</span> uses a simple membership model to help pet owners and pet service providers
-                connect directly.
+                Membership gives pet owners access to provider directories, profile creation, and the ability to make direct introductions within their local pet community.
               </p>
 
               <p>
-                Membership helps keep the platform affordable, straightforward, and focused on helping pet owners and pet service providers connect directly — without booking fees, commissions, or surprise costs.
+                Membership also gives pet service providers a place to showcase their services, availability, experience, and business information to potential clients..
+              </p>
+
+              <p>
+               Memberships help keep PawCircle affordable, community-focused, and free from booking commissions, rankings, and surprise platform fees.
               </p>
             </div>
           </div>

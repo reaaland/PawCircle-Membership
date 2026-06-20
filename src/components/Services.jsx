@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { services } from "../data/services";
 
-function Services() {
+function Services({ isLoggedIn = false }) {
   return (
     <section id="services-page">
       <div className="container">
@@ -26,7 +26,7 @@ function Services() {
                 <h2>{service.title}</h2>
                 <p>{service.description}</p>
 
-                <Link to="/providers" className="btn">
+                <Link to={isLoggedIn ? "/providers" : "/join"} className="btn">
                   {service.button}
                 </Link>
               </div>

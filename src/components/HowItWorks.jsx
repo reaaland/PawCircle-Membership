@@ -6,7 +6,7 @@ function HowItWorks() {
           <h2>How <span className="purple">PawCircle</span> Works</h2>
 
           <p className="how__intro">
-            <span className="purple">PawCircle</span> helps pet owners and pet service providers connect directly through a simple membership community.
+            <span className="purple">PawCircle</span> helps pet owners find local pet care and helps pet service providers showcase their services and build local connections through simple memberships and direct communication.
           </p>
 
           <div className="how__cards">
@@ -18,24 +18,23 @@ function HowItWorks() {
             </div>
 
             <div className="how__card">
-             <h3>Find Local Pet Care</h3>
+             <h3>Create a Profile</h3>
               <p>
-                Browse provider profiles to learn about services, experience, and                 availability before making a direct introduction.
+               Pet owners can share their pet care needs. Pet service providers can showcase their services, experience, and availability.
               </p>
           </div>
 
             <div className="how__card">
-              <h3>3. Start a Conversation</h3>
+              <h3>3. Find Local Pet Care</h3>
               <p>
-                Send an introductory message through <span className="purple">PawCircle</span> and learn more about the provider.
+               Pet owners can browse provider profiles to learn about services, experience, and availability before deciding who to contact.
               </p>
             </div>
 
             <div className="how__card">
-              <h3>4. Arrange Services Directly</h3>
+              <h3>4. Connect Directly</h3>
               <p>
-                Members decide details, expectations, scheduling, and payment
-                arrangements together.
+               Members can communicate through <span className="purple">PawCircle</span>, make introductions, and decide together when they would like to exchange contact information and continue their connection outside the platform.
               </p>
             </div>
           </div>
