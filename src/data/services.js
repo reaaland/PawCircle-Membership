@@ -6,6 +6,7 @@ import houseSitting from "../assets/house_sitting_fireplace.JPG";
 import sleepyPup from "../assets/Sleepy_pup.jpg";
 import petTaxi from "../assets/Pet_Taxi.jpg";
 import horseDog from "../assets/horse_dog playing.jpg";
+import dropIn from "../assets/drop_in.jpg";
 
 export const services = [
   {
@@ -18,7 +19,7 @@ export const services = [
   },
   {
     title: "Drop-In Visits",
-    image: hamsterdog,
+    image: dropIn,
     imageClass: "services-page__img--drop-in",
     description:
       "Short visits for feeding, potty breaks, medication support, and companionship.",
@@ -30,6 +31,14 @@ export const services = [
     imageClass: "services-page__img--cat",
     description:
       "Cat-focused care including feeding, litter maintenance, medication support, and playtime.",
+    button: "Find Providers",
+  },
+  {
+    title: "Small & Exotic Pet Care",
+    image: hamsterdog,
+    imageClass: "services-page__img--small-pets",
+    description:
+      "Care for rabbits, guinea pigs, hamsters, birds, reptiles, and other small pets.",
     button: "Find Providers",
   },
   {
