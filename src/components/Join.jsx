@@ -24,8 +24,19 @@ function Join() {
     loadSiteSettings();
   }, []);
 
-  if (loadingSettings) {
-  return <div>Loading membership options...</div>;
+ if (loadingSettings) {
+  return (
+    <section id="join">
+      <div className="container">
+        <div className="row row__column">
+          <div className="join-loading">
+            <div className="paw-loader">🐾</div>
+            <p>Loading membership options...</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 }
 
   const defaultMembership = founderActive ? "founder" : "owner";

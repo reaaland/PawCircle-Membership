@@ -83,6 +83,10 @@ h2 {
   background-clip: text;
 }
 
+.app-main {
+  min-height: 100vh;
+}
+
 p {
  font-size: 18px;
  line-height: 1.5;
@@ -396,6 +400,34 @@ nav {
 
   box-shadow: 0 8px 20px rgba(0,0,0,.15);
   transition: all .25s ease;
+}
+
+.join-loading {
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #5f3c96;
+  font-weight: 600;
+}
+
+.paw-loader {
+  font-size: 2rem;
+  animation: pawPulse 1s ease-in-out infinite;
+}
+
+@keyframes pawPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+
+  50% {
+    transform: scale(1.15);
+    opacity: 1;
+  }
 }
 
 .join__btn--fixed {

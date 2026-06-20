@@ -78,13 +78,13 @@ useEffect(() => {
 
       {!isComingSoon && <Navbar />}
 
+    <main className="app-main">
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home isLoggedIn={isLoggedIn} />} />
+        <Route path="/services" element={<ServicesPage isLoggedIn={isLoggedIn} />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/membership" element={<MembershipPage />} />
-        <Route path="/services" element={<ServicesPage />} />
         <Route path="/join" element={<JoinPage />} />
-
         <Route path="/dashboard" element={authLoading ? null : isLoggedIn ? <Dashboard /> : <Navigate to="/join" />} />
         <Route path="/providers" element={authLoading ? null : isLoggedIn ? <ProviderPage /> : <Navigate to="/join" />} />
         <Route path="/pet-owners" element={authLoading ? null : isLoggedIn ? <PetOwnersPage /> : <Navigate to="/join" />} />
@@ -101,6 +101,7 @@ useEffect(() => {
         <Route path="/coming-soon" element={<ComingSoonPage />} />
         <Route path="/membership-success" element={<MembershipSuccess />} />
       </Routes>
+      </main>
 
       {!isComingSoon && <Footer />}
     </>
