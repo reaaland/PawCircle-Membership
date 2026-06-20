@@ -623,6 +623,15 @@ nav {
   vertical-align: middle;
 }
 
+.founder__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  justify-content: center;
+  margin: 8px auto;
+  font-weight: 700;
+}
+
 .regular__card {
   background: #f8fafc;
   opacity: 0.6;
@@ -1000,21 +1009,6 @@ gap: 20px;
   color: #6b3fa0;
   font-size: 14px;
   font-weight: 700;
-}
-
-.founder__member {
-  display: inline-block;
-  padding: 8px 14px;
-  margin-bottom: 12px;
-  border-radius: 999px;
-  background: #fff3c4;
-  color: #8a5a00;
-  font-weight: 700;
-}
-
-.member__number {
-  margin-bottom: 16px;
-  font-weight: 600;
 }
 
 .profile__helper {

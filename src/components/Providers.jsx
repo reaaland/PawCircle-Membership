@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { getProviders } from "../Services/supabaseService";
 import MessageModal from "./MessageModal";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPaw } from "@fortawesome/free-solid-svg-icons";
 
 function Providers() {
   const [providers, setProviders] = useState([]);
@@ -123,9 +125,16 @@ function Providers() {
             <div className="providers">
               {sortedProviders.map((provider) => (
                 <div className="provider__card" key={provider.id}>
-                  <h3>{provider.full_name}</h3>
+              <h3>{provider.full_name}</h3>
 
-                  <p className="provider__service">
+              {provider.membership_level?.toLowerCase() === "founder" && (
+               <div className="founder__badge">
+                <FontAwesomeIcon icon={faPaw} className="gold-paw" />
+                {" "}Founder Member
+              </div>
+              )}
+
+                    <p className="provider__service">
                     {provider.profile_type === "both"
                       ? "Pet Owner & Service Provider"
                       : "Pet Service Provider"}
