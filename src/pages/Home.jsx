@@ -5,22 +5,22 @@ import Membership from "../components/Membership";
 import Services from "../components/Services";
 import CTASection from "../components/CTASection";
 import ProviderPreview from "../components/ProviderPreview";
-import Footer from "../components/Footer";
 
 
-function Home() {
+
+function Home({ isLoggedIn }) {
   return (
     <>
       <Hero />
       <About />
       <HowItWorks />
-      <Services />
+      <Services isLoggedIn={isLoggedIn} />
       <ProviderPreview />
       <Membership featuredOnly />
       <CTASection />
     </>
   );
-  <Footer/>
+  
 }
 
 export default Home;
