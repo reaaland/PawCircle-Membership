@@ -7,6 +7,25 @@ function Profile() {
   const navigate = useNavigate();
   const [saving, setSaving] = useState(false);
 
+  const serviceOptions = [
+    "Dog Walking",
+    "Drop-In Visits",
+    "Pet Day Care",
+    "Overnight Care",
+    "House Sitting",
+    "Boarding",
+    "Cat Care",
+    "Pet Taxi",
+    "Medication Support",
+    "Puppy Care",
+    "Senior Pet Care",
+    "Small Animal Care",
+    "Reptile Care",
+    "Bird Care",
+    "Farm Animal Care",
+    "Hobby Farm Services",
+  ];
+
   const [profile, setProfile] = useState({
     display_name: "",
     username: "",
@@ -19,7 +38,8 @@ function Profile() {
     experience: "",
     bio: "",
     availability: "accepting",
-    services: [],
+    care_needs: [],
+    services_offered: [],
     contact_preferences: [],
     contact_visibility: "after_conversation",
     profile_image: "",
@@ -63,7 +83,13 @@ function Profile() {
           experience: data.experience || "",
           bio: data.bio || "",
           availability: data.availability || "accepting",
-          services: data.services || [],
+          care_needs: Array.isArray(data.care_needs)
+            ? data.care_needs
+            : [],
+
+          services_offered: Array.isArray(data.services_offered)
+            ? data.services_offered
+            : [],
           contact_preferences: data.contact_preferences || [],
           contact_visibility:data.contact_visibility ||"after_conversation",
           profile_image: data.profile_image || "",
@@ -74,34 +100,22 @@ function Profile() {
     loadProfile();
   }, []);
 
-  function handleContactPreferenceChange(preference) {
+  function handleServiceChange(field, service) {
     setProfile((prevProfile) => {
-    const alreadySelected =
-      prevProfile.contact_preferences.includes(preference);
+      const currentValues = Array.isArray(prevProfile[field])
+        ? prevProfile[field]
+        : [];
 
-    return {
-      ...prevProfile,
-      contact_preferences: alreadySelected
-        ? prevProfile.contact_preferences.filter(
-            (item) => item !== preference
-          )
-        : [...prevProfile.contact_preferences, preference],
-    };
-  });
-}
+      const alreadySelected = currentValues.includes(service);
 
-  function handleServiceChange(service) {
-  setProfile((prevProfile) => {
-    const alreadySelected = prevProfile.services.includes(service);
-
-    return {
-      ...prevProfile,
-      services: alreadySelected
-        ? prevProfile.services.filter((item) => item !== service)
-        : [...prevProfile.services, service],
-    };
-  });
-}
+      return {
+        ...prevProfile,
+        [field]: alreadySelected
+          ? currentValues.filter((item) => item !== service)
+          : [...currentValues, service],
+      };
+    });
+  }
 
   function handleChange(e) {
     const { id, value } = e.target;
@@ -111,6 +125,19 @@ function Profile() {
       [id]: value,
     }));
   }
+  function handleContactPreferenceChange(preference) {
+  setProfile((prevProfile) => {
+    const alreadySelected =
+      prevProfile.contact_preferences.includes(preference);
+
+    return {
+      ...prevProfile,
+      contact_preferences: alreadySelected
+        ? prevProfile.contact_preferences.filter((item) => item !== preference)
+        : [...prevProfile.contact_preferences, preference],
+    };
+  });
+}
 
   async function handlePhotoUpload(e) {
     const file = e.target.files[0];
@@ -413,44 +440,105 @@ function Profile() {
                 </div>
               </div>
 
-              <div className="form__group">
-                <label>Services</label>
+    {profile.profile_type === "pet_owner" && (
+  <div className="form__group">
+    <label>Pet Care Needs</label>
 
-                <p className="profile__helper">
-                  Select all services you offer, are seeking, or are comfortable
-                  providing.
-                </p>
+    <p className="profile__helper">
+      Select the types of pet care you may be looking for.
+    </p>
 
-                <div className="services__checkboxes">
-                    {[
-                      "Dog Walking",
-                      "Drop-In Visits",
-                      "Pet Day Care",
-                      "Overnight Care",
-                      "House Sitting",
-                      "Boarding",
-                      "Cat Care",
-                      "Pet Taxi",
-                      "Medication Support",
-                      "Puppy Care",
-                      "Senior Pet Care",
-                      "Small Animal Care",
-                      "Reptile Care",
-                      "Bird Care",
-                      "Farm Animal Care",
-                      "Hobby Farm Services",
-                    ].map((service) => (
-                      <label key={service}>
-                        <input
-                          type="checkbox"
-                          checked={profile.services.includes(service)}
-                          onChange={() => handleServiceChange(service)}
-                        />
-                        {service}
-                      </label>
-                    ))}
-                </div>
-              </div>
+    <div className="services__checkboxes">
+      {serviceOptions.map((service) => (
+        <label key={service}>
+          <input
+            type="checkbox"
+            checked={profile.care_needs.includes(service)}
+            onChange={() =>
+              handleServiceChange("care_needs", service)
+            }
+          />
+          {service}
+        </label>
+      ))}
+    </div>
+  </div>
+)}
+
+{profile.profile_type === "pet_provider" && (
+  <div className="form__group">
+    <label>Services Offered</label>
+
+    <p className="profile__helper">
+      Select the services you provide.
+    </p>
+
+    <div className="services__checkboxes">
+      {serviceOptions.map((service) => (
+        <label key={service}>
+          <input
+            type="checkbox"
+            checked={profile.services_offered.includes(service)}
+            onChange={() =>
+              handleServiceChange("services_offered", service)
+            }
+          />
+          {service}
+        </label>
+      ))}
+    </div>
+  </div>
+)}
+
+{profile.profile_type === "both" && (
+  <>
+    <div className="form__group">
+      <label>Pet Care Needs</label>
+
+      <p className="profile__helper">
+        Select the types of pet care you may be looking for.
+      </p>
+
+      <div className="services__checkboxes">
+        {serviceOptions.map((service) => (
+          <label key={service}>
+            <input
+              type="checkbox"
+              checked={profile.care_needs.includes(service)}
+              onChange={() =>
+                handleServiceChange("care_needs", service)
+              }
+            />
+            {service}
+          </label>
+        ))}
+      </div>
+    </div>
+
+    <div className="form__group">
+      <label>Services Offered</label>
+
+      <p className="profile__helper">
+        Select the services you provide.
+      </p>
+
+      <div className="services__checkboxes">
+        {serviceOptions.map((service) => (
+          <label key={service}>
+            <input
+              type="checkbox"
+              checked={profile.services_offered.includes(service)}
+              onChange={() =>
+                handleServiceChange("services_offered", service)
+              }
+            />
+            {service}
+          </label>
+        ))}
+      </div>
+    </div>
+  </>
+)}
 
               <div className="form__group">
                 <label htmlFor="years_experience">Years of Experience</label>
