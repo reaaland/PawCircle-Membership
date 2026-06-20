@@ -85,6 +85,8 @@ function Profile() {
           availability: data.availability || "accepting",
           care_needs: Array.isArray(data.care_needs)
             ? data.care_needs
+            : data.care_needs
+            ? JSON.parse(data.care_needs)
             : [],
 
           services_offered: Array.isArray(data.services_offered)
@@ -191,7 +193,7 @@ function Profile() {
         ? Number(profile.years_experience)
         : null,
     };
-
+    
     const { error } = await saveProfile(profileToSave);
 
     if (error) {
