@@ -632,6 +632,14 @@ nav {
   font-weight: 700;
 }
 
+svg.gold-paw {
+  color: #d4af37 !important;
+}
+
+svg.gold-paw path {
+  fill: #d4af37 !important;
+}
+
 .regular__card {
   background: #f8fafc;
   opacity: 0.6;
