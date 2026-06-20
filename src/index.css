@@ -917,7 +917,7 @@ nav {
 }
 
 .services-page__img--drop-in {
-  object-position: 26% 45%;
+  object-position: center 26%;
 }
 
 .services-page__img--daycare {
@@ -926,6 +926,10 @@ nav {
 
 .services-page__img--cat {
   object-position: center 20%;
+}
+
+.services-page__img--small-pets {
+  object-position: 26% 45%;
 }
 
 .services-page__img--taxi {
