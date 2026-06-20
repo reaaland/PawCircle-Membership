@@ -31,14 +31,11 @@ function Navbar() {
     };
   }, []);
 
-  async function handleLogout() {
-    await signOut();
-
-    setIsLoggedIn(false);
-    setMenuOpen(false);
-    navigate("/");
-  }
-
+async function handleLogout() {
+  setMenuOpen(false);
+  navigate("/");
+  await signOut();
+}
   function handleLogin() {
     setIsLoggedIn(true);
     setShowLogin(false);

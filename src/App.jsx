@@ -35,11 +35,13 @@ import { supabase } from "./lib/supabase";
 function AppLayout() {
   const location = useLocation();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [authLoading, setAuthLoading] = useState(true);
 
 useEffect(() => {
   async function checkSession() {
     const { data } = await supabase.auth.getSession();
     setIsLoggedIn(!!data.session);
+    setAuthLoading(false);
   }
 
   checkSession();
@@ -47,6 +49,7 @@ useEffect(() => {
   const { data: listener } = supabase.auth.onAuthStateChange(
     (_event, session) => {
       setIsLoggedIn(!!session);
+      setAuthLoading(false);
     }
   );
 
@@ -82,13 +85,13 @@ useEffect(() => {
         <Route path="/services" element={<ServicesPage />} />
         <Route path="/join" element={<JoinPage />} />
 
-        <Route path="/dashboard" element={isLoggedIn ? <Dashboard /> : <Navigate to="/join" />} />
-        <Route path="/providers" element={isLoggedIn ? <ProviderPage /> : <Navigate to="/join" />} />
-        <Route path="/pet-owners" element={isLoggedIn ? <PetOwnersPage /> : <Navigate to="/join" />} />
-        <Route path="/messages" element={isLoggedIn ? <Messages /> : <Navigate to="/join" />} />
-        <Route path="/profile" element={isLoggedIn ? <Profile /> : <Navigate to="/join" />} />
-        <Route path="/details" element={isLoggedIn ? <MembershipDetails /> : <Navigate to="/join" />} />
-        <Route path="/account" element={isLoggedIn ? <AccountSettings /> : <Navigate to="/join" />} />
+        <Route path="/dashboard" element={authLoading ? null : isLoggedIn ? <Dashboard /> : <Navigate to="/join" />} />
+        <Route path="/providers" element={authLoading ? null : isLoggedIn ? <ProviderPage /> : <Navigate to="/join" />} />
+        <Route path="/pet-owners" element={authLoading ? null : isLoggedIn ? <PetOwnersPage /> : <Navigate to="/join" />} />
+        <Route path="/messages" element={authLoading ? null : isLoggedIn ? <Messages /> : <Navigate to="/join" />} />
+        <Route path="/profile" element={authLoading ? null : isLoggedIn ? <Profile /> : <Navigate to="/join" />} />
+        <Route path="/details" element={authLoading ? null : isLoggedIn ? <MembershipDetails /> : <Navigate to="/join" />} />
+        <Route path="/account" element={authLoading ? null : isLoggedIn ? <AccountSettings /> : <Navigate to="/join" />} />
 
         <Route path="/faq" element={<FAQPage />} />
         <Route path="/code" element={<CodeOfConductPage />} />

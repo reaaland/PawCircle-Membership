@@ -1002,6 +1002,21 @@ gap: 20px;
   font-weight: 700;
 }
 
+.founder__member {
+  display: inline-block;
+  padding: 8px 14px;
+  margin-bottom: 12px;
+  border-radius: 999px;
+  background: #fff3c4;
+  color: #8a5a00;
+  font-weight: 700;
+}
+
+.member__number {
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+
 .profile__helper {
   margin-bottom: 12px;
 }

@@ -43,6 +43,9 @@ function Profile() {
     contact_preferences: [],
     contact_visibility: "after_conversation",
     profile_image: "",
+    membership_level: "",
+    member_number: "",
+    membership_status: "",
 
   });
 
@@ -95,6 +98,9 @@ function Profile() {
           contact_preferences: data.contact_preferences || [],
           contact_visibility:data.contact_visibility ||"after_conversation",
           profile_image: data.profile_image || "",
+          membership_level: data.membership_level || "",
+          member_number: data.member_number || "",
+          membership_status: data.membership_status || "",
         }));
       }
     }
@@ -221,7 +227,19 @@ function Profile() {
           </div>
 
           <div className="profile__card">
-            <h3>Member Information</h3>
+          <h3>Member Information</h3>
+
+          {profile.membership_level?.toLowerCase() === "founder" && (
+            <div className="founder__member">
+              🐾 Founder Member
+            </div>
+          )}
+
+          {profile.member_number && (
+            <p className="member__number">
+              <strong>Member Number:</strong> #{profile.member_number}
+            </p>
+          )}
 
              <div className="form__group">
                 <label htmlFor="profile_photo">Profile Photo</label>
