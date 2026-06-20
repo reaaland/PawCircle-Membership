@@ -6,6 +6,7 @@ import { saveProfile } from "../Services/supabaseService";
 function Profile() {
   const navigate = useNavigate();
   const [saving, setSaving] = useState(false);
+  const [loadingProfile, setLoadingProfile] = useState(true);
 
   const serviceOptions = [
     "Dog Walking",
@@ -55,6 +56,7 @@ function Profile() {
       const user = userData.user;
 
       if (!user) {
+        setLoadingProfile(false);
         return;
       }
 
@@ -103,6 +105,7 @@ function Profile() {
           membership_status: data.membership_status || "",
         }));
       }
+      setLoadingProfile();
     }
 
     loadProfile();
@@ -211,12 +214,26 @@ function Profile() {
       return;
     }
 
-    setTimeout(() => {
-      navigate("/dashboard");
-    }, 800);
-  }
+   setTimeout(() => {
+  navigate("/dashboard");
+}, 800);
+}
 
+if (loadingProfile) {
   return (
+    <section id="profile">
+      <div className="container">
+        <div className="row row__column">
+          <div className="profile-loading">
+            Loading your profile...
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+return (
 
     <section id="profile">
       <div className="container">
