@@ -2,11 +2,12 @@ import walkInTheSnow from "../assets/walking in the snow.jpeg";
 import hamsterdog from "../assets/hamster_dog_friends.JPG";
 import catWindow from "../assets/cat_window.png";
 import onTheRun from "../assets/on_the_run.JPG";
-import houseSitting from "../assets/house_sitting_fireplace.JPG";
 import sleepyPup from "../assets/Sleepy_pup.jpg";
 import petTaxi from "../assets/Pet_Taxi.jpg";
 import horseDog from "../assets/horse_dog playing.jpg";
 import dropIn from "../assets/drop_in.jpg";
+import boardingTwoPups from "../assets/boarding_two_pups.png"
+import sleepOver from "../assets/sleep_over.png"
 
 export const services = [
   {
@@ -51,7 +52,7 @@ export const services = [
   },
   {
     title: "House Sitting",
-    image: houseSitting,
+    image: sleepOver,
     imageClass: "services-page__img--house-sitting",
     description:
       "Overnight care in your home while you're away.",
@@ -59,7 +60,7 @@ export const services = [
   },
   {
     title: "Boarding",
-    image: sleepyPup,
+    image: boardingTwoPups,
     imageClass: "services-page__img--boarding",
     description:
       "Overnight care provided in a caregiver's home when available.",

@@ -23,14 +23,37 @@ import {
   Routes,
   Route,
   useLocation,
+  Navigate,
 } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
 import ComingSoonPage from "./pages/ComingSoonPage";
 import MembershipSuccess from "./pages/MembershipSuccess";
+import { useState, useEffect } from "react";
+import { supabase } from "./lib/supabase";
 
 
 function AppLayout() {
   const location = useLocation();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+useEffect(() => {
+  async function checkSession() {
+    const { data } = await supabase.auth.getSession();
+    setIsLoggedIn(!!data.session);
+  }
+
+  checkSession();
+
+  const { data: listener } = supabase.auth.onAuthStateChange(
+    (_event, session) => {
+      setIsLoggedIn(!!session);
+    }
+  );
+
+  return () => {
+    listener.subscription.unsubscribe();
+  };
+}, []);
 
   const isLocalhost =
     window.location.hostname === "localhost" ||
@@ -58,20 +81,22 @@ function AppLayout() {
         <Route path="/membership" element={<MembershipPage />} />
         <Route path="/services" element={<ServicesPage />} />
         <Route path="/join" element={<JoinPage />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/providers" element={<ProviderPage />} />
-        <Route path="/pet-owners" element={<PetOwnersPage />} />
+
+        <Route path="/dashboard" element={isLoggedIn ? <Dashboard /> : <Navigate to="/join" />} />
+        <Route path="/providers" element={isLoggedIn ? <ProviderPage /> : <Navigate to="/join" />} />
+        <Route path="/pet-owners" element={isLoggedIn ? <PetOwnersPage /> : <Navigate to="/join" />} />
+        <Route path="/messages" element={isLoggedIn ? <Messages /> : <Navigate to="/join" />} />
+        <Route path="/profile" element={isLoggedIn ? <Profile /> : <Navigate to="/join" />} />
+        <Route path="/details" element={isLoggedIn ? <MembershipDetails /> : <Navigate to="/join" />} />
+        <Route path="/account" element={isLoggedIn ? <AccountSettings /> : <Navigate to="/join" />} />
+
         <Route path="/faq" element={<FAQPage />} />
         <Route path="/code" element={<CodeOfConductPage />} />
         <Route path="/privacy" element={<PrivacyPolicyPage />} />
         <Route path="/terms" element={<TermsOfUsePage />} />
         <Route path="/contact" element={<ContactPage />} />
-        <Route path="/messages" element={<Messages />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/details" element={<MembershipDetails />} />
-        <Route path="/account" element={<AccountSettings />} />
         <Route path="/coming-soon" element={<ComingSoonPage />} />
-       <Route path="/membership-success" element={<MembershipSuccess />} />
+        <Route path="/membership-success" element={<MembershipSuccess />} />
       </Routes>
 
       {!isComingSoon && <Footer />}
