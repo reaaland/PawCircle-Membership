@@ -453,7 +453,7 @@ function Profile() {
         <label key={service}>
           <input
             type="checkbox"
-            checked={profile.care_needs.includes(service)}
+            checked={(profile.care_needs || []).includes(service)}
             onChange={() =>
               handleServiceChange("care_needs", service)
             }
@@ -478,7 +478,7 @@ function Profile() {
         <label key={service}>
           <input
             type="checkbox"
-            checked={profile.services_offered.includes(service)}
+            checked={(profile.services_offered || []).includes(service)}
             onChange={() =>
               handleServiceChange("services_offered", service)
             }
@@ -504,7 +504,7 @@ function Profile() {
           <label key={service}>
             <input
               type="checkbox"
-              checked={profile.care_needs.includes(service)}
+              checked={(profile.care_needs || []).includes(service)}
               onChange={() =>
                 handleServiceChange("care_needs", service)
               }
@@ -527,7 +527,7 @@ function Profile() {
           <label key={service}>
             <input
               type="checkbox"
-              checked={profile.services_offered.includes(service)}
+              checked={(profile.services_offered || []).includes(service)}
               onChange={() =>
                 handleServiceChange("services_offered", service)
               }
