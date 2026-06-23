@@ -1,6 +1,10 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 function AccountSettings() {
+
+  const [showCancelWarning, setShowCancelWarning] = useState(false)
+
   return (
     <section id="account-settings">
       <div className="container">
@@ -38,17 +42,59 @@ function AccountSettings() {
             </Link>
           </div>
 
-          <div className="settings__card">
+           <div className="settings__card">
             <h3>Membership</h3>
 
             <p>
               Review your membership type, status, pricing, and account details.
             </p>
 
-            <Link to="/details" className="btn">
-              View Membership Details
-            </Link>
+            <div className="settings__actions">
+              <Link to="/details" className="btn">
+                View Membership Details
+              </Link>
+
+              <button
+                className="btn btn--secondary"
+                onClick={() => setShowCancelWarning(true)}
+              >
+                Manage or Cancel Membership
+              </button>
+            </div>
           </div>
+
+          {showCancelWarning && (
+            <div className="modal__backdrop">
+              <div className="modal">
+                <h3>Manage or Cancel Membership</h3>
+
+                <p>
+                  If you are a Founder Member and cancel your membership, you
+                  will no longer be eligible for the $10/year Founder price
+                  guarantee if you rejoin later.
+                </p>
+
+                <div className="modal__actions">
+                  <button
+                    className="btn btn--secondary"
+                    onClick={() => setShowCancelWarning(false)}
+                  >
+                    Go Back
+                  </button>
+
+                  <a
+                    href="https://billing.stripe.com/p/login/14A6oHbhs05u4zdeLscAo00"
+                    className="btn"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Continue to Stripe
+                  </a>
+                </div>
+              </div>
+            </div>
+          )}
+
 
           <div className="settings__card">
             <h3>Support</h3>
