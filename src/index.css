@@ -1397,6 +1397,31 @@ gap: 20px;
   cursor: pointer;
 }
 
+.modal {
+  background: white;
+  border-radius: 24px;
+  padding: 32px;
+  max-width: 520px;
+  width: 100%;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.25);
+}
+
+.modal__backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.modal__actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+
 .contact__visibility label {
   display: block;
   margin-bottom: 8px;
