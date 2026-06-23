@@ -1,13 +1,35 @@
 import { useState, useEffect } from "react";
 import { getPetOwners } from "../Services/supabaseService";
-
+import { useNavigate } from "react-router-dom";
+import { supabase } from "../lib/supabase";
 
 function PetOwners() {
+  const navigate = useNavigate();
   const [petOwners, setPetOwners] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function loadPetOwners() {
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+
+      if (!user) {
+        navigate("/");
+        return;
+      }
+
+      const { data: profile, error } = await supabase
+        .from("profiles")
+        .select("membership_status")
+        .eq("id", user.id)
+        .single();
+
+      if (error || profile?.membership_status !== "active") {
+        navigate("/membership");
+        return;
+      }
+
       const owners = await getPetOwners();
 
       setPetOwners(owners);
@@ -15,7 +37,8 @@ function PetOwners() {
     }
 
     loadPetOwners();
-  }, []);
+  }, [navigate]);
+  
     return (
     <section id="pet-owners">
       <div className="container">

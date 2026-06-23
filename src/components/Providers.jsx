@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { getProviders } from "../Services/supabaseService";
 import MessageModal from "./MessageModal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaw } from "@fortawesome/free-solid-svg-icons";
+import { supabase } from "../lib/supabase";
 
 function Providers() {
+  const navigate = useNavigate();
   const [providers, setProviders] = useState([]);
   const [selectedProvider, setSelectedProvider] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -13,59 +15,79 @@ function Providers() {
   const [searchTerm, setSearchTerm] = useState("");
   const [openingProviderId, setOpeningProviderId] = useState(null);
 
-  useEffect(() => {
-    async function loadProviders() {
-      const profiles = await getProviders();
+    useEffect(() => {
+      async function loadProviders() {
+        const {
+          data: { user },
+        } = await supabase.auth.getUser();
 
-      const availableProviders = profiles.filter(
-        (provider) =>
-          provider.availability === "accepting" ||
-          provider.availability === "limited"
-      );
+        if (!user) {
+          navigate("/");
+          return;
+        }
 
-      setProviders(availableProviders);
-      setLoading(false);
-    }
+        const { data: profile, error } = await supabase
+          .from("profiles")
+          .select("membership_status")
+          .eq("id", user.id)
+          .single();
 
-    loadProviders();
-  }, []);
+        if (error || profile?.membership_status !== "active") {
+          navigate("/membership");
+          return;
+        }
 
-  function handleContactProvider(provider) {
-    setOpeningProviderId(provider.id);
+        const profiles = await getProviders();
 
-    setTimeout(() => {
-      setSelectedProvider(provider);
-      setOpeningProviderId(null);
-    }, 800);
-  }
+        const availableProviders = profiles.filter(
+          (provider) =>
+            provider.availability === "accepting" ||
+            provider.availability === "limited"
+        );
 
-  const filteredProviders = providers.filter((provider) => {
-    const search = searchTerm.toLowerCase();
+        setProviders(availableProviders);
+        setLoading(false);
+      }
 
-    return (
-      provider.full_name?.toLowerCase().includes(search) ||
-      provider.city?.toLowerCase().includes(search) ||
-      provider.state?.toLowerCase().includes(search) ||
-      provider.zip_code?.toLowerCase().includes(search) ||
-      provider.bio?.toLowerCase().includes(search)
-    );
-  });
+      loadProviders();
+    }, [navigate]);
 
-  const sortedProviders = [...filteredProviders].sort((a, b) => {
-    if (sortOption === "AZ") {
-      return a.full_name.localeCompare(b.full_name);
-    }
+      function handleContactProvider(provider) {
+        setOpeningProviderId(provider.id);
 
-    if (sortOption === "ZA") {
-      return b.full_name.localeCompare(a.full_name);
-    }
+        setTimeout(() => {
+          setSelectedProvider(provider);
+          setOpeningProviderId(null);
+        }, 800);
+      }
 
-    if (sortOption === "CITY") {
-      return a.city.localeCompare(b.city);
-    }
+      const filteredProviders = providers.filter((provider) => {
+        const search = searchTerm.toLowerCase();
 
-    return 0;
-  });
+        return (
+          provider.full_name?.toLowerCase().includes(search) ||
+          provider.city?.toLowerCase().includes(search) ||
+          provider.state?.toLowerCase().includes(search) ||
+          provider.zip_code?.toLowerCase().includes(search) ||
+          provider.bio?.toLowerCase().includes(search)
+        );
+      });
+
+      const sortedProviders = [...filteredProviders].sort((a, b) => {
+        if (sortOption === "AZ") {
+          return a.full_name.localeCompare(b.full_name);
+        }
+
+        if (sortOption === "ZA") {
+          return b.full_name.localeCompare(a.full_name);
+        }
+
+        if (sortOption === "CITY") {
+          return a.city.localeCompare(b.city);
+        }
+
+        return 0;
+      });
 
   return (
     <section id="providers">

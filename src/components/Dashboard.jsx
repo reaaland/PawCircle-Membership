@@ -1,22 +1,39 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { getProfiles } from "../Services/supabaseService";
 import dogKitten from "../assets/kitten_dog_toys.png";
+import { supabase } from "../lib/supabase";
 
 function Dashboard() {
+  const navigate = useNavigate();
   const [profileType, setProfileType] = useState(null);
 
-  useEffect(() => {
-  async function loadProfile() {
-    const profiles = await getProfiles();
+ useEffect(() => {
+  async function loadDashboard() {
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
 
-    if (profiles.length > 0) {
-      setProfileType(profiles[0].profile_type);
+    if (!user) {
+      navigate("/");
+      return;
     }
+
+    const { data: profile, error } = await supabase
+      .from("profiles")
+      .select("membership_status, profile_type")
+      .eq("id", user.id)
+      .single();
+
+    if (error || profile?.membership_status !== "active") {
+      navigate("/membership");
+      return;
+    }
+
+    setProfileType(profile.profile_type);
   }
 
-  loadProfile();
-}, []);
+  loadDashboard();
+}, [navigate]);
 
   return (
     <section id="dashboard">
