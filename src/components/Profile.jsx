@@ -30,6 +30,7 @@ function Profile() {
   const [profile, setProfile] = useState({
     display_name: "",
     username: "",
+    email: "",
     city: "",
     state: "",
     zip_code: "",
@@ -75,6 +76,7 @@ function Profile() {
           ...prevProfile,
           display_name: data.display_name || "",
           username: data.username || "",
+          email: data.email || user.email || "",
           city: data.city || "",
           state: data.state || "",
           zip_code: data.zip_code || "",
@@ -195,16 +197,17 @@ function Profile() {
     const profileToSave = {
       id: user.id,
       ...profile,
+      email: user.email,
       service_radius_miles: profile.service_radius_miles
         ? Number(profile.service_radius_miles)
         : null,
       years_experience: profile.years_experience
         ? Number(profile.years_experience)
         : null,
-     member_number: profile.member_number
+      member_number: profile.member_number
         ? Number(profile.member_number)
         : null,
-        };
+    };
     
     const { error } = await saveProfile(profileToSave);
 
@@ -300,6 +303,16 @@ return (
                   value={profile.username}
                   onChange={handleChange}
                   placeholder="@username"
+                />
+              </div>
+
+              <div className="form__group">
+                <label htmlFor="email">Email</label>
+                <input
+                  type="email"
+                  id="email"
+                  value={profile.email || ""}
+                  readOnly
                 />
               </div>
 
