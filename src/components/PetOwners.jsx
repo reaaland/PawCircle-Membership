@@ -7,6 +7,7 @@ function PetOwners() {
   const navigate = useNavigate();
   const [petOwners, setPetOwners] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [accessAllowed, setAccessAllowed] = useState(false);
 
   useEffect(() => {
     async function loadPetOwners() {
@@ -22,13 +23,15 @@ function PetOwners() {
       const { data: profile, error } = await supabase
         .from("profiles")
         .select("membership_status")
-        .eq("id", user.id)
+        .or(`id.eq.${user.id},email.eq.${user.email?.toLowerCase().trim()}`)
         .single();
 
       if (error || profile?.membership_status !== "active") {
         navigate("/membership");
         return;
       }
+      
+      setAccessAllowed(true);
 
       const owners = await getPetOwners();
 
@@ -39,6 +42,17 @@ function PetOwners() {
     loadPetOwners();
   }, [navigate]);
   
+    if (!accessAllowed) {
+    return (
+      <section id="pet-owners">
+        <div className="container">
+          <div className="row row__column">
+            <div className="profile-loading">Checking membership...</div>
+          </div>
+        </div>
+      </section>
+    );
+  }
     return (
     <section id="pet-owners">
       <div className="container">

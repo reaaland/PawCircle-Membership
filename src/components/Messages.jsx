@@ -1,13 +1,44 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { supabase } from "../lib/supabase";
 
 function Messages() {
+  const navigate = useNavigate();
+  const [accessAllowed, setAccessAllowed] = useState(false);
+  const [newMessage, setNewMessage] = useState("");
+  const [messages, setMessages] = useState([]);
+
   const selectedMember = {
     display_name: "PawCircle Member",
   };
 
-  const [newMessage, setNewMessage] = useState("");
-  const [messages, setMessages] = useState([]);
+  useEffect(() => {
+    async function checkAccess() {
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+
+      if (!user) {
+        navigate("/");
+        return;
+      }
+
+      const { data: profile, error } = await supabase
+        .from("profiles")
+        .select("membership_status")
+        .or(`id.eq.${user.id},email.eq.${user.email?.toLowerCase().trim()}`)
+        .single();
+
+      if (error || profile?.membership_status !== "active") {
+        navigate("/membership");
+        return;
+      }
+
+      setAccessAllowed(true);
+    }
+
+    checkAccess();
+  }, [navigate]);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -22,6 +53,18 @@ function Messages() {
 
     setMessages([...messages, message]);
     setNewMessage("");
+  }
+
+  if (!accessAllowed) {
+    return (
+      <section className="messages">
+        <div className="container">
+          <div className="row row__column">
+            <div className="profile-loading">Checking membership...</div>
+          </div>
+        </div>
+      </section>
+    );
   }
 
   return (
@@ -48,9 +91,7 @@ function Messages() {
           </h3>
 
           {messages.length === 0 ? (
-            <p className="message-empty">
-              No intro message has been sent yet.
-            </p>
+            <p className="message-empty">No intro message has been sent yet.</p>
           ) : (
             messages.map((message) => (
               <div

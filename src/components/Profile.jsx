@@ -64,10 +64,11 @@ function Profile() {
       const { data, error } = await supabase
         .from("profiles")
         .select("*")
-        .eq("id", user.id)
+        .or(`id.eq.${user.id},email.eq.${user.email?.toLowerCase().trim()}`)
         .single();
 
-      if (error) {
+      if (error || data?.membership_status !== "active") {
+        navigate("/membership");
         return;
       }
 
@@ -107,7 +108,8 @@ function Profile() {
           membership_status: data.membership_status || "",
         }));
       }
-      setLoadingProfile();
+      
+      setLoadingProfile(false);
     }
 
     loadProfile();

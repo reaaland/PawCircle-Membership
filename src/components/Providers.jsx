@@ -27,16 +27,16 @@ function Providers() {
           return;
         }
 
-        const { data: profile, error } = await supabase
-          .from("profiles")
-          .select("membership_status")
-          .eq("id", user.id)
-          .single();
+      const { data: profile, error } = await supabase
+      .from("profiles")
+      .select("membership_status")
+      .or(`id.eq.${user.id},email.eq.${user.email?.toLowerCase().trim()}`)
+      .single();
 
-        if (error || profile?.membership_status !== "active") {
-          navigate("/membership");
-          return;
-        }
+      if (error || profile?.membership_status !== "active") {
+        navigate("/membership");
+        return;
+      }
 
         setAccessAllowed(true);
 

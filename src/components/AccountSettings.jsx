@@ -1,9 +1,51 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { supabase } from "../lib/supabase";
 
 function AccountSettings() {
+  const navigate = useNavigate();
+  const [showCancelWarning, setShowCancelWarning] = useState(false);
+  const [accessAllowed, setAccessAllowed] = useState(false);
 
-  const [showCancelWarning, setShowCancelWarning] = useState(false)
+  useEffect(() => {
+    async function checkAccess() {
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+
+      if (!user) {
+        navigate("/");
+        return;
+      }
+
+      const { data: profile, error } = await supabase
+        .from("profiles")
+        .select("membership_status")
+        .or(`id.eq.${user.id},email.eq.${user.email?.toLowerCase().trim()}`)
+        .single();
+
+      if (error || profile?.membership_status !== "active") {
+        navigate("/membership");
+        return;
+      }
+
+      setAccessAllowed(true);
+    }
+
+    checkAccess();
+  }, [navigate]);
+
+  if (!accessAllowed) {
+    return (
+      <section id="account-settings">
+        <div className="container">
+          <div className="row row__column">
+            <div className="profile-loading">Checking membership...</div>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section id="account-settings">
@@ -33,16 +75,14 @@ function AccountSettings() {
           <div className="settings__card">
             <h3>Message Center</h3>
 
-            <p>
-              View incoming messages and PawCircle introductions.
-            </p>
+            <p>View incoming messages and PawCircle introductions.</p>
 
             <Link to="/messages" className="btn">
               Open Message Center
             </Link>
           </div>
 
-           <div className="settings__card">
+          <div className="settings__card">
             <h3>Membership</h3>
 
             <p>
@@ -94,7 +134,6 @@ function AccountSettings() {
               </div>
             </div>
           )}
-
 
           <div className="settings__card">
             <h3>Support</h3>

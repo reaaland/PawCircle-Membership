@@ -1,28 +1,62 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { supabase } from "../lib/supabase";
 import {
   getSiteSettings,
   membershipInfo,
 } from "../Config/membershipConfig";
 
 function MembershipDetails() {
+  const navigate = useNavigate();
   const [founderActive, setFounderActive] = useState(true);
-const [loadingSettings, setLoadingSettings] = useState(true);
+  const [loadingSettings, setLoadingSettings] = useState(true);
+  const [accessAllowed, setAccessAllowed] = useState(false);
 
-useEffect(() => {
-  async function loadSiteSettings() {
-    const settings = await getSiteSettings();
+  useEffect(() => {
+    async function loadMembershipDetails() {
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
 
-    setFounderActive(settings.member_count < settings.founder_limit);
-    setLoadingSettings(false);
+      if (!user) {
+        navigate("/");
+        return;
+      }
+
+      const { data: profile, error } = await supabase
+        .from("profiles")
+        .select("membership_status")
+        .or(`id.eq.${user.id},email.eq.${user.email?.toLowerCase().trim()}`)
+        .single();
+
+      if (error || profile?.membership_status !== "active") {
+        navigate("/membership");
+        return;
+      }
+
+      setAccessAllowed(true);
+
+      const settings = await getSiteSettings();
+
+      setFounderActive(settings.member_count < settings.founder_limit);
+      setLoadingSettings(false);
+    }
+
+    loadMembershipDetails();
+  }, [navigate]);
+
+  if (!accessAllowed || loadingSettings) {
+    return (
+      <section id="membership-details">
+        <div className="container">
+          <div className="row row__column">
+            <div className="profile-loading">Loading membership details...</div>
+          </div>
+        </div>
+      </section>
+    );
   }
 
-  loadSiteSettings();
-}, []);
-
-if (loadingSettings) {
-  return <div>Loading membership details...</div>;
-}
   return (
     <section id="membership-details">
       <div className="container">
@@ -69,7 +103,7 @@ if (loadingSettings) {
                   </p>
 
                   <p>
-                    <strong>Contact:</strong> Members choose when to share phone 
+                    <strong>Contact:</strong> Members choose when to share phone
                     or email
                   </p>
                 </div>
@@ -79,8 +113,8 @@ if (loadingSettings) {
                 <h3>Available Membership Options</h3>
 
                 <p>
-                  Explore the membership options currently available through <span className="Purple">
-                  PawCircle.</span>
+                  Explore the membership options currently available through{" "}
+                  <span className="purple">PawCircle.</span>
                 </p>
 
                 <ul>

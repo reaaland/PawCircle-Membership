@@ -22,7 +22,7 @@ function Dashboard() {
       const { data: profile, error } = await supabase
         .from("profiles")
         .select("membership_status, profile_type")
-        .eq("id", user.id)
+        .or(`id.eq.${user.id},email.eq.${user.email?.toLowerCase().trim()}`)
         .single();
 
       if (error || profile?.membership_status !== "active") {
@@ -30,7 +30,7 @@ function Dashboard() {
         return;
       }
 
-      setProfileType(profile.profile_type);
+      setProfileType(profile.profile_type || "pet_owner");
       setAccessAllowed(true);
     }
 
