@@ -48,7 +48,8 @@ function Join() {
     founder: {
       label: membershipInfo.founder.name,
       price: membershipInfo.founder.price,
-      url: "https://buy.stripe.com/00w5kDetE9G43v90UCcAo01",
+      url: "https://buy.stripe.com/test_bJe00kd7OcTO1GQ9F16J203",
+      // url: "https://buy.stripe.com/00w5kDetE9G43v90UCcAo01",
       active: founderActive,
     },
     owner: {

@@ -5,35 +5,49 @@ import { supabase } from "../lib/supabase";
 
 function Dashboard() {
   const navigate = useNavigate();
+  const [accessAllowed, setAccessAllowed] = useState(false);
   const [profileType, setProfileType] = useState(null);
 
- useEffect(() => {
-  async function loadDashboard() {
-    const {
-      data: { user },
-    } = await supabase.auth.getUser();
+  useEffect(() => {
+    async function loadDashboard() {
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
 
-    if (!user) {
-      navigate("/");
-      return;
+      if (!user) {
+        navigate("/");
+        return;
+      }
+
+      const { data: profile, error } = await supabase
+        .from("profiles")
+        .select("membership_status, profile_type")
+        .eq("id", user.id)
+        .single();
+
+      if (error || profile?.membership_status !== "active") {
+        navigate("/membership");
+        return;
+      }
+
+      setProfileType(profile.profile_type);
+      setAccessAllowed(true);
     }
 
-    const { data: profile, error } = await supabase
-      .from("profiles")
-      .select("membership_status, profile_type")
-      .eq("id", user.id)
-      .single();
+    loadDashboard();
+  }, [navigate]);
 
-    if (error || profile?.membership_status !== "active") {
-      navigate("/membership");
-      return;
-    }
-
-    setProfileType(profile.profile_type);
+ if (!accessAllowed) {
+    return (
+      <section id="dashboard">
+        <div className="container">
+          <div className="row row__column">
+            <div className="profile-loading">Loading dashboard...</div>
+          </div>
+        </div>
+      </section>
+    );
   }
-
-  loadDashboard();
-}, [navigate]);
 
   return (
     <section id="dashboard">
@@ -65,7 +79,7 @@ function Dashboard() {
             </Link>
           )}
 
-           <Link to="/profile" className="dashboard__card">
+          <Link to="/profile" className="dashboard__card">
             <h3>My Profile</h3>
             <p>
               Create and manage your <span className="purple">PawCircle</span>{" "}
@@ -75,9 +89,7 @@ function Dashboard() {
 
           <Link to="/messages" className="dashboard__card">
             <h3>Message Center</h3>
-            <p>
-              View incoming messages.
-            </p>
+            <p>View incoming messages.</p>
           </Link>
 
           <Link to="/details" className="dashboard__card">

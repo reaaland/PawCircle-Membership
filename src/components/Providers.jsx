@@ -14,6 +14,7 @@ function Providers() {
   const [sortOption, setSortOption] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
   const [openingProviderId, setOpeningProviderId] = useState(null);
+  const [accessAllowed, setAccessAllowed] = useState(false);
 
     useEffect(() => {
       async function loadProviders() {
@@ -36,6 +37,8 @@ function Providers() {
           navigate("/membership");
           return;
         }
+
+        setAccessAllowed(true);
 
         const profiles = await getProviders();
 
@@ -86,8 +89,22 @@ function Providers() {
           return a.city.localeCompare(b.city);
         }
 
-        return 0;
-      });
+      return 0;
+  });
+
+        if (!accessAllowed) {
+          return (
+            <section id="providers">
+              <div className="container">
+                <div className="row row__column">
+                  <div className="profile-loading">
+                    Checking membership...
+                  </div>
+                </div>
+              </div>
+            </section>
+          );
+        }
 
   return (
     <section id="providers">
