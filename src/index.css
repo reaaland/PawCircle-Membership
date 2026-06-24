@@ -899,6 +899,12 @@ svg.gold-paw path {
   cursor: pointer;
 }
 
+.agreement__modal {
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 2rem;
+}
+
 .cta__section {
   padding: 64px 20px;
 }

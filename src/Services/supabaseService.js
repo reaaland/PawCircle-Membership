@@ -34,7 +34,7 @@ export async function getPetOwners() {
 export async function saveProfile(profile) {
   const { data, error } = await supabase
     .from("profiles")
-    .upsert(profile)
+    .upsert(profile, { onConflict: "email" })
     .select();
 
   if (error) {

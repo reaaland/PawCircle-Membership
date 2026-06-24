@@ -108,7 +108,7 @@ function Profile() {
           membership_status: data.membership_status || "",
         }));
       }
-      
+
       setLoadingProfile(false);
     }
 
@@ -197,9 +197,9 @@ function Profile() {
     }
 
     const profileToSave = {
-      id: user.id,
       ...profile,
-      email: user.email,
+      id: user.id,
+      email: user.email?.toLowerCase().trim(),
       service_radius_miles: profile.service_radius_miles
         ? Number(profile.service_radius_miles)
         : null,
