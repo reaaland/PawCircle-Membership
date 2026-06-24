@@ -988,11 +988,11 @@ svg.gold-paw path {
 }
 
 .services-page__img--taxi {
-  object-position: 20% center;
+  object-position: center  60%;
 }
 
 .services-page__img--boarding {
-  object-position: center 20%;
+  object-position: center 65%;
 }
 
 .services-page__img--farm {
