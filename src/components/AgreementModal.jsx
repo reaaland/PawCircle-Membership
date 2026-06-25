@@ -3,7 +3,7 @@ import LegalModal from "./LegalModal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaw } from "@fortawesome/free-solid-svg-icons";
 
-function AgreementModal({ onClose, paymentLink }) {
+function AgreementModal({ onClose, paymentLink, onContinue }) {
   const [acceptedTerms, setAcceptedTerms] = useState(false);
   const [acceptedPrivacy, setAcceptedPrivacy] = useState(false);
   const [acceptedCode, setAcceptedCode] = useState(false);
@@ -18,12 +18,16 @@ function AgreementModal({ onClose, paymentLink }) {
   e.preventDefault();
   e.stopPropagation();
 
-  if (!allAccepted || !paymentLink) return;
+  if (!allAccepted) return;
 
   setIsLoading(true);
 
   setTimeout(() => {
-    window.location.assign(paymentLink);
+    if (paymentLink) {
+      window.location.assign(paymentLink);
+    } else if (onContinue) {
+      onContinue();
+    }
   }, 800);
 }
   if (legalView) {
@@ -134,7 +138,8 @@ function AgreementModal({ onClose, paymentLink }) {
       <button
         type="button"
         className="agreement__submit"
-        disabled={!allAccepted || !paymentLink || isLoading}
+        disabled={!allAccepted || isLoading}
+        
         onClick={handleContinue}
       >
         {isLoading

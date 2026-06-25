@@ -4,10 +4,12 @@ import AgreementModal from "./AgreementModal";
 import {
   getSiteSettings,
   membershipInfo,
+  stripePricingTables,
 } from "../Config/membershipConfig";
 
 function Join() {
   const [showAgreement, setShowAgreement] = useState(false);
+  const [agreementAccepted, setAgreementAccepted] = useState(false);
   const [searchParams] = useSearchParams();
   const [isLoading, setIsLoading] = useState(false);
   const [founderActive, setFounderActive] = useState(true);
@@ -39,7 +41,8 @@ function Join() {
   );
 }
 
-  const defaultMembership = founderActive ? "founder" : "owner";
+  const defaultMembership = founderActive ? "founder" : "provider";
+  // const defaultMembership = founderActive ? "founder" : "both";
 
   const requestedMembership =
     searchParams.get("membership") || defaultMembership;
@@ -189,7 +192,21 @@ function Join() {
             <AgreementModal
               onClose={() => setShowAgreement(false)}
               paymentLink={selectedPaymentLink}
+              onContinue={() => {
+                setShowAgreement(false);
+                setAgreementAccepted(true);
+              }}
             />
+          )}
+
+          {agreementAccepted && !founderActive && stripePricingTables[membership] && (
+            <div className="pricing-table-wrapper">
+              <stripe-pricing-table
+                pricing-table-id={stripePricingTables[membership]}
+                publishable-key="pk_test_51TdNdDGgktsetxqRaFU5jiKqqEYNyvKv4S7WT5ip2IMWfNrPK86tcO6NLwTRhhlLPs8kT2PB8yzCAoPntZtk5XmT000uoOlbcT"
+              >
+              </stripe-pricing-table>
+            </div>
           )}
         </div>
       </div>

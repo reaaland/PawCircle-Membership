@@ -54,9 +54,12 @@ export const membershipInfo = {
 
 
 export const stripePricingTables = {
-  owner: "prctbl_1TgtKXGgktsetxqRUcLjBLie",
-  provider: "prctbl_1TgtMDGgktsetxqREu7vZP8J",
-  both: "prctbl_1TgtNzGgktsetxqR7UC17Bfu",
+  // owner: "prctbl_1TgtKXGgktsetxqRUcLjBLie",
+  owner: "prctbl_1TlxskGgktsetxqRosaH4mES",
+  provider: "prctbl_1TlzIpGgktsetxqRUa8IOMOn",
+  both: "prctbl_1TlzMIGgktsetxqR3Mxyx7CL",
+  // provider: "prctbl_1TgtMDGgktsetxqREu7vZP8J",
+  // both: "prctbl_1TgtNzGgktsetxqR7UC17Bfu",
 };
 
 export const availabilityStatuses = [
