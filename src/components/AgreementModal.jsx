@@ -136,16 +136,18 @@ function AgreementModal({ onClose, paymentLink, onContinue }) {
 </div>
 
       <button
-        type="button"
-        className="agreement__submit"
-        disabled={!allAccepted || isLoading}
-        
-        onClick={handleContinue}
-      >
-        {isLoading
-          ? "🐾 Redirecting to Checkout..."
-          : "Agree & Continue to Checkout"}
-      </button>
+      type="button"
+      className="agreement__submit"
+      disabled={!allAccepted || isLoading}
+      onClick={handleContinue}
+    >
+      <FontAwesomeIcon icon={faPaw} />
+      {isLoading ? "Opening Secure Checkout..." : "Agree & Continue to Checkout"}
+    </button>
+
+    <p className="agreement__secure-note">
+      Secure checkout powered by Stripe
+    </p>
       </div>
     </div>
   );
