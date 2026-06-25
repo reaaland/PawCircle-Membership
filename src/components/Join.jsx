@@ -19,7 +19,7 @@ function Join() {
     async function loadSiteSettings() {
       const settings = await getSiteSettings();
 
-      setFounderActive(settings.member_count < settings.founder_limit);
+      setFounderActive(settings.founder_count < settings.founder_limit);
       setLoadingSettings(false);
     }
 
@@ -41,8 +41,7 @@ function Join() {
   );
 }
 
-  const defaultMembership = founderActive ? "founder" : "provider";
-  // const defaultMembership = founderActive ? "founder" : "both";
+  const defaultMembership = founderActive ? "founder" : "both";
 
   const requestedMembership =
     searchParams.get("membership") || defaultMembership;
@@ -51,8 +50,7 @@ function Join() {
     founder: {
       label: membershipInfo.founder.name,
       price: membershipInfo.founder.price,
-      url: "https://buy.stripe.com/test_bJe00kd7OcTO1GQ9F16J203",
-      // url: "https://buy.stripe.com/00w5kDetE9G43v90UCcAo01",
+      url: "https://buy.stripe.com/8x26oHgBM3hG4zd8n4cAo03",
       active: founderActive,
     },
     owner: {
@@ -203,7 +201,7 @@ function Join() {
             <div className="pricing-table-wrapper">
               <stripe-pricing-table
                 pricing-table-id={stripePricingTables[membership]}
-                publishable-key="pk_test_51TdNdDGgktsetxqRaFU5jiKqqEYNyvKv4S7WT5ip2IMWfNrPK86tcO6NLwTRhhlLPs8kT2PB8yzCAoPntZtk5XmT000uoOlbcT"
+                publishable-key="pk_live_51TdNdDGgktsetxqRKjbBT3rlw7X1hAIX5Evyyq9XKNiHFdmsQVe3ATbzwmKGXJ1AsiyUB4fVqqYV5thX6bzR7YKI0058zBCgCU"
               >
               </stripe-pricing-table>
             </div>

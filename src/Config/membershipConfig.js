@@ -3,7 +3,7 @@ import { supabase } from "../lib/supabase";
 export async function getSiteSettings() {
  const { data, error } = await supabase
   .from("site_settings")
-  .select("member_count, founder_limit")
+  .select("member_count, founder_count, founder_limit")
   .eq("id", 1)
   .maybeSingle();
   console.log("Site settings:", data);
@@ -13,6 +13,7 @@ export async function getSiteSettings() {
 
     return {
       member_count: 0,
+      founder_count: 0,
       founder_limit: 500,
     };
   }
@@ -54,12 +55,9 @@ export const membershipInfo = {
 
 
 export const stripePricingTables = {
-  // owner: "prctbl_1TgtKXGgktsetxqRUcLjBLie",
-  owner: "prctbl_1TlxskGgktsetxqRosaH4mES",
-  provider: "prctbl_1TlzIpGgktsetxqRUa8IOMOn",
-  both: "prctbl_1TlzMIGgktsetxqR3Mxyx7CL",
-  // provider: "prctbl_1TgtMDGgktsetxqREu7vZP8J",
-  // both: "prctbl_1TgtNzGgktsetxqR7UC17Bfu",
+  owner: "prctbl_1TgtKXGgktsetxqRUcLjBLie",
+  provider: "prctbl_1TgtMDGgktsetxqREu7vZP8J",
+  both: "prctbl_1TgtNzGgktsetxqR7UC17Bfu",
 };
 
 export const availabilityStatuses = [
