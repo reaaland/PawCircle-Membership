@@ -11,6 +11,7 @@ function Join() {
   const [showAgreement, setShowAgreement] = useState(false);
   const [agreementAccepted, setAgreementAccepted] = useState(false);
   const [searchParams] = useSearchParams();
+  const accessMessage = searchParams.get("message");
   const [isLoading, setIsLoading] = useState(false);
   const [founderActive, setFounderActive] = useState(true);
   const [loadingSettings, setLoadingSettings] = useState(true);
@@ -115,6 +116,12 @@ function Join() {
               </>
             )}
           </p>
+
+          {accessMessage === "membership-required" && (
+            <div className="join__notice">
+              🔒 An active PawCircle membership is required to access that page. Please join or renew your membership to continue.
+            </div>
+          )}
 
           <form className="join-form" onSubmit={handleSubmit}>
             <div className="form__group">

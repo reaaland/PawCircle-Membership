@@ -85,13 +85,13 @@ useEffect(() => {
         <Route path="/about" element={<AboutPage />} />
         <Route path="/membership" element={<MembershipPage />} />
         <Route path="/join" element={<JoinPage />} />
-        <Route path="/dashboard" element={authLoading ? null : isLoggedIn ? <Dashboard /> : <Navigate to="/join" />} />
-        <Route path="/providers" element={authLoading ? null : isLoggedIn ? <ProviderPage /> : <Navigate to="/join" />} />
-        <Route path="/pet-owners" element={authLoading ? null : isLoggedIn ? <PetOwnersPage /> : <Navigate to="/join" />} />
-        <Route path="/messages" element={authLoading ? null : isLoggedIn ? <Messages /> : <Navigate to="/join" />} />
-        <Route path="/profile" element={authLoading ? null : isLoggedIn ? <Profile /> : <Navigate to="/join" />} />
-        <Route path="/details" element={authLoading ? null : isLoggedIn ? <MembershipDetails /> : <Navigate to="/join" />} />
-        <Route path="/account" element={authLoading ? null : isLoggedIn ? <AccountSettings /> : <Navigate to="/join" />} />
+        <Route path="/dashboard" element={authLoading ? null : isLoggedIn ? <Dashboard /> : <Navigate to="/join?message=membership-required" />} />
+        <Route path="/providers" element={authLoading ? null : isLoggedIn ? <ProviderPage /> : <Navigate to="/join?message=membership-required" />} />
+        <Route path="/pet-owners" element={authLoading ? null : isLoggedIn ? <PetOwnersPage /> : <Navigate to="/join?message=membership-required" />} />
+        <Route path="/messages" element={authLoading ? null : isLoggedIn ? <Messages /> : <Navigate to="/join?message=membership-required" />} />
+        <Route path="/profile" element={authLoading ? null : isLoggedIn ? <Profile /> : <Navigate to="/join?message=membership-required" />} />
+        <Route path="/details" element={authLoading ? null : isLoggedIn ? <MembershipDetails /> : <Navigate to="/join?message=membership-required" />} />
+        <Route path="/account" element={authLoading ? null : isLoggedIn ? <AccountSettings /> : <Navigate to="/join?message=membership-required" />} />
 
         <Route path="/faq" element={<FAQPage />} />
         <Route path="/code" element={<CodeOfConductPage />} />
