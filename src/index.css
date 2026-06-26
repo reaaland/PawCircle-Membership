@@ -1120,6 +1120,117 @@ grid-template-columns: 1fr 1fr;
 gap: 20px;
 }
 
+.profile__card {
+  width: 100%;
+  max-width: 760px;
+  background: white;
+  border-radius: 24px;
+  padding: 32px;
+  box-shadow: 0 12px 35px rgba(0,0,0,.08);
+}
+
+.profile__form {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.profile__form .form__group {
+  margin-bottom: 0;
+}
+
+.profile__photo-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  margin: 18px 0 24px;
+}
+
+.profile__photo-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  margin: 18px 0 28px;
+}
+
+.profile__photo-preview {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profile__photo-section label {
+  text-align: center;
+}
+
+.btn {
+  width: 100%;
+}
+
+.photo-upload-btn {
+  display: inline-flex;
+  width: auto;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 18px;
+  font-size: .95rem;
+  cursor: pointer;
+}
+
+.photo-upload-btn:hover {
+    transform: translateY(-2px);
+}
+
+
+.profile__photo-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile__helper {
+  margin: 6px 0 12px;
+}
+
+.services__checkboxes {
+  margin-top: 14px;
+  margin-bottom: 10px;
+}
+
+.form__group input,
+.form__group select,
+.form__group textarea {
+  margin-top: 2px;
+}
+
+.profile__section-title {
+  margin-top: 32px;
+  margin-bottom: 12px;
+}
+
+.form__group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form__group label {
+  margin-bottom: 8px;
+}
+
+.profile_form h3,
+.profile_form h4,
+.form__group label {
+  margin-bottom: 8px;
+}
+
+.profile__section-title {
+  margin-top: 28px;
+  margin-bottom: 10px;
+}
+
 .profile__type {
   display: inline-block;
   margin-bottom: 12px;
@@ -1132,7 +1243,10 @@ gap: 20px;
 }
 
 .profile__helper {
-  margin-bottom: 12px;
+  margin: 6px 0 14px;
+  font-size: .88rem;
+  color: #6b7280;
+  line-height: 1.5;
 }
 
 .provider__service {
@@ -1458,7 +1572,8 @@ gap: 20px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 14px 32px;
-  margin-top: 16px;
+  margin-top: 18px;
+  margin-bottom: 8px;
 }
 
 .services__checkboxes label {

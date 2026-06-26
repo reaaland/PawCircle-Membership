@@ -266,9 +266,7 @@ return (
             </p>
           )}
 
-             <div className="form__group">
-                <label htmlFor="profile_photo">Profile Photo</label>
-
+              <div className="profile__photo-section">
                 {profile.profile_image && (
                   <img
                     src={profile.profile_image}
@@ -279,26 +277,36 @@ return (
 
                 <input
                   type="file"
-                  id="profile_photo"
+                  id="profile__photo"
                   accept="image/*"
                   onChange={handlePhotoUpload}
+                  hidden
                 />
+                <label
+                  htmlFor="profile__photo"
+                  className="btn photo-upload-btn"
+                >
+                  🐾 Change Photo
+                </label>
               </div>
 
             <form className="profile__form">
               <div className="form__group">
-                <label htmlFor="display_name">Display Name</label>
+                <label htmlFor="display_name">Public Display Name</label>
                 <input
                   type="text"
                   id="display_name"
                   value={profile.display_name}
                   onChange={handleChange}
-                  placeholder="Your name"
+                  placeholder="Name shown to other members"
                 />
               </div>
 
              <div className="form__group">
                 <label htmlFor="username">Username</label>
+                <p className="profile__helper">
+                   Used to identify your PawCircle profile.
+                </p>
                 <input
                   type="text"
                   id="username"

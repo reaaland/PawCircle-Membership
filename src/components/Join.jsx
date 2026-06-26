@@ -142,7 +142,7 @@ function Join() {
             </div>
 
             <div className="form__group">
-              <label htmlFor="name">Full Name</label>
+              <label htmlFor="name">Name for Checkout</label>
               <input
                 type="text"
                 id="name"
