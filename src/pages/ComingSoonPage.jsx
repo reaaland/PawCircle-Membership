@@ -8,11 +8,11 @@ function ComingSoonPage() {
 
   const launchDate = new Date("June 27, 2026 09:00:00").getTime();
 
-  const [timeLeft, setTimeLeft] = useState(launchDate - new Date().getTime());
+  const [timeLeft, setTimeLeft] = useState(launchDate - Date.now());
 
   useEffect(() => {
     const timer = setInterval(() => {
-      const difference = launchDate - new Date().getTime();
+      const difference = launchDate - Date.now();
 
       if (difference <= 0) {
         clearInterval(timer);
