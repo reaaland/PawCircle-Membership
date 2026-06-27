@@ -149,43 +149,43 @@ function Join() {
             </div>
 
             <div className="form__group">
-              <label htmlFor="name">Name for Checkout</label>
+              <label>Public Display Name</label>
               <input
                 type="text"
-                id="name"
-                placeholder="Enter your name"
+                name="display_name"
+                placeholder="Jane Smith or Happy Paws Pet Care"
                 required
               />
             </div>
 
             <div className="form__group">
-              <label htmlFor="username">Username</label>
-              <input type="text" id="username" placeholder="@username" />
-            </div>
-
-            <div className="form__group">
-              <label htmlFor="email">Email Address</label>
+              <label>Username</label>
               <input
-                type="email"
-                id="email"
-                placeholder="you@email.com"
+                type="text"
+                name="username"
+                placeholder="Choose a unique username"
                 required
               />
             </div>
 
             <div className="form__group">
               <label htmlFor="phone">Phone Number</label>
-              <input type="tel" id="phone" placeholder="(555) 555-5555" />
+              <input type="tel" id="phone" placeholder="(555) 555-5555" 
+              required 
+              />
             </div>
 
             <div className="form__group">
               <label htmlFor="city">City</label>
-              <input type="text" id="city" placeholder="Your city" />
+              <input type="text" id="city" placeholder="Your city" 
+              required/>
             </div>
 
             <div className="form__group">
               <label htmlFor="state">State</label>
-              <input type="text" id="state" placeholder="MN" />
+              <input type="text" id="state" placeholder="MN"
+              required
+              />
             </div>
 
             <button className="btn" type="submit" disabled={isLoading}>
