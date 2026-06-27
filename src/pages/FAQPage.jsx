@@ -77,7 +77,8 @@ function FAQPage() {
             <div className="faq__item">
               <h2>What should pet owners ask before choosing a provider?</h2>
               <p>
-                Pet owners should communicate directly with providers to discuss services, availability, expectations, and whether the provider is a good fit for their pet.
+                Pet owners should communicate directly with providers to discuss services,
+                availability, expectations, and whether the provider is a good fit for their pet. Before making a decision, consider meeting in a public place so both you and the provider can get to know each other and determine whether the arrangement is a good fit.
               </p>
             </div>
 
