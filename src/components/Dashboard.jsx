@@ -23,7 +23,7 @@ function Dashboard() {
         .from("profiles")
         .select("membership_status, profile_type")
         .or(`id.eq.${user.id},email.eq.${user.email?.toLowerCase().trim()}`)
-        .single();
+        .maybeSingle();
 
       if (error || profile?.membership_status !== "active") {
         navigate("/membership");

@@ -36,11 +36,16 @@ async function handleLogout() {
   navigate("/");
   await signOut();
 }
-  function handleLogin() {
-    setIsLoggedIn(true);
-    setShowLogin(false);
+  function handleLogin(type) {
+  setIsLoggedIn(true);
+  setShowLogin(false);
+
+  if (type === "register") {
+    navigate("/profile");
+  } else {
     navigate("/dashboard");
   }
+}
 
   return (
     <nav className="nav__container">

@@ -65,7 +65,7 @@ function Profile() {
         .from("profiles")
         .select("*")
         .or(`id.eq.${user.id},email.eq.${user.email?.toLowerCase().trim()}`)
-        .single();
+        .maybeSingle();
 
       if (error || data?.membership_status !== "active") {
         navigate("/membership");
