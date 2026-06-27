@@ -219,6 +219,21 @@ nav {
   color: white;
 }
 
+.nav__link--dashboard {
+  background: linear-gradient(90deg, #4f46e5, #2563eb);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 999px;
+  font-weight: 700;
+  transition: all 0.3s ease;
+}
+
+.nav__link--dashboard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.25);
+  color: white;
+}
+
 .login {
   margin-left: 48px;
 }
@@ -1528,6 +1543,27 @@ svg.gold-paw path {
   height: 180px;
   object-fit: cover;
   border-radius: 16px;
+}
+
+.back__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border: 1px solid #c7d2fe;
+  border-radius: 999px;
+  background: white;
+  color: #4f46e5;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.back__link:hover {
+  background: #eef2ff;
+  border-color: #818cf8;
+  transform: translateX(-2px);
 }
 
 .dashboard__welcome--content {

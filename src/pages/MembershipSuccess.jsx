@@ -22,14 +22,14 @@ function handleLogin(type) {
         <div className="row row__column">
           <h1>Welcome to <span className="Purple">PawCircle</span>!</h1>
 
-          <p>Your membership payment has been received.</p>
-
           <p>
-            Log in to access your dashboard and complete your member profile.
+            Create your PawCircle account or log in using the same email you used at
+            checkout. If you already created an account, choose Log In instead of creating
+            another account.
           </p>
 
           <button className="btn" onClick={() => setShowLogin(true)}>
-            Log In
+            Create Account or Log In
           </button>
 
           {showLogin && (

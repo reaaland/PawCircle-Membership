@@ -87,6 +87,14 @@ function Dashboard() {
             </p>
           </Link>
 
+          <Link to="/services" className="dashboard__card">
+          <h3>Services</h3>
+          <p>
+            Explore the pet care services available through{" "}
+            <span className="purple">PawCircle</span>.
+          </p>
+        </Link>
+
           <Link to="/messages" className="dashboard__card">
             <h3>Message Center</h3>
             <p>View incoming messages.</p>

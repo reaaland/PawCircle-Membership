@@ -65,7 +65,9 @@ async function handleLogout() {
 
         {isLoggedIn ? (
           <>
-            <Link to="/dashboard" className="nav__link">Dashboard</Link>
+           <Link to="/dashboard" className="nav__link nav__link--dashboard">
+            Dashboard
+          </Link>
 
             <span className="nav__link" onClick={handleLogout}>
               Logout
@@ -108,7 +110,7 @@ async function handleLogout() {
 
           {isLoggedIn ? (
             <>
-              <Link to="/dashboard" onClick={() => setMenuOpen(false)}>
+              <Link to="/dashboard" className="nav__link nav__link--dashboard">
                 Dashboard
               </Link>
 

@@ -111,8 +111,8 @@ function Providers() {
       <div className="container">
         <div className="row">
           <div className="directory__header">
-            <Link to="/dashboard" className="directory__back">
-              ← Dashboard
+            <Link to="/dashboard" className="back__link">
+              ← Back to Dashboard
             </Link>
             </div>
           <div className="providers__top">
