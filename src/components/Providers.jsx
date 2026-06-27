@@ -164,13 +164,21 @@ function Providers() {
             <div className="providers">
               {sortedProviders.map((provider) => (
                 <div className="provider__card" key={provider.id}>
-              <h3>{provider.full_name}</h3>
+             <h3>{provider.display_name || "PawCircle Member"}</h3>
+
+              {provider.profile_image && (
+                <img
+                  src={provider.profile_image}
+                  alt={`${provider.display_name || "PawCircle Member"} profile`}
+                  className="provider__profile-img"
+                />
+              )}
 
               {provider.membership_level?.toLowerCase() === "founder" && (
-               <div className="founder__badge">
-                <FontAwesomeIcon icon={faPaw} className="gold-paw" />
-                {" "}Founder Member
-              </div>
+                <div className="founder__badge">
+                  <FontAwesomeIcon icon={faPaw} className="gold-paw" />
+                  {" "}Founder Member
+                </div>
               )}
 
                     <p className="provider__service">
@@ -187,7 +195,23 @@ function Providers() {
                     <p>Service area: {provider.service_radius_miles} miles</p>
                   )}
 
-                  <p>{provider.bio}</p>
+                  {provider.services_offered?.length > 0 && (
+                      <p>
+                        <strong>Services:</strong>{" "}
+                        {provider.services_offered.join(", ")}
+                      </p>
+                    )}
+
+                    {provider.years_experience && (
+                      <p>
+                        <strong>Experience:</strong>{" "}
+                        {provider.years_experience} years
+                      </p>
+                    )}
+
+                    {provider.bio && (
+                      <p>{provider.bio}</p>
+                    )}
 
                   <button
                     className="provider__contact-btn"
