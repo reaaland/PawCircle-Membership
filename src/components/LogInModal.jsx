@@ -1,9 +1,7 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { signIn, signUp } from "../Services/authService";
 
 function LogInModal({ onClose, onLogin }) {
-  const navigate = useNavigate();
   const [isRegistering, setIsRegistering] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [email, setEmail] = useState("");
@@ -28,10 +26,14 @@ function LogInModal({ onClose, onLogin }) {
       return;
     }
 
-    onLogin();
+    if (isRegistering) {
+      onLogin("register");
+    } else {
+      onLogin("login");
+    }
+
     onClose();
-    navigate("/dashboard");
-  }
+    }
 
   return (
     <div className="modal__backdrop">

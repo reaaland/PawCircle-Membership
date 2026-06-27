@@ -6,10 +6,15 @@ function MembershipSuccess() {
   const [showLogin, setShowLogin] = useState(false);
   const navigate = useNavigate();
 
-  function handleLogin() {
-    setShowLogin(false);
+function handleLogin(type) {
+  setShowLogin(false);
+
+  if (type === "register") {
+    navigate("/profile");
+  } else {
     navigate("/dashboard");
   }
+}
 
   return (
     <section className="success-page">
