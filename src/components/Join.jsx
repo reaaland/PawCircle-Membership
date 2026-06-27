@@ -167,6 +167,16 @@ function Join() {
                 required
               />
             </div>
+            <div className="form__group">
+              <label htmlFor="email">Email Address</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="you@example.com"
+                  required
+                />
+              </div>
 
             <div className="form__group">
               <label htmlFor="phone">Phone Number</label>
