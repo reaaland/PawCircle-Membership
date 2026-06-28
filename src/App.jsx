@@ -30,6 +30,7 @@ import ComingSoonPage from "./pages/ComingSoonPage";
 import MembershipSuccess from "./pages/MembershipSuccess";
 import { useState, useEffect } from "react";
 import { supabase } from "./lib/supabase";
+import UpdatePassword from "./components/UpdatePassword";
 
 
 function AppLayout() {
@@ -100,6 +101,7 @@ useEffect(() => {
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/coming-soon" element={<ComingSoonPage />} />
         <Route path="/membership-success" element={<MembershipSuccess />} />
+        <Route path="/update-password" element={<UpdatePassword />} />
       </Routes>
       </main>
 

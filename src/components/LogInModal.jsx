@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { signIn, signUp } from "../Services/authService";
+import { signIn, signUp, resetPassword } from "../Services/authService";
 
 function LogInModal({ onClose, onLogin }) {
   const [isRegistering, setIsRegistering] = useState(false);
@@ -7,6 +7,8 @@ function LogInModal({ onClose, onLogin }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [message, setMessage] = useState("");
+
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -34,6 +36,30 @@ function LogInModal({ onClose, onLogin }) {
 
     onClose();
     }
+
+    async function handleResetPassword() {
+  setError("");
+
+  const cleanEmail = email.toLowerCase().trim();
+
+  if (!cleanEmail) {
+    setError("Please enter your email address first.");
+    return;
+  }
+
+  setIsLoading(true);
+
+  const { error } = await resetPassword(cleanEmail);
+
+  if (error) {
+    setError(error.message);
+    setIsLoading(false);
+    return;
+  }
+
+  setMessage("Password reset email sent. Please check your inbox.");
+  setIsLoading(false);
+  }
 
   return (
     <div className="modal__backdrop">
@@ -71,6 +97,7 @@ function LogInModal({ onClose, onLogin }) {
             required
           />
 
+          {message && <p className="form__success">{message}</p>}
           {error && <p className="form__error">{error}</p>}
 
           <button className="btn" type="submit" disabled={isLoading}>
@@ -82,13 +109,26 @@ function LogInModal({ onClose, onLogin }) {
           </button>
         </form>
 
+        {!isRegistering && (
+          <button
+            type="button"
+            className="modal__switch"
+            onClick={handleResetPassword}
+            disabled={isLoading}
+          >
+            Forgot password?
+          </button>
+        )}
+
         <button
           type="button"
           className="modal__switch"
           onClick={() => {
             setError("");
+            setMessage("");
             setIsRegistering(!isRegistering);
-          }}
+            }}
+
           disabled={isLoading}
         >
           {isRegistering

@@ -27,5 +27,13 @@ export async function signOut() {
 export async function getCurrentSession() {
   const { data, error } = await supabase.auth.getSession();
 
+  export async function resetPassword(email) {
+  const { data, error } = await supabase.auth.resetPasswordForEmail(email, {
+    redirectTo: "https://www.pawcirclemembership.com/update-password",
+  });
+
+  return { data, error };
+}
+
   return { data, error };
 }
