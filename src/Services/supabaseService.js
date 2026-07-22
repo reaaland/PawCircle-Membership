@@ -106,3 +106,78 @@ export async function incrementMemberCount() {
 
   return { data, error: null };
 }
+
+export async function sendMessage(recipientId, messageText) {
+  const {
+    data: { user },
+    error: userError,
+  } = await supabase.auth.getUser();
+
+  if (userError || !user) {
+    return {
+      data: null,
+      error: userError || new Error("Not authenticated"),
+    };
+  }
+
+  const { data, error } = await supabase
+    .from("messages")
+    .insert({
+      sender_id: user.id,
+      recipient_id: recipientId,
+      message_text: messageText.trim(),
+    })
+    .select()
+    .single();
+
+  return { data, error };
+}
+
+export async function getMessages() {
+  const {
+    data: { user },
+    error: userError,
+  } = await supabase.auth.getUser();
+
+  if (userError || !user) {
+    return {
+      data: [],
+      error: userError || new Error("Not authenticated"),
+    };
+  }
+
+  const { data, error } = await supabase
+    .from("messages")
+    .select(`
+      id,
+      sender_id,
+      recipient_id,
+      message_text,
+      is_read,
+      created_at,
+      sender:profiles!messages_sender_id_fkey (
+        id,
+        display_name
+      ),
+      recipient:profiles!messages_recipient_id_fkey (
+        id,
+        display_name
+      )
+    `)
+    .or(`sender_id.eq.${user.id},recipient_id.eq.${user.id}`)
+    .order("created_at", { ascending: true });
+
+  if (error) {
+    console.error("Error loading messages:", error);
+
+    return {
+      data: [],
+      error,
+    };
+  }
+
+  return {
+    data,
+    error: null,
+  };
+}

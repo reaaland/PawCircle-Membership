@@ -1518,6 +1518,64 @@ svg.gold-paw path {
   text-align: center;
 }
 
+.message--sent,
+.message--received {
+  max-width: 78%;
+  padding: 16px;
+  margin-bottom: 16px;
+  border-radius: 18px;
+}
+
+.message--sent {
+  margin-left: auto;
+  background: #f0e2ff;
+  border-bottom-right-radius: 6px;
+}
+
+.message--received {
+  margin-right: auto;
+  background: #f3f3f3;
+  border-bottom-left-radius: 6px;
+}
+
+.message__sender {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 0.9rem;
+}
+
+.message__time {
+  display: block;
+  margin-top: 8px;
+  font-size: 0.75rem;
+  opacity: 0.7;
+}
+
+.message-empty {
+  padding: 24px;
+  text-align: center;
+}
+
+.message-empty p {
+  margin: 4px 0;
+}
+
+.message__character-count {
+  margin-top: 6px;
+  text-align: right;
+  font-size: 0.85rem;
+}
+
+.message__character-count--warning {
+  color: #b36b00;
+  font-weight: 600;
+}
+
+.message__character-count--danger {
+  color: #c62828;
+  font-weight: 700;
+}
+
 .btn--secondary {
   background: #e5e7eb;
   color: #243e63;
