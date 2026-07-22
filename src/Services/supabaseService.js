@@ -32,17 +32,50 @@ export async function getPetOwners() {
 }
 
 export async function saveProfile(profile) {
+  const {
+    data: { user },
+    error: userError,
+  } = await supabase.auth.getUser();
+
+  if (userError || !user) {
+    const error =
+      userError || new Error("You must be logged in to save a profile.");
+
+    console.error("Error finding authenticated user:", error);
+
+    return {
+      data: null,
+      error,
+    };
+  }
+
+  const normalizedEmail = user.email?.toLowerCase().trim();
+
+  const profileToSave = {
+    ...profile,
+    id: user.id,
+    email: normalizedEmail,
+  };
+
   const { data, error } = await supabase
     .from("profiles")
-    .upsert(profile, { onConflict: "email" })
-    .select();
+    .upsert(profileToSave, { onConflict: "email" })
+    .select()
+    .single();
 
   if (error) {
     console.error("Error saving profile:", error);
-    return { data: null, error };
+
+    return {
+      data: null,
+      error,
+    };
   }
 
-  return { data, error: null };
+  return {
+    data,
+    error: null,
+  };
 }
 
 export async function incrementMemberCount() {
