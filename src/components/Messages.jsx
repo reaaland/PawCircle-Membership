@@ -4,6 +4,7 @@ import { supabase } from "../lib/supabase";
 import {
   getMessages,
   sendMessage,
+  markConversationRead,
 } from "../Services/supabaseService";
 
 function Messages() {
@@ -18,6 +19,8 @@ function Messages() {
   const [isSending, setIsSending] = useState(false);
   const [messageError, setMessageError] = useState("");
   const messagesEndRef = useRef(null);
+  const [currentUserName, setCurrentUserName] =
+  useState("PawCircle Member");
 
   useEffect(() => {
     async function loadMessageCenter() {
@@ -33,7 +36,7 @@ function Messages() {
 
       const { data: profile, error: profileError } = await supabase
         .from("profiles")
-        .select("membership_status")
+        .select("membership_status, display_name")
         .eq("id", user.id)
         .single();
 
@@ -46,6 +49,9 @@ function Messages() {
       }
 
       setCurrentUserId(user.id);
+      setCurrentUserName(
+      profile.display_name || "PawCircle Member"
+      );
       setAccessAllowed(true);
 
       const { data, error } = await getMessages();
@@ -111,6 +117,47 @@ function Messages() {
         behavior: "smooth",
       });
     }, [conversationMessages.length, selectedMember]);
+
+    useEffect(() => {
+  async function updateReadStatus() {
+    if (!selectedMember || !currentUserId) return;
+
+    const unreadMessagesExist = messages.some(
+      (message) =>
+        message.sender_id === selectedMember.id &&
+        message.recipient_id === currentUserId &&
+        !message.is_read
+    );
+
+    if (!unreadMessagesExist) return;
+
+    const { error } = await markConversationRead(
+      selectedMember.id
+    );
+
+    if (error) {
+      setMessageError(
+        "The conversation opened, but its read status could not be updated."
+      );
+      return;
+    }
+
+    setMessages((currentMessages) =>
+      currentMessages.map((message) =>
+        message.sender_id === selectedMember.id &&
+        message.recipient_id === currentUserId &&
+        !message.is_read
+          ? {
+              ...message,
+              is_read: true,
+            }
+          : message
+      )
+    );
+  }
+
+  updateReadStatus();
+}, [selectedMember, currentUserId, messages]);
 
   function formatMessageTime(createdAt) {
   const messageDate = new Date(createdAt);
@@ -191,7 +238,7 @@ function Messages() {
       ...data,
       sender: {
         id: currentUserId,
-        display_name: "You",
+        display_name: currentUserName,
       },
       recipient: selectedMember,
     };
@@ -299,7 +346,7 @@ function Messages() {
                     >
                       <strong className="message__sender">
                         {sentByCurrentUser
-                          ? "You"
+                          ? currentUserName
                           : selectedMember?.display_name ||
                             "PawCircle Member"}
                       </strong>
@@ -313,7 +360,6 @@ function Messages() {
                   );
                 })
               )}
-
               <div ref={messagesEndRef} />
 
               <form

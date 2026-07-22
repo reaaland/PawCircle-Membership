@@ -181,3 +181,21 @@ export async function getMessages() {
     error: null,
   };
 }
+
+export async function markConversationRead(otherMemberId) {
+  const { error } = await supabase.rpc(
+    "mark_conversation_read",
+    {
+      other_member_id: otherMemberId,
+    }
+  );
+
+  if (error) {
+    console.error(
+      "Error marking conversation as read:",
+      error
+    );
+  }
+
+  return { error };
+}
