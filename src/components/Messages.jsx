@@ -18,7 +18,7 @@ function Messages() {
   const [isLoading, setIsLoading] = useState(true);
   const [isSending, setIsSending] = useState(false);
   const [messageError, setMessageError] = useState("");
-  const messagesEndRef = useRef(null);
+  const messageBodyRef = useRef(null);
   const [currentUserName, setCurrentUserName] =
   useState("PawCircle Member");
 
@@ -83,25 +83,60 @@ function Messages() {
     loadMessageCenter();
   }, [navigate]);
 
-  const conversationMembers = messages.reduce(
-    (members, message) => {
-      const otherMember =
-        message.sender_id === currentUserId
-          ? message.recipient
-          : message.sender;
+  const conversationSummaries = messages
+  .reduce((conversations, message) => {
+    const otherMember =
+      message.sender_id === currentUserId
+        ? message.recipient
+        : message.sender;
 
-      if (
-        otherMember &&
-        !members.some((member) => member.id === otherMember.id)
-      ) {
-        members.push(otherMember);
-      }
+    if (!otherMember) {
+      return conversations;
+    }
 
-      return members;
-    },
-    []
+    let conversation = conversations.find(
+      (item) => item.member.id === otherMember.id
+    );
+
+    if (!conversation) {
+      conversation = {
+        member: otherMember,
+        lastMessage: message,
+        unreadCount: 0,
+      };
+
+      conversations.push(conversation);
+    }
+
+    const currentLastMessageTime = new Date(
+      conversation.lastMessage.created_at
+    ).getTime();
+
+    const newMessageTime = new Date(
+      message.created_at
+    ).getTime();
+
+    if (newMessageTime > currentLastMessageTime) {
+      conversation.lastMessage = message;
+    }
+
+    const isUnreadIncomingMessage =
+      message.sender_id === otherMember.id &&
+      message.recipient_id === currentUserId &&
+      !message.is_read;
+
+    if (isUnreadIncomingMessage) {
+      conversation.unreadCount += 1;
+    }
+
+    return conversations;
+  }, [])
+  .sort(
+    (a, b) =>
+      new Date(b.lastMessage.created_at).getTime() -
+      new Date(a.lastMessage.created_at).getTime()
   );
-
+ 
   const conversationMessages = selectedMember
     ? messages.filter(
         (message) =>
@@ -113,9 +148,11 @@ function Messages() {
     : [];
 
     useEffect(() => {
-      messagesEndRef.current?.scrollIntoView({
-        behavior: "smooth",
-      });
+      const messageBody = messageBodyRef.current;
+
+      if (!messageBody) return;
+
+      messageBody.scrollTop = messageBody.scrollHeight;
     }, [conversationMessages.length, selectedMember]);
 
     useEffect(() => {
@@ -288,7 +325,7 @@ function Messages() {
           </p>
         )}
 
-        {conversationMembers.length === 0 ? (
+        {conversationSummaries.length === 0 ? (
           <div className="message-thread">
             <p className="message-empty">
               You do not have any intro messages yet.
@@ -299,32 +336,67 @@ function Messages() {
             <aside className="messages__conversations">
               <h2>Conversations</h2>
 
-              {conversationMembers.map((member) => (
-                <button
-                  type="button"
-                  key={member.id}
-                  className={`messages__conversation-button ${
-                    selectedMember?.id === member.id
-                      ? "messages__conversation-button--active"
-                      : ""
-                  }`}
-                  onClick={() => {
-                    setSelectedMember(member);
-                    setMessageError("");
-                  }}
-                >
-                  {member.display_name || "PawCircle Member"}
-                </button>
-              ))}
+              {conversationSummaries.map(
+                ({ member, lastMessage, unreadCount }) => (
+                  <button
+                    type="button"
+                    key={member.id}
+                    className={`messages__conversation-button ${
+                      selectedMember?.id === member.id
+                        ? "messages__conversation-button--active"
+                        : ""
+                    }`}
+                    onClick={() => {
+                      setSelectedMember(member);
+                      setMessageError("");
+                    }}
+                  >
+                    <span className="messages__conversation-top">
+                      <span className="messages__conversation-name">
+                        🐾 {member.display_name || "PawCircle Member"}
+                      </span>
+
+                      {unreadCount > 0 && (
+                        <span
+                          className="messages__unread-badge"
+                          aria-label={`${unreadCount} unread ${
+                            unreadCount === 1 ? "message" : "messages"
+                          }`}
+                        >
+                          {unreadCount}
+                        </span>
+                      )}
+                    </span>
+
+                    <span className="messages__conversation-preview">
+                      {lastMessage.message_text}
+                    </span>
+
+                    <span className="messages__conversation-time">
+                      {formatMessageTime(lastMessage.created_at)}
+                    </span>
+                  </button>
+                )
+              )}
             </aside>
 
             <div className="message-thread">
-              <h3>
-                Intro Message with{" "}
-                {selectedMember?.display_name ||
-                  "PawCircle Member"}
-              </h3>
+            <div className="message-thread__header">
+              <div>
+                <h3>
+                  🐾{" "}
+                  {selectedMember?.display_name ||
+                    "PawCircle Member"}
+                </h3>
 
+                <p>Intro conversation</p>
+              </div>
+            </div>
+
+            <div
+              className="message-thread__body"
+              ref={messageBodyRef}
+            >
               {conversationMessages.length === 0 ? (
                 <div className="message-empty">
                   <p>🐾 No messages in this conversation yet.</p>
@@ -335,79 +407,78 @@ function Messages() {
                   const sentByCurrentUser =
                     message.sender_id === currentUserId;
 
-                  return (
-                    <div
-                      key={message.id}
-                      className={`message ${
-                        sentByCurrentUser
-                          ? "message--sent"
-                          : "message--received"
-                      }`}
-                    >
-                      <strong className="message__sender">
-                        {sentByCurrentUser
-                          ? currentUserName
-                          : selectedMember?.display_name ||
-                            "PawCircle Member"}
-                      </strong>
+        return (
+          <div
+            key={message.id}
+            className={`message ${
+              sentByCurrentUser
+                ? "message--sent"
+                : "message--received"
+            }`}
+          >
+            {!sentByCurrentUser && (
+              <strong className="message__sender">
+                {selectedMember?.display_name ||
+                  "PawCircle Member"}
+              </strong>
+            )}
 
-                      <p>{message.message_text}</p>
+            <p>{message.message_text}</p>
 
-                      <small className="message__time">
-                        {formatMessageTime(message.created_at)}
-                      </small>
-                    </div>
-                  );
-                })
-              )}
-              <div ref={messagesEndRef} />
+            <small className="message__time">
+              {formatMessageTime(message.created_at)}
+            </small>
+          </div>
+        );
+      })
+    )}
 
-              <form
-                className="message-form"
-                onSubmit={handleSubmit}
-              >
-                <textarea
-                  placeholder={`Write a message to ${
-                    selectedMember?.display_name ||
-                    "this member"
-                  }...`}
-                  value={newMessage}
-                  onChange={(e) => {
-                    setNewMessage(e.target.value);
+  </div>
 
-                    if (messageError) {
-                      setMessageError("");
-                    }
-                  }}
-                  maxLength={1000}
-                  disabled={isSending}
-                  required
-                />
+  <form
+    className="message-form"
+    onSubmit={handleSubmit}
+  >
+    <textarea
+      placeholder={`Write a message to ${
+        selectedMember?.display_name ||
+        "this member"
+      }...`}
+      value={newMessage}
+      onChange={(e) => {
+        setNewMessage(e.target.value);
 
-                <p
-                  className={`message__character-count ${
-                    newMessage.length >= 980
-                      ? "message__character-count--danger"
-                      : newMessage.length >= 900
-                      ? "message__character-count--warning"
-                      : ""
-                  }`}
-                >
-                  {newMessage.length}/1000
-                </p>
+        if (messageError) {
+          setMessageError("");
+        }
+      }}
+      maxLength={1000}
+      disabled={isSending}
+      required
+    />
 
-                <button
-                  type="submit"
-                  disabled={
-                    !newMessage.trim() || isSending
-                  }
-                >
-                  {isSending
-                    ? "Sending..."
-                    : "Send Intro Message"}
-                </button>
+                <div className="message-form__footer">
+                  <p
+                    className={`message__character-count ${
+                      newMessage.length >= 980
+                        ? "message__character-count--danger"
+                        : newMessage.length >= 900
+                        ? "message__character-count--warning"
+                        : ""
+                    }`}
+                  >
+                    {newMessage.length}/1000
+                  </p>
+
+                  <button
+                    type="submit"
+                    disabled={!newMessage.trim() || isSending}
+                  >
+                    {isSending ? "Sending..." : "Send Message"}
+                  </button>
+                </div>
               </form>
-            </div>
+             </div>
           </div>
         )}
       </div>
