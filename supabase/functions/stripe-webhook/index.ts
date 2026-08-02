@@ -1,7 +1,17 @@
 import "@supabase/functions-js/edge-runtime.d.ts";
 import { createClient } from "jsr:@supabase/supabase-js@2";
+import Stripe from "npm:stripe@^22";
 
-const PRICE_TIERS = {
+const cryptoProvider = Stripe.createSubtleCryptoProvider();
+
+const PRICE_TIERS: Record<
+  string,
+  {
+    membership_level: string;
+    membership_type: string;
+    profile_type: string;
+  }
+> = {
   // Founder
   price_1TfSx6GgktsetxqR2IXgVcpB: {
     membership_level: "founder",
@@ -76,18 +86,39 @@ async function getCheckoutPriceId(sessionId: string, stripeSecretKey: string) {
 
 Deno.serve(async (req) => {
   try {
-    const body = await req.json();
 
-    console.log("Stripe webhook received:", body.type);
+const rawBody = await req.text();
+const signature = req.headers.get("stripe-signature");
 
     const supabaseUrl = Deno.env.get("SUPABASE_URL");
     const serviceRoleKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
     const stripeSecretKey = Deno.env.get("STRIPE_SECRET_KEY")?.trim();
+    const stripeWebhookSecret =
+  Deno.env.get("STRIPE_WEBHOOK_SECRET")?.trim();
 
-if (!supabaseUrl || !serviceRoleKey || !stripeSecretKey) {
+if (
+  !supabaseUrl ||
+  !serviceRoleKey ||
+  !stripeSecretKey ||
+  !stripeWebhookSecret
+) {
   throw new Error("Missing environment variables.");
 }
+  if (!signature) {
+  throw new Error("Missing Stripe-Signature header.");
+}
 
+const stripe = new Stripe(stripeSecretKey);
+
+const body = await stripe.webhooks.constructEventAsync(
+  rawBody,
+  signature,
+  stripeWebhookSecret,
+  undefined,
+  cryptoProvider,
+);
+
+console.log("Verified Stripe webhook received:", body.type);
     const supabase = createClient(supabaseUrl, serviceRoleKey);
 
     if (body.type === "checkout.session.completed") {
@@ -239,7 +270,10 @@ if (!supabaseUrl || !serviceRoleKey || !stripeSecretKey) {
 
     return Response.json({ received: true });
   } catch (error) {
-    console.error("Webhook error:", error.message);
-    return Response.json({ error: error.message }, { status: 400 });
-  }
+  const message =
+    error instanceof Error ? error.message : "Unknown webhook error";
+
+  console.error("Webhook error:", message);
+  return Response.json({ error: message }, { status: 400 });
+}
 });
