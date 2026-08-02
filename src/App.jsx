@@ -22,11 +22,9 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  useLocation,
   Navigate,
 } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
-import ComingSoonPage from "./pages/ComingSoonPage";
 import MembershipSuccess from "./pages/MembershipSuccess";
 import { useState, useEffect } from "react";
 import { supabase } from "./lib/supabase";
@@ -34,7 +32,6 @@ import UpdatePassword from "./components/UpdatePassword";
 
 
 function AppLayout() {
-  const location = useLocation();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [authLoading, setAuthLoading] = useState(true);
 
@@ -59,25 +56,11 @@ useEffect(() => {
   };
 }, []);
 
-  const isLocalhost =
-    window.location.hostname === "localhost" ||
-    window.location.hostname === "127.0.0.1";
-
-  const launchDate = new Date("June 27, 2026 09:00:00").getTime();
-  const isBeforeLaunch = Date.now() < launchDate;
-
-  const isComingSoon = location.pathname === "/coming-soon";
-
-  // Show Coming Soon page on Vercel before launch
-  if (isBeforeLaunch && !isLocalhost) {
-    return <ComingSoonPage />;
-  }
-
   return (
     <>
       <ScrollToTop />
 
-      {!isComingSoon && <Navbar />}
+      <Navbar />
 
     <main className="app-main">
       <Routes>
@@ -99,13 +82,12 @@ useEffect(() => {
         <Route path="/privacy" element={<PrivacyPolicyPage />} />
         <Route path="/terms" element={<TermsOfUsePage />} />
         <Route path="/contact" element={<ContactPage />} />
-        <Route path="/coming-soon" element={<ComingSoonPage />} />
         <Route path="/membership-success" element={<MembershipSuccess />} />
         <Route path="/update-password" element={<UpdatePassword />} />
       </Routes>
       </main>
 
-      {!isComingSoon && <Footer />}
+      <Footer />
     </>
   );
 }

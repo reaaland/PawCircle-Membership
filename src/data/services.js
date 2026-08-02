@@ -2,7 +2,6 @@ import walkInTheSnow from "../assets/walking in the snow.jpeg";
 import hamsterdog from "../assets/hamster_dog_friends.JPG";
 import catWindow from "../assets/cat_window.png";
 import onTheRun from "../assets/on_the_run.JPG";
-import sleepyPup from "../assets/Sleepy_pup.jpg";
 import petTaxi from "../assets/Pet_Taxi.jpg";
 import horseDog from "../assets/horse_dog playing.jpg";
 import dropIn from "../assets/drop_in.jpg";

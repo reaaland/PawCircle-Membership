@@ -113,7 +113,7 @@ function Profile() {
     }
 
     loadProfile();
-  }, []);
+  }, [navigate]);
 
   function handleServiceChange(field, service) {
     setProfile((prevProfile) => {
