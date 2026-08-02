@@ -1,56 +1,245 @@
 import "@supabase/functions-js/edge-runtime.d.ts";
 import { createClient } from "jsr:@supabase/supabase-js@2";
 
+const PRICE_TIERS = {
+  // Founder
+  price_1TfSx6GgktsetxqR2IXgVcpB: {
+    membership_level: "founder",
+    membership_type: "founder",
+    profile_type: "both",
+  },
+
+  // Pet Owner
+  price_1TgtBFGgktsetxqRcI8kc831: {
+    membership_level: "standard",
+    membership_type: "owner",
+    profile_type: "pet_owner",
+  },
+  price_1TgtBFGgktsetxqRLjMQtz9F: {
+    membership_level: "standard",
+    membership_type: "owner",
+    profile_type: "pet_owner",
+  },
+
+  // Pet Service Provider
+  price_1TgtFqGgktsetxqRqRICJsFe: {
+    membership_level: "standard",
+    membership_type: "provider",
+    profile_type: "pet_provider",
+  },
+  price_1TgtFqGgktsetxqRZYcQBrxR: {
+    membership_level: "standard",
+    membership_type: "provider",
+    profile_type: "pet_provider",
+  },
+
+  // Pet Owner + Service Provider
+  price_1TgtHYGgktsetxqRpQ7kyshl: {
+    membership_level: "standard",
+    membership_type: "both",
+    profile_type: "both",
+  },
+  price_1TgtHYGgktsetxqRS71vhuji: {
+    membership_level: "standard",
+    membership_type: "both",
+    profile_type: "both",
+  },
+};
+
+async function getCheckoutPriceId(sessionId: string, stripeSecretKey: string) {
+  const cleanStripeSecretKey = stripeSecretKey.trim();
+
+  const response = await fetch(
+    `https://api.stripe.com/v1/checkout/sessions/${sessionId}/line_items?limit=1`,
+    {
+      headers: {
+        Authorization: `Bearer ${cleanStripeSecretKey}`,
+      },
+    }
+  );
+
+  
+  const lineItems = await response.json();
+
+    if (!response.ok) {
+    throw new Error(`Stripe line items error: ${lineItems.error?.message}`);
+  }
+
+  const priceId = lineItems.data?.[0]?.price?.id;
+
+  if (!priceId) {
+    throw new Error("No Stripe price ID found on checkout session.");
+  }
+
+  return priceId;
+}
+
 Deno.serve(async (req) => {
   try {
     const body = await req.json();
 
     console.log("Stripe webhook received:", body.type);
 
-    if (body.type !== "checkout.session.completed") {
-      return Response.json({ received: true });
-    }
-
     const supabaseUrl = Deno.env.get("SUPABASE_URL");
     const serviceRoleKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
+    const stripeSecretKey = Deno.env.get("STRIPE_SECRET_KEY")?.trim();
 
-    if (!supabaseUrl || !serviceRoleKey) {
-      throw new Error("Missing Supabase environment variables.");
-    }
+if (!supabaseUrl || !serviceRoleKey || !stripeSecretKey) {
+  throw new Error("Missing environment variables.");
+}
 
     const supabase = createClient(supabaseUrl, serviceRoleKey);
 
-    const { data: settings, error: fetchError } = await supabase
-      .from("site_settings")
-      .select("member_count")
-      .eq("id", 1)
-      .single();
+    if (body.type === "checkout.session.completed") {
+      const session = body.data.object;
 
-    if (fetchError) {
-      throw fetchError;
+      const customerId = session.customer;
+      const subscriptionId = session.subscription;
+      const metadata = session.metadata || {};
+
+      let membershipType = metadata.membership_type;
+      let membershipLevel = metadata.membership_level;
+      let profileType = metadata.profile_type;
+
+      if (!membershipType || !membershipLevel || !profileType) {
+        if (!stripeSecretKey) {
+          throw new Error("Missing STRIPE_SECRET_KEY for price lookup.");
+        }
+
+        const priceId = await getCheckoutPriceId(session.id, stripeSecretKey);
+        const tier = PRICE_TIERS[priceId];
+
+        if (!tier) {
+          throw new Error(`No PawCircle membership mapping found for price: ${priceId}`);
+        }
+
+        membershipType = tier.membership_type;
+        membershipLevel = tier.membership_level;
+        profileType = tier.profile_type;
+      }
+
+      const rawEmail =
+        session.customer_details?.email || session.customer_email || "";
+
+      const email = rawEmail.toLowerCase().trim();
+
+      if (!email) {
+        throw new Error("No customer email found on checkout session.");
+      }
+
+      const { data: settings, error: fetchError } = await supabase
+        .from("site_settings")
+        .select("member_count, founder_count")
+        .eq("id", 1)
+        .single();
+
+      if (fetchError) throw fetchError;
+
+      const shouldIncrementFounderCount = membershipLevel === "founder";
+
+      const nextMemberCount = settings.member_count + 1;
+
+      const nextFounderCount = shouldIncrementFounderCount
+        ? settings.founder_count + 1
+        : settings.founder_count;
+
+      const { data: updatedProfiles, error: profileError } = await supabase
+        .from("profiles")
+        .upsert(
+          {
+            email,
+            membership_status: "active",
+            membership_level: membershipLevel,
+            membership_type: membershipType,
+            profile_type: profileType,
+            member_number: nextMemberCount,
+            joined_at: new Date().toISOString(),
+            stripe_customer_id: customerId,
+            stripe_subscription_id: subscriptionId,
+          },
+          {
+            onConflict: "email",
+          }
+        )
+        .select();
+
+      if (profileError) throw profileError;
+
+      const { error: updateError } = await supabase
+        .from("site_settings")
+        .update({
+          member_count: nextMemberCount,
+          founder_count: nextFounderCount,
+        })
+        .eq("id", 1);
+
+      if (updateError) throw updateError;
+
+      return Response.json({
+        received: true,
+        membership_status: "active",
+        membership_level: membershipLevel,
+        membership_type: membershipType,
+        profile_type: profileType,
+        member_number: nextMemberCount,
+        member_count: nextMemberCount,
+        founder_count: nextFounderCount,
+      });
     }
 
-    const nextMemberCount = settings.member_count + 1;
+    if (
+      body.type === "customer.subscription.created" ||
+      body.type === "customer.subscription.updated"
+    ) {
+      const subscription = body.data.object;
+      const customerId = subscription.customer;
 
-    const { error: updateError } = await supabase
-      .from("site_settings")
-      .update({ member_count: nextMemberCount })
-      .eq("id", 1);
+      const membershipStatus =
+        subscription.status === "active" || subscription.status === "trialing"
+          ? "active"
+          : "inactive";
 
-    if (updateError) {
-      throw updateError;
+      const { error } = await supabase
+        .from("profiles")
+        .update({
+          membership_status: membershipStatus,
+          stripe_customer_id: customerId,
+          stripe_subscription_id: subscription.id,
+        })
+        .eq("stripe_customer_id", customerId);
+
+      if (error) throw error;
+
+      return Response.json({
+        received: true,
+        membership_status: membershipStatus,
+      });
     }
 
-    return Response.json({
-      received: true,
-      member_count: nextMemberCount,
-    });
+    if (
+      body.type === "customer.subscription.deleted" ||
+      body.type === "invoice.payment_failed"
+    ) {
+      const customerId = body.data.object.customer;
+
+      const { error } = await supabase
+        .from("profiles")
+        .update({
+          membership_status: "inactive",
+        })
+        .eq("stripe_customer_id", customerId);
+
+      if (error) throw error;
+
+      return Response.json({
+        received: true,
+        membership_status: "inactive",
+      });
+    }
+
+    return Response.json({ received: true });
   } catch (error) {
     console.error("Webhook error:", error.message);
-
-    return Response.json(
-      { error: error.message },
-      { status: 400 },
-    );
+    return Response.json({ error: error.message }, { status: 400 });
   }
 });
