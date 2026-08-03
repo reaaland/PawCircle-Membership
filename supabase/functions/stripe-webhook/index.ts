@@ -85,6 +85,24 @@ async function getCheckoutPriceId(sessionId: string, stripeSecretKey: string) {
 }
 
 Deno.serve(async (req) => {
+  let claimedEventId: string | null = null;
+ let supabase: ReturnType<typeof createClient<any>> | null = null;
+
+  const markEventProcessed = async () => {
+  if (!supabase || !claimedEventId) return;
+
+  const { error } = await supabase.rpc(
+    "mark_stripe_webhook_event_processed",
+    {
+      p_event_id: claimedEventId,
+    },
+  );
+
+  if (error) throw error;
+
+  claimedEventId = null;
+};
+
   try {
 
 const rawBody = await req.text();
@@ -119,7 +137,26 @@ const body = await stripe.webhooks.constructEventAsync(
 );
 
 console.log("Verified Stripe webhook received:", body.type);
-    const supabase = createClient(supabaseUrl, serviceRoleKey);
+    supabase = createClient(supabaseUrl, serviceRoleKey);
+
+const { data: claimed, error: claimError } = await supabase.rpc(
+  "claim_stripe_webhook_event",
+  {
+    p_event_id: body.id,
+    p_event_type: body.type,
+  },
+);
+
+if (claimError) throw claimError;
+
+if (!claimed) {
+  return Response.json({
+    received: true,
+    duplicate: true,
+  });
+}
+
+claimedEventId = body.id;
 
     if (body.type === "checkout.session.completed") {
       const session = body.data.object;
@@ -206,6 +243,8 @@ console.log("Verified Stripe webhook received:", body.type);
 
       if (updateError) throw updateError;
 
+      await markEventProcessed();
+
       return Response.json({
         received: true,
         membership_status: "active",
@@ -241,6 +280,8 @@ console.log("Verified Stripe webhook received:", body.type);
 
       if (error) throw error;
 
+      await markEventProcessed();
+
       return Response.json({
         received: true,
         membership_status: membershipStatus,
@@ -262,16 +303,37 @@ console.log("Verified Stripe webhook received:", body.type);
 
       if (error) throw error;
 
+      await markEventProcessed();
+
       return Response.json({
         received: true,
         membership_status: "inactive",
       });
     }
 
+    await markEventProcessed();
+
     return Response.json({ received: true });
   } catch (error) {
   const message =
     error instanceof Error ? error.message : "Unknown webhook error";
+
+if (supabase && claimedEventId) {
+  const { error: markFailedError } = await supabase.rpc(
+    "mark_stripe_webhook_event_failed",
+    {
+      p_event_id: claimedEventId,
+      p_error: message,
+    },
+  );
+
+  if (markFailedError) {
+    console.error(
+      "Failed to mark Stripe webhook event as failed:",
+      markFailedError.message,
+    );
+  }
+}
 
   console.error("Webhook error:", message);
   return Response.json({ error: message }, { status: 400 });
