@@ -130,7 +130,27 @@ export async function sendMessage(recipientId, messageText) {
     .select()
     .single();
 
-  return { data, error };
+  if (error) {
+    return { data: null, error };
+  }
+
+  const { error: notificationError } = await supabase.functions.invoke(
+    "send-message-notification",
+    {
+      body: {
+        message_id: data.id,
+      },
+    }
+  );
+
+  if (notificationError) {
+    console.error(
+      "Message saved, but the email notification could not be sent:",
+      notificationError
+    );
+  }
+
+  return { data, error: null, notificationError };
 }
 
 export async function getMessages() {
