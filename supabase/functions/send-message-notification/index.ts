@@ -2,20 +2,8 @@
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 import { withSupabase } from "jsr:@supabase/server@^1";
 
-interface MessageRecord {
-  id: string;
-  sender_id: string;
-  recipient_id: string;
-  message_text: string;
-  created_at: string;
-}
-
-interface WebhookPayload {
-  type: "INSERT";
-  table: string;
-  schema: string;
-  record: MessageRecord;
-  old_record: null;
+interface NotificationRequest {
+  message_id: string;
 }
 
 const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
@@ -33,7 +21,7 @@ function escapeHtml(value: string): string {
 
 export default {
   fetch: withSupabase(
-    { auth: "secret" },
+    { auth: "user" },
 
     async (req, ctx) => {
       if (req.method !== "POST") {
@@ -53,18 +41,51 @@ export default {
       }
 
       try {
-        const payload: WebhookPayload = await req.json();
+        const payload: NotificationRequest = await req.json();
+        const senderId = ctx.userClaims?.sub;
+
+        if (!payload.message_id || !senderId) {
+          return Response.json(
+            { error: "Invalid notification request" },
+            { status: 400 },
+          );
+        }
+
+        const { data: message, error: messageError } =
+          await ctx.supabaseAdmin
+            .from("messages")
+            .select("id, sender_id, recipient_id, created_at")
+            .eq("id", payload.message_id)
+            .single();
+
+        if (messageError || !message) {
+          console.error("Message lookup failed:", messageError);
+
+          return Response.json(
+            { error: "Message could not be found" },
+            { status: 404 },
+          );
+        }
+
+        if (message.sender_id !== senderId) {
+          return Response.json(
+            { error: "You cannot send this notification" },
+            { status: 403 },
+          );
+        }
+
+        const messageAge =
+          Date.now() - new Date(message.created_at).getTime();
+        const clockSkewAllowance = 60 * 1000;
+        const tenMinutes = 10 * 60 * 1000;
 
         if (
-          payload.type !== "INSERT" ||
-          payload.schema !== "public" ||
-          payload.table !== "messages" ||
-          !payload.record?.id ||
-          !payload.record?.recipient_id
+          messageAge < -clockSkewAllowance ||
+          messageAge > tenMinutes
         ) {
           return Response.json(
-            { error: "Invalid message webhook payload" },
-            { status: 400 },
+            { error: "This message is too old to notify" },
+            { status: 409 },
           );
         }
 
@@ -72,7 +93,7 @@ export default {
           await ctx.supabaseAdmin
             .from("profiles")
             .select("email, display_name")
-            .eq("id", payload.record.recipient_id)
+            .eq("id", message.recipient_id)
             .single();
 
         if (recipientError || !recipient?.email) {
@@ -100,7 +121,7 @@ export default {
               "Content-Type": "application/json",
               "User-Agent": "PawCircle/1.0",
               "Idempotency-Key":
-                `pawcircle-message-${payload.record.id}`,
+                `pawcircle-message-${message.id}`,
             },
             body: JSON.stringify({
               from:
@@ -181,7 +202,7 @@ Thank you for being part of the PawCircle community.
         }
 
         console.info(
-          `Notification sent for message ${payload.record.id}`,
+          `Notification sent for message ${message.id}`,
         );
 
         return Response.json({
