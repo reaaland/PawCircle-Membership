@@ -1,6 +1,7 @@
 // Setup type definitions for Supabase Edge Functions
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 import { withSupabase } from "jsr:@supabase/server@^1";
+import { corsHeaders } from "jsr:@supabase/supabase-js@2/cors";
 
 interface NotificationRequest {
   message_id: string;
@@ -19,8 +20,7 @@ function escapeHtml(value: string): string {
     .replaceAll("'", "&#039;");
 }
 
-export default {
-  fetch: withSupabase(
+const notificationHandler = withSupabase(
     { auth: "user" },
 
     async (req, ctx) => {
@@ -218,5 +218,25 @@ Thank you for being part of the PawCircle community.
         );
       }
     },
-  ),
+  );
+
+export default {
+  async fetch(req: Request) {
+    if (req.method === "OPTIONS") {
+      return new Response("ok", { headers: corsHeaders });
+    }
+
+    const response = await notificationHandler(req);
+    const responseHeaders = new Headers(response.headers);
+
+    Object.entries(corsHeaders).forEach(([key, value]) => {
+      responseHeaders.set(key, value);
+    });
+
+    return new Response(response.body, {
+      status: response.status,
+      statusText: response.statusText,
+      headers: responseHeaders,
+    });
+  },
 };
