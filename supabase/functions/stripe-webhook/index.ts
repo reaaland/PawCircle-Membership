@@ -65,13 +65,12 @@ async function getCheckoutPriceId(sessionId: string, stripeSecretKey: string) {
       headers: {
         Authorization: `Bearer ${cleanStripeSecretKey}`,
       },
-    }
+    },
   );
 
-  
   const lineItems = await response.json();
 
-    if (!response.ok) {
+  if (!response.ok) {
     throw new Error(`Stripe line items error: ${lineItems.error?.message}`);
   }
 
@@ -86,77 +85,75 @@ async function getCheckoutPriceId(sessionId: string, stripeSecretKey: string) {
 
 Deno.serve(async (req) => {
   let claimedEventId: string | null = null;
- let supabase: ReturnType<typeof createClient<any>> | null = null;
+  let supabase: ReturnType<typeof createClient<any>> | null = null;
 
   const markEventProcessed = async () => {
-  if (!supabase || !claimedEventId) return;
+    if (!supabase || !claimedEventId) return;
 
-  const { error } = await supabase.rpc(
-    "mark_stripe_webhook_event_processed",
-    {
-      p_event_id: claimedEventId,
-    },
-  );
+    const { error } = await supabase.rpc(
+      "mark_stripe_webhook_event_processed",
+      {
+        p_event_id: claimedEventId,
+      },
+    );
 
-  if (error) throw error;
+    if (error) throw error;
 
-  claimedEventId = null;
-};
+    claimedEventId = null;
+  };
 
   try {
-
-const rawBody = await req.text();
-const signature = req.headers.get("stripe-signature");
+    const rawBody = await req.text();
+    const signature = req.headers.get("stripe-signature");
 
     const supabaseUrl = Deno.env.get("SUPABASE_URL");
     const serviceRoleKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
     const stripeSecretKey = Deno.env.get("STRIPE_SECRET_KEY")?.trim();
-    const stripeWebhookSecret =
-  Deno.env.get("STRIPE_WEBHOOK_SECRET")?.trim();
+    const stripeWebhookSecret = Deno.env.get("STRIPE_WEBHOOK_SECRET")?.trim();
 
-if (
-  !supabaseUrl ||
-  !serviceRoleKey ||
-  !stripeSecretKey ||
-  !stripeWebhookSecret
-) {
-  throw new Error("Missing environment variables.");
-}
-  if (!signature) {
-  throw new Error("Missing Stripe-Signature header.");
-}
+    if (
+      !supabaseUrl ||
+      !serviceRoleKey ||
+      !stripeSecretKey ||
+      !stripeWebhookSecret
+    ) {
+      throw new Error("Missing environment variables.");
+    }
+    if (!signature) {
+      throw new Error("Missing Stripe-Signature header.");
+    }
 
-const stripe = new Stripe(stripeSecretKey);
+    const stripe = new Stripe(stripeSecretKey);
 
-const body = await stripe.webhooks.constructEventAsync(
-  rawBody,
-  signature,
-  stripeWebhookSecret,
-  undefined,
-  cryptoProvider,
-);
+    const body = await stripe.webhooks.constructEventAsync(
+      rawBody,
+      signature,
+      stripeWebhookSecret,
+      undefined,
+      cryptoProvider,
+    );
 
-console.log("Verified Stripe webhook received:", body.type);
+    console.log("Verified Stripe webhook received:", body.type);
     supabase = createClient(supabaseUrl, serviceRoleKey);
 
-const { data: claimed, error: claimError } = await supabase.rpc(
-  "claim_stripe_webhook_event",
-  {
-    p_event_id: body.id,
-    p_event_type: body.type,
-  },
-);
+    const { data: claimed, error: claimError } = await supabase.rpc(
+      "claim_stripe_webhook_event",
+      {
+        p_event_id: body.id,
+        p_event_type: body.type,
+      },
+    );
 
-if (claimError) throw claimError;
+    if (claimError) throw claimError;
 
-if (!claimed) {
-  return Response.json({
-    received: true,
-    duplicate: true,
-  });
-}
+    if (!claimed) {
+      return Response.json({
+        received: true,
+        duplicate: true,
+      });
+    }
 
-claimedEventId = body.id;
+    claimedEventId = body.id;
 
     if (body.type === "checkout.session.completed") {
       const session = body.data.object;
@@ -178,7 +175,9 @@ claimedEventId = body.id;
         const tier = PRICE_TIERS[priceId];
 
         if (!tier) {
-          throw new Error(`No PawCircle membership mapping found for price: ${priceId}`);
+          throw new Error(
+            `No PawCircle membership mapping found for price: ${priceId}`,
+          );
         }
 
         membershipType = tier.membership_type;
@@ -195,53 +194,29 @@ claimedEventId = body.id;
         throw new Error("No customer email found on checkout session.");
       }
 
-      const { data: settings, error: fetchError } = await supabase
-        .from("site_settings")
-        .select("member_count, founder_count")
-        .eq("id", 1)
-        .single();
+      const { data: activationRows, error: activationError } =
+        await supabase.rpc("activate_membership_atomic", {
+          p_email: email,
+          p_membership_level: membershipLevel,
+          p_membership_type: membershipType,
+          p_profile_type: profileType,
+          p_stripe_customer_id:
+            typeof customerId === "string"
+              ? customerId
+              : (customerId?.id ?? null),
+          p_stripe_subscription_id:
+            typeof subscriptionId === "string"
+              ? subscriptionId
+              : (subscriptionId?.id ?? null),
+        });
 
-      if (fetchError) throw fetchError;
+      if (activationError) throw activationError;
 
-      const shouldIncrementFounderCount = membershipLevel === "founder";
+      const activation = activationRows?.[0];
 
-      const nextMemberCount = settings.member_count + 1;
-
-      const nextFounderCount = shouldIncrementFounderCount
-        ? settings.founder_count + 1
-        : settings.founder_count;
-
-      const { data: updatedProfiles, error: profileError } = await supabase
-        .from("profiles")
-        .upsert(
-          {
-            email,
-            membership_status: "active",
-            membership_level: membershipLevel,
-            membership_type: membershipType,
-            profile_type: profileType,
-            member_number: nextMemberCount,
-            joined_at: new Date().toISOString(),
-            stripe_customer_id: customerId,
-            stripe_subscription_id: subscriptionId,
-          },
-          {
-            onConflict: "email",
-          }
-        )
-        .select();
-
-      if (profileError) throw profileError;
-
-      const { error: updateError } = await supabase
-        .from("site_settings")
-        .update({
-          member_count: nextMemberCount,
-          founder_count: nextFounderCount,
-        })
-        .eq("id", 1);
-
-      if (updateError) throw updateError;
+      if (!activation) {
+        throw new Error("Membership activation did not return a result.");
+      }
 
       await markEventProcessed();
 
@@ -251,9 +226,10 @@ claimedEventId = body.id;
         membership_level: membershipLevel,
         membership_type: membershipType,
         profile_type: profileType,
-        member_number: nextMemberCount,
-        member_count: nextMemberCount,
-        founder_count: nextFounderCount,
+        member_number: activation.member_number,
+        member_count: activation.member_count,
+        founder_count: activation.founder_count,
+        created_new_member: activation.created_new_member,
       });
     }
 
@@ -315,27 +291,27 @@ claimedEventId = body.id;
 
     return Response.json({ received: true });
   } catch (error) {
-  const message =
-    error instanceof Error ? error.message : "Unknown webhook error";
+    const message =
+      error instanceof Error ? error.message : "Unknown webhook error";
 
-if (supabase && claimedEventId) {
-  const { error: markFailedError } = await supabase.rpc(
-    "mark_stripe_webhook_event_failed",
-    {
-      p_event_id: claimedEventId,
-      p_error: message,
-    },
-  );
+    if (supabase && claimedEventId) {
+      const { error: markFailedError } = await supabase.rpc(
+        "mark_stripe_webhook_event_failed",
+        {
+          p_event_id: claimedEventId,
+          p_error: message,
+        },
+      );
 
-  if (markFailedError) {
-    console.error(
-      "Failed to mark Stripe webhook event as failed:",
-      markFailedError.message,
-    );
+      if (markFailedError) {
+        console.error(
+          "Failed to mark Stripe webhook event as failed:",
+          markFailedError.message,
+        );
+      }
+    }
+
+    console.error("Webhook error:", message);
+    return Response.json({ error: message }, { status: 400 });
   }
-}
-
-  console.error("Webhook error:", message);
-  return Response.json({ error: message }, { status: 400 });
-}
 });
