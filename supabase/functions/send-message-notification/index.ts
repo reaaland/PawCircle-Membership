@@ -42,7 +42,7 @@ const notificationHandler = withSupabase(
 
       try {
         const payload: NotificationRequest = await req.json();
-        const senderId = ctx.userClaims?.sub;
+        const senderId = ctx.userClaims?.id;
 
         if (!payload.message_id || !senderId) {
           return Response.json(
