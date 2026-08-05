@@ -31,21 +31,22 @@ function Navbar() {
     };
   }, []);
 
-async function handleLogout() {
-  setMenuOpen(false);
-  navigate("/");
-  await signOut();
-}
-  function handleLogin(type) {
-  setIsLoggedIn(true);
-  setShowLogin(false);
-
-  if (type === "register") {
-    navigate("/profile");
-  } else {
-    navigate("/dashboard");
+  async function handleLogout() {
+    setMenuOpen(false);
+    navigate("/");
+    await signOut();
   }
-}
+
+  function handleLogin(type) {
+    setIsLoggedIn(true);
+    setShowLogin(false);
+
+    if (type === "register") {
+      navigate("/profile");
+    } else {
+      navigate("/dashboard");
+    }
+  }
 
   return (
     <nav className="nav__container">
@@ -65,9 +66,9 @@ async function handleLogout() {
 
         {isLoggedIn ? (
           <>
-           <Link to="/dashboard" className="nav__link nav__link--dashboard">
-            Dashboard
-          </Link>
+            <Link to="/dashboard" className="nav__link nav__link--dashboard">
+              Dashboard
+            </Link>
 
             <span className="nav__link" onClick={handleLogout}>
               Logout
@@ -110,7 +111,11 @@ async function handleLogout() {
 
           {isLoggedIn ? (
             <>
-              <Link to="/dashboard" className="nav__link nav__link--dashboard">
+              <Link
+                to="/dashboard"
+                className="nav__link nav__link--dashboard"
+                onClick={() => setMenuOpen(false)}
+              >
                 Dashboard
               </Link>
 
