@@ -182,7 +182,7 @@ export async function getMessages() {
   };
 }
 
-export async function getMessagePreferences() {
+export async function getConversationPreferences() {
   const {
     data: { user },
     error: userError,
@@ -196,20 +196,20 @@ export async function getMessagePreferences() {
   }
 
   const { data, error } = await supabase
-    .from("message_member_preferences")
-    .select("message_id, is_saved, is_deleted")
+    .from("conversation_member_preferences")
+    .select("other_member_id, is_saved, deleted_before")
     .eq("user_id", user.id);
 
   if (error) {
-    console.error("Error loading message preferences:", error);
+    console.error("Error loading conversation preferences:", error);
     return { data: {}, error };
   }
 
-  const preferencesByMessageId = (data || []).reduce(
+  const preferencesByMemberId = (data || []).reduce(
     (preferences, preference) => {
-      preferences[preference.message_id] = {
+      preferences[preference.other_member_id] = {
         is_saved: preference.is_saved,
-        is_deleted: preference.is_deleted,
+        deleted_before: preference.deleted_before,
       };
 
       return preferences;
@@ -217,10 +217,13 @@ export async function getMessagePreferences() {
     {}
   );
 
-  return { data: preferencesByMessageId, error: null };
+  return { data: preferencesByMemberId, error: null };
 }
 
-export async function setMessagePreference(messageId, preference) {
+export async function setConversationPreference(
+  otherMemberId,
+  preference
+) {
   const {
     data: { user },
     error: userError,
@@ -234,22 +237,22 @@ export async function setMessagePreference(messageId, preference) {
   }
 
   const { data, error } = await supabase
-    .from("message_member_preferences")
+    .from("conversation_member_preferences")
     .upsert(
       {
         user_id: user.id,
-        message_id: messageId,
+        other_member_id: otherMemberId,
         is_saved: Boolean(preference.is_saved),
-        is_deleted: Boolean(preference.is_deleted),
+        deleted_before: preference.deleted_before || null,
         updated_at: new Date().toISOString(),
       },
-      { onConflict: "user_id,message_id" }
+      { onConflict: "user_id,other_member_id" }
     )
-    .select("message_id, is_saved, is_deleted")
+    .select("other_member_id, is_saved, deleted_before")
     .single();
 
   if (error) {
-    console.error("Error updating message preference:", error);
+    console.error("Error updating conversation preference:", error);
   }
 
   return { data, error };
