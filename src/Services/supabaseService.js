@@ -182,6 +182,79 @@ export async function getMessages() {
   };
 }
 
+export async function getMessagePreferences() {
+  const {
+    data: { user },
+    error: userError,
+  } = await supabase.auth.getUser();
+
+  if (userError || !user) {
+    return {
+      data: {},
+      error: userError || new Error("Not authenticated"),
+    };
+  }
+
+  const { data, error } = await supabase
+    .from("message_member_preferences")
+    .select("message_id, is_saved, is_deleted")
+    .eq("user_id", user.id);
+
+  if (error) {
+    console.error("Error loading message preferences:", error);
+    return { data: {}, error };
+  }
+
+  const preferencesByMessageId = (data || []).reduce(
+    (preferences, preference) => {
+      preferences[preference.message_id] = {
+        is_saved: preference.is_saved,
+        is_deleted: preference.is_deleted,
+      };
+
+      return preferences;
+    },
+    {}
+  );
+
+  return { data: preferencesByMessageId, error: null };
+}
+
+export async function setMessagePreference(messageId, preference) {
+  const {
+    data: { user },
+    error: userError,
+  } = await supabase.auth.getUser();
+
+  if (userError || !user) {
+    return {
+      data: null,
+      error: userError || new Error("Not authenticated"),
+    };
+  }
+
+  const { data, error } = await supabase
+    .from("message_member_preferences")
+    .upsert(
+      {
+        user_id: user.id,
+        message_id: messageId,
+        is_saved: Boolean(preference.is_saved),
+        is_deleted: Boolean(preference.is_deleted),
+        updated_at: new Date().toISOString(),
+      },
+      { onConflict: "user_id,message_id" }
+    )
+    .select("message_id, is_saved, is_deleted")
+    .single();
+
+  if (error) {
+    console.error("Error updating message preference:", error);
+  }
+
+  return { data, error };
+}
+
 export async function markConversationRead(otherMemberId) {
   const { error } = await supabase.rpc(
     "mark_conversation_read",
