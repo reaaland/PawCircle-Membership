@@ -37,7 +37,7 @@ function Dashboard() {
     loadDashboard();
   }, [navigate]);
 
-  if (!accessAllowed) {
+ if (!accessAllowed) {
     return (
       <section id="dashboard">
         <div className="container">
@@ -88,12 +88,12 @@ function Dashboard() {
           </Link>
 
           <Link to="/services" className="dashboard__card">
-            <h3>Services</h3>
-            <p>
-              Explore the pet care services available through{" "}
-              <span className="purple">PawCircle</span>.
-            </p>
-          </Link>
+          <h3>Services</h3>
+          <p>
+            Explore the pet care services available through{" "}
+            <span className="purple">PawCircle</span>.
+          </p>
+        </Link>
 
           <Link to="/messages" className="dashboard__card">
             <h3>Message Center</h3>
