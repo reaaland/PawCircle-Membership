@@ -79,6 +79,13 @@ function Dashboard() {
             </Link>
           )}
 
+          {(profileType === "pet_provider" || profileType === "both") && (
+            <Link to="/pet-owners" className="dashboard__card">
+              <h3>Find Pet Owners</h3>
+              <p>Browse authorized pet owner profiles.</p>
+            </Link>
+          )}
+
           <Link to="/profile" className="dashboard__card">
             <h3>My Profile</h3>
             <p>
