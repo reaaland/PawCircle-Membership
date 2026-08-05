@@ -37,7 +37,7 @@ function Dashboard() {
     loadDashboard();
   }, [navigate]);
 
- if (!accessAllowed) {
+  if (!accessAllowed) {
     return (
       <section id="dashboard">
         <div className="container">
@@ -79,13 +79,6 @@ function Dashboard() {
             </Link>
           )}
 
-          {(profileType === "pet_provider" || profileType === "both") && (
-            <Link to="/pet-owners" className="dashboard__card">
-              <h3>Find Pet Owners</h3>
-              <p>Browse authorized pet owner profiles.</p>
-            </Link>
-          )}
-
           <Link to="/profile" className="dashboard__card">
             <h3>My Profile</h3>
             <p>
@@ -95,12 +88,12 @@ function Dashboard() {
           </Link>
 
           <Link to="/services" className="dashboard__card">
-          <h3>Services</h3>
-          <p>
-            Explore the pet care services available through{" "}
-            <span className="purple">PawCircle</span>.
-          </p>
-        </Link>
+            <h3>Services</h3>
+            <p>
+              Explore the pet care services available through{" "}
+              <span className="purple">PawCircle</span>.
+            </p>
+          </Link>
 
           <Link to="/messages" className="dashboard__card">
             <h3>Message Center</h3>
