@@ -22,15 +22,23 @@ function PetOwners() {
 
       const { data: profile, error } = await supabase
         .from("profiles")
-        .select("membership_status")
+        .select("membership_status, profile_type")
         .or(`id.eq.${user.id},email.eq.${user.email?.toLowerCase().trim()}`)
-        .single();
+        .maybeSingle();
 
       if (error || profile?.membership_status !== "active") {
         navigate("/membership");
         return;
       }
-      
+
+      if (
+        profile.profile_type !== "pet_provider" &&
+        profile.profile_type !== "both"
+      ) {
+        navigate("/dashboard", { replace: true });
+        return;
+      }
+
       setAccessAllowed(true);
 
       const owners = await getPetOwners();
@@ -41,8 +49,8 @@ function PetOwners() {
 
     loadPetOwners();
   }, [navigate]);
-  
-    if (!accessAllowed) {
+
+  if (!accessAllowed) {
     return (
       <section id="pet-owners">
         <div className="container">
@@ -53,7 +61,8 @@ function PetOwners() {
       </section>
     );
   }
-    return (
+
+  return (
     <section id="pet-owners">
       <div className="container">
         <div className="row">
@@ -61,23 +70,28 @@ function PetOwners() {
             <p>Loading...</p>
           ) : petOwners.length > 0 ? (
             <div className="providers">
-              {petOwners.map((owner) => (
-                <div className="provider__card" key={owner.id}>
-                  <h3>{owner.full_name}</h3>
+              {petOwners.map((owner) => {
+                const ownerName =
+                  owner.display_name || owner.full_name || "PawCircle Member";
 
-                  <p className="provider__service">
-                    {owner.profile_type === "both"
-                      ? "Pet Owner & Service Provider"
-                      : "Pet Owner"}
-                  </p>
+                return (
+                  <div className="provider__card" key={owner.id}>
+                    <h3>{ownerName}</h3>
 
-                  <p>
-                    {owner.city}, {owner.state}
-                  </p>
+                    <p className="provider__service">
+                      {owner.profile_type === "both"
+                        ? "Pet Owner & Service Provider"
+                        : "Pet Owner"}
+                    </p>
 
-                  <p>{owner.bio}</p>
-                </div>
-              ))}
+                    <p>
+                      {owner.city}, {owner.state}
+                    </p>
+
+                    <p>{owner.bio}</p>
+                  </div>
+                );
+              })}
             </div>
           ) : (
             <p className="directory__notice">No pet owner profiles found.</p>
@@ -89,4 +103,3 @@ function PetOwners() {
 }
 
 export default PetOwners;
-
