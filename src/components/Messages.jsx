@@ -2,11 +2,11 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { supabase } from "../lib/supabase";
 import {
-  getMessagePreferences,
+  getConversationPreferences,
   getMessages,
   markConversationRead,
   sendMessage,
-  setMessagePreference,
+  setConversationPreference,
 } from "../Services/supabaseService";
 import "../messages.css";
 
@@ -18,13 +18,13 @@ function Messages() {
   const [currentUserId, setCurrentUserId] = useState(null);
   const [currentUserName, setCurrentUserName] = useState("PawCircle Member");
   const [messages, setMessages] = useState([]);
-  const [preferences, setPreferences] = useState({});
+  const [conversationPreferences, setConversationPreferences] = useState({});
   const [selectedMember, setSelectedMember] = useState(null);
   const [newMessage, setNewMessage] = useState("");
-  const [showSavedOnly, setShowSavedOnly] = useState(false);
+  const [showSavedConversations, setShowSavedConversations] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [isSending, setIsSending] = useState(false);
-  const [updatingMessageId, setUpdatingMessageId] = useState(null);
+  const [isUpdatingConversation, setIsUpdatingConversation] = useState(false);
   const [messageError, setMessageError] = useState("");
 
   useEffect(() => {
@@ -56,7 +56,7 @@ function Messages() {
 
       const [messagesResult, preferencesResult] = await Promise.all([
         getMessages(),
-        getMessagePreferences(),
+        getConversationPreferences(),
       ]);
 
       if (messagesResult.error) {
@@ -67,117 +67,122 @@ function Messages() {
 
       if (preferencesResult.error) {
         setMessageError(
-          "Your messages loaded, but saved-message settings could not be loaded."
+          "Your messages loaded, but conversation settings could not be loaded."
         );
       }
 
       setMessages(messagesResult.data);
-      setPreferences(preferencesResult.data);
-
-      const firstVisibleMessage = messagesResult.data.find(
-        (message) => !preferencesResult.data[message.id]?.is_deleted
-      );
-
-      if (firstVisibleMessage) {
-        setSelectedMember(
-          firstVisibleMessage.sender_id === user.id
-            ? firstVisibleMessage.recipient
-            : firstVisibleMessage.sender
-        );
-      }
-
+      setConversationPreferences(preferencesResult.data);
       setIsLoading(false);
     }
 
     loadMessageCenter();
   }, [navigate]);
 
-  const visibleMessages = useMemo(
-    () => messages.filter((message) => !preferences[message.id]?.is_deleted),
-    [messages, preferences]
-  );
+  const conversationSummaries = useMemo(() => {
+    const conversations = messages.reduce((items, message) => {
+      const otherMember =
+        message.sender_id === currentUserId ? message.recipient : message.sender;
 
-  const conversationSummaries = useMemo(
-    () =>
-      visibleMessages
-        .reduce((conversations, message) => {
-          const otherMember =
-            message.sender_id === currentUserId
-              ? message.recipient
-              : message.sender;
+      if (!otherMember) return items;
 
-          if (!otherMember) return conversations;
+      const preference = conversationPreferences[otherMember.id];
+      const deletedBefore = preference?.deleted_before
+        ? new Date(preference.deleted_before).getTime()
+        : null;
+      const messageTime = new Date(message.created_at).getTime();
 
-          let conversation = conversations.find(
-            (item) => item.member.id === otherMember.id
-          );
+      if (deletedBefore && messageTime <= deletedBefore) return items;
 
-          if (!conversation) {
-            conversation = {
-              member: otherMember,
-              lastMessage: message,
-              unreadCount: 0,
-            };
-            conversations.push(conversation);
-          }
+      let conversation = items.find(
+        (item) => item.member.id === otherMember.id
+      );
 
-          if (
-            new Date(message.created_at).getTime() >
-            new Date(conversation.lastMessage.created_at).getTime()
-          ) {
-            conversation.lastMessage = message;
-          }
+      if (!conversation) {
+        conversation = {
+          member: otherMember,
+          lastMessage: message,
+          unreadCount: 0,
+          isSaved: Boolean(preference?.is_saved),
+        };
+        items.push(conversation);
+      }
 
-          if (
-            message.sender_id === otherMember.id &&
-            message.recipient_id === currentUserId &&
-            !message.is_read
-          ) {
-            conversation.unreadCount += 1;
-          }
+      if (
+        messageTime > new Date(conversation.lastMessage.created_at).getTime()
+      ) {
+        conversation.lastMessage = message;
+      }
 
-          return conversations;
-        }, [])
-        .sort(
-          (a, b) =>
-            new Date(b.lastMessage.created_at).getTime() -
-            new Date(a.lastMessage.created_at).getTime()
-        ),
-    [visibleMessages, currentUserId]
-  );
+      if (
+        message.sender_id === otherMember.id &&
+        message.recipient_id === currentUserId &&
+        !message.is_read
+      ) {
+        conversation.unreadCount += 1;
+      }
+
+      return items;
+    }, []);
+
+    return conversations
+      .filter((conversation) => !showSavedConversations || conversation.isSaved)
+      .sort(
+        (a, b) =>
+          new Date(b.lastMessage.created_at).getTime() -
+          new Date(a.lastMessage.created_at).getTime()
+      );
+  }, [
+    conversationPreferences,
+    currentUserId,
+    messages,
+    showSavedConversations,
+  ]);
 
   useEffect(() => {
+    if (conversationSummaries.length === 0) {
+      setSelectedMember(null);
+      return;
+    }
+
     if (
-      selectedMember &&
+      !selectedMember ||
       !conversationSummaries.some(
         ({ member }) => member.id === selectedMember.id
       )
     ) {
-      setSelectedMember(conversationSummaries[0]?.member || null);
+      setSelectedMember(conversationSummaries[0].member);
     }
   }, [conversationSummaries, selectedMember]);
 
   const conversationMessages = useMemo(() => {
     if (!selectedMember) return [];
 
-    return visibleMessages.filter((message) => {
+    const deletedBefore =
+      conversationPreferences[selectedMember.id]?.deleted_before;
+    const deletedBeforeTime = deletedBefore
+      ? new Date(deletedBefore).getTime()
+      : null;
+
+    return messages.filter((message) => {
       const belongsToConversation =
         (message.sender_id === currentUserId &&
           message.recipient_id === selectedMember.id) ||
         (message.sender_id === selectedMember.id &&
           message.recipient_id === currentUserId);
 
+      if (!belongsToConversation) return false;
+
       return (
-        belongsToConversation &&
-        (!showSavedOnly || preferences[message.id]?.is_saved)
+        !deletedBeforeTime ||
+        new Date(message.created_at).getTime() > deletedBeforeTime
       );
     });
   }, [
+    conversationPreferences,
     currentUserId,
-    preferences,
+    messages,
     selectedMember,
-    showSavedOnly,
-    visibleMessages,
   ]);
 
   useEffect(() => {
@@ -189,7 +194,7 @@ function Messages() {
     async function updateReadStatus() {
       if (!selectedMember || !currentUserId) return;
 
-      const unreadMessagesExist = visibleMessages.some(
+      const unreadMessagesExist = conversationMessages.some(
         (message) =>
           message.sender_id === selectedMember.id &&
           message.recipient_id === currentUserId &&
@@ -219,7 +224,7 @@ function Messages() {
     }
 
     updateReadStatus();
-  }, [selectedMember, currentUserId, visibleMessages]);
+  }, [conversationMessages, currentUserId, selectedMember]);
 
   function formatMessageTime(createdAt) {
     const messageDate = new Date(createdAt);
@@ -284,61 +289,75 @@ function Messages() {
     setNewMessage("");
   }
 
-  async function handleSaveToggle(message) {
-    const isSaved = Boolean(preferences[message.id]?.is_saved);
-    setUpdatingMessageId(message.id);
+  async function handleSaveConversation() {
+    if (!selectedMember || isUpdatingConversation) return;
+
+    const currentPreference =
+      conversationPreferences[selectedMember.id] || {};
+    const nextSavedState = !currentPreference.is_saved;
+
+    setIsUpdatingConversation(true);
     setMessageError("");
 
-    const { error } = await setMessagePreference(message.id, {
-      is_saved: !isSaved,
-      is_deleted: false,
+    const { error } = await setConversationPreference(selectedMember.id, {
+      is_saved: nextSavedState,
+      deleted_before: currentPreference.deleted_before || null,
     });
 
-    setUpdatingMessageId(null);
+    setIsUpdatingConversation(false);
 
     if (error) {
-      setMessageError("That message could not be saved. Please try again.");
+      setMessageError(
+        "That conversation could not be saved. Please try again."
+      );
       return;
     }
 
-    setPreferences((current) => ({
+    setConversationPreferences((current) => ({
       ...current,
-      [message.id]: {
-        ...current[message.id],
-        is_saved: !isSaved,
-        is_deleted: false,
+      [selectedMember.id]: {
+        ...current[selectedMember.id],
+        is_saved: nextSavedState,
+        deleted_before: currentPreference.deleted_before || null,
       },
     }));
   }
 
-  async function handleDelete(message) {
+  async function handleDeleteConversation() {
+    if (!selectedMember || isUpdatingConversation) return;
+
     const confirmed = window.confirm(
-      "Delete this message from your PawCircle inbox? The other member will still keep their copy."
+      `Delete your conversation with ${
+        selectedMember.display_name || "this member"
+      } from your PawCircle inbox? The other member will keep their copy. A new message from either of you will start the conversation again.`
     );
 
     if (!confirmed) return;
 
-    setUpdatingMessageId(message.id);
+    const deletedBefore = new Date().toISOString();
+
+    setIsUpdatingConversation(true);
     setMessageError("");
 
-    const { error } = await setMessagePreference(message.id, {
+    const { error } = await setConversationPreference(selectedMember.id, {
       is_saved: false,
-      is_deleted: true,
+      deleted_before: deletedBefore,
     });
 
-    setUpdatingMessageId(null);
+    setIsUpdatingConversation(false);
 
     if (error) {
-      setMessageError("That message could not be deleted. Please try again.");
+      setMessageError(
+        "That conversation could not be deleted. Please try again."
+      );
       return;
     }
 
-    setPreferences((current) => ({
+    setConversationPreferences((current) => ({
       ...current,
-      [message.id]: {
-        ...current[message.id],
+      [selectedMember.id]: {
         is_saved: false,
-        is_deleted: true,
+        deleted_before: deletedBefore,
       },
     }));
   }
@@ -352,6 +371,11 @@ function Messages() {
       </section>
     );
   }
+
+  const selectedPreference = selectedMember
+    ? conversationPreferences[selectedMember.id] || {}
+    : {};
+  const selectedConversationSaved = Boolean(selectedPreference.is_saved);
 
   return (
     <section className="messages">
@@ -375,19 +399,36 @@ function Messages() {
           </p>
         )}
 
-        {conversationSummaries.length === 0 ? (
-          <div className="message-thread message-thread--empty">
-            <p className="message-empty">
-              You do not have any intro messages yet.
-            </p>
-          </div>
-        ) : (
-          <div className="messages__layout">
-            <aside className="messages__conversations">
+        <div className="messages__layout">
+          <aside className="messages__conversations">
+            <div className="messages__conversations-heading">
               <h2>Conversations</h2>
+              <button
+                type="button"
+                className={`messages__saved-list-toggle ${
+                  showSavedConversations
+                    ? "messages__saved-list-toggle--active"
+                    : ""
+                }`}
+                onClick={() =>
+                  setShowSavedConversations((current) => !current)
+                }
+                aria-pressed={showSavedConversations}
+              >
+                {showSavedConversations ? "Show all" : "Saved"}
+              </button>
+            </div>
+
+            {conversationSummaries.length === 0 ? (
+              <p className="messages__no-conversations">
+                {showSavedConversations
+                  ? "No saved conversations yet."
+                  : "You do not have any intro messages yet."}
+              </p>
+            ) : (
               <div className="messages__conversation-list">
                 {conversationSummaries.map(
-                  ({ member, lastMessage, unreadCount }) => (
+                  ({ member, lastMessage, unreadCount, isSaved }) => (
                     <button
                       type="button"
                       key={member.id}
@@ -398,7 +439,6 @@ function Messages() {
                       }`}
                       onClick={() => {
                         setSelectedMember(member);
-                        setShowSavedOnly(false);
                         setMessageError("");
                       }}
                     >
@@ -406,11 +446,22 @@ function Messages() {
                         <span className="messages__conversation-name">
                           🐾 {member.display_name || "PawCircle Member"}
                         </span>
-                        {unreadCount > 0 && (
-                          <span className="messages__unread-badge">
-                            {unreadCount}
-                          </span>
-                        )}
+                        <span className="messages__conversation-indicators">
+                          {isSaved && (
+                            <span
+                              className="messages__saved-indicator"
+                              aria-label="Saved conversation"
+                              title="Saved conversation"
+                            >
+                              ★
+                            </span>
+                          )}
+                          {unreadCount > 0 && (
+                            <span className="messages__unread-badge">
+                              {unreadCount}
+                            </span>
+                          )}
+                        </span>
                       </span>
                       <span className="messages__conversation-preview">
                         {lastMessage.message_text}
@@ -422,47 +473,56 @@ function Messages() {
                   )
                 )}
               </div>
-            </aside>
+            )}
+          </aside>
 
+          {selectedMember ? (
             <div className="message-thread">
               <div className="message-thread__header">
-                <div>
+                <div className="message-thread__member">
                   <h3>
-                    🐾 {selectedMember?.display_name || "PawCircle Member"}
+                    🐾 {selectedMember.display_name || "PawCircle Member"}
                   </h3>
                   <p>Intro conversation</p>
                 </div>
-                <button
-                  type="button"
-                  className={`message-thread__saved-filter ${
-                    showSavedOnly
-                      ? "message-thread__saved-filter--active"
-                      : ""
-                  }`}
-                  onClick={() => setShowSavedOnly((current) => !current)}
-                  aria-pressed={showSavedOnly}
+
+                <div
+                  className="message-thread__actions"
+                  aria-label="Conversation options"
                 >
-                  {showSavedOnly ? "Show all" : "Saved only"}
-                </button>
+                  <button
+                    type="button"
+                    className={`message-thread__save ${
+                      selectedConversationSaved
+                        ? "message-thread__save--active"
+                        : ""
+                    }`}
+                    onClick={handleSaveConversation}
+                    disabled={isUpdatingConversation}
+                    aria-pressed={selectedConversationSaved}
+                  >
+                    {selectedConversationSaved ? "★ Saved" : "☆ Save"}
+                  </button>
+                  <button
+                    type="button"
+                    className="message-thread__delete"
+                    onClick={handleDeleteConversation}
+                    disabled={isUpdatingConversation}
+                  >
+                    Delete
+                  </button>
+                </div>
               </div>
 
               <div className="message-thread__body" ref={messageBodyRef}>
                 {conversationMessages.length === 0 ? (
                   <div className="message-empty">
-                    <p>
-                      {showSavedOnly
-                        ? "No saved messages in this conversation."
-                        : "🐾 No messages in this conversation yet."}
-                    </p>
+                    <p>🐾 No messages in this conversation yet.</p>
                   </div>
                 ) : (
                   conversationMessages.map((message) => {
                     const sentByCurrentUser =
                       message.sender_id === currentUserId;
-                    const isSaved = Boolean(
-                      preferences[message.id]?.is_saved
-                    );
-                    const isUpdating = updatingMessageId === message.id;
 
                     return (
                       <div
@@ -475,7 +535,7 @@ function Messages() {
                       >
                         {!sentByCurrentUser && (
                           <strong className="message__sender">
-                            {selectedMember?.display_name ||
+                            {selectedMember.display_name ||
                               "PawCircle Member"}
                           </strong>
                         )}
@@ -483,29 +543,6 @@ function Messages() {
                         <small className="message__time">
                           {formatMessageTime(message.created_at)}
                         </small>
-                        <div
-                          className="message__options"
-                          aria-label="Message options"
-                        >
-                          <button
-                            type="button"
-                            className={
-                              isSaved ? "message__save--active" : ""
-                            }
-                            onClick={() => handleSaveToggle(message)}
-                            disabled={isUpdating}
-                          >
-                            {isSaved ? "★ Saved" : "☆ Save"}
-                          </button>
-                          <button
-                            type="button"
-                            className="message__delete"
-                            onClick={() => handleDelete(message)}
-                            disabled={isUpdating}
-                          >
-                            Delete
-                          </button>
-                        </div>
                       </div>
                     );
                   })
@@ -515,7 +552,7 @@ function Messages() {
               <form className="message-form" onSubmit={handleSubmit}>
                 <textarea
                   placeholder={`Write a message to ${
-                    selectedMember?.display_name || "this member"
+                    selectedMember.display_name || "this member"
                   }...`}
                   value={newMessage}
                   onChange={(event) => {
@@ -547,8 +584,16 @@ function Messages() {
                 </div>
               </form>
             </div>
-          </div>
-        )}
+          ) : (
+            <div className="message-thread message-thread--empty">
+              <p className="message-empty">
+                {showSavedConversations
+                  ? "Choose a saved conversation or show all conversations."
+                  : "Select a conversation to view its messages."}
+              </p>
+            </div>
+          )}
+        </div>
       </div>
     </section>
   );
