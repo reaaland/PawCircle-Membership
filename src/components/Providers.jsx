@@ -6,6 +6,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaw } from "@fortawesome/free-solid-svg-icons";
 import { supabase } from "../lib/supabase";
 
+function getProviderName(provider) {
+  return provider.display_name || provider.full_name || "PawCircle Member";
+}
+
 function Providers() {
   const navigate = useNavigate();
   const [providers, setProviders] = useState([]);
@@ -16,95 +20,101 @@ function Providers() {
   const [openingProviderId, setOpeningProviderId] = useState(null);
   const [accessAllowed, setAccessAllowed] = useState(false);
 
-    useEffect(() => {
-      async function loadProviders() {
-        const {
-          data: { user },
-        } = await supabase.auth.getUser();
+  useEffect(() => {
+    async function loadProviders() {
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
 
-        if (!user) {
-          navigate("/");
-          return;
-        }
+      if (!user) {
+        navigate("/");
+        return;
+      }
 
       const { data: profile, error } = await supabase
-      .from("profiles")
-      .select("membership_status")
-      .or(`id.eq.${user.id},email.eq.${user.email?.toLowerCase().trim()}`)
-      .single();
+        .from("profiles")
+        .select("membership_status")
+        .or(`id.eq.${user.id},email.eq.${user.email?.toLowerCase().trim()}`)
+        .single();
 
       if (error || profile?.membership_status !== "active") {
         navigate("/membership");
         return;
       }
 
-        setAccessAllowed(true);
+      setAccessAllowed(true);
 
-        const profiles = await getProviders();
+      const profiles = await getProviders();
 
-        const availableProviders = profiles.filter(
-          (provider) =>
-            provider.availability === "accepting" ||
-            provider.availability === "limited"
-        );
+      const availableProviders = profiles.filter(
+        (provider) =>
+          provider.availability === "accepting" ||
+          provider.availability === "limited"
+      );
 
-        setProviders(availableProviders);
-        setLoading(false);
-      }
+      setProviders(availableProviders);
+      setLoading(false);
+    }
 
-      loadProviders();
-    }, [navigate]);
+    loadProviders();
+  }, [navigate]);
 
-      function handleContactProvider(provider) {
-        setOpeningProviderId(provider.id);
+  function handleContactProvider(provider) {
+    setOpeningProviderId(provider.id);
 
-        setTimeout(() => {
-          setSelectedProvider(provider);
-          setOpeningProviderId(null);
-        }, 800);
-      }
+    setTimeout(() => {
+      setSelectedProvider(provider);
+      setOpeningProviderId(null);
+    }, 800);
+  }
 
-      const filteredProviders = providers.filter((provider) => {
-        const search = searchTerm.toLowerCase();
+  const filteredProviders = providers.filter((provider) => {
+    const search = searchTerm.trim().toLowerCase();
 
-        return (
-          provider.full_name?.toLowerCase().includes(search) ||
-          provider.city?.toLowerCase().includes(search) ||
-          provider.state?.toLowerCase().includes(search) ||
-          provider.zip_code?.toLowerCase().includes(search) ||
-          provider.bio?.toLowerCase().includes(search)
-        );
-      });
+    if (!search) return true;
 
-      const sortedProviders = [...filteredProviders].sort((a, b) => {
-        if (sortOption === "AZ") {
-          return a.full_name.localeCompare(b.full_name);
-        }
-
-        if (sortOption === "ZA") {
-          return b.full_name.localeCompare(a.full_name);
-        }
-
-        if (sortOption === "CITY") {
-          return a.city.localeCompare(b.city);
-        }
-
-      return 0;
+    return (
+      getProviderName(provider).toLowerCase().includes(search) ||
+      provider.city?.toLowerCase().includes(search) ||
+      provider.state?.toLowerCase().includes(search) ||
+      provider.zip_code?.toLowerCase().includes(search) ||
+      provider.bio?.toLowerCase().includes(search) ||
+      provider.services_offered?.some((service) =>
+        service.toLowerCase().includes(search)
+      )
+    );
   });
 
-        if (!accessAllowed) {
-          return (
-            <section id="providers">
-              <div className="container">
-                <div className="row row__column">
-                  <div className="profile-loading">
-                    Checking membership...
-                  </div>
-                </div>
-              </div>
-            </section>
-          );
-        }
+  const sortedProviders = [...filteredProviders].sort((a, b) => {
+    const firstName = getProviderName(a);
+    const secondName = getProviderName(b);
+
+    if (sortOption === "AZ") {
+      return firstName.localeCompare(secondName);
+    }
+
+    if (sortOption === "ZA") {
+      return secondName.localeCompare(firstName);
+    }
+
+    if (sortOption === "CITY") {
+      return (a.city || "").localeCompare(b.city || "");
+    }
+
+    return 0;
+  });
+
+  if (!accessAllowed) {
+    return (
+      <section id="providers">
+        <div className="container">
+          <div className="row row__column">
+            <div className="profile-loading">Checking membership...</div>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section id="providers">
@@ -114,7 +124,8 @@ function Providers() {
             <Link to="/dashboard" className="back__link">
               ← Back to Dashboard
             </Link>
-            </div>
+          </div>
+
           <div className="providers__top">
             <div>
               <h2>Provider Directory</h2>
@@ -130,12 +141,12 @@ function Providers() {
                 className="provider__search"
                 placeholder="Search by name, city, state, ZIP, or service..."
                 value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
+                onChange={(event) => setSearchTerm(event.target.value)}
               />
 
               <select
                 value={sortOption}
-                onChange={(e) => setSortOption(e.target.value)}
+                onChange={(event) => setSortOption(event.target.value)}
               >
                 <option value="">Sort providers</option>
                 <option value="AZ">Name A-Z</option>
@@ -162,40 +173,43 @@ function Providers() {
             </div>
           ) : sortedProviders.length > 0 ? (
             <div className="providers">
-              {sortedProviders.map((provider) => (
-                <div className="provider__card" key={provider.id}>
-             <h3>{provider.display_name || "PawCircle Member"}</h3>
+              {sortedProviders.map((provider) => {
+                const providerName = getProviderName(provider);
 
-              {provider.profile_image && (
-                <img
-                  src={provider.profile_image}
-                  alt={`${provider.display_name || "PawCircle Member"} profile`}
-                  className="provider__profile-img"
-                />
-              )}
+                return (
+                  <div className="provider__card" key={provider.id}>
+                    <h3>{providerName}</h3>
 
-              {provider.membership_level?.toLowerCase() === "founder" && (
-                <div className="founder__badge">
-                  <FontAwesomeIcon icon={faPaw} className="gold-paw" />
-                  {" "}Founder Member
-                </div>
-              )}
+                    {provider.profile_image && (
+                      <img
+                        src={provider.profile_image}
+                        alt={`${providerName} profile`}
+                        className="provider__profile-img"
+                      />
+                    )}
+
+                    {provider.membership_level?.toLowerCase() === "founder" && (
+                      <div className="founder__badge">
+                        <FontAwesomeIcon icon={faPaw} className="gold-paw" />{" "}
+                        Founder Member
+                      </div>
+                    )}
 
                     <p className="provider__service">
-                    {provider.profile_type === "both"
-                      ? "Pet Owner & Service Provider"
-                      : "Pet Service Provider"}
-                  </p>
+                      {provider.profile_type === "both"
+                        ? "Pet Owner & Service Provider"
+                        : "Pet Service Provider"}
+                    </p>
 
-                  <p>
-                    {provider.city}, {provider.state} {provider.zip_code}
-                  </p>
+                    <p>
+                      {provider.city}, {provider.state} {provider.zip_code}
+                    </p>
 
-                  {provider.service_radius_miles && (
-                    <p>Service area: {provider.service_radius_miles} miles</p>
-                  )}
+                    {provider.service_radius_miles && (
+                      <p>Service area: {provider.service_radius_miles} miles</p>
+                    )}
 
-                  {provider.services_offered?.length > 0 && (
+                    {provider.services_offered?.length > 0 && (
                       <p>
                         <strong>Services:</strong>{" "}
                         {provider.services_offered.join(", ")}
@@ -209,21 +223,20 @@ function Providers() {
                       </p>
                     )}
 
-                    {provider.bio && (
-                      <p>{provider.bio}</p>
-                    )}
+                    {provider.bio && <p>{provider.bio}</p>}
 
-                  <button
-                    className="provider__contact-btn"
-                    onClick={() => handleContactProvider(provider)}
-                    disabled={openingProviderId === provider.id}
-                  >
-                    {openingProviderId === provider.id
-                      ? "🐾 Opening Message..."
-                      : "Contact Provider"}
-                  </button>
-                </div>
-              ))}
+                    <button
+                      className="provider__contact-btn"
+                      onClick={() => handleContactProvider(provider)}
+                      disabled={openingProviderId === provider.id}
+                    >
+                      {openingProviderId === provider.id
+                        ? "🐾 Opening Message..."
+                        : "Contact Provider"}
+                    </button>
+                  </div>
+                );
+              })}
             </div>
           ) : (
             <p className="directory__notice">

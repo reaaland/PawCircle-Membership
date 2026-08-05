@@ -130,27 +130,7 @@ export async function sendMessage(recipientId, messageText) {
     .select()
     .single();
 
-  if (error) {
-    return { data: null, error };
-  }
-
-  const { error: notificationError } = await supabase.functions.invoke(
-    "send-message-notification",
-    {
-      body: {
-        message_id: data.id,
-      },
-    }
-  );
-
-  if (notificationError) {
-    console.error(
-      "Message saved, but the email notification could not be sent:",
-      notificationError
-    );
-  }
-
-  return { data, error: null, notificationError };
+  return { data, error };
 }
 
 export async function getMessages() {
@@ -200,6 +180,82 @@ export async function getMessages() {
     data,
     error: null,
   };
+}
+
+export async function getConversationPreferences() {
+  const {
+    data: { user },
+    error: userError,
+  } = await supabase.auth.getUser();
+
+  if (userError || !user) {
+    return {
+      data: {},
+      error: userError || new Error("Not authenticated"),
+    };
+  }
+
+  const { data, error } = await supabase
+    .from("conversation_member_preferences")
+    .select("other_member_id, is_saved, deleted_before")
+    .eq("user_id", user.id);
+
+  if (error) {
+    console.error("Error loading conversation preferences:", error);
+    return { data: {}, error };
+  }
+
+  const preferencesByMemberId = (data || []).reduce(
+    (preferences, preference) => {
+      preferences[preference.other_member_id] = {
+        is_saved: preference.is_saved,
+        deleted_before: preference.deleted_before,
+      };
+
+      return preferences;
+    },
+    {}
+  );
+
+  return { data: preferencesByMemberId, error: null };
+}
+
+export async function setConversationPreference(
+  otherMemberId,
+  preference
+) {
+  const {
+    data: { user },
+    error: userError,
+  } = await supabase.auth.getUser();
+
+  if (userError || !user) {
+    return {
+      data: null,
+      error: userError || new Error("Not authenticated"),
+    };
+  }
+
+  const { data, error } = await supabase
+    .from("conversation_member_preferences")
+    .upsert(
+      {
+        user_id: user.id,
+        other_member_id: otherMemberId,
+        is_saved: Boolean(preference.is_saved),
+        deleted_before: preference.deleted_before || null,
+        updated_at: new Date().toISOString(),
+      },
+      { onConflict: "user_id,other_member_id" }
+    )
+    .select("other_member_id, is_saved, deleted_before")
+    .single();
+
+  if (error) {
+    console.error("Error updating conversation preference:", error);
+  }
+
+  return { data, error };
 }
 
 export async function markConversationRead(otherMemberId) {
