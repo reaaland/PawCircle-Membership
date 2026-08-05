@@ -8,7 +8,6 @@ import ServicesPage from "./pages/ServicesPage";
 import JoinPage from "./pages/JoinPage";
 import Dashboard from "./components/Dashboard";
 import ProviderPage from "./pages/ProviderPage";
-import PetOwnersPage from "./pages/PetOwnersPage.jsx";
 import FAQPage from "./pages/FAQPage";
 import CodeOfConductPage from "./pages/CodeOfConductPage";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
@@ -32,32 +31,31 @@ import { useState, useEffect } from "react";
 import { supabase } from "./lib/supabase";
 import UpdatePassword from "./components/UpdatePassword";
 
-
 function AppLayout() {
   const location = useLocation();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [authLoading, setAuthLoading] = useState(true);
 
-useEffect(() => {
-  async function checkSession() {
-    const { data } = await supabase.auth.getSession();
-    setIsLoggedIn(!!data.session);
-    setAuthLoading(false);
-  }
-
-  checkSession();
-
-  const { data: listener } = supabase.auth.onAuthStateChange(
-    (_event, session) => {
-      setIsLoggedIn(!!session);
+  useEffect(() => {
+    async function checkSession() {
+      const { data } = await supabase.auth.getSession();
+      setIsLoggedIn(!!data.session);
       setAuthLoading(false);
     }
-  );
 
-  return () => {
-    listener.subscription.unsubscribe();
-  };
-}, []);
+    checkSession();
+
+    const { data: listener } = supabase.auth.onAuthStateChange(
+      (_event, session) => {
+        setIsLoggedIn(!!session);
+        setAuthLoading(false);
+      }
+    );
+
+    return () => {
+      listener.subscription.unsubscribe();
+    };
+  }, []);
 
   const isLocalhost =
     window.location.hostname === "localhost" ||
@@ -79,30 +77,96 @@ useEffect(() => {
 
       {!isComingSoon && <Navbar />}
 
-    <main className="app-main">
-      <Routes>
-        <Route path="/" element={<Home isLoggedIn={isLoggedIn} />} />
-        <Route path="/services" element={<ServicesPage isLoggedIn={isLoggedIn} />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/membership" element={<MembershipPage />} />
-        <Route path="/join" element={<JoinPage />} />
-        <Route path="/dashboard" element={authLoading ? null : isLoggedIn ? <Dashboard /> : <Navigate to="/join?message=membership-required" />} />
-        <Route path="/providers" element={authLoading ? null : isLoggedIn ? <ProviderPage /> : <Navigate to="/join?message=membership-required" />} />
-        <Route path="/pet-owners" element={authLoading ? null : isLoggedIn ? <PetOwnersPage /> : <Navigate to="/join?message=membership-required" />} />
-        <Route path="/messages" element={authLoading ? null : isLoggedIn ? <Messages /> : <Navigate to="/join?message=membership-required" />} />
-        <Route path="/profile" element={authLoading ? null : isLoggedIn ? <Profile /> : <Navigate to="/join?message=membership-required" />} />
-        <Route path="/details" element={authLoading ? null : isLoggedIn ? <MembershipDetails /> : <Navigate to="/join?message=membership-required" />} />
-        <Route path="/account" element={authLoading ? null : isLoggedIn ? <AccountSettings /> : <Navigate to="/join?message=membership-required" />} />
+      <main className="app-main">
+        <Routes>
+          <Route path="/" element={<Home isLoggedIn={isLoggedIn} />} />
+          <Route
+            path="/services"
+            element={<ServicesPage isLoggedIn={isLoggedIn} />}
+          />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/membership" element={<MembershipPage />} />
+          <Route path="/join" element={<JoinPage />} />
+          <Route
+            path="/dashboard"
+            element={
+              authLoading ? null : isLoggedIn ? (
+                <Dashboard />
+              ) : (
+                <Navigate to="/join?message=membership-required" />
+              )
+            }
+          />
+          <Route
+            path="/providers"
+            element={
+              authLoading ? null : isLoggedIn ? (
+                <ProviderPage />
+              ) : (
+                <Navigate to="/join?message=membership-required" />
+              )
+            }
+          />
+          <Route
+            path="/pet-owners"
+            element={
+              authLoading ? null : isLoggedIn ? (
+                <Navigate to="/dashboard" replace />
+              ) : (
+                <Navigate to="/join?message=membership-required" />
+              )
+            }
+          />
+          <Route
+            path="/messages"
+            element={
+              authLoading ? null : isLoggedIn ? (
+                <Messages />
+              ) : (
+                <Navigate to="/join?message=membership-required" />
+              )
+            }
+          />
+          <Route
+            path="/profile"
+            element={
+              authLoading ? null : isLoggedIn ? (
+                <Profile />
+              ) : (
+                <Navigate to="/join?message=membership-required" />
+              )
+            }
+          />
+          <Route
+            path="/details"
+            element={
+              authLoading ? null : isLoggedIn ? (
+                <MembershipDetails />
+              ) : (
+                <Navigate to="/join?message=membership-required" />
+              )
+            }
+          />
+          <Route
+            path="/account"
+            element={
+              authLoading ? null : isLoggedIn ? (
+                <AccountSettings />
+              ) : (
+                <Navigate to="/join?message=membership-required" />
+              )
+            }
+          />
 
-        <Route path="/faq" element={<FAQPage />} />
-        <Route path="/code" element={<CodeOfConductPage />} />
-        <Route path="/privacy" element={<PrivacyPolicyPage />} />
-        <Route path="/terms" element={<TermsOfUsePage />} />
-        <Route path="/contact" element={<ContactPage />} />
-        <Route path="/coming-soon" element={<ComingSoonPage />} />
-        <Route path="/membership-success" element={<MembershipSuccess />} />
-        <Route path="/update-password" element={<UpdatePassword />} />
-      </Routes>
+          <Route path="/faq" element={<FAQPage />} />
+          <Route path="/code" element={<CodeOfConductPage />} />
+          <Route path="/privacy" element={<PrivacyPolicyPage />} />
+          <Route path="/terms" element={<TermsOfUsePage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/coming-soon" element={<ComingSoonPage />} />
+          <Route path="/membership-success" element={<MembershipSuccess />} />
+          <Route path="/update-password" element={<UpdatePassword />} />
+        </Routes>
       </main>
 
       {!isComingSoon && <Footer />}
