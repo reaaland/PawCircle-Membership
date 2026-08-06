@@ -1,13 +1,12 @@
-import walkInTheSnow from "../assets/walking in the snow.jpeg";
-import hamsterdog from "../assets/hamster_dog_friends.JPG";
-import catWindow from "../assets/cat_window.png";
-import onTheRun from "../assets/on_the_run.JPG";
-import sleepyPup from "../assets/Sleepy_pup.jpg";
-import petTaxi from "../assets/Pet_Taxi.jpg";
-import horseDog from "../assets/horse_dog playing.jpg";
-import dropIn from "../assets/drop_in.jpg";
-import boardingTwoPups from "../assets/boarding_two_pups.png"
-import sleepOver from "../assets/sleep_over.png"
+import walkInTheSnow from "../assets/walking-in-snow.webp";
+import hamsterdog from "../assets/hamster-dog-friends.webp";
+import catWindow from "../assets/cat-window.webp";
+import onTheRun from "../assets/on-the-run.webp";
+import petTaxi from "../assets/pet-taxi.webp";
+import horseDog from "../assets/horse-dog-playing.webp";
+import dropIn from "../assets/drop-in.webp";
+import boardingTwoPups from "../assets/boarding-two-pups.webp"
+import sleepOver from "../assets/sleep-over.webp"
 
 export const services = [
   {

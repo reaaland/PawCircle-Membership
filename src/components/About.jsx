@@ -1,4 +1,4 @@
-import sunsetWalk from "../assets/huskies_at_twilight.jpeg";
+import sunsetWalk from "../assets/huskies-at-twilight.webp";
 
 function About({ fullVersion }) {
   return (

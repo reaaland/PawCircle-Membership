@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { supabase } from "../lib/supabase";
-import trailWalk from "../assets/dog walking on trail.jpg";
+import trailWalk from "../assets/dog-walking-trail.webp";
 
 function Hero() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);

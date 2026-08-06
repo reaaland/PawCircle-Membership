@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import logo from "../assets/PC_Logo.png";
+import logo from "../assets/pawcircle-logo.webp";
 
 
 function ComingSoonPage() {

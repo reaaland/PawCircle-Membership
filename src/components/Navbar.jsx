@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { supabase } from "../lib/supabase";
 import { signOut } from "../Services/authService";
-import logo from "../assets/PC_Logo.png";
+import logo from "../assets/pawcircle-logo.webp";
 import LogInModal from "./LogInModal";
 
 function Navbar() {

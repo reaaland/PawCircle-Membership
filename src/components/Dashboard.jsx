@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import dogKitten from "../assets/kitten_dog_toys.png";
+import dogKitten from "../assets/kitten-dog-toys.webp";
 import { supabase } from "../lib/supabase";
 
 function Dashboard() {
