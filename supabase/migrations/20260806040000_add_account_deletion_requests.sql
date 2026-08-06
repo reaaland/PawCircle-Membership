@@ -1,15 +1,16 @@
 create table public.account_deletion_requests (
   id uuid primary key default gen_random_uuid(),
   user_id uuid references auth.users(id) on delete set null,
-  account_email text not null,
+  account_email text,
   status text not null default 'pending',
   requested_at timestamptz not null default now(),
   updated_at timestamptz not null default now(),
   confirmation_sent_at timestamptz,
   completed_at timestamptz,
-  constraint account_deletion_requests_email_not_blank
+  constraint account_deletion_requests_email_valid
     check (
-      char_length(trim(account_email)) between 3 and 320
+      account_email is null
+      or char_length(trim(account_email)) between 3 and 320
     ),
   constraint account_deletion_requests_status_check
     check (
@@ -28,7 +29,7 @@ comment on table public.account_deletion_requests is
   'Authenticated member requests for account and personal-data deletion. Processing remains a verified administrative workflow.';
 
 comment on column public.account_deletion_requests.account_email is
-  'Email captured from the authenticated account for identity verification, communication, and the minimum deletion-request record.';
+  'Authenticated account email used during verification and communication. Clear after the completion notice when no longer required.';
 
 create unique index account_deletion_requests_one_open_per_user
   on public.account_deletion_requests (user_id)
@@ -69,6 +70,7 @@ create policy "Members can submit their own deletion request"
   to authenticated
   with check (
     user_id = auth.uid()
+    and account_email is not null
     and lower(trim(account_email)) = lower(
       coalesce(auth.jwt() ->> 'email', '')
     )
