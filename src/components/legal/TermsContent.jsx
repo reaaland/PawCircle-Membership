@@ -2,7 +2,7 @@ function TermsContent() {
   return (
     <>
       <h1>Terms of Use</h1>
-        <p className="legal__date">Effective Date: June 27, 2026</p>
+        <p className="legal__date">Last Updated: August 5, 2026</p>
 
         <p className="legal__intro">
           These Terms of Use govern your access to and use of the PawCircle
@@ -54,6 +54,34 @@ function TermsContent() {
           remains active and in good standing. If membership is cancelled or
           lapses, promotional pricing and benefits are forfeited and may not
           be reinstated.
+        </p>
+
+        <h2>Account and Data Deletion</h2>
+
+        <p>
+          A request to delete an account or personal data is separate from
+          canceling a membership. Submitting a deletion request does not
+          immediately delete the account, automatically cancel billing, or
+          create a refund. Membership fees already paid remain non-refundable.
+        </p>
+
+        <p>
+          PawCircle may verify the identity of the requester and confirm the
+          intended deletion timing before processing the request. If the
+          membership is active, the member may ask for deletion to be completed
+          promptly or after the current paid access period ends. Prompt deletion
+          ends remaining account access when deletion is completed and does not
+          create a refund.
+        </p>
+
+        <p>
+          Completed deletion may remove account access, profile information,
+          uploaded profile photos, messages, and member preferences and may be
+          irreversible. PawCircle may retain limited records when reasonably
+          necessary for payment and tax records, security and fraud prevention,
+          legal compliance, dispute resolution, enforcement of these Terms, or
+          proof that a privacy request was handled. Stripe and other service
+          providers may retain records under their own obligations and policies.
         </p>
 
         <h2>Platform Disclaimer</h2>
