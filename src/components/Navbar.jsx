@@ -63,6 +63,7 @@ function Navbar() {
         <Link to="/about" className="nav__link">About</Link>
         <Link to="/membership" className="nav__link">Membership</Link>
         <Link to="/services" className="nav__link">Services</Link>
+        <Link to="/for-providers" className="nav__link">For Providers</Link>
 
         {isLoggedIn ? (
           <>
@@ -107,6 +108,9 @@ function Navbar() {
           </Link>
           <Link to="/services" onClick={() => setMenuOpen(false)}>
             Services
+          </Link>
+          <Link to="/for-providers" onClick={() => setMenuOpen(false)}>
+            For Providers
           </Link>
 
           {isLoggedIn ? (

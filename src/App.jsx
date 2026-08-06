@@ -32,6 +32,7 @@ import MembershipSuccess from "./pages/MembershipSuccess";
 import { useState, useEffect } from "react";
 import { supabase } from "./lib/supabase";
 import UpdatePassword from "./components/UpdatePassword";
+import ForProvidersPage from "./pages/ForProvidersPage";
 
 function PageLoading({ text }) {
   return (
@@ -99,6 +100,7 @@ function AppLayout() {
           <Route path="/about" element={<AboutPage />} />
           <Route path="/membership" element={<MembershipPage />} />
           <Route path="/join" element={<JoinPage />} />
+          <Route path="/for-providers" element={<ForProvidersPage />} />
           <Route
             path="/dashboard"
             element={

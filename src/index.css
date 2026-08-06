@@ -833,6 +833,125 @@ svg.gold-paw path {
   align-self: flex-start;
 }
 
+.join-founder-card {
+  display: grid;
+  width: min(100%, 680px);
+  margin-top: 28px;
+  padding: 28px;
+  grid-template-columns: 1fr auto;
+  gap: 10px 24px;
+  align-items: center;
+  border: 3px solid #d4af37;
+  border-radius: 22px;
+  background: linear-gradient(180deg, #fffef8, #fff8dc);
+  box-shadow: 0 16px 38px rgba(133, 103, 14, 0.13);
+}
+
+.join-founder-card__badge {
+  grid-column: 1 / -1;
+  width: fit-content;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: #d4af37;
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+
+.join-founder-card h3 {
+  margin-bottom: 6px;
+  color: #243e63;
+}
+
+#join .join-founder-card p {
+  margin: 0;
+  color: #64748b;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  text-align: left;
+}
+
+.join-founder-card > strong {
+  color: #5b21ff;
+  font-size: 1.6rem;
+  white-space: nowrap;
+}
+
+.join-role-fieldset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.join-role-fieldset legend {
+  color: #2563eb;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+#join .join-role-help {
+  margin: 6px 0 14px;
+  color: #64748b;
+  font-size: 0.9rem;
+  text-align: left;
+}
+
+.join-role-options {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.join-role-option {
+  display: flex;
+  min-height: 126px;
+  padding: 18px 14px;
+  gap: 10px;
+  align-items: flex-start;
+  border: 2px solid #e2e8f0;
+  border-radius: 16px;
+  background: #fff;
+  cursor: pointer;
+  transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+
+.join-role-option:hover {
+  border-color: #a98cff;
+  transform: translateY(-2px);
+}
+
+.join-role-option--selected {
+  border-color: #6415ff;
+  box-shadow: 0 0 0 3px rgba(100, 21, 255, 0.1);
+}
+
+#join .join-role-option input {
+  width: 18px;
+  height: 18px;
+  margin: 2px 0 0;
+  padding: 0;
+  flex: 0 0 18px;
+  accent-color: #6415ff;
+}
+
+.join-role-option span {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.join-role-option strong {
+  color: #243e63;
+  line-height: 1.25;
+}
+
+.join-role-option small {
+  color: #64748b;
+  font-size: 0.78rem;
+  line-height: 1.4;
+}
+
 .join__benefits {
   display: block;
   text-align: center;
@@ -2923,4 +3042,3 @@ footer {
     object-position: center 40%;
   }
 }
-

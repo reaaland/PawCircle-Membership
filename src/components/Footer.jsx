@@ -28,6 +28,7 @@ function Footer() {
             <Link to="/">Home</Link>
             <Link to="/services">Services</Link>
             <Link to="/membership">Membership</Link>
+            <Link to="/for-providers">For Pet Care Providers</Link>
             <Link to="/join">Join PawCircle Membership</Link>
           </div>
 
