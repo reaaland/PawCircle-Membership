@@ -1,4 +1,4 @@
-name: Apply PawCircle Membership public name
+name: Refine PawCircle Membership public name
 
 on:
   push:
@@ -10,64 +10,45 @@ permissions:
   contents: write
 
 jobs:
-  apply-and-verify:
+  refine-and-verify:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Apply full public name
+      - name: Refine wording and preserve deployed webhook source
         run: |
           python - <<'PY'
           from pathlib import Path
-          import re
 
-          roots = [Path('src'), Path('supabase/functions')]
-          files = [Path('index.html')]
-          for root in roots:
-              if root.exists():
-                  files.extend(
-                      p for p in root.rglob('*')
-                      if p.is_file() and p.suffix.lower() in {'.js', '.jsx', '.ts', '.tsx', '.html'}
-                  )
+          replacements = {
+              Path('src/components/LogInModal.jsx'): {
+                  'Log in to access your PawCircle Membership member account.':
+                  'Log in to access your PawCircle Membership account.',
+              },
+              Path('src/components/ProviderPreview.jsx'): {
+                  'do not represent actual PawCircle Membership members.':
+                  'do not represent actual members of PawCircle Membership.',
+              },
+              Path('supabase/functions/send-account-deletion-request/index.ts'): {
+                  'A signed-in PawCircle Membership member submitted an account and data deletion request.':
+                  'A signed-in member of PawCircle Membership submitted an account and data deletion request.',
+              },
+              Path('supabase/functions/stripe-webhook/index.ts'): {
+                  'No PawCircle Membership mapping found for price:':
+                  'No PawCircle membership mapping found for price:',
+              },
+          }
 
           changed = []
-          for path in sorted(set(files)):
+          for path, pairs in replacements.items():
               original = path.read_text(encoding='utf-8')
               text = original
-
-              # Avoid creating "PawCircle Membership Membership Agreement."
-              text = text.replace(
-                  '<span className="purple">PawCircle</span> Membership Agreement',
-                  '<span className="purple">PawCircle Membership</span> Agreement',
-              )
-
-              # Where "membership" was being used as part of the shortened name,
-              # normalize the complete brand before the general replacement.
-              text = text.replace('PawCircle membership', 'PawCircle Membership')
-
-              # Expand remaining public-facing short-name references. Preserve the
-              # legal company name and technical User-Agent identifier.
-              text = re.sub(
-                  r'PawCircle(?! Membership| LLC|/1\.0)',
-                  'PawCircle Membership',
-                  text,
-              )
-
+              for old, new in pairs.items():
+                  if old not in text:
+                      raise SystemExit(f'Expected wording not found in {path}: {old}')
+                  text = text.replace(old, new)
               if text != original:
                   path.write_text(text, encoding='utf-8')
                   changed.append(str(path))
-
-          mobile = Path('src/mobile-audit.css')
-          css = mobile.read_text(encoding='utf-8')
-          updated_css = css.replace(
-              '  .nav__logo--title {\n    margin-left: 0;\n    font-size: 20px;\n  }',
-              '  .nav__logo--title {\n    margin-left: 0;\n    font-size: 17px;\n    white-space: nowrap;\n  }',
-          ).replace(
-              '  .nav__logo--title {\n    font-size: 18px;\n  }',
-              '  .nav__logo--title {\n    font-size: 15px;\n  }',
-          )
-          if updated_css != css:
-              mobile.write_text(updated_css, encoding='utf-8')
-              changed.append(str(mobile))
 
           print('CHANGED_FILES')
           for item in changed:
@@ -77,7 +58,7 @@ jobs:
         run: npm ci
       - name: Build production bundle
         run: npm run build
-      - name: Verify naming
+      - name: Verify final wording
         run: |
           python - <<'PY'
           from pathlib import Path
@@ -92,29 +73,38 @@ jobs:
               )
 
           failures = []
-          short_name = re.compile(r'PawCircle(?! Membership| LLC|/1\.0)')
+          # The lowercase technical Stripe log and User-Agent are intentional exceptions.
+          short_name = re.compile(r'PawCircle(?! Membership| LLC|/1\.0| membership mapping)')
+          forbidden = [
+              'PawCircle Membership Membership',
+              'PawCircle Membership member account',
+              'actual PawCircle Membership members',
+              'signed-in PawCircle Membership member',
+          ]
+
           for path in sorted(set(files)):
               text = path.read_text(encoding='utf-8')
               for number, line in enumerate(text.splitlines(), 1):
                   if short_name.search(line):
                       failures.append(f'{path}:{number}: {line.strip()}')
-                  if 'PawCircle Membership Membership' in line:
-                      failures.append(f'DUPLICATE {path}:{number}: {line.strip()}')
+                  for phrase in forbidden:
+                      if phrase in line:
+                          failures.append(f'{path}:{number}: {line.strip()}')
 
           if failures:
               print('\n'.join(failures))
-              raise SystemExit('Brand-name verification failed')
+              raise SystemExit('Final brand-name verification failed')
 
-          print('All public-facing exact-name references use PawCircle Membership.')
+          print('Full-name wording and technical exceptions verified.')
           PY
-      - name: Commit verified correction
+      - name: Commit refined correction
         run: |
           git config user.name "Rebecca Aaland"
           git config user.email "reaaland@gmail.com"
-          git add index.html src supabase/functions
+          git add src supabase/functions
           if git diff --cached --quiet; then
             echo "No content changes to commit."
             exit 0
           fi
-          git commit -m "fix: restore full PawCircle Membership name [skip ci]"
+          git commit -m "fix: refine PawCircle Membership wording [skip ci]"
           git push
