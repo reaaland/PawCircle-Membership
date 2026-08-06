@@ -1,0 +1,40 @@
+name: Audit PawCircle public name
+
+on:
+  push:
+    branches:
+      - fix/full-site-name-loader
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: List exact PawCircle references
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          roots = [Path('src'), Path('supabase/functions')]
+          files = [Path('index.html')]
+          for root in roots:
+              if root.exists():
+                  files.extend(
+                      p for p in root.rglob('*')
+                      if p.is_file() and p.suffix.lower() in {'.js', '.jsx', '.ts', '.tsx', '.html'}
+                  )
+
+          count = 0
+          for path in sorted(set(files)):
+              text = path.read_text(encoding='utf-8')
+              for number, line in enumerate(text.splitlines(), 1):
+                  if 'PawCircle' in line:
+                      print(f'{path}:{number}: {line.strip()}')
+                      count += line.count('PawCircle')
+
+          print(f'\nTOTAL_EXACT_OCCURRENCES={count}')
+          PY
