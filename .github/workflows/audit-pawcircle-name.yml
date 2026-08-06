@@ -1,4 +1,4 @@
-name: Audit PawCircle public name
+name: Apply PawCircle Membership public name
 
 on:
   push:
@@ -7,17 +7,18 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
-  audit:
+  apply-and-verify:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: List exact PawCircle references
+      - name: Apply full public name
         run: |
           python - <<'PY'
           from pathlib import Path
+          import re
 
           roots = [Path('src'), Path('supabase/functions')]
           files = [Path('index.html')]
@@ -28,13 +29,92 @@ jobs:
                       if p.is_file() and p.suffix.lower() in {'.js', '.jsx', '.ts', '.tsx', '.html'}
                   )
 
-          count = 0
+          changed = []
+          for path in sorted(set(files)):
+              original = path.read_text(encoding='utf-8')
+              text = original
+
+              # Avoid creating "PawCircle Membership Membership Agreement."
+              text = text.replace(
+                  '<span className="purple">PawCircle</span> Membership Agreement',
+                  '<span className="purple">PawCircle Membership</span> Agreement',
+              )
+
+              # Where "membership" was being used as part of the shortened name,
+              # normalize the complete brand before the general replacement.
+              text = text.replace('PawCircle membership', 'PawCircle Membership')
+
+              # Expand remaining public-facing short-name references. Preserve the
+              # legal company name and technical User-Agent identifier.
+              text = re.sub(
+                  r'PawCircle(?! Membership| LLC|/1\.0)',
+                  'PawCircle Membership',
+                  text,
+              )
+
+              if text != original:
+                  path.write_text(text, encoding='utf-8')
+                  changed.append(str(path))
+
+          mobile = Path('src/mobile-audit.css')
+          css = mobile.read_text(encoding='utf-8')
+          updated_css = css.replace(
+              '  .nav__logo--title {\n    margin-left: 0;\n    font-size: 20px;\n  }',
+              '  .nav__logo--title {\n    margin-left: 0;\n    font-size: 17px;\n    white-space: nowrap;\n  }',
+          ).replace(
+              '  .nav__logo--title {\n    font-size: 18px;\n  }',
+              '  .nav__logo--title {\n    font-size: 15px;\n  }',
+          )
+          if updated_css != css:
+              mobile.write_text(updated_css, encoding='utf-8')
+              changed.append(str(mobile))
+
+          print('CHANGED_FILES')
+          for item in changed:
+              print(item)
+          PY
+      - name: Install dependencies
+        run: npm ci
+      - name: Build production bundle
+        run: npm run build
+      - name: Verify naming
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+
+          roots = [Path('src'), Path('supabase/functions')]
+          files = [Path('index.html')]
+          for root in roots:
+              files.extend(
+                  p for p in root.rglob('*')
+                  if p.is_file() and p.suffix.lower() in {'.js', '.jsx', '.ts', '.tsx', '.html'}
+              )
+
+          failures = []
+          short_name = re.compile(r'PawCircle(?! Membership| LLC|/1\.0)')
           for path in sorted(set(files)):
               text = path.read_text(encoding='utf-8')
               for number, line in enumerate(text.splitlines(), 1):
-                  if 'PawCircle' in line:
-                      print(f'{path}:{number}: {line.strip()}')
-                      count += line.count('PawCircle')
+                  if short_name.search(line):
+                      failures.append(f'{path}:{number}: {line.strip()}')
+                  if 'PawCircle Membership Membership' in line:
+                      failures.append(f'DUPLICATE {path}:{number}: {line.strip()}')
 
-          print(f'\nTOTAL_EXACT_OCCURRENCES={count}')
+          if failures:
+              print('\n'.join(failures))
+              raise SystemExit('Brand-name verification failed')
+
+          print('All public-facing exact-name references use PawCircle Membership.')
           PY
+      - name: Commit verified correction
+        run: |
+          git config user.name "Rebecca Aaland"
+          git config user.email "reaaland@gmail.com"
+          git add index.html src supabase/functions
+          if git diff --cached --quiet; then
+            echo "No content changes to commit."
+            exit 0
+          fi
+          git commit -m "fix: restore full PawCircle Membership name [skip ci]"
+          git push
