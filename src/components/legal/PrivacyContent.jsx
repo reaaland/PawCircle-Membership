@@ -3,7 +3,7 @@ function PrivacyContent() {
     <>
       <h1>Privacy Policy</h1>
 
-      <p className="legal__date">Effective Date: June 27, 2026</p>
+      <p className="legal__date">Last Updated: August 5, 2026</p>
 
       <p className="legal__intro">
         PawCircle LLC respects your privacy and is committed to protecting
@@ -71,6 +71,49 @@ function PrivacyContent() {
       <p>
         Members may request access to, correction of, or deletion of personal
         information by contacting PawCircle.
+      </p>
+
+      <h2>Account and Data Deletion Requests</h2>
+      <p>
+        Signed-in members may submit a verified deletion request through
+        Account Settings. A member who cannot sign in may email
+        hello@pawcirclemembership.com from the email address associated with
+        the account and use the subject “Account Deletion Request.” PawCircle
+        may request additional information reasonably necessary to verify the
+        requester&apos;s identity and authority over the account.
+      </p>
+
+      <p>
+        Submitting a deletion request does not immediately delete the account,
+        automatically cancel billing, or create a refund. Membership fees
+        already paid remain non-refundable.
+      </p>
+
+      <p>
+        If a membership is active, PawCircle will confirm whether the member
+        wants deletion completed promptly or after the current paid access
+        period ends. Prompt deletion ends remaining account access when the
+        deletion is completed and does not create a refund. Waiting until the
+        paid period ends preserves access until that time, subject to the
+        membership remaining in good standing.
+      </p>
+
+      <p>
+        After verification and confirmation of timing, PawCircle will remove or
+        de-identify personal information associated with the account where
+        reasonably possible, including the member profile, uploaded profile
+        photos, account access, messages, and member preferences.
+      </p>
+
+      <p>
+        PawCircle may retain limited records when reasonably necessary for
+        payment and tax records, security and fraud prevention, legal
+        compliance, dispute resolution, enforcement of agreements, or proof
+        that a privacy request was received and completed. The account email
+        used to process a deletion request may be cleared after the completion
+        notice is sent when it is no longer needed. Stripe and other service
+        providers may retain records under their own legal obligations and
+        policies.
       </p>
 
       <h2>Children&apos;s Privacy</h2>
