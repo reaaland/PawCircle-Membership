@@ -1,0 +1,121 @@
+name: PawCircle image optimization
+
+on:
+  push:
+    branches:
+      - fix/optimize-pawcircle-images
+
+permissions:
+  contents: write
+
+jobs:
+  optimize-images:
+    if: ${{ !contains(github.event.head_commit.message, '[image-optimized]') }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Pillow
+        run: python -m pip install --disable-pip-version-check pillow
+
+      - name: Create optimized copies and update imports
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from PIL import Image, ImageOps
+
+          assets = Path('src/assets')
+          targets = {
+              'dog walking on trail.jpg': ('dog-walking-trail.webp', 1448, 84, False),
+              'huskies_at_twilight.jpeg': ('huskies-at-twilight.webp', 1448, 84, False),
+              'kitten_dog_toys.png': ('kitten-dog-toys.webp', 1200, 83, False),
+              'walking in the snow.jpeg': ('walking-in-snow.webp', 900, 82, False),
+              'hamster_dog_friends.JPG': ('hamster-dog-friends.webp', 900, 82, False),
+              'cat_window.png': ('cat-window.webp', 900, 82, False),
+              'on_the_run.JPG': ('on-the-run.webp', 900, 82, False),
+              'Pet_Taxi.jpg': ('pet-taxi.webp', 900, 82, False),
+              'horse_dog playing.jpg': ('horse-dog-playing.webp', 900, 82, False),
+              'drop_in.jpg': ('drop-in.webp', 900, 82, False),
+              'boarding_two_pups.png': ('boarding-two-pups.webp', 900, 82, False),
+              'sleep_over.png': ('sleep-over.webp', 900, 82, False),
+              'PC_Logo.png': ('pawcircle-logo.webp', 512, 90, True),
+          }
+
+          total_before = 0
+          total_after = 0
+          print('\nPAWCIRCLE OPTIMIZATION RESULTS')
+          print('=' * 112)
+          print(f"{'Source':34} {'Before':>10} {'Output':30} {'After':>10} {'Dimensions':>15}")
+          print('-' * 112)
+
+          for source_name, (output_name, max_edge, quality, lossless) in targets.items():
+              source = assets / source_name
+              output = assets / output_name
+              with Image.open(source) as opened:
+                  image = ImageOps.exif_transpose(opened).convert('RGB')
+                  original_size = source.stat().st_size
+                  if max(image.size) > max_edge:
+                      image.thumbnail((max_edge, max_edge), Image.Resampling.LANCZOS)
+                  save_options = {
+                      'format': 'WEBP',
+                      'method': 6,
+                      'quality': quality,
+                  }
+                  if lossless:
+                      save_options['lossless'] = True
+                  image.save(output, **save_options)
+                  optimized_size = output.stat().st_size
+                  total_before += original_size
+                  total_after += optimized_size
+                  dims = f'{image.width}x{image.height}'
+                  print(f'{source_name[:34]:34} {original_size / 1000:9.1f}K {output_name[:30]:30} {optimized_size / 1000:9.1f}K {dims:>15}')
+
+          replacements = {source: output for source, (output, *_rest) in targets.items()}
+          text_extensions = {'.js', '.jsx', '.ts', '.tsx', '.css', '.html'}
+          changed_files = []
+          for path in Path('src').rglob('*'):
+              if not path.is_file() or path.suffix.lower() not in text_extensions:
+                  continue
+              content = path.read_text(encoding='utf-8')
+              updated = content
+              for source_name, output_name in replacements.items():
+                  updated = updated.replace(source_name, output_name)
+              updated = updated.replace('import sleepyPup from "../assets/Sleepy_pup.jpg";\n', '')
+              if updated != content:
+                  path.write_text(updated, encoding='utf-8')
+                  changed_files.append(str(path))
+
+          print('-' * 112)
+          print(f'Optimized displayed image bytes: {total_before / 1_000_000:.3f} MB -> {total_after / 1_000_000:.3f} MB')
+          print(f'Reduction: {(1 - total_after / total_before) * 100:.1f}%')
+          print('Updated imports:', ', '.join(changed_files))
+          PY
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+
+      - name: Verify production build
+        run: |
+          npm ci
+          npm run build
+
+      - name: Commit optimized assets
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/assets/*.webp src/components src/data src/pages
+          git diff --cached --stat
+          git commit -m "perf: optimize displayed PawCircle images [image-optimized]"
+          git push
