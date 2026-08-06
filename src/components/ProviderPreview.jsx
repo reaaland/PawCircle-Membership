@@ -42,7 +42,7 @@ function ProviderPreview() {
           <JoinButton text="Join PawCircle Membership" membershipType="founder" />
                         
             <p className="provider-preview__disclaimer">
-            Provider profiles shown are sample profiles for demonstration purposes and do not represent actual PawCircle Membership members.
+            Provider profiles shown are sample profiles for demonstration purposes and do not represent actual members of PawCircle Membership.
         </p>
         </div>
       </div>

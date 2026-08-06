@@ -176,7 +176,7 @@ Deno.serve(async (req) => {
 
         if (!tier) {
           throw new Error(
-            `No PawCircle Membership mapping found for price: ${priceId}`,
+            `No PawCircle membership mapping found for price: ${priceId}`,
           );
         }
 

@@ -206,7 +206,7 @@ Deno.serve(async (req: Request) => {
       to: SUPPORT_EMAIL,
       subject: `PawCircle Membership deletion request — ${deletionRequest.id.slice(0, 8)}`,
       idempotencyKey: `pawcircle-deletion-admin-${deletionRequest.id}`,
-      text: `A signed-in PawCircle Membership member submitted an account and data deletion request.
+      text: `A signed-in member of PawCircle Membership submitted an account and data deletion request.
 
 Request ID: ${deletionRequest.id}
 Member: ${memberName}
