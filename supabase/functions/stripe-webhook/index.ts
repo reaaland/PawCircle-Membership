@@ -83,6 +83,19 @@ async function getCheckoutPriceId(sessionId: string, stripeSecretKey: string) {
   return priceId;
 }
 
+function parseSignupReference(clientReferenceId: string | null | undefined) {
+  const match = /^pc_(pet_owner|pet_provider|both)__([a-z0-9_-]{1,80})$/.exec(
+    clientReferenceId || "",
+  );
+
+  if (!match) return null;
+
+  return {
+    profileType: match[1],
+    source: match[2],
+  };
+}
+
 Deno.serve(async (req) => {
   let claimedEventId: string | null = null;
   let supabase: ReturnType<typeof createClient<any>> | null = null;
@@ -161,6 +174,9 @@ Deno.serve(async (req) => {
       const customerId = session.customer;
       const subscriptionId = session.subscription;
       const metadata = session.metadata || {};
+      const signupReference = parseSignupReference(
+        session.client_reference_id,
+      );
 
       let membershipType = metadata.membership_type;
       let membershipLevel = metadata.membership_level;
@@ -183,6 +199,10 @@ Deno.serve(async (req) => {
         membershipType = tier.membership_type;
         membershipLevel = tier.membership_level;
         profileType = tier.profile_type;
+      }
+
+      if (signupReference) {
+        profileType = signupReference.profileType;
       }
 
       const rawEmail =
@@ -216,6 +236,17 @@ Deno.serve(async (req) => {
 
       if (!activation) {
         throw new Error("Membership activation did not return a result.");
+      }
+
+      if (signupReference?.source) {
+        const { error: trackingError } = await supabase
+          .from("profiles")
+          .update({ signup_source: signupReference.source })
+          .eq("email", email);
+
+        if (trackingError) {
+          console.error("Unable to save signup source:", trackingError.message);
+        }
       }
 
       await markEventProcessed();

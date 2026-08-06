@@ -24,14 +24,14 @@ function CTASection() {
             </div>
 
             <div className="cta__card">
-              <h2>Need Pet Care?</h2>
+              <h2>Offer Pet Care?</h2>
 
                 <p>
-                  Find pet service providers in your community and connect directly.
+                  Build another path for local pet owners to find your services—without a PawCircle commission.
                 </p>
 
-                <Link to="/providers" className="btn">
-                  Browse Providers
+                <Link to="/for-providers?source=homepage_cta" className="btn">
+                  Learn More for Providers
                 </Link>
             </div>
           </div>

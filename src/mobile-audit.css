@@ -113,6 +113,23 @@
     text-align: center;
   }
 
+  .join-founder-card {
+    padding: 22px 18px;
+    grid-template-columns: 1fr;
+  }
+
+  .join-founder-card > strong {
+    margin-top: 6px;
+  }
+
+  .join-role-options {
+    grid-template-columns: 1fr;
+  }
+
+  .join-role-option {
+    min-height: auto;
+  }
+
   .page__header {
     align-items: flex-start;
     gap: 16px;
