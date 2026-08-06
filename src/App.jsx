@@ -103,7 +103,7 @@ function AppLayout() {
             path="/dashboard"
             element={
               authLoading ? (
-                <PageLoading text="Checking your PawCircle account..." />
+                <PageLoading text="Checking your PawCircle Membership account..." />
               ) : isLoggedIn ? (
                 <ActiveMemberRoute>
                   <Dashboard />
@@ -117,7 +117,7 @@ function AppLayout() {
             path="/providers"
             element={
               authLoading ? (
-                <PageLoading text="Checking your PawCircle account..." />
+                <PageLoading text="Checking your PawCircle Membership account..." />
               ) : isLoggedIn ? (
                 <ActiveMemberRoute>
                   <ProviderPage />
@@ -131,7 +131,7 @@ function AppLayout() {
             path="/pet-owners"
             element={
               authLoading ? (
-                <PageLoading text="Checking your PawCircle account..." />
+                <PageLoading text="Checking your PawCircle Membership account..." />
               ) : isLoggedIn ? (
                 <Navigate to="/dashboard" replace />
               ) : (
@@ -143,7 +143,7 @@ function AppLayout() {
             path="/messages"
             element={
               authLoading ? (
-                <PageLoading text="Checking your PawCircle account..." />
+                <PageLoading text="Checking your PawCircle Membership account..." />
               ) : isLoggedIn ? (
                 <ActiveMemberRoute>
                   <Messages />
@@ -157,7 +157,7 @@ function AppLayout() {
             path="/profile"
             element={
               authLoading ? (
-                <PageLoading text="Checking your PawCircle account..." />
+                <PageLoading text="Checking your PawCircle Membership account..." />
               ) : isLoggedIn ? (
                 <ActiveMemberRoute>
                   <Profile />
@@ -171,7 +171,7 @@ function AppLayout() {
             path="/details"
             element={
               authLoading ? (
-                <PageLoading text="Checking your PawCircle account..." />
+                <PageLoading text="Checking your PawCircle Membership account..." />
               ) : isLoggedIn ? (
                 <MembershipDetails />
               ) : (
@@ -183,7 +183,7 @@ function AppLayout() {
             path="/account"
             element={
               authLoading ? (
-                <PageLoading text="Checking your PawCircle account..." />
+                <PageLoading text="Checking your PawCircle Membership account..." />
               ) : isLoggedIn ? (
                 <AccountSettings />
               ) : (
