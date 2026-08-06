@@ -46,6 +46,7 @@ revoke all on table public.account_deletion_requests
 
 grant select (
   id,
+  user_id,
   status,
   requested_at,
   updated_at,
