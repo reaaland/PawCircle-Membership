@@ -1,0 +1,279 @@
+/* Final Version 1 mobile and loading-state safeguards.
+   These rules intentionally override only confirmed small-screen and loading gaps. */
+
+.page-loading,
+.profile-loading,
+.join-loading {
+  min-height: clamp(280px, 55vh, 620px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.loading__container,
+.profile-loading {
+  width: min(100%, 360px);
+  margin: 0 auto;
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  border: 1px solid rgba(100, 21, 255, 0.1);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.86);
+  box-shadow: 0 12px 32px rgba(36, 62, 99, 0.08);
+  color: #5f3c96;
+  font-weight: 700;
+}
+
+.loading__container p,
+.join-loading p {
+  margin: 0;
+  color: #5f3c96;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.loading__paw,
+.profile-loading::before,
+.join-loading .paw-loader {
+  display: block;
+  font-size: 2rem;
+  line-height: 1;
+  animation: pawPulse 1s ease-in-out infinite;
+}
+
+.profile-loading::before {
+  content: "🐾";
+}
+
+.membership__summary,
+.membership__summary p,
+.settings__card,
+.membership-details__card,
+.provider__card,
+.dashboard__card {
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 600px) {
+  .nav__container {
+    padding: 0 20px;
+  }
+
+  .nav__logo {
+    gap: 8px;
+    min-width: 0;
+  }
+
+  .nav__logo--title {
+    margin-left: 0;
+    font-size: 20px;
+  }
+
+  .btn__menu {
+    width: 44px;
+    height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 44px;
+  }
+
+  .menu__backdrop {
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
+    overflow-y: auto;
+    padding-bottom: 40px;
+  }
+
+  #join {
+    padding: 72px 16px;
+    border-radius: 24px;
+  }
+
+  #join .container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  #join form.join-form {
+    width: 100%;
+    margin-top: 28px;
+  }
+
+  #join .btn {
+    width: 100%;
+    align-self: stretch;
+    text-align: center;
+  }
+
+  .page__header {
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+
+  .page__header h2 {
+    min-width: 0;
+    margin: 0;
+    padding: 10px 0;
+    text-align: left;
+    font-size: 1.75rem;
+    line-height: 1.25;
+  }
+
+  .page__close {
+    flex: 0 0 auto;
+    min-width: 44px;
+    min-height: 44px;
+    margin-right: -10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .profile__card,
+  .settings__card,
+  .membership-details__card {
+    padding: 22px 18px;
+    border-radius: 20px;
+  }
+
+  .services__checkboxes {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .providers,
+  .providers__wrapper {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .provider__card {
+    padding: 26px 20px;
+  }
+
+  .settings__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .settings__actions .btn,
+  .settings__actions button {
+    width: 100%;
+    text-align: center;
+  }
+
+  .modal__backdrop,
+  .modal__overlay {
+    align-items: flex-start;
+    overflow-y: auto;
+    padding: 16px;
+  }
+
+  .modal,
+  .message__modal,
+  .login__modal {
+    width: 100%;
+    max-height: calc(100vh - 32px);
+    max-height: calc(100dvh - 32px);
+    margin: auto 0;
+    padding: 24px 20px;
+    overflow-y: auto;
+  }
+
+  .modal__actions,
+  .message__actions {
+    flex-direction: column;
+  }
+
+  .modal__actions .btn,
+  .modal__actions button,
+  .modal__actions a,
+  .message__actions button {
+    width: 100%;
+    text-align: center;
+  }
+
+  .contact__social-links a {
+    justify-content: center;
+  }
+
+  .page-loading,
+  .profile-loading,
+  .join-loading {
+    min-height: 46vh;
+  }
+
+  .loading__container,
+  .profile-loading {
+    padding: 28px 20px;
+  }
+}
+
+@media (max-width: 380px) {
+  .container,
+  section {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .nav__container {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .nav__logo--title {
+    font-size: 18px;
+  }
+
+  .profile__card,
+  .settings__card,
+  .membership-details__card,
+  .faq__item,
+  .services-page__card {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .contact__email {
+    font-size: 16px;
+  }
+}
+
+@media (max-height: 600px) and (orientation: landscape) {
+  .menu__backdrop {
+    padding-top: 72px;
+    gap: 16px;
+  }
+
+  .modal__backdrop,
+  .modal__overlay {
+    align-items: flex-start;
+    overflow-y: auto;
+    padding: 12px;
+  }
+
+  .modal,
+  .agreement__modal,
+  .message__modal,
+  .login__modal {
+    max-height: calc(100vh - 24px);
+    max-height: calc(100dvh - 24px);
+    margin: 0 auto;
+    overflow-y: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loading__paw,
+  .profile-loading::before,
+  .join-loading .paw-loader {
+    animation: none;
+  }
+}
