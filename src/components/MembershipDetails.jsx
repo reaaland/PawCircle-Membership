@@ -11,6 +11,7 @@ function MembershipDetails() {
   const [founderActive, setFounderActive] = useState(true);
   const [loadingSettings, setLoadingSettings] = useState(true);
   const [accessAllowed, setAccessAllowed] = useState(false);
+  const [membershipStatus, setMembershipStatus] = useState("");
 
   useEffect(() => {
     async function loadMembershipDetails() {
@@ -27,14 +28,21 @@ function MembershipDetails() {
         .from("profiles")
         .select("membership_status")
         .or(`id.eq.${user.id},email.eq.${user.email?.toLowerCase().trim()}`)
-        .single();
+        .maybeSingle();
 
-      if (error || profile?.membership_status !== "active") {
+      if (error || !profile) {
         navigate("/membership");
         return;
       }
 
+      const status = profile.membership_status || "inactive";
+      setMembershipStatus(status);
       setAccessAllowed(true);
+
+      if (status !== "active") {
+        setLoadingSettings(false);
+        return;
+      }
 
       const settings = await getSiteSettings();
 
@@ -57,6 +65,8 @@ function MembershipDetails() {
     );
   }
 
+  const returnPath = membershipStatus === "active" ? "/dashboard" : "/account";
+
   return (
     <section id="membership-details">
       <div className="container">
@@ -64,13 +74,39 @@ function MembershipDetails() {
           <div className="page__header">
             <h2>Membership Details</h2>
 
-            <Link to="/dashboard" className="page__close">
+            <Link to={returnPath} className="page__close">
               ✕
             </Link>
           </div>
 
           <div className="membership-details__card">
-            {founderActive ? (
+            {membershipStatus !== "active" ? (
+              <>
+                <h3>Membership Inactive</h3>
+
+                <p>
+                  Your paid PawCircle membership period has ended. Member-only
+                  directories, profile editing, and intro messages are no longer
+                  available.
+                </p>
+
+                <p>
+                  Canceling does not provide a refund. Members keep full access
+                  through the end of the paid billing period, and access ends
+                  only after Stripe confirms the subscription has expired.
+                </p>
+
+                <div className="settings__actions">
+                  <Link to="/membership" className="btn">
+                    View Membership Options
+                  </Link>
+
+                  <Link to="/account" className="btn btn--secondary">
+                    Account Settings
+                  </Link>
+                </div>
+              </>
+            ) : founderActive ? (
               <>
                 <h3>{membershipInfo.founder.name}</h3>
 
@@ -150,9 +186,11 @@ function MembershipDetails() {
               </>
             )}
 
-            <Link to="/dashboard" className="btn">
-              Back to Dashboard
-            </Link>
+            {membershipStatus === "active" && (
+              <Link to="/dashboard" className="btn">
+                Back to Dashboard
+              </Link>
+            )}
           </div>
         </div>
       </div>
