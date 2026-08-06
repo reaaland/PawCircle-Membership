@@ -17,6 +17,7 @@ import Messages from "./components/Messages";
 import Profile from "./components/Profile";
 import MembershipDetails from "./components/MembershipDetails";
 import AccountSettings from "./components/AccountSettings";
+import ActiveMemberRoute from "./components/ActiveMemberRoute";
 import {
   BrowserRouter as Router,
   Routes,
@@ -85,11 +86,11 @@ useEffect(() => {
         <Route path="/about" element={<AboutPage />} />
         <Route path="/membership" element={<MembershipPage />} />
         <Route path="/join" element={<JoinPage />} />
-        <Route path="/dashboard" element={authLoading ? null : isLoggedIn ? <Dashboard /> : <Navigate to="/join?message=membership-required" />} />
-        <Route path="/providers" element={authLoading ? null : isLoggedIn ? <ProviderPage /> : <Navigate to="/join?message=membership-required" />} />
+        <Route path="/dashboard" element={authLoading ? null : isLoggedIn ? <ActiveMemberRoute><Dashboard /></ActiveMemberRoute> : <Navigate to="/join?message=membership-required" />} />
+        <Route path="/providers" element={authLoading ? null : isLoggedIn ? <ActiveMemberRoute><ProviderPage /></ActiveMemberRoute> : <Navigate to="/join?message=membership-required" />} />
         <Route path="/pet-owners" element={authLoading ? null : isLoggedIn ? <Navigate to="/dashboard" replace /> : <Navigate to="/join?message=membership-required" />} />
-        <Route path="/messages" element={authLoading ? null : isLoggedIn ? <Messages /> : <Navigate to="/join?message=membership-required" />} />
-        <Route path="/profile" element={authLoading ? null : isLoggedIn ? <Profile /> : <Navigate to="/join?message=membership-required" />} />
+        <Route path="/messages" element={authLoading ? null : isLoggedIn ? <ActiveMemberRoute><Messages /></ActiveMemberRoute> : <Navigate to="/join?message=membership-required" />} />
+        <Route path="/profile" element={authLoading ? null : isLoggedIn ? <ActiveMemberRoute><Profile /></ActiveMemberRoute> : <Navigate to="/join?message=membership-required" />} />
         <Route path="/details" element={authLoading ? null : isLoggedIn ? <MembershipDetails /> : <Navigate to="/join?message=membership-required" />} />
         <Route path="/account" element={authLoading ? null : isLoggedIn ? <AccountSettings /> : <Navigate to="/join?message=membership-required" />} />
 
