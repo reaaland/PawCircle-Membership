@@ -51,10 +51,10 @@ function Navbar() {
   return (
     <nav className="nav__container">
       <Link to="/" className="nav__logo">
-        <img className="nav__logo--img" src={logo} alt="PawCircle Logo" />
+        <img className="nav__logo--img" src={logo} alt="PawCircle Membership Logo" />
 
         <div className="nav__logo--title">
-          <span className="purple">PawCircle</span>
+          <span className="purple">PawCircle Membership</span>
         </div>
       </Link>
 
@@ -81,7 +81,7 @@ function Navbar() {
             </span>
 
             <Link to="/join" className="nav__link nav__link--primary">
-              Join PawCircle
+              Join PawCircle Membership
             </Link>
           </>
         )}

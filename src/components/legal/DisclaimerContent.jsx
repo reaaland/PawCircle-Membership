@@ -1,15 +1,15 @@
 function DisclaimerContent() {
   return (
     <>
-      <h1>PawCircle Disclaimer</h1>
+      <h1>PawCircle Membership Disclaimer</h1>
 
       <p>
-        I understand that PawCircle is a membership platform designed to help
+        I understand that PawCircle Membership is a membership platform designed to help
         members connect with one another.
       </p>
 
       <p>
-        PawCircle does <strong>not</strong> provide pet care services, verify
+        PawCircle Membership does <strong>not</strong> provide pet care services, verify
         members, or guarantee services.
       </p>
 

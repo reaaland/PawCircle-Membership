@@ -85,7 +85,7 @@ function MembershipDetails() {
                 <h3>Membership Inactive</h3>
 
                 <p>
-                  Your paid PawCircle membership period has ended. Member-only
+                  Your paid PawCircle Membership period has ended. Member-only
                   directories, profile editing, and intro messages are no longer
                   available.
                 </p>
@@ -115,7 +115,7 @@ function MembershipDetails() {
                 <ul>
                   <li>{membershipInfo.founder.price}</li>
                   <li>First 500 members</li>
-                  <li>Direct access to the PawCircle community</li>
+                  <li>Direct access to the PawCircle Membership community</li>
                   <li>
                     Connect directly with pet owners and pet service providers
                   </li>
@@ -150,7 +150,7 @@ function MembershipDetails() {
 
                 <p>
                   Explore the membership options currently available through{" "}
-                  <span className="purple">PawCircle.</span>
+                  <span className="purple">PawCircle Membership.</span>
                 </p>
 
                 <ul>

@@ -61,7 +61,7 @@ function Dashboard() {
 
           <div className="dashboard__welcome--content">
             <h2>
-              Welcome Back to <span className="purple">PawCircle</span>
+              Welcome Back to <span className="purple">PawCircle Membership</span>
             </h2>
 
             <p className="dashboard__intro">
@@ -82,7 +82,7 @@ function Dashboard() {
           <Link to="/profile" className="dashboard__card">
             <h3>My Profile</h3>
             <p>
-              Create and manage your <span className="purple">PawCircle</span>{" "}
+              Create and manage your <span className="purple">PawCircle Membership</span>{" "}
               member profile.
             </p>
           </Link>
@@ -91,7 +91,7 @@ function Dashboard() {
           <h3>Services</h3>
           <p>
             Explore the pet care services available through{" "}
-            <span className="purple">PawCircle</span>.
+            <span className="purple">PawCircle Membership</span>.
           </p>
         </Link>
 

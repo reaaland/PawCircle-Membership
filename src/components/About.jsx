@@ -6,7 +6,7 @@ function About({ fullVersion }) {
       <div className="container">
         <div className="row">
           <h2>
-            About <span className="purple">PawCircle</span>
+            About <span className="purple">PawCircle Membership</span>
           </h2>
 
           <div className="about__hero">
@@ -20,11 +20,11 @@ function About({ fullVersion }) {
           <div className="about__grid">
             <div className="about__card">
               <h3>
-                What is <span className="purple">PawCircle</span>?
+                What is <span className="purple">PawCircle Membership</span>?
               </h3>
 
               <p>
-                <span className="purple">PawCircle</span> is a membership platform that helps pet owners find local pet service providers and helps pet service providers build connections within their communities.
+                <span className="purple">PawCircle Membership</span> is a membership platform that helps pet owners find local pet service providers and helps pet service providers build connections within their communities.
               </p>
 
               <p>
@@ -36,7 +36,7 @@ function About({ fullVersion }) {
               <h3>Our Mission</h3>
 
               <p>
-                <span className="purple">PawCircle</span> was created to help pet owners and pet service providers connect directly within their local communities through a simple membership model.
+                <span className="purple">PawCircle Membership</span> was created to help pet owners and pet service providers connect directly within their local communities through a simple membership model.
               </p>
 
               <p>
@@ -48,15 +48,15 @@ function About({ fullVersion }) {
               <h3>Our Vision</h3>
 
               <p>
-                <span className="purple">PawCircle</span> began with a simple idea: helping pet owners and pet service providers connect directly in their communities.
+                <span className="purple">PawCircle Membership</span> began with a simple idea: helping pet owners and pet service providers connect directly in their communities.
               </p>
 
               <p>
-              We envision a nationwide membership community where pet owners can discover local pet care options and pet service providers can showcase their services, experience, and availability. PawCircle gives members a simple way to make introductions and build local connections without commissions, rankings, or booking fees.
+              We envision a nationwide membership community where pet owners can discover local pet care options and pet service providers can showcase their services, experience, and availability. PawCircle Membership gives members a simple way to make introductions and build local connections without commissions, rankings, or booking fees.
               </p>
 
               <p>
-                As <span className="purple">PawCircle</span> grows, we hope to expand beyond the United States so more communities can benefit from simple memberships and direct local pet care connections.
+                As <span className="purple">PawCircle Membership</span> grows, we hope to expand beyond the United States so more communities can benefit from simple memberships and direct local pet care connections.
               </p>
             </div>
 
@@ -72,16 +72,16 @@ function About({ fullVersion }) {
               </p>
 
               <p>
-               Memberships help keep PawCircle affordable, community-focused, and free from booking commissions, rankings, and surprise platform fees.
+               Memberships help keep PawCircle Membership affordable, community-focused, and free from booking commissions, rankings, and surprise platform fees.
               </p>
             </div>
           </div>
 
           {fullVersion && (
             <p className="about__disclaimer">
-            <span className="purple">PawCircle</span>{" "}
+            <span className="purple">PawCircle Membership</span>{" "}
             helps members connect directly and does not provide pet care services.
-            PawCircle does not conduct background checks, verify credentials, employ pet
+            PawCircle Membership does not conduct background checks, verify credentials, employ pet
             service providers, or guarantee services. Members are responsible for
             screening providers, checking references, establishing agreements, handling
             payment arrangements, and making pet care decisions.

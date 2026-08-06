@@ -16,7 +16,7 @@ function Messages() {
 
   const [accessAllowed, setAccessAllowed] = useState(false);
   const [currentUserId, setCurrentUserId] = useState(null);
-  const [currentUserName, setCurrentUserName] = useState("PawCircle Member");
+  const [currentUserName, setCurrentUserName] = useState("PawCircle Membership Member");
   const [messages, setMessages] = useState([]);
   const [conversationPreferences, setConversationPreferences] = useState({});
   const [selectedMember, setSelectedMember] = useState(null);
@@ -51,7 +51,7 @@ function Messages() {
       }
 
       setCurrentUserId(user.id);
-      setCurrentUserName(profile.display_name || "PawCircle Member");
+      setCurrentUserName(profile.display_name || "PawCircle Membership Member");
       setAccessAllowed(true);
 
       const [messagesResult, preferencesResult] = await Promise.all([
@@ -329,7 +329,7 @@ function Messages() {
     const confirmed = window.confirm(
       `Delete your conversation with ${
         selectedMember.display_name || "this member"
-      } from your PawCircle inbox? The other member will keep their copy. A new message from either of you will start the conversation again.`
+      } from your PawCircle Membership inbox? The other member will keep their copy. A new message from either of you will start the conversation again.`
     );
 
     if (!confirmed) return;
@@ -366,7 +366,7 @@ function Messages() {
     return (
       <section className="messages">
         <div className="container">
-          <div className="profile-loading">Loading PawCircle messages...</div>
+          <div className="profile-loading">Loading PawCircle Membership messages...</div>
         </div>
       </section>
     );
@@ -388,7 +388,7 @@ function Messages() {
         </div>
 
         <p className="messages__intro">
-          <span className="purple">PawCircle</span> intro messages help pet
+          <span className="purple">PawCircle Membership</span> intro messages help pet
           owners and pet service providers make an initial connection. What
           happens next is up to you.
         </p>
@@ -444,7 +444,7 @@ function Messages() {
                     >
                       <span className="messages__conversation-top">
                         <span className="messages__conversation-name">
-                          🐾 {member.display_name || "PawCircle Member"}
+                          🐾 {member.display_name || "PawCircle Membership Member"}
                         </span>
                         <span className="messages__conversation-indicators">
                           {isSaved && (
@@ -481,7 +481,7 @@ function Messages() {
               <div className="message-thread__header">
                 <div className="message-thread__member">
                   <h3>
-                    🐾 {selectedMember.display_name || "PawCircle Member"}
+                    🐾 {selectedMember.display_name || "PawCircle Membership Member"}
                   </h3>
                   <p>Intro conversation</p>
                 </div>
@@ -536,7 +536,7 @@ function Messages() {
                         {!sentByCurrentUser && (
                           <strong className="message__sender">
                             {selectedMember.display_name ||
-                              "PawCircle Member"}
+                              "PawCircle Membership Member"}
                           </strong>
                         )}
                         <p>{message.message_text}</p>

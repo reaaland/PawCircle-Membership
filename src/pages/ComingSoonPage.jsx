@@ -34,10 +34,10 @@ function ComingSoonPage() {
     <section className="coming-soon">
       <div className="container">
         <div className="coming-soon__card">
-          <img src={logo} alt="PawCircle logo" className="coming-soon__logo" />
+          <img src={logo} alt="PawCircle Membership logo" className="coming-soon__logo" />
 
           <h1>
-            <span className="purple">PawCircle</span> is almost here
+            <span className="purple">PawCircle Membership</span> is almost here
           </h1>
 
           <p>

@@ -71,7 +71,8 @@
 
   .nav__logo--title {
     margin-left: 0;
-    font-size: 20px;
+    font-size: 17px;
+    white-space: nowrap;
   }
 
   .btn__menu {
@@ -229,7 +230,7 @@
   }
 
   .nav__logo--title {
-    font-size: 18px;
+    font-size: 15px;
   }
 
   .profile__card,

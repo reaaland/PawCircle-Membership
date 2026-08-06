@@ -8,7 +8,7 @@ function CodeContent() {
       </p>
 
       <p className="legal__intro">
-        PawCircle is committed to creating a respectful membership
+        PawCircle Membership is committed to creating a respectful membership
         community.
       </p>
 
@@ -29,11 +29,11 @@ function CodeContent() {
         <li>Provide false or misleading information</li>
         <li>Harass, threaten, or abuse others</li>
         <li>Engage in fraudulent or illegal activity</li>
-        <li>Use PawCircle for spam or unauthorized advertising</li>
+        <li>Use PawCircle Membership for spam or unauthorized advertising</li>
       </ul>
 
       <p>
-        PawCircle reserves the right to suspend or terminate memberships
+        PawCircle Membership reserves the right to suspend or terminate memberships
         that violate this Code of Conduct.
       </p>
     </>

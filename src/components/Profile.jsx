@@ -305,7 +305,7 @@ return (
              <div className="form__group">
                 <label htmlFor="username">Username</label>
                 <p className="profile__helper">
-                   Used to identify your PawCircle profile.
+                   Used to identify your PawCircle Membership profile.
                 </p>
                 <input
                   type="text"
@@ -462,7 +462,7 @@ return (
 
               <div className="services__checkboxes">
                   {[
-                    "PawCircle Messages",
+                    "PawCircle Membership Messages",
                     "Text Message",
                     "Phone Call",
                     "Email",
@@ -491,13 +491,13 @@ return (
                     onChange={handleChange}
                   >
                     <option value="after_conversation">
-                      Share after initial PawCircle conversation
+                      Share after initial PawCircle Membership conversation
                     </option>
                     <option value="show_on_profile">
                       Show contact information on my profile
                     </option>
                     <option value="pawcircle_only">
-                      Only use PawCircle Messages
+                      Only use PawCircle Membership Messages
                     </option>
                   </select>
                 </div>
@@ -631,7 +631,7 @@ return (
                   id="bio"
                   value={profile.bio}
                   onChange={handleChange}
-                  placeholder="Introduce yourself to the PawCircle community."
+                  placeholder="Introduce yourself to the PawCircle Membership community."
                 ></textarea>
               </div>
 

@@ -23,7 +23,7 @@ function PrivacyContent() {
 
       <h2>Direct Communication Between Members</h2>
       <p>
-        PawCircle is designed to help members connect directly. Information
+        PawCircle Membership is designed to help members connect directly. Information
         voluntarily shared between members through profiles, messages, or
         other communications is shared at the member&apos;s own discretion.
       </p>
@@ -35,7 +35,7 @@ function PrivacyContent() {
 
       <h2>Payment Information</h2>
       <p>
-        Membership payments are processed through Stripe. PawCircle does not
+        Membership payments are processed through Stripe. PawCircle Membership does not
         store complete payment card information. Please review Stripe&apos;s
         Privacy Policy for additional information.
       </p>
@@ -47,12 +47,12 @@ function PrivacyContent() {
         <li>Create and manage member accounts</li>
         <li>Process memberships and payments</li>
         <li>Communicate with members</li>
-        <li>Improve the PawCircle platform</li>
+        <li>Improve the PawCircle Membership platform</li>
         <li>Prevent fraud and maintain platform security</li>
       </ul>
 
       <h2>Information Sharing</h2>
-      <p>PawCircle does not sell personal information.</p>
+      <p>PawCircle Membership does not sell personal information.</p>
 
       <p>
         Information may be shared with service providers necessary to operate
@@ -70,7 +70,7 @@ function PrivacyContent() {
       <h2>Your Rights</h2>
       <p>
         Members may request access to, correction of, or deletion of personal
-        information by contacting PawCircle.
+        information by contacting PawCircle Membership.
       </p>
 
       <h2>Account and Data Deletion Requests</h2>
@@ -78,7 +78,7 @@ function PrivacyContent() {
         Signed-in members may submit a verified deletion request through
         Account Settings. A member who cannot sign in may email
         hello@pawcirclemembership.com from the email address associated with
-        the account and use the subject “Account Deletion Request.” PawCircle
+        the account and use the subject “Account Deletion Request.” PawCircle Membership
         may request additional information reasonably necessary to verify the
         requester&apos;s identity and authority over the account.
       </p>
@@ -90,7 +90,7 @@ function PrivacyContent() {
       </p>
 
       <p>
-        If a membership is active, PawCircle will confirm whether the member
+        If a membership is active, PawCircle Membership will confirm whether the member
         wants deletion completed promptly or after the current paid access
         period ends. Prompt deletion ends remaining account access when the
         deletion is completed and does not create a refund. Waiting until the
@@ -99,14 +99,14 @@ function PrivacyContent() {
       </p>
 
       <p>
-        After verification and confirmation of timing, PawCircle will remove or
+        After verification and confirmation of timing, PawCircle Membership will remove or
         de-identify personal information associated with the account where
         reasonably possible, including the member profile, uploaded profile
         photos, account access, messages, and member preferences.
       </p>
 
       <p>
-        PawCircle may retain limited records when reasonably necessary for
+        PawCircle Membership may retain limited records when reasonably necessary for
         payment and tax records, security and fraud prevention, legal
         compliance, dispute resolution, enforcement of agreements, or proof
         that a privacy request was received and completed. The account email
@@ -118,18 +118,18 @@ function PrivacyContent() {
 
       <h2>Children&apos;s Privacy</h2>
       <p>
-        PawCircle is intended for individuals 18 years of age or older and
+        PawCircle Membership is intended for individuals 18 years of age or older and
         is not directed toward children.
       </p>
 
       <h2>Cookies and Similar Technologies</h2>
       <p>
-        PawCircle may use cookies and similar technologies necessary for
+        PawCircle Membership may use cookies and similar technologies necessary for
         website functionality, account access, security, and performance.
       </p>
 
       <p>
-        PawCircle may use analytics services to understand website usage and
+        PawCircle Membership may use analytics services to understand website usage and
         improve the platform.
       </p>
 
@@ -139,13 +139,13 @@ function PrivacyContent() {
       </p>
 
       <p>
-        By using PawCircle, you consent to the use of these technologies as
+        By using PawCircle Membership, you consent to the use of these technologies as
         described in this Privacy Policy.
       </p>
 
       <h2>Changes to This Policy</h2>
       <p>
-        PawCircle may update this Privacy Policy from time to time. Updated
+        PawCircle Membership may update this Privacy Policy from time to time. Updated
         versions will be posted with a revised effective date.
       </p>
 

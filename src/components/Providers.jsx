@@ -7,7 +7,7 @@ import { faPaw } from "@fortawesome/free-solid-svg-icons";
 import { supabase } from "../lib/supabase";
 
 function getProviderName(provider) {
-  return provider.display_name || provider.full_name || "PawCircle Member";
+  return provider.display_name || provider.full_name || "PawCircle Membership Member";
 }
 
 function Providers() {

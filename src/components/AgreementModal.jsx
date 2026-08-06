@@ -47,7 +47,7 @@ function AgreementModal({ onClose, paymentLink, onContinue }) {
         </button>
 
         <h3>
-          <span className="purple">PawCircle</span> Membership Agreement{" "}
+          <span className="purple">PawCircle Membership</span> Agreement{" "}
           <FontAwesomeIcon icon={faPaw} className="founder-paw" />
           <FontAwesomeIcon icon={faPaw} className="founder-paw" />
         </h3>
@@ -128,7 +128,7 @@ function AgreementModal({ onClose, paymentLink, onContinue }) {
         className="legal__link"
         onClick={() => setLegalView("disclaimer")}
       >
-        PawCircle Disclaimer
+        PawCircle Membership Disclaimer
       </button>
       .
     </span>

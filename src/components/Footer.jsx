@@ -9,12 +9,12 @@ function Footer() {
           <div>
             <img
               src={logo}
-              alt="PawCircle Logo"
+              alt="PawCircle Membership Logo"
               className="footer__logo"
             />
 
             <h4>
-              <span className="purple">PawCircle</span>
+              <span className="purple">PawCircle Membership</span>
             </h4>
 
             <p>
@@ -28,7 +28,7 @@ function Footer() {
             <Link to="/">Home</Link>
             <Link to="/services">Services</Link>
             <Link to="/membership">Membership</Link>
-            <Link to="/join">Join PawCircle</Link>
+            <Link to="/join">Join PawCircle Membership</Link>
           </div>
 
           <div className="footer__column">

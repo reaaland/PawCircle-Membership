@@ -8,7 +8,7 @@ function MessageModal({ provider, onClose }) {
   const [sendError, setSendError] = useState("");
 
   const providerName =
-    provider.display_name || provider.full_name || "PawCircle Member";
+    provider.display_name || provider.full_name || "PawCircle Membership Member";
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -69,7 +69,7 @@ function MessageModal({ provider, onClose }) {
         )}
 
         <p className="message__note">
-          Send a <span className="purple">PawCircle</span> message to
+          Send a <span className="purple">PawCircle Membership</span> message to
           start the conversation. Members may choose to share phone or
           email later at their own discretion.
         </p>
@@ -79,7 +79,7 @@ function MessageModal({ provider, onClose }) {
             <strong>Preferred Communication:</strong>{" "}
             {provider.contact_preferences?.length > 0
               ? provider.contact_preferences.join(", ")
-              : "PawCircle Messages"}
+              : "PawCircle Membership Messages"}
           </p>
 
           <p>
@@ -88,7 +88,7 @@ function MessageModal({ provider, onClose }) {
               ? "Visible on profile"
               : provider.contact_visibility === "after_conversation"
               ? "Shared after initial conversation"
-              : "PawCircle Messages only"}
+              : "PawCircle Membership Messages only"}
           </p>
         </div>
 
@@ -97,7 +97,7 @@ function MessageModal({ provider, onClose }) {
             <div className="loading__paw">🐾</div>
             <p>
               Sending{" "}
-              <span className="purple">PawCircle</span> message...
+              <span className="purple">PawCircle Membership</span> message...
             </p>
           </div>
         ) : isSent ? (
@@ -105,7 +105,7 @@ function MessageModal({ provider, onClose }) {
             <div className="message__success">
               ✓ Your message has been sent. {providerName} can now
               respond through{" "}
-              <span className="purple">PawCircle</span> Messages.
+              <span className="purple">PawCircle Membership</span> Messages.
             </div>
 
             <button

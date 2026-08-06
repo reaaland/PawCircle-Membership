@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function JoinButton({
-  text = "Join PawCircle",
+  text = "Join PawCircle Membership",
   membershipType = "",
 }) {
   const navigate = useNavigate();

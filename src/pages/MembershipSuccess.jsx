@@ -20,10 +20,10 @@ function handleLogin(type) {
     <section className="success-page">
       <div className="container">
         <div className="row row__column">
-          <h1>Welcome to <span className="Purple">PawCircle</span>!</h1>
+          <h1>Welcome to <span className="Purple">PawCircle Membership</span>!</h1>
 
           <p>
-            Create your PawCircle account or log in using the same email you used at
+            Create your PawCircle Membership account or log in using the same email you used at
             checkout. If you already created an account, choose Log In instead of creating
             another account.
           </p>

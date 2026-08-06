@@ -16,7 +16,7 @@ function ProviderPreview() {
           </h2>
 
           <p className="directory__notice">
-            <span className="purple">PawCircle</span>members can search provider profiles, send an introductory message, and connect directly.
+            <span className="purple">PawCircle Membership</span>members can search provider profiles, send an introductory message, and connect directly.
           </p>
 
           <div className="provider-preview__grid">
@@ -39,10 +39,10 @@ function ProviderPreview() {
             ))}
         </div>
 
-          <JoinButton text="Join PawCircle" membershipType="founder" />
+          <JoinButton text="Join PawCircle Membership" membershipType="founder" />
                         
             <p className="provider-preview__disclaimer">
-            Provider profiles shown are sample profiles for demonstration purposes and do not represent actual PawCircle members.
+            Provider profiles shown are sample profiles for demonstration purposes and do not represent actual PawCircle Membership members.
         </p>
         </div>
       </div>

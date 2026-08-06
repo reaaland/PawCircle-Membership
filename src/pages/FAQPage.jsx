@@ -6,29 +6,29 @@ function FAQPage() {
           <h1>Frequently Asked Questions</h1>
 
           <p className="faq__intro">
-            Learn more about <span className="purple">PawCircle</span>, memberships, pet care connections, and
+            Learn more about <span className="purple">PawCircle Membership</span>, memberships, pet care connections, and
             how the platform is designed to help pet owners and pet service
             providers connect directly.
           </p>
 
           <div className="faq__list">
             <div className="faq__item">
-              <h2>What is <span className="purple">PawCircle</span>?</h2>
+              <h2>What is <span className="purple">PawCircle Membership</span>?</h2>
               <p>
-                <span className="purple">PawCircle</span> is a membership community that helps pet owners and
+                <span className="purple">PawCircle Membership</span> is a membership community that helps pet owners and
                 pet service providers connect directly.
               </p>
             </div>
 
             <div className="faq__item">
-              <h2>Why doesn&apos;t <span className="purple">PawCircle</span> rank providers?</h2>
+              <h2>Why doesn&apos;t <span className="purple">PawCircle Membership</span> rank providers?</h2>
               <p>
-                <span className="purple">PawCircle</span> is designed around connections, not rankings. Every
+                <span className="purple">PawCircle Membership</span> is designed around connections, not rankings. Every
                 provider deserves the opportunity to be discovered without
                 competing against algorithms or review scores.
               </p>
               <p>
-                Instead of relying on star ratings, <span className="purple">PawCircle</span> encourages pet owners and providers to connect directly, ask questions, discuss
+                Instead of relying on star ratings, <span className="purple">PawCircle Membership</span> encourages pet owners and providers to connect directly, ask questions, discuss
                 experience, and decide whether they are a good fit for one
                 another.
               </p>
@@ -38,38 +38,38 @@ function FAQPage() {
             </div>
 
             <div className="faq__item">
-              <h2>Who is <span className="purple">PawCircle</span> for?</h2>
+              <h2>Who is <span className="purple">PawCircle Membership</span> for?</h2>
               <p>
-                <span className="purple">PawCircle</span> is for pet owners looking for care, pet service providers offering services, and members who may participate as both.
+                <span className="purple">PawCircle Membership</span> is for pet owners looking for care, pet service providers offering services, and members who may participate as both.
               </p>
             </div>
 
             <div className="faq__item">
-              <h2>Where is <span className="purple">PawCircle</span> available?</h2>
+              <h2>Where is <span className="purple">PawCircle Membership</span> available?</h2>
               <p>
-                <span className="purple">PawCircle</span> is launching in the United States with the goal of
+                <span className="purple">PawCircle Membership</span> is launching in the United States with the goal of
                 building a nationwide membership community.
               </p>
             </div>
 
             <div className="faq__item">
-              <h2>Why does <span className="purple">PawCircle</span> use memberships?</h2>
+              <h2>Why does <span className="purple">PawCircle Membership</span> use memberships?</h2>
               <p>
-                Memberships help support <span className="purple">PawCircle</span> while keeping the platform simple, affordable, and free from booking commissions or surprise platform fees.
+                Memberships help support <span className="purple">PawCircle Membership</span> while keeping the platform simple, affordable, and free from booking commissions or surprise platform fees.
               </p>
             </div>
 
             <div className="faq__item">
-              <h2>Does <span className="purple">PawCircle</span> provide pet care services?</h2>
+              <h2>Does <span className="purple">PawCircle Membership</span> provide pet care services?</h2>
               <p>
-                No. <span className="purple"><span className="purple">PawCircle</span></span> helps members connect directly. Pet care arrangements, screening, agreements, and payments are handled directly between members.
+                No. <span className="purple"><span className="purple">PawCircle Membership</span></span> helps members connect directly. Pet care arrangements, screening, agreements, and payments are handled directly between members.
               </p>
             </div>
 
             <div className="faq__item">
-              <h2>Does <span className="purple"><span className="purple">PawCircle</span></span> background check providers?</h2>
+              <h2>Does <span className="purple"><span className="purple">PawCircle Membership</span></span> background check providers?</h2>
               <p>
-                No. <span className="purple">PawCircle</span> does not conduct background checks or independently verify member information unless expressly stated
+                No. <span className="purple">PawCircle Membership</span> does not conduct background checks or independently verify member information unless expressly stated
                 otherwise. Members are responsible for screening, interviewing, checking references, and deciding whether someone is a good fit.
               </p>
             </div>
@@ -90,9 +90,9 @@ function FAQPage() {
             </div>
 
             <div className="faq__item">
-              <h2>Does <span className="purple">PawCircle</span> manage agreements between members?</h2>
+              <h2>Does <span className="purple">PawCircle Membership</span> manage agreements between members?</h2>
               <p>
-                No. <span className="purple">PawCircle</span> helps members connect directly. Any service details, agreements, payments, meet-and-greets, cancellations,
+                No. <span className="purple">PawCircle Membership</span> helps members connect directly. Any service details, agreements, payments, meet-and-greets, cancellations,
                 and expectations are handled directly between the pet owner and pet service provider.
               </p>
             </div>
@@ -100,7 +100,7 @@ function FAQPage() {
             <div className="faq__item">
               <h2>Can I join as both a pet owner and service provider?</h2>
               <p>
-                Yes. <span className="purple">PawCircle</span> supports pet owners, pet service providers, and members who participate as both.
+                Yes. <span className="purple">PawCircle Membership</span> supports pet owners, pet service providers, and members who participate as both.
               </p>
             </div>
 
@@ -123,12 +123,12 @@ function FAQPage() {
             </div>
 
             <div className="faq__item">
-              <h2>Will <span className="purple">PawCircle</span> have a mobile app?</h2>
+              <h2>Will <span className="purple">PawCircle Membership</span> have a mobile app?</h2>
               <p>
-                <span className="purple">PawCircle</span> is currently available through our website, which is designed to work on desktop, tablet, and mobile devices.
+                <span className="purple">PawCircle Membership</span> is currently available through our website, which is designed to work on desktop, tablet, and mobile devices.
               </p>
               <p>
-                As our community grows, we plan to continue improving <span className="purple">PawCircle</span> and may explore additional features, including a dedicated
+                As our community grows, we plan to continue improving <span className="purple">PawCircle Membership</span> and may explore additional features, including a dedicated
                 mobile app.
               </p>
             </div>
@@ -151,7 +151,7 @@ function FAQPage() {
             </div>
 
            <div className="faq__item">
-            <h2>How do I contact PawCircle?</h2>
+            <h2>How do I contact PawCircle Membership?</h2>
 
             <p>
               Questions may be sent to hello@pawcirclemembership.com.

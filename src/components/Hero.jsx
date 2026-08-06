@@ -49,7 +49,7 @@ function Hero() {
 
             {!isLoggedIn && (
               <Link to="/join" className="join__btn-fixed">
-                Join PawCircle
+                Join PawCircle Membership
               </Link>
             )}
 

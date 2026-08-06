@@ -109,7 +109,7 @@ const notificationHandler = withSupabase(
         }
 
         const recipientName = escapeHtml(
-          recipient.display_name || "PawCircle Member",
+          recipient.display_name || "PawCircle Membership Member",
         );
 
         const resendResponse = await fetch(
@@ -125,37 +125,37 @@ const notificationHandler = withSupabase(
             },
             body: JSON.stringify({
               from:
-                "PawCircle <notifications@pawcirclemembership.com>",
+                "PawCircle Membership <notifications@pawcirclemembership.com>",
               to: [recipient.email],
-              subject: "You have a new PawCircle message 🐾",
+              subject: "You have a new PawCircle Membership message 🐾",
 
-              text: `Hi ${recipient.display_name || "PawCircle Member"},
+              text: `Hi ${recipient.display_name || "PawCircle Membership Member"},
 
-You have a new introductory message waiting for you on PawCircle.
+You have a new introductory message waiting for you on PawCircle Membership.
 
-To protect your privacy, messages are only available after logging in to your PawCircle account.
+To protect your privacy, messages are only available after logging in to your PawCircle Membership account.
 
 View your messages:
 ${MESSAGES_URL}
 
-Thank you for being part of the PawCircle community.
+Thank you for being part of the PawCircle Membership community.
 
-— The PawCircle Team`,
+— The PawCircle Membership Team`,
 
               html: `
                 <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 560px; margin: 0 auto;">
-                  <h2 style="margin-bottom: 20px;">🐾 PawCircle</h2>
+                  <h2 style="margin-bottom: 20px;">🐾 PawCircle Membership</h2>
 
                   <p>Hi ${recipientName},</p>
 
                   <p>
                     You have a new introductory message waiting for
-                    you on PawCircle.
+                    you on PawCircle Membership.
                   </p>
 
                   <p>
                     To protect your privacy, messages are only
-                    available after logging in to your PawCircle
+                    available after logging in to your PawCircle Membership
                     account.
                   </p>
 
@@ -176,11 +176,11 @@ Thank you for being part of the PawCircle community.
                   </p>
 
                   <p>
-                    Thank you for being part of the PawCircle
+                    Thank you for being part of the PawCircle Membership
                     community.
                   </p>
 
-                  <p>— The PawCircle Team</p>
+                  <p>— The PawCircle Membership Team</p>
                 </div>
               `,
             }),

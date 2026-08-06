@@ -100,18 +100,18 @@ function Join() {
     <section id="join">
       <div className="container">
         <div className="row row__column">
-          <h2>Join <span className="purple">PawCircle</span></h2>
+          <h2>Join <span className="purple">PawCircle Membership</span></h2>
             <p>
               {founderActive ? (
               <>
                 Complete the form below to join{" "}
-                <span className="purple">PawCircle</span> as a Founder Member and lock in
+                <span className="purple">PawCircle Membership</span> as a Founder Member and lock in
                 Founder pricing while your membership remains active.
               </>
             ) : (
               <>
                Complete the form below to join{" "}
-              <span className="purple">PawCircle</span> and choose the membership that best
+              <span className="purple">PawCircle Membership</span> and choose the membership that best
               fits your role as a pet owner, pet service provider, or both.
               </>
             )}
@@ -119,7 +119,7 @@ function Join() {
 
           {accessMessage === "membership-required" && (
             <div className="join__notice">
-              🔒 An active PawCircle membership is required to access that page. Please join or renew your membership to continue.
+              🔒 An active PawCircle Membership is required to access that page. Please join or renew your membership to continue.
             </div>
           )}
 

@@ -12,10 +12,10 @@ function ContactPage() {
       <div className="container">
         <div className="row row__narrow">
           <div className="contact__card">
-            <h1>Contact PawCircle</h1>
+            <h1>Contact PawCircle Membership</h1>
 
             <p className="contact__intro">
-              Questions about PawCircle? Send us an email.
+              Questions about PawCircle Membership? Send us an email.
             </p>
 
             <a
@@ -50,14 +50,14 @@ function ContactPage() {
             </div>
 
             <div className="contact__socials">
-              <h3>Follow PawCircle</h3>
+              <h3>Follow PawCircle Membership</h3>
 
               <div className="contact__social-links">
                 <a
                   href="https://www.facebook.com/share/1YGw1Ct7aF/?mibextid=wwXIfr"
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label="Follow PawCircle on Facebook"
+                  aria-label="Follow PawCircle Membership on Facebook"
                 >
                   <FontAwesomeIcon icon={faFacebook} />
                   <span>Facebook</span>
@@ -67,7 +67,7 @@ function ContactPage() {
                   href="https://www.instagram.com/pawcircle_membership/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label="Follow PawCircle on Instagram"
+                  aria-label="Follow PawCircle Membership on Instagram"
                 >
                   <FontAwesomeIcon icon={faInstagram} />
                   <span>Instagram</span>
@@ -77,7 +77,7 @@ function ContactPage() {
                   href="https://bsky.app/profile/pawcirclellc.bsky.social"
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label="Follow PawCircle on Bluesky"
+                  aria-label="Follow PawCircle Membership on Bluesky"
                 >
                   <FontAwesomeIcon icon={faBluesky} />
                   <span>Bluesky</span>

@@ -165,7 +165,7 @@ function AccountSettings() {
         notificationError,
       );
       setDeletionMessage(
-        "Your request was saved successfully. The email receipt could not be sent, but PawCircle can still review the recorded request.",
+        "Your request was saved successfully. The email receipt could not be sent, but PawCircle Membership can still review the recorded request.",
       );
     } else {
       setDeletionMessage(
@@ -225,7 +225,7 @@ function AccountSettings() {
             ) : (
               <p>
                 Your paid membership period has ended. You may still review
-                account information, contact support, or rejoin PawCircle.
+                account information, contact support, or rejoin PawCircle Membership.
               </p>
             )}
           </div>
@@ -248,7 +248,7 @@ function AccountSettings() {
               <div className="settings__card">
                 <h3>Message Center</h3>
 
-                <p>View incoming messages and PawCircle introductions.</p>
+                <p>View incoming messages and PawCircle Membership introductions.</p>
 
                 <Link to="/messages" className="btn">
                   Open Message Center
@@ -299,7 +299,7 @@ function AccountSettings() {
                 <h3>Manage or Cancel Membership</h3>
 
                 <p>
-                  Canceling does not provide a refund. Your PawCircle access
+                  Canceling does not provide a refund. Your PawCircle Membership access
                   continues through the end of the current paid billing period.
                 </p>
 
@@ -334,7 +334,7 @@ function AccountSettings() {
             <h3>Account and Data Deletion</h3>
 
             <p>
-              Request permanent deletion of your PawCircle account and personal
+              Request permanent deletion of your PawCircle Membership account and personal
               data. This is separate from managing or canceling a membership.
             </p>
 
@@ -370,7 +370,7 @@ function AccountSettings() {
 
             {deletionRequestOpen ? (
               <p>
-                PawCircle will contact you at your account email after reviewing
+                PawCircle Membership will contact you at your account email after reviewing
                 identity, membership status, and deletion timing.
               </p>
             ) : (
@@ -399,7 +399,7 @@ function AccountSettings() {
                 <h3>Request Account and Data Deletion</h3>
 
                 <p>
-                  After verifying your request, PawCircle will coordinate the
+                  After verifying your request, PawCircle Membership will coordinate the
                   removal of your account, profile, uploaded profile photos,
                   messages, and member preferences.
                 </p>
@@ -413,7 +413,7 @@ function AccountSettings() {
 
                 {membershipActive && (
                   <p>
-                    Your membership is currently active. PawCircle will confirm
+                    Your membership is currently active. PawCircle Membership will confirm
                     whether deletion should occur now or after your paid access
                     period ends. Choosing earlier deletion ends remaining access
                     when deletion is completed and does not create a refund.
@@ -464,10 +464,10 @@ function AccountSettings() {
           <div className="settings__card">
             <h3>Support</h3>
 
-            <p>Questions about your account, membership, or PawCircle profile?</p>
+            <p>Questions about your account, membership, or PawCircle Membership profile?</p>
 
             <Link to="/contact" className="btn">
-              Contact PawCircle
+              Contact PawCircle Membership
             </Link>
           </div>
         </div>

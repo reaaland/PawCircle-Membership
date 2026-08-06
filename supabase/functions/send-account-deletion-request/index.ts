@@ -44,7 +44,7 @@ async function sendEmail(
       "Idempotency-Key": payload.idempotencyKey,
     },
     body: JSON.stringify({
-      from: "PawCircle <notifications@pawcirclemembership.com>",
+      from: "PawCircle Membership <notifications@pawcirclemembership.com>",
       to: [payload.to],
       subject: payload.subject,
       text: payload.text,
@@ -187,7 +187,7 @@ Deno.serve(async (req: Request) => {
       .eq("id", user.id)
       .maybeSingle();
 
-    const memberName = profile?.display_name || "PawCircle Member";
+    const memberName = profile?.display_name || "PawCircle Membership Member";
     const membershipStatus = profile?.membership_status || "unknown";
     const requestedAt = new Date(deletionRequest.requested_at)
       .toLocaleString("en-US", {
@@ -204,9 +204,9 @@ Deno.serve(async (req: Request) => {
 
     await sendEmail(resendApiKey, {
       to: SUPPORT_EMAIL,
-      subject: `PawCircle deletion request — ${deletionRequest.id.slice(0, 8)}`,
+      subject: `PawCircle Membership deletion request — ${deletionRequest.id.slice(0, 8)}`,
       idempotencyKey: `pawcircle-deletion-admin-${deletionRequest.id}`,
-      text: `A signed-in PawCircle member submitted an account and data deletion request.
+      text: `A signed-in PawCircle Membership member submitted an account and data deletion request.
 
 Request ID: ${deletionRequest.id}
 Member: ${memberName}
@@ -219,7 +219,7 @@ The request is stored in public.account_deletion_requests.
 Do not delete the account until identity, membership status, and deletion timing have been confirmed. Submitting this request did not automatically cancel billing, delete data, or create a refund. Membership fees already paid remain non-refundable.`,
       html: `
         <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #243e63; max-width: 620px; margin: 0 auto;">
-          <h2>🐾 PawCircle account deletion request</h2>
+          <h2>🐾 PawCircle Membership account deletion request</h2>
           <p>A signed-in member submitted an account and data deletion request.</p>
           <table style="border-collapse: collapse; width: 100%; margin: 24px 0;">
             <tr><td style="padding: 8px; font-weight: 700;">Request ID</td><td style="padding: 8px;">${safeRequestId}</td></tr>
@@ -237,33 +237,33 @@ Do not delete the account until identity, membership status, and deletion timing
 
     await sendEmail(resendApiKey, {
       to: accountEmail,
-      subject: "We received your PawCircle deletion request",
+      subject: "We received your PawCircle Membership deletion request",
       idempotencyKey: `pawcircle-deletion-member-${deletionRequest.id}`,
       text: `Hi ${memberName},
 
-We received your request to delete your PawCircle account and personal data.
+We received your request to delete your PawCircle Membership account and personal data.
 
 Request ID: ${deletionRequest.id}
 Requested: ${requestedAt} CT
 
 This request did not immediately delete your account, cancel your membership, or create a refund. Membership fees already paid remain non-refundable.
 
-PawCircle will verify the request and contact you at this email address. If your membership is active, we will confirm whether deletion should occur now or after your paid access period ends.
+PawCircle Membership will verify the request and contact you at this email address. If your membership is active, we will confirm whether deletion should occur now or after your paid access period ends.
 
 You may review the request status in Account Settings:
 ${ACCOUNT_URL}
 
-— PawCircle`,
+— PawCircle Membership`,
       html: `
         <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #243e63; max-width: 620px; margin: 0 auto;">
           <h2>🐾 We received your deletion request</h2>
           <p>Hi ${safeName},</p>
-          <p>We received your request to delete your PawCircle account and personal data.</p>
+          <p>We received your request to delete your PawCircle Membership account and personal data.</p>
           <p><strong>Request ID:</strong> ${safeRequestId}<br><strong>Requested:</strong> ${safeRequestedAt} CT</p>
           <p><strong>This request did not immediately delete your account, cancel your membership, or create a refund. Membership fees already paid remain non-refundable.</strong></p>
-          <p>PawCircle will verify the request and contact you at this email address. If your membership is active, we will confirm whether deletion should occur now or after your paid access period ends.</p>
+          <p>PawCircle Membership will verify the request and contact you at this email address. If your membership is active, we will confirm whether deletion should occur now or after your paid access period ends.</p>
           <p style="margin: 28px 0;"><a href="${ACCOUNT_URL}" style="display: inline-block; padding: 12px 20px; background: #5b21ff; color: #fff; text-decoration: none; border-radius: 999px; font-weight: 700;">View Account Settings</a></p>
-          <p>— PawCircle</p>
+          <p>— PawCircle Membership</p>
         </div>
       `,
     });

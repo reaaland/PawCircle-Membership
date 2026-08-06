@@ -44,7 +44,7 @@ function UpdatePassword() {
             <h2>Choose a New Password</h2>
 
             <p>
-              Enter a new password for your PawCircle account.
+              Enter a new password for your PawCircle Membership account.
             </p>
 
             <form onSubmit={handleSubmit}>

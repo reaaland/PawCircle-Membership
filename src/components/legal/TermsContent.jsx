@@ -5,7 +5,7 @@ function TermsContent() {
         <p className="legal__date">Last Updated: August 5, 2026</p>
 
         <p className="legal__intro">
-          These Terms of Use govern your access to and use of the PawCircle
+          These Terms of Use govern your access to and use of the PawCircle Membership
           website, membership platform, and related services.
         </p>
 
@@ -26,13 +26,13 @@ function TermsContent() {
         </p>
 
         <p>
-          By submitting content to PawCircle, you grant PawCircle a
+          By submitting content to PawCircle Membership, you grant PawCircle Membership a
           non-exclusive license to display, store, and use that content for
           operation of the platform.
         </p>
 
         <p>
-          PawCircle reserves the right to refuse, suspend, or terminate
+          PawCircle Membership reserves the right to refuse, suspend, or terminate
           membership at its sole discretion for violations of these Terms of
           Use, the Code of Conduct, suspected fraud, misuse of the platform,
           or conduct that may harm members or the platform.
@@ -66,7 +66,7 @@ function TermsContent() {
         </p>
 
         <p>
-          PawCircle may verify the identity of the requester and confirm the
+          PawCircle Membership may verify the identity of the requester and confirm the
           intended deletion timing before processing the request. If the
           membership is active, the member may ask for deletion to be completed
           promptly or after the current paid access period ends. Prompt deletion
@@ -77,7 +77,7 @@ function TermsContent() {
         <p>
           Completed deletion may remove account access, profile information,
           uploaded profile photos, messages, and member preferences and may be
-          irreversible. PawCircle may retain limited records when reasonably
+          irreversible. PawCircle Membership may retain limited records when reasonably
           necessary for payment and tax records, security and fraud prevention,
           legal compliance, dispute resolution, enforcement of these Terms, or
           proof that a privacy request was handled. Stripe and other service
@@ -87,25 +87,25 @@ function TermsContent() {
         <h2>Platform Disclaimer</h2>
 
         <p>
-          PawCircle is a membership platform that helps pet owners and pet
+          PawCircle Membership is a membership platform that helps pet owners and pet
           service providers connect directly.
         </p>
 
         <p>
-          PawCircle does not provide pet care services, employ caregivers,
+          PawCircle Membership does not provide pet care services, employ caregivers,
           supervise interactions, participate in agreements between members,
           or guarantee services, outcomes, conduct, qualifications, licensing,
           insurance, references, or identity.
         </p>
 
         <p>
-          PawCircle is not an employer, staffing agency, referral agency,
+          PawCircle Membership is not an employer, staffing agency, referral agency,
           broker, contractor, or party to agreements between members. Any
           relationship formed between members is solely between those members.
         </p>
 
         <p>
-          PawCircle does not conduct background checks, verify credentials,
+          PawCircle Membership does not conduct background checks, verify credentials,
           verify insurance, or independently verify member information unless
           expressly stated otherwise.
         </p>
@@ -123,7 +123,7 @@ function TermsContent() {
         </p>
 
         <p>
-          PawCircle is not a party to payment agreements between members and
+          PawCircle Membership is not a party to payment agreements between members and
           is not responsible for disputes regarding services, pricing,
           refunds, cancellations, or payment arrangements.
         </p>
@@ -131,7 +131,7 @@ function TermsContent() {
         <h2>Limitation of Liability</h2>
 
         <p>
-          To the fullest extent permitted by law, PawCircle shall not be
+          To the fullest extent permitted by law, PawCircle Membership shall not be
           liable for any indirect, incidental, special, consequential,
           punitive, or exemplary damages arising from the use of the platform.
         </p>
@@ -144,7 +144,7 @@ function TermsContent() {
         </p>
 
         <p>
-          By using PawCircle, you agree to indemnify and hold harmless
+          By using PawCircle Membership, you agree to indemnify and hold harmless
           PawCircle LLC from claims, damages, liabilities, costs, and expenses
           arising from your use of the platform, your content, your agreements
           with other members, or your violation of these Terms of Use.

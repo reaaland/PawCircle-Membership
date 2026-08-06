@@ -76,8 +76,8 @@ function LogInModal({ onClose, onLogin }) {
 
         <p>
           {isRegistering
-            ? "Create your PawCircle login using the same email you used at checkout."
-            : "Log in to access your PawCircle member account."}
+            ? "Create your PawCircle Membership login using the same email you used at checkout."
+            : "Log in to access your PawCircle Membership member account."}
         </p>
 
         <form onSubmit={handleSubmit}>

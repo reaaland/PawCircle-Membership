@@ -3,17 +3,17 @@ function HowItWorks() {
     <section className="how-it-works">
       <div className="container">
         <div className="row">
-          <h2>How <span className="purple">PawCircle</span> Works</h2>
+          <h2>How <span className="purple">PawCircle Membership</span> Works</h2>
 
           <p className="how__intro">
-            <span className="purple">PawCircle</span> helps pet owners find local pet care and helps pet service providers showcase their services and build local connections through simple memberships and direct communication.
+            <span className="purple">PawCircle Membership</span> helps pet owners find local pet care and helps pet service providers showcase their services and build local connections through simple memberships and direct communication.
           </p>
 
           <div className="how__cards">
             <div className="how__card">
-              <h3>1. Join <span className="purple">PawCircle</span></h3>
+              <h3>1. Join <span className="purple">PawCircle Membership</span></h3>
               <p>
-                Choose a membership and create your <span className="purple">PawCircle</span> account.
+                Choose a membership and create your <span className="purple">PawCircle Membership</span> account.
               </p>
             </div>
 
@@ -34,7 +34,7 @@ function HowItWorks() {
             <div className="how__card">
               <h3>4. Connect Directly</h3>
               <p>
-               Members can communicate through <span className="purple">PawCircle</span>, make introductions, and decide together when they would like to exchange contact information and continue their connection outside the platform.
+               Members can communicate through <span className="purple">PawCircle Membership</span>, make introductions, and decide together when they would like to exchange contact information and continue their connection outside the platform.
               </p>
             </div>
           </div>
