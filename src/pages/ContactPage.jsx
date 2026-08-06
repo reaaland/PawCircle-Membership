@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFacebook,
@@ -23,6 +24,30 @@ function ContactPage() {
             >
               hello@pawcirclemembership.com
             </a>
+
+            <div className="contact__socials">
+              <h3>Privacy and Account Deletion</h3>
+
+              <p>
+                Signed-in members can submit a verified account and data
+                deletion request from Account Settings.
+              </p>
+
+              <Link to="/account" className="btn">
+                Open Account Settings
+              </Link>
+
+              <p>
+                If you cannot sign in, email us from your account email with
+                the subject “Account Deletion Request.” Do not send your
+                password or complete payment-card information.
+              </p>
+
+              <p className="settings__warning">
+                Account deletion does not create a refund. Membership fees
+                already paid remain non-refundable.
+              </p>
+            </div>
 
             <div className="contact__socials">
               <h3>Follow PawCircle</h3>
