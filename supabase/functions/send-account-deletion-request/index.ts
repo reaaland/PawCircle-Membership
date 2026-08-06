@@ -154,6 +154,7 @@ Deno.serve(async (req: Request) => {
 
     if (
       deletionRequest.user_id !== user.id ||
+      !deletionRequest.account_email ||
       deletionRequest.account_email.toLowerCase().trim() !== accountEmail
     ) {
       return Response.json(
