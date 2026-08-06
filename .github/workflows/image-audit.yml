@@ -1,0 +1,82 @@
+name: PawCircle image audit
+
+on:
+  push:
+    branches:
+      - fix/optimize-pawcircle-images
+    paths:
+      - .github/workflows/image-audit.yml
+
+permissions:
+  contents: read
+
+jobs:
+  audit-images:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Pillow
+        run: python -m pip install --disable-pip-version-check pillow
+
+      - name: Measure source images
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from PIL import Image
+
+          root = Path("src/assets")
+          text_extensions = {".js", ".jsx", ".ts", ".tsx", ".css", ".json", ".html", ".md"}
+          searchable = []
+          for path in Path(".").rglob("*"):
+              if not path.is_file() or ".git" in path.parts or path.suffix.lower() not in text_extensions:
+                  continue
+              try:
+                  searchable.append((path, path.read_text(encoding="utf-8")))
+              except UnicodeDecodeError:
+                  pass
+
+          rows = []
+          for path in sorted(root.iterdir(), key=lambda p: p.name.lower()):
+              if not path.is_file():
+                  continue
+              try:
+                  with Image.open(path) as image:
+                      image.load()
+                      alpha = image.mode in {"RGBA", "LA"} or "transparency" in image.info
+                      uses = [str(source) for source, content in searchable if source != path and path.name in content]
+                      rows.append({
+                          "name": path.name,
+                          "bytes": path.stat().st_size,
+                          "width": image.width,
+                          "height": image.height,
+                          "format": image.format,
+                          "mode": image.mode,
+                          "alpha": alpha,
+                          "uses": uses,
+                      })
+              except Exception as exc:
+                  print(f"ERROR reading {path}: {exc}")
+
+          print("\nPAWCIRCLE IMAGE AUDIT")
+          print("=" * 120)
+          print(f"{'File':38} {'Dimensions':16} {'Format':8} {'Mode':8} {'Alpha':6} {'Size MB':>9}  Uses")
+          print("-" * 120)
+          for row in rows:
+              uses = ", ".join(row["uses"]) if row["uses"] else "UNUSED"
+              dimensions = f'{row["width"]}x{row["height"]}'
+              print(f'{row["name"][:38]:38} {dimensions:16} {str(row["format"]):8} {row["mode"]:8} {str(row["alpha"]):6} {row["bytes"] / 1_000_000:9.3f}  {uses}')
+
+          used = [row for row in rows if row["uses"]]
+          print("-" * 120)
+          print(f"All source images: {len(rows)} files, {sum(row['bytes'] for row in rows) / 1_000_000:.3f} MB")
+          print(f"Referenced images: {len(used)} files, {sum(row['bytes'] for row in used) / 1_000_000:.3f} MB")
+          print(f"Unreferenced images: {len(rows) - len(used)} files")
+          PY
