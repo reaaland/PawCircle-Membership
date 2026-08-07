@@ -146,7 +146,7 @@ function AccountSettings() {
 
       console.error("Account deletion request failed:", requestError);
       setDeletionError(
-        "Your request could not be submitted. Please try again or email hello@pawcirclemembership.com.",
+        "Your request could not be submitted. Please try again or email pawcirclellc@gmail.com.",
       );
       setDeletionSubmitting(false);
       return;

@@ -21,9 +21,9 @@ function ContactPage() {
 
             <a
               className="contact__email"
-              href="mailto:hello@pawcirclemembership.com"
+              href="mailto:pawcirclellc@gmail.com"
             >
-              hello@pawcirclemembership.com
+              pawcirclellc@gmail.com
             </a>
 
             <div className="contact__socials">

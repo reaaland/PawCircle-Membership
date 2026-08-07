@@ -24,7 +24,7 @@ function CaseStudyPage() {
             </p>
             <div className="hero__actions">
               <Link to="/demo" className="btn">Explore the Product Demo</Link>
-              <a href="mailto:hello@pawcirclemembership.com" className="btn btn--secondary">
+              <a href="mailto:pawcirclellc@gmail.com" className="btn btn--secondary">
                 Discuss a Website Project
               </a>
             </div>
@@ -92,7 +92,7 @@ function CaseStudyPage() {
           <div className="row row__narrow">
             <h2>Have a service business that needs a clearer website?</h2>
             <p>PawCircle LLC turns business ideas into focused, usable web experiences.</p>
-            <a href="mailto:hello@pawcirclemembership.com" className="btn">
+            <a href="mailto:pawcirclellc@gmail.com" className="btn">
               Start a Conversation
             </a>
           </div>

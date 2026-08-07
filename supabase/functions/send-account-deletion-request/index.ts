@@ -19,7 +19,7 @@ const corsHeaders = {
     "authorization, x-client-info, apikey, content-type",
 };
 
-const SUPPORT_EMAIL = "hello@pawcirclemembership.com";
+const SUPPORT_EMAIL = "pawcirclellc@gmail.com";
 const ACCOUNT_URL = "https://www.pawcirclemembership.com/account";
 
 function escapeHtml(value: string): string {

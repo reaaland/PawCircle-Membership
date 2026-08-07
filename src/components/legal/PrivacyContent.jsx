@@ -27,7 +27,7 @@ function PrivacyContent() {
       <p>
         The original paid membership has closed. Former members may request
         access to, correction of, or deletion of remaining account information
-        by emailing hello@pawcirclemembership.com from the address associated
+        by emailing pawcirclellc@gmail.com from the address associated
         with the former account.
       </p>
 
@@ -55,7 +55,7 @@ function PrivacyContent() {
 
       <h2>Contact</h2>
       <p>
-        hello@pawcirclemembership.com<br />
+        pawcirclellc@gmail.com<br />
         PawCircle LLC<br />
         Owatonna, Minnesota, USA
       </p>

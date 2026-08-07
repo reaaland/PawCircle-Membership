@@ -58,7 +58,7 @@ function TermsContent() {
 
       <h2>Contact</h2>
       <p>
-        Questions may be sent to hello@pawcirclemembership.com. PawCircle LLC
+        Questions may be sent to pawcirclellc@gmail.com. PawCircle LLC
         is located in Owatonna, Minnesota, USA.
       </p>
     </>
