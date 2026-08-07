@@ -91,14 +91,13 @@ function MembershipDetails() {
                 </p>
 
                 <p>
-                  Canceling does not provide a refund. Members keep full access
-                  through the end of the paid billing period, and access ends
-                  only after Stripe confirms the subscription has expired.
+                  The original paid membership has closed and member access has
+                  ended. The public site now uses fictional portfolio-demo data.
                 </p>
 
                 <div className="settings__actions">
-                  <Link to="/membership" className="btn">
-                    View Membership Options
+                  <Link to="/demo" className="btn">
+                    Explore the Public Demo
                   </Link>
 
                   <Link to="/account" className="btn btn--secondary">

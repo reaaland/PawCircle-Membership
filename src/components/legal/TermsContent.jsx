@@ -2,159 +2,66 @@ function TermsContent() {
   return (
     <>
       <h1>Terms of Use</h1>
-        <p className="legal__date">Last Updated: August 5, 2026</p>
+      <p className="legal__date">Last Updated: August 7, 2026</p>
 
-        <p className="legal__intro">
-          These Terms of Use govern your access to and use of the PawCircle Membership
-          website, membership platform, and related services.
-        </p>
+      <p className="legal__intro">
+        These terms govern access to the PawCircle Membership portfolio
+        demonstration provided by PawCircle LLC.
+      </p>
 
-        <p>
-          PawCircle Membership is provided by PawCircle LLC, 202 N Cedar Ave STE #1,
-          Owatonna, MN 55060 USA.
-        </p>
+      <h2>Portfolio Demonstration Only</h2>
+      <p>
+        PawCircle Membership is not currently operating as a membership,
+        directory, referral service, booking platform, pet-care agency, or
+        payment service. The public site does not create accounts, send
+        messages, arrange services, or accept payments.
+      </p>
 
-        <p>
-          Contact email: hello@pawcirclemembership.com
-        </p>
+      <h2>Fictional Content</h2>
+      <p>
+        Profiles, messages, service descriptions, availability, locations,
+        names, and other product data shown in the demo are fictional. They
+        must not be treated as actual listings, endorsements, qualifications,
+        offers, or representations about real people or businesses.
+      </p>
 
-        <h2>Accounts and Membership</h2>
+      <h2>No Pet-Care Relationship</h2>
+      <p>
+        PawCircle LLC does not provide pet care through this demo. Visitors
+        cannot hire, contact, screen, or enter into an agreement with the
+        fictional providers shown here.
+      </p>
 
-        <p>
-          To create an account, you must provide accurate, current, and
-          truthful information and keep that information updated.
-        </p>
+      <h2>Permitted Use</h2>
+      <p>
+        You may explore the demo for ordinary informational and portfolio-review
+        purposes. You may not misuse the site, attempt unauthorized access,
+        interfere with operation, scrape personal information, or represent
+        fictional content as a real listing.
+      </p>
 
-        <p>
-          By submitting content to PawCircle Membership, you grant PawCircle Membership a
-          non-exclusive license to display, store, and use that content for
-          operation of the platform.
-        </p>
+      <h2>Intellectual Property</h2>
+      <p>
+        The PawCircle name, interface, written content, visual presentation,
+        and original software are owned by PawCircle LLC or used under
+        applicable licenses. No ownership rights are transferred by viewing
+        the site.
+      </p>
 
-        <p>
-          PawCircle Membership reserves the right to refuse, suspend, or terminate
-          membership at its sole discretion for violations of these Terms of
-          Use, the Code of Conduct, suspected fraud, misuse of the platform,
-          or conduct that may harm members or the platform.
-        </p>
+      <h2>No Warranties</h2>
+      <p>
+        The demo is provided for informational and portfolio purposes on an
+        “as available” basis. PawCircle LLC does not promise uninterrupted
+        availability or that every concept shown will be suitable for a
+        particular business.
+      </p>
 
-        <p>
-          You may cancel your membership at any time. Cancellation prevents
-          future billing, and membership access will continue through the end
-          of the current billing period.
-        </p>
-
-        <p>
-          Membership fees already paid are non-refundable unless required by
-          law.
-        </p>
-
-        <p>
-          Founder and Pioneer pricing remain available only while membership
-          remains active and in good standing. If membership is cancelled or
-          lapses, promotional pricing and benefits are forfeited and may not
-          be reinstated.
-        </p>
-
-        <h2>Account and Data Deletion</h2>
-
-        <p>
-          A request to delete an account or personal data is separate from
-          canceling a membership. Submitting a deletion request does not
-          immediately delete the account, automatically cancel billing, or
-          create a refund. Membership fees already paid remain non-refundable.
-        </p>
-
-        <p>
-          PawCircle Membership may verify the identity of the requester and confirm the
-          intended deletion timing before processing the request. If the
-          membership is active, the member may ask for deletion to be completed
-          promptly or after the current paid access period ends. Prompt deletion
-          ends remaining account access when deletion is completed and does not
-          create a refund.
-        </p>
-
-        <p>
-          Completed deletion may remove account access, profile information,
-          uploaded profile photos, messages, and member preferences and may be
-          irreversible. PawCircle Membership may retain limited records when reasonably
-          necessary for payment and tax records, security and fraud prevention,
-          legal compliance, dispute resolution, enforcement of these Terms, or
-          proof that a privacy request was handled. Stripe and other service
-          providers may retain records under their own obligations and policies.
-        </p>
-
-        <h2>Platform Disclaimer</h2>
-
-        <p>
-          PawCircle Membership is a membership platform that helps pet owners and pet
-          service providers connect directly.
-        </p>
-
-        <p>
-          PawCircle Membership does not provide pet care services, employ caregivers,
-          supervise interactions, participate in agreements between members,
-          or guarantee services, outcomes, conduct, qualifications, licensing,
-          insurance, references, or identity.
-        </p>
-
-        <p>
-          PawCircle Membership is not an employer, staffing agency, referral agency,
-          broker, contractor, or party to agreements between members. Any
-          relationship formed between members is solely between those members.
-        </p>
-
-        <p>
-          PawCircle Membership does not conduct background checks, verify credentials,
-          verify insurance, or independently verify member information unless
-          expressly stated otherwise.
-        </p>
-
-        <p>
-          Members are solely responsible for screening, interviewing,
-          verifying references, evaluating providers, negotiating agreements,
-          arranging payment, and making pet care decisions.
-        </p>
-
-        <p>
-          Members are responsible for complying with all applicable laws,
-          licensing requirements, permits, taxes, insurance requirements, and
-          regulations applicable to their activities.
-        </p>
-
-        <p>
-          PawCircle Membership is not a party to payment agreements between members and
-          is not responsible for disputes regarding services, pricing,
-          refunds, cancellations, or payment arrangements.
-        </p>
-
-        <h2>Limitation of Liability</h2>
-
-        <p>
-          To the fullest extent permitted by law, PawCircle Membership shall not be
-          liable for any indirect, incidental, special, consequential,
-          punitive, or exemplary damages arising from the use of the platform.
-        </p>
-
-        <p>
-          This includes, but is not limited to, personal injury, pet injury,
-          property damage, financial loss, disputes between members, loss of
-          data, service interruptions, unauthorized account access, or the
-          actions of any member or third party.
-        </p>
-
-        <p>
-          By using PawCircle Membership, you agree to indemnify and hold harmless
-          PawCircle LLC from claims, damages, liabilities, costs, and expenses
-          arising from your use of the platform, your content, your agreements
-          with other members, or your violation of these Terms of Use.
-        </p>
-
-        <p>
-          These limitations apply to the fullest extent permitted by
-          applicable law.
-        </p>
-      </>
+      <h2>Contact</h2>
+      <p>
+        Questions may be sent to hello@pawcirclemembership.com. PawCircle LLC
+        is located in Owatonna, Minnesota, USA.
+      </p>
+    </>
   );
 }
 

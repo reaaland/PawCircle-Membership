@@ -1,30 +1,7 @@
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { supabase } from "../lib/supabase";
 import trailWalk from "../assets/dog-walking-trail.webp";
 
 function Hero() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  useEffect(() => {
-    async function checkSession() {
-      const { data } = await supabase.auth.getSession();
-      setIsLoggedIn(!!data.session);
-    }
-
-    checkSession();
-
-    const { data: listener } = supabase.auth.onAuthStateChange(
-      (_event, session) => {
-        setIsLoggedIn(!!session);
-      }
-    );
-
-    return () => {
-      listener.subscription.unsubscribe();
-    };
-  }, []);
-
   return (
     <section id="header">
       <div className="container">
@@ -43,15 +20,15 @@ function Hero() {
               </div>
 
               <p className="hero__subtitle">
-                Helping pet owners find local pet service providers through simple, direct connections.
+                A portfolio demonstration of a local marketplace concept for
+                pet owners and independent pet service providers.
               </p>
-            </div>
 
-            {!isLoggedIn && (
-              <Link to="/join" className="join__btn-fixed">
-                Join PawCircle Membership
-              </Link>
-            )}
+              <div className="hero__actions">
+                <Link to="/demo" className="btn">Explore the Demo</Link>
+                <Link to="/case-study" className="btn btn--secondary">Read the Case Study</Link>
+              </div>
+            </div>
 
             <figure className="header__img--wrapper">
               <img

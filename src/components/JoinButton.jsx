@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function JoinButton({
-  text = "Join PawCircle Membership",
+  text = "Explore the PawCircle Demo",
   membershipType = "",
 }) {
   const navigate = useNavigate();
@@ -12,7 +12,7 @@ function JoinButton({
     setIsLoading(true);
 
     setTimeout(() => {
-      navigate(`/join?membership=${membershipType}`);
+      navigate(`/demo?role=${membershipType || "owner"}`);
     }, 800);
   }
 
@@ -22,7 +22,7 @@ function JoinButton({
       onClick={handleClick}
       disabled={isLoading}
     >
-      {isLoading ? "🐾 Opening Join Form..." : text}
+      {isLoading ? "🐾 Opening Demo..." : text}
     </button>
   );
 }

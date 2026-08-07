@@ -1,8 +1,5 @@
 import { Link } from "react-router-dom";
 import providers from "../data/providers.json";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPaw } from "@fortawesome/free-solid-svg-icons";
-import JoinButton from "./JoinButton";
 
 function ProviderPreview() {
   const previewProviders = providers.slice(0, 3);
@@ -16,7 +13,7 @@ function ProviderPreview() {
           </h2>
 
           <p className="directory__notice">
-            <span className="purple">PawCircle Membership</span>members can search provider profiles, send an introductory message, and connect directly.
+            <span className="purple">PawCircle Membership</span> demonstrates how users could search provider profiles, send an introductory message, and connect directly.
           </p>
 
           <div className="provider-preview__grid">
@@ -39,7 +36,7 @@ function ProviderPreview() {
             ))}
         </div>
 
-          <JoinButton text="Join PawCircle Membership" membershipType="founder" />
+          <Link to="/demo?role=owner" className="btn">Explore the Owner Demo</Link>
                         
             <p className="provider-preview__disclaimer">
             Provider profiles shown are sample profiles for demonstration purposes and do not represent actual members of PawCircle Membership.

@@ -1,166 +1,63 @@
+import { Link } from "react-router-dom";
+
+const questions = [
+  {
+    question: "Is PawCircle Membership accepting new members?",
+    answer:
+      "No. The original paid membership has closed. The current website is a public portfolio demonstration and does not accept payments or create member accounts.",
+  },
+  {
+    question: "Are the providers shown on the website real?",
+    answer:
+      "No. Every provider, owner, message, location detail, and availability status in the public demo is fictional and exists only to demonstrate the interface.",
+  },
+  {
+    question: "Can I book pet care through the demo?",
+    answer:
+      "No. The demo does not send messages, arrange services, process bookings, or connect visitors with real providers.",
+  },
+  {
+    question: "What was the original product concept?",
+    answer:
+      "PawCircle explored a local directory and direct-introduction model for pet owners and independent pet service providers, without controlling the service transaction.",
+  },
+  {
+    question: "What technology was used?",
+    answer:
+      "The product was built with React and Vite, Supabase authentication and Postgres data, row-level security, Edge Functions, responsive CSS, GitHub, Vercel, and an original Stripe subscription flow that has been retired.",
+  },
+  {
+    question: "Why keep the website online?",
+    answer:
+      "It demonstrates PawCircle LLC’s ability to turn a business idea into a responsive, full-stack product with thoughtful roles, profiles, privacy controls, discovery, and messaging flows.",
+  },
+];
+
 function FAQPage() {
   return (
     <section className="faq-page">
       <div className="container">
         <div className="row row__narrow">
           <h1>Frequently Asked Questions</h1>
-
           <p className="faq__intro">
-            Learn more about <span className="purple">PawCircle Membership</span>, memberships, pet care connections, and
-            how the platform is designed to help pet owners and pet service
-            providers connect directly.
+            Current information about the PawCircle Membership portfolio demo.
           </p>
 
           <div className="faq__list">
-            <div className="faq__item">
-              <h2>What is <span className="purple">PawCircle Membership</span>?</h2>
-              <p>
-                <span className="purple">PawCircle Membership</span> is a membership community that helps pet owners and
-                pet service providers connect directly.
-              </p>
-            </div>
+            {questions.map((item) => (
+              <div className="faq__item" key={item.question}>
+                <h2>{item.question}</h2>
+                <p>{item.answer}</p>
+              </div>
+            ))}
 
             <div className="faq__item">
-              <h2>Why doesn&apos;t <span className="purple">PawCircle Membership</span> rank providers?</h2>
+              <h2>Where can I see the complete project?</h2>
               <p>
-                <span className="purple">PawCircle Membership</span> is designed around connections, not rankings. Every
-                provider deserves the opportunity to be discovered without
-                competing against algorithms or review scores.
-              </p>
-              <p>
-                Instead of relying on star ratings, <span className="purple">PawCircle Membership</span> encourages pet owners and providers to connect directly, ask questions, discuss
-                experience, and decide whether they are a good fit for one
-                another.
-              </p>
-              <p>
-                Our goal is simple: make it easier for pet owners and pet service providers to connect directly.
+                Start with the <Link to="/demo">interactive demo</Link>, then
+                read the <Link to="/case-study">project case study</Link>.
               </p>
             </div>
-
-            <div className="faq__item">
-              <h2>Who is <span className="purple">PawCircle Membership</span> for?</h2>
-              <p>
-                <span className="purple">PawCircle Membership</span> is for pet owners looking for care, pet service providers offering services, and members who may participate as both.
-              </p>
-            </div>
-
-            <div className="faq__item">
-              <h2>Where is <span className="purple">PawCircle Membership</span> available?</h2>
-              <p>
-                <span className="purple">PawCircle Membership</span> is launching in the United States with the goal of
-                building a nationwide membership community.
-              </p>
-            </div>
-
-            <div className="faq__item">
-              <h2>Why does <span className="purple">PawCircle Membership</span> use memberships?</h2>
-              <p>
-                Memberships help support <span className="purple">PawCircle Membership</span> while keeping the platform simple, affordable, and free from booking commissions or surprise platform fees.
-              </p>
-            </div>
-
-            <div className="faq__item">
-              <h2>Does <span className="purple">PawCircle Membership</span> provide pet care services?</h2>
-              <p>
-                No. <span className="purple"><span className="purple">PawCircle Membership</span></span> helps members connect directly. Pet care arrangements, screening, agreements, and payments are handled directly between members.
-              </p>
-            </div>
-
-            <div className="faq__item">
-              <h2>Does <span className="purple"><span className="purple">PawCircle Membership</span></span> background check providers?</h2>
-              <p>
-                No. <span className="purple">PawCircle Membership</span> does not conduct background checks or independently verify member information unless expressly stated
-                otherwise. Members are responsible for screening, interviewing, checking references, and deciding whether someone is a good fit.
-              </p>
-            </div>
-
-            <div className="faq__item">
-              <h2>What should pet owners ask before choosing a provider?</h2>
-              <p>
-                Pet owners should communicate directly with providers to discuss services,
-                availability, expectations, and whether the provider is a good fit for their pet. Before making a decision, consider meeting in a public place so both you and the provider can get to know each other and determine whether the arrangement is a good fit.
-              </p>
-            </div>
-
-            <div className="faq__item">
-              <h2>What should pet service providers share with pet owners?</h2>
-              <p>
-                Pet service providers should communicate directly with pet owners about their services, availability, expectations, and whether the arrangement is a good fit for both parties.
-              </p>
-            </div>
-
-            <div className="faq__item">
-              <h2>Does <span className="purple">PawCircle Membership</span> manage agreements between members?</h2>
-              <p>
-                No. <span className="purple">PawCircle Membership</span> helps members connect directly. Any service details, agreements, payments, meet-and-greets, cancellations,
-                and expectations are handled directly between the pet owner and pet service provider.
-              </p>
-            </div>
-
-            <div className="faq__item">
-              <h2>Can I join as both a pet owner and service provider?</h2>
-              <p>
-                Yes. <span className="purple">PawCircle Membership</span> supports pet owners, pet service providers, and members who participate as both.
-              </p>
-            </div>
-
-            <div className="faq__item">
-              <h2>What services can members connect for?</h2>
-              <p>
-                Members may connect for dog walking, pet sitting, drop-in
-                visits, cat care, boarding, pet taxi, puppy care, senior pet
-                care, and other pet care needs.
-              </p>
-            </div>
-
-            <div className="faq__item">
-              <h2>What is Founder Membership?</h2>
-              <p>
-                Founder Membership is available to the first 500 members.
-                Founder pricing remains available while membership stays active
-                and in good standing.
-              </p>
-            </div>
-
-            <div className="faq__item">
-              <h2>Will <span className="purple">PawCircle Membership</span> have a mobile app?</h2>
-              <p>
-                <span className="purple">PawCircle Membership</span> is currently available through our website, which is designed to work on desktop, tablet, and mobile devices.
-              </p>
-              <p>
-                As our community grows, we plan to continue improving <span className="purple">PawCircle Membership</span> and may explore additional features, including a dedicated
-                mobile app.
-              </p>
-            </div>
-
-            <div className="faq__item">
-              <h2>Can I cancel my membership?</h2>
-              <p>
-                Yes. Members may cancel anytime before their next renewal date to prevent future billing. Membership fees already paid are
-                non-refundable unless required by law, and access continues through the end of the current billing period.
-              </p>
-            </div>
-
-            <div className="faq__item">
-              <h2>Are membership payments refundable?</h2>
-              <p>
-                Membership fees already paid are non-refundable unless required
-                by law. To avoid future billing, members should cancel before
-                their next renewal date.
-              </p>
-            </div>
-
-           <div className="faq__item">
-            <h2>How do I contact PawCircle Membership?</h2>
-
-            <p>
-              Questions may be sent to hello@pawcirclemembership.com.
-            </p>
-
-            <p>
-              You can also find us on Facebook, Instagram, and Bluesky.
-            </p>
-          </div>
           </div>
         </div>
       </div>

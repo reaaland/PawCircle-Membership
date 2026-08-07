@@ -8,13 +8,13 @@ import ProviderPreview from "../components/ProviderPreview";
 
 
 
-function Home({ isLoggedIn }) {
+function Home() {
   return (
     <>
       <Hero />
       <About />
       <HowItWorks />
-      <Services isLoggedIn={isLoggedIn} />
+      <Services />
       <ProviderPreview />
       <Membership featuredOnly />
       <CTASection />

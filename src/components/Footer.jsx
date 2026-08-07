@@ -27,14 +27,15 @@ function Footer() {
             <h4>Explore</h4>
             <Link to="/">Home</Link>
             <Link to="/services">Services</Link>
-            <Link to="/membership">Membership</Link>
+            <Link to="/membership">Product Concept</Link>
             <Link to="/for-providers">For Pet Care Providers</Link>
-            <Link to="/join">Join PawCircle Membership</Link>
+            <Link to="/demo">Explore the Demo</Link>
           </div>
 
           <div className="footer__column">
             <h4>Company</h4>
             <Link to="/about">About</Link>
+            <Link to="/case-study">Case Study</Link>
             <Link to="/contact">Contact</Link>
             <Link to="/faq">FAQ</Link>
           </div>
