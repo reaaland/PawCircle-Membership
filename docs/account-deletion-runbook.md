@@ -13,7 +13,7 @@ A deletion request is separate from membership cancellation. Do not promise or i
 ## Intake paths
 
 1. Preferred: the signed-in member submits the request from Account Settings. The request is stored in `public.account_deletion_requests`, and receipt emails are sent to PawCircle and the member.
-2. Fallback: a person who cannot sign in emails `hello@pawcirclemembership.com` from the account email with the subject `Account Deletion Request`.
+2. Fallback: a person who cannot sign in emails `pawcirclellc@gmail.com` from the account email with the subject `Account Deletion Request`.
 
 Never ask for a password, full payment-card number, or security code.
 

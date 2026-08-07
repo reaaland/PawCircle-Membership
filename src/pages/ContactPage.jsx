@@ -12,45 +12,39 @@ function ContactPage() {
       <div className="container">
         <div className="row row__narrow">
           <div className="contact__card">
-            <h1>Contact PawCircle Membership</h1>
+            <h1>Contact PawCircle LLC</h1>
 
             <p className="contact__intro">
-              Questions about PawCircle Membership? Send us an email.
+              Interested in a website project, or have a question about the
+              PawCircle Membership case study? Send us an email.
             </p>
 
             <a
               className="contact__email"
-              href="mailto:hello@pawcirclemembership.com"
+              href="mailto:pawcirclellc@gmail.com"
             >
-              hello@pawcirclemembership.com
+              pawcirclellc@gmail.com
             </a>
 
             <div className="contact__socials">
-              <h3>Privacy and Account Deletion</h3>
+              <h3>Former Member Data Requests</h3>
 
               <p>
-                Signed-in members can submit a verified account and data
-                deletion request from Account Settings.
-              </p>
-
-              <Link to="/account" className="btn">
-                Open Account Settings
-              </Link>
-
-              <p>
-                If you cannot sign in, email us from your account email with
-                the subject “Account Deletion Request.” Do not send your
-                password or complete payment-card information.
+                The original paid membership has closed. Former members may
+                email from the address connected to their former account with
+                the subject “Account Data Request.”
               </p>
 
               <p className="settings__warning">
-                Account deletion does not create a refund. Membership fees
-                already paid remain non-refundable.
+                Do not include passwords, payment-card information, or other
+                unnecessary sensitive information in an email.
               </p>
+
+              <Link to="/privacy" className="btn">Read the Privacy Policy</Link>
             </div>
 
             <div className="contact__socials">
-              <h3>Follow PawCircle Membership</h3>
+              <h3>Follow PawCircle LLC</h3>
 
               <div className="contact__social-links">
                 <a

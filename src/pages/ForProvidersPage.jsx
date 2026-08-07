@@ -1,6 +1,5 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import dogWalking from "../assets/dog-walking-trail.webp";
-import { buildProviderJoinUrl } from "../utils/signupTracking";
 import "./ForProvidersPage.css";
 
 const benefits = [
@@ -19,9 +18,6 @@ const benefits = [
 ];
 
 function ForProvidersPage() {
-  const location = useLocation();
-  const joinUrl = buildProviderJoinUrl(location.search);
-
   return (
     <div className="providers-landing">
       <section className="providers-hero">
@@ -41,16 +37,15 @@ function ForProvidersPage() {
               local presence and connect directly.
             </p>
             <div className="providers-hero__actions">
-              <Link to={joinUrl} className="btn">
-                Join as a Pet Service Provider
+              <Link to="/demo?role=provider" className="btn">
+                Explore the Provider Demo
               </Link>
               <a href="#how-it-works-for-providers" className="btn btn--outline">
                 See How It Works
               </a>
             </div>
             <p className="providers-hero__note">
-              Founder Membership is currently $10/year for the first 500
-              members.
+              Portfolio demonstration only—no membership or payment required.
             </p>
           </div>
 
@@ -109,8 +104,8 @@ function ForProvidersPage() {
             <li>
               <span>1</span>
               <div>
-                <h3>Join as a Founder</h3>
-                <p>Choose “Pet Service Provider” as your role at signup.</p>
+                <h3>Preview the provider workspace</h3>
+                <p>Choose the Service Provider perspective in the public demo.</p>
               </div>
             </li>
             <li>
@@ -134,21 +129,20 @@ function ForProvidersPage() {
       <section className="providers-founder" aria-labelledby="providers-founder-title">
         <div className="container">
           <div className="providers-founder__card">
-            <span className="providers-founder__badge">First 500 Members</span>
-            <p className="providers-founder__kicker">Founder Membership</p>
-            <h2 id="providers-founder-title">$10/year</h2>
+            <span className="providers-founder__badge">Portfolio Demo</span>
+            <p className="providers-founder__kicker">Provider Experience</p>
+            <h2 id="providers-founder-title">No signup required</h2>
             <p>
-              Lock in Founder pricing while your membership remains active.
-              Select Pet Service Provider during signup so your profile is set
-              up for the work you offer.
+              Explore how a local provider could present services, experience,
+              availability, and a service area to nearby pet owners.
             </p>
             <ul>
               <li>No PawCircle commission on your work</li>
               <li>A local provider profile</li>
               <li>Direct member-to-member messaging</li>
             </ul>
-            <Link to={joinUrl} className="btn">
-              Choose Provider & Join
+            <Link to="/demo?role=provider" className="btn">
+              Open Provider Demo
             </Link>
           </div>
         </div>
@@ -157,9 +151,9 @@ function ForProvidersPage() {
       <section className="providers-disclaimer">
         <div className="container">
           <p>
-            PawCircle Membership is a membership directory and connection
-            service. It is not an employer, pet care agency, or booking
-            platform, and membership does not guarantee clients or bookings.
+            This page demonstrates the original provider-facing product
+            concept. PawCircle Membership is not currently operating as a
+            directory, agency, booking platform, or membership service.
           </p>
         </div>
       </section>

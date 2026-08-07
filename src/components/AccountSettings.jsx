@@ -146,7 +146,7 @@ function AccountSettings() {
 
       console.error("Account deletion request failed:", requestError);
       setDeletionError(
-        "Your request could not be submitted. Please try again or email hello@pawcirclemembership.com.",
+        "Your request could not be submitted. Please try again or email pawcirclellc@gmail.com.",
       );
       setDeletionSubmitting(false);
       return;
@@ -218,14 +218,13 @@ function AccountSettings() {
 
             {membershipActive ? (
               <p>
-                Your member access remains available through the end of your
-                paid billing period, including after a cancellation is
-                scheduled.
+                Legacy account status is shown for recordkeeping only. Live
+                member access and billing are disabled.
               </p>
             ) : (
               <p>
-                Your paid membership period has ended. You may still review
-                account information, contact support, or rejoin PawCircle Membership.
+                The original paid membership has closed. This account is retained
+                only while PawCircle completes member data requests.
               </p>
             )}
           </div>
@@ -300,13 +299,12 @@ function AccountSettings() {
 
                 <p>
                   Canceling does not provide a refund. Your PawCircle Membership access
-                  continues through the end of the current paid billing period.
+                  is no longer available because live memberships have closed.
                 </p>
 
                 <p>
-                  If you are a Founder Member and cancel your membership, you
-                  will no longer be eligible for the $10/year Founder price
-                  guarantee if you rejoin later.
+                  The public PawCircle site is now a portfolio demonstration
+                  with fictional profiles and no live billing.
                 </p>
 
                 <div className="modal__actions">
@@ -317,14 +315,9 @@ function AccountSettings() {
                     Go Back
                   </button>
 
-                  <a
-                    href="https://billing.stripe.com/p/login/14A6oHbhs05u4zdeLscAo00"
-                    className="btn"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Continue to Stripe
-                  </a>
+                  <Link to="/case-study" className="btn">
+                    View Portfolio Case Study
+                  </Link>
                 </div>
               </div>
             </div>

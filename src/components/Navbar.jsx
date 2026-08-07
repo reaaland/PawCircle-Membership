@@ -1,52 +1,9 @@
-import { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { supabase } from "../lib/supabase";
-import { signOut } from "../Services/authService";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 import logo from "../assets/pawcircle-logo.webp";
-import LogInModal from "./LogInModal";
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [showLogin, setShowLogin] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    async function checkSession() {
-      const { data } = await supabase.auth.getSession();
-      setIsLoggedIn(!!data.session);
-    }
-
-    checkSession();
-
-    const { data: listener } = supabase.auth.onAuthStateChange(
-      (_event, session) => {
-        setIsLoggedIn(!!session);
-      }
-    );
-
-    return () => {
-      listener.subscription.unsubscribe();
-    };
-  }, []);
-
-  async function handleLogout() {
-    setMenuOpen(false);
-    navigate("/");
-    await signOut();
-  }
-
-  function handleLogin(type) {
-    setIsLoggedIn(true);
-    setShowLogin(false);
-
-    if (type === "register") {
-      navigate("/profile");
-    } else {
-      navigate("/dashboard");
-    }
-  }
 
   return (
     <nav className="nav__container">
@@ -61,31 +18,13 @@ function Navbar() {
       <div className="nav__links">
         <Link to="/" className="nav__link">Home</Link>
         <Link to="/about" className="nav__link">About</Link>
-        <Link to="/membership" className="nav__link">Membership</Link>
+        <Link to="/membership" className="nav__link">Product</Link>
         <Link to="/services" className="nav__link">Services</Link>
         <Link to="/for-providers" className="nav__link">For Providers</Link>
-
-        {isLoggedIn ? (
-          <>
-            <Link to="/dashboard" className="nav__link nav__link--dashboard">
-              Dashboard
-            </Link>
-
-            <span className="nav__link" onClick={handleLogout}>
-              Logout
-            </span>
-          </>
-        ) : (
-          <>
-            <span className="nav__link" onClick={() => setShowLogin(true)}>
-              Login
-            </span>
-
-            <Link to="/join" className="nav__link nav__link--primary">
-              Join PawCircle Membership
-            </Link>
-          </>
-        )}
+        <Link to="/case-study" className="nav__link">Case Study</Link>
+        <Link to="/demo" className="nav__link nav__link--primary">
+          Explore Demo
+        </Link>
       </div>
 
       <button className="btn__menu" onClick={() => setMenuOpen(true)}>
@@ -104,7 +43,7 @@ function Navbar() {
           <Link to="/" onClick={() => setMenuOpen(false)}>Home</Link>
           <Link to="/about" onClick={() => setMenuOpen(false)}>About</Link>
           <Link to="/membership" onClick={() => setMenuOpen(false)}>
-            Membership
+            Product
           </Link>
           <Link to="/services" onClick={() => setMenuOpen(false)}>
             Services
@@ -112,43 +51,13 @@ function Navbar() {
           <Link to="/for-providers" onClick={() => setMenuOpen(false)}>
             For Providers
           </Link>
-
-          {isLoggedIn ? (
-            <>
-              <Link
-                to="/dashboard"
-                className="nav__link nav__link--dashboard"
-                onClick={() => setMenuOpen(false)}
-              >
-                Dashboard
-              </Link>
-
-              <span onClick={handleLogout}>Logout</span>
-            </>
-          ) : (
-            <>
-              <span
-                onClick={() => {
-                  setMenuOpen(false);
-                  setShowLogin(true);
-                }}
-              >
-                Login
-              </span>
-
-              <Link to="/join" onClick={() => setMenuOpen(false)}>
-                Join
-              </Link>
-            </>
-          )}
+          <Link to="/case-study" onClick={() => setMenuOpen(false)}>
+            Case Study
+          </Link>
+          <Link to="/demo" onClick={() => setMenuOpen(false)}>
+            Explore Demo
+          </Link>
         </div>
-      )}
-
-      {showLogin && (
-        <LogInModal
-          onClose={() => setShowLogin(false)}
-          onLogin={handleLogin}
-        />
       )}
     </nav>
   );

@@ -6,35 +6,35 @@ function HowItWorks() {
           <h2>How <span className="purple">PawCircle Membership</span> Works</h2>
 
           <p className="how__intro">
-            <span className="purple">PawCircle Membership</span> helps pet owners find local pet care and helps pet service providers showcase their services and build local connections through simple memberships and direct communication.
+            The demo shows how pet owners could discover local care and how providers could present their services through clear profiles and direct introductions.
           </p>
 
           <div className="how__cards">
             <div className="how__card">
-              <h3>1. Join <span className="purple">PawCircle Membership</span></h3>
+              <h3>1. Choose a Perspective</h3>
               <p>
-                Choose a membership and create your <span className="purple">PawCircle Membership</span> account.
+                Preview the product as a pet owner, service provider, or both.
               </p>
             </div>
 
             <div className="how__card">
              <h3>Create a Profile</h3>
               <p>
-               Pet owners can share their pet care needs. Pet service providers can showcase their services, experience, and availability.
+               Fictional profiles demonstrate services, experience, availability, and care needs.
               </p>
           </div>
 
             <div className="how__card">
               <h3>3. Find Local Pet Care</h3>
               <p>
-               Pet owners can browse provider profiles to learn about services, experience, and availability before deciding who to contact.
+               Browse sample provider profiles to understand the intended search and comparison experience.
               </p>
             </div>
 
             <div className="how__card">
               <h3>4. Connect Directly</h3>
               <p>
-               Members can communicate through <span className="purple">PawCircle Membership</span>, make introductions, and decide together when they would like to exchange contact information and continue their connection outside the platform.
+               Preview a fictional introduction flow. No message is actually sent from the portfolio demo.
               </p>
             </div>
           </div>

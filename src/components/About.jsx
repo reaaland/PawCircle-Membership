@@ -24,11 +24,11 @@ function About({ fullVersion }) {
               </h3>
 
               <p>
-                <span className="purple">PawCircle Membership</span> is a membership platform that helps pet owners find local pet service providers and helps pet service providers build connections within their communities.
+                <span className="purple">PawCircle Membership</span> is a portfolio demonstration of a local platform concept for pet owners and pet service providers.
               </p>
 
               <p>
-                Simple memberships. Direct connections. No commissions or hidden fees.
+                Local discovery. Direct introductions. Clear, role-based experiences.
               </p>
             </div>
 
@@ -36,43 +36,39 @@ function About({ fullVersion }) {
               <h3>Our Mission</h3>
 
               <p>
-                <span className="purple">PawCircle Membership</span> was created to help pet owners and pet service providers connect directly within their local communities through a simple membership model.
+                <span className="purple">PawCircle Membership</span> was created to explore how pet owners and independent providers could connect more directly within their local communities.
               </p>
 
               <p>
-                Our goal is to provide an affordable and straightforward way for members to connect, make introductions, and communicate directly without booking fees, commissions, rankings, or platform-controlled transactions.
+                The current goal is to demonstrate the product thinking, interface design, and full-stack implementation behind that idea.
               </p>
             </div>
 
             <div className="about__card">
-              <h3>Our Vision</h3>
+              <h3>What the Project Demonstrates</h3>
 
               <p>
                 <span className="purple">PawCircle Membership</span> began with a simple idea: helping pet owners and pet service providers connect directly in their communities.
               </p>
 
               <p>
-              We envision a nationwide membership community where pet owners can discover local pet care options and pet service providers can showcase their services, experience, and availability. PawCircle Membership gives members a simple way to make introductions and build local connections without commissions, rankings, or booking fees.
+              The project demonstrates local discovery, detailed profiles, privacy preferences, direct introductions, responsive design, and distinct owner and provider workflows.
               </p>
 
               <p>
-                As <span className="purple">PawCircle Membership</span> grows, we hope to expand beyond the United States so more communities can benefit from simple memberships and direct local pet care connections.
+                The public version uses fictional data and does not create accounts, send messages, arrange services, or accept payments.
               </p>
             </div>
 
             <div className="about__card">
-              <h3>Why Membership?</h3>
+              <h3>Why Keep It Online?</h3>
 
               <p>
-                Membership gives pet owners access to provider directories, profile creation, and the ability to make direct introductions within their local pet community.
+                PawCircle is a substantial working example of how PawCircle LLC approaches business strategy, user experience, frontend development, and backend integration.
               </p>
 
               <p>
-                Membership also gives pet service providers a place to showcase their services, availability, experience, and business information to potential clients..
-              </p>
-
-              <p>
-               Memberships help keep PawCircle Membership affordable, community-focused, and free from booking commissions, rankings, and surprise platform fees.
+                Keeping a safe demonstration online allows prospective web-design clients to explore the work instead of seeing only static screenshots.
               </p>
             </div>
           </div>
@@ -80,11 +76,9 @@ function About({ fullVersion }) {
           {fullVersion && (
             <p className="about__disclaimer">
             <span className="purple">PawCircle Membership</span>{" "}
-            helps members connect directly and does not provide pet care services.
-            PawCircle Membership does not conduct background checks, verify credentials, employ pet
-            service providers, or guarantee services. Members are responsible for
-            screening providers, checking references, establishing agreements, handling
-            payment arrangements, and making pet care decisions.
+            is a fictional portfolio demonstration. It does not provide pet
+            care, list active providers, conduct background checks, send
+            messages, arrange services, or accept payments.
           </p>
           )}
         </div>

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { services } from "../data/services";
 
-function Services({ isLoggedIn = false }) {
+function Services() {
   return (
     <section id="services-page">
       <div className="container">
@@ -9,9 +9,8 @@ function Services({ isLoggedIn = false }) {
           <h1>Pet Care Services</h1>
 
           <p className="services-page__intro">
-            <span className="purple">PawCircle Membership</span> helps pet owners and pet
-            service providers connect directly. Explore available services,
-            discover local providers, and start the conversation.
+            This portfolio demo shows how pet owners could explore service
+            categories and discover relevant local provider profiles.
           </p>
 
           <div className="services-page__grid">
@@ -27,10 +26,10 @@ function Services({ isLoggedIn = false }) {
                 <p>{service.description}</p>
 
                 <Link
-                  to={isLoggedIn ? "/providers" : "/join"}
+                  to="/demo?role=owner"
                   className="btn"
                 >
-                  {service.button}
+                  Preview This Service
                 </Link>
               </div>
             ))}

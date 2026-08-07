@@ -1,7 +1,4 @@
 import { Link } from "react-router-dom";
-import JoinButton from "./JoinButton";
-
-
 function CTASection() {
   return (
     <section className="cta__section">
@@ -10,16 +7,14 @@ function CTASection() {
           <div className="cta__wrapper">
             <div className="cta__card">
               <h2>
-            Ready to Join <span className="purple">PawCircle Membership</span>?
+            Explore the <span className="purple">PawCircle Product Demo</span>
             </h2>
 
             <p>
-              Become one of our Founder members today.
+              Switch between pet-owner and provider perspectives using fictional data.
             </p>
 
-            <JoinButton membershipType="founder">
-              Join as a Founder
-            </JoinButton>
+            <Link to="/demo" className="btn">Explore the Demo</Link>
               
             </div>
 
@@ -31,7 +26,7 @@ function CTASection() {
                 </p>
 
                 <Link to="/for-providers?source=homepage_cta" className="btn">
-                  Learn More for Providers
+                  View the Provider Concept
                 </Link>
             </div>
           </div>
