@@ -264,9 +264,13 @@ body {
 }
 
 .demo-provider-card img {
+  display: block;
   width: 100%;
-  height: 210px;
-  object-fit: cover;
+  height: 260px;
+  padding: 12px;
+  background: #f4f1f8;
+  object-fit: contain;
+  object-position: center;
 }
 
 .demo-provider-card > div {
@@ -300,10 +304,13 @@ body {
 }
 
 .demo-provider-profile img {
+  display: block;
   width: 100%;
-  height: 100%;
-  min-height: 390px;
-  object-fit: cover;
+  height: 390px;
+  padding: 16px;
+  background: #f4f1f8;
+  object-fit: contain;
+  object-position: center;
 }
 
 .demo-provider-profile > div {
@@ -517,7 +524,7 @@ body {
   }
 
   .demo-provider-profile img {
-    min-height: 300px;
+    height: 340px;
     max-height: 420px;
   }
 
