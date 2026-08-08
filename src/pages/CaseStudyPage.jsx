@@ -40,10 +40,10 @@ function CaseStudyPage() {
               <span>01</span>
               <h2>The problem</h2>
               <p>
-                The idea came from wanting a simpler way for pet owners and
-                independent pet-care providers to find one another locally and
-                communicate directly without PawCircle controlling the service
-                transaction.
+                The idea grew out of my own work in pet care. I wanted a simpler
+                way for local pet owners and independent providers to find one
+                another and communicate directly without another platform taking
+                a piece of each job.
               </p>
             </article>
             <article>
@@ -98,8 +98,8 @@ function CaseStudyPage() {
             <h2>Have a service business that needs a clearer website?</h2>
             <p>
               I bring the same practical approach to website projects: understand
-              the real need, build a clear solution, and keep improving it as
-              the evidence changes.
+              what someone actually needs, build a clear solution, and fix or
+              improve it when real use shows something needs to change.
             </p>
             <a href="mailto:pawcirclellc@gmail.com" className="btn">
               Start a Conversation
