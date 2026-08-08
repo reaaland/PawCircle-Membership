@@ -9,19 +9,21 @@ function Hero() {
           <div className="header__container">
             <div className="header__description">
               <h1>
-                Find Local <span className="purple">Pet Care</span> — Without Booking Fees
+                From Idea to Launch: A <span className="purple">Local Pet-Care Platform</span>
               </h1>
 
               <div className="trust__badges">
-                <span>✔ Local pet services</span>
-                <span>✔ Direct communication</span>
-                <span>✔ No commissions</span>
-                <span>✔ No hidden fees</span>
+                <span>✔ Role-based profiles</span>
+                <span>✔ Direct messaging</span>
+                <span>✔ Supabase + Stripe</span>
+                <span>✔ Responsive full-stack app</span>
               </div>
 
               <p className="hero__subtitle">
-                A portfolio demonstration of a local marketplace concept for
-                pet owners and independent pet service providers.
+                PawCircle Membership began as a real paid product for pet owners
+                and independent pet service providers. It is now an interactive
+                portfolio demo showing the product, design, and full-stack
+                development behind it.
               </p>
 
               <div className="hero__actions">
