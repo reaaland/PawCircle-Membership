@@ -6,7 +6,7 @@ function HowItWorks() {
           <h2>How <span className="purple">PawCircle Membership</span> Works</h2>
 
           <p className="how__intro">
-            The demo shows how pet owners could discover local care and how providers could present their services through clear profiles and direct introductions.
+            The demo shows how pet owners could find local care and how providers could present their services through clear profiles and direct conversations.
           </p>
 
           <div className="how__cards">
@@ -18,23 +18,23 @@ function HowItWorks() {
             </div>
 
             <div className="how__card">
-             <h3>Create a Profile</h3>
+              <h3>2. Create a Profile</h3>
               <p>
-               Fictional profiles demonstrate services, experience, availability, and care needs.
+                Fictional profiles show services, experience, availability, and care needs.
               </p>
-          </div>
+            </div>
 
             <div className="how__card">
               <h3>3. Find Local Pet Care</h3>
               <p>
-               Browse sample provider profiles to understand the intended search and comparison experience.
+                Browse sample provider profiles to see how owners could compare local options.
               </p>
             </div>
 
             <div className="how__card">
               <h3>4. Connect Directly</h3>
               <p>
-               Preview a fictional introduction flow. No message is actually sent from the portfolio demo.
+                Preview a fictional introduction. No message is actually sent from the demo.
               </p>
             </div>
           </div>
