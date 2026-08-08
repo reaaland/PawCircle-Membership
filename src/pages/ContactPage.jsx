@@ -16,7 +16,7 @@ function ContactPage() {
 
             <p className="contact__intro">
               Interested in a website project, or have a question about the
-              PawCircle Membership case study? Send us an email.
+              PawCircle Membership case study? Send me an email.
             </p>
 
             <a
