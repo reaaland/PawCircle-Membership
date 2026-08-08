@@ -20,10 +20,10 @@ function Hero() {
               </div>
 
               <p className="hero__subtitle">
-                PawCircle Membership began as a real paid product for pet owners
-                and independent pet service providers. It is now an interactive
-                portfolio demo showing the product, design, and full-stack
-                development behind it.
+                I originally built PawCircle Membership as a real paid product
+                for pet owners and independent pet service providers. It is now
+                an interactive portfolio demo where visitors can explore the
+                product and the full-stack work behind it.
               </p>
 
               <div className="hero__actions">
