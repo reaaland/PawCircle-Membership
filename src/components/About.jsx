@@ -39,13 +39,15 @@ function About({ fullVersion }) {
               <h3>Why I Built It</h3>
 
               <p>
-                I wanted to explore a simpler way for local pet owners and
-                independent providers to find one another without PawCircle
-                controlling the service transaction.
+                I was already working in pet care and saw how much large
+                platforms could control fees, discovery, and communication. I
+                wanted to see if there was a simpler way for local pet owners
+                and independent providers to find each other and connect
+                directly.
               </p>
 
               <p>
-                That idea became a working product with distinct owner and
+                That idea grew into a working product with distinct owner and
                 provider experiences, memberships, profiles, messaging, privacy
                 controls, and payments.
               </p>
@@ -55,10 +57,10 @@ function About({ fullVersion }) {
               <h3>What I Built</h3>
 
               <p>
-                The project includes local discovery, detailed profiles,
-                role-based experiences, privacy preferences, direct
-                introductions, responsive design, authentication, database
-                policies, and an original Stripe subscription flow.
+                PawCircle included local discovery, detailed profiles,
+                role-based experiences, privacy preferences, direct messaging,
+                responsive design, authentication, database policies, and a
+                Stripe subscription flow.
               </p>
 
               <p>
@@ -72,9 +74,9 @@ function About({ fullVersion }) {
               <h3>Why Keep It Online?</h3>
 
               <p>
-                PawCircle is a substantial working example of taking an idea
-                through product decisions, interface design, full-stack
-                development, deployment, launch, and ongoing troubleshooting.
+                PawCircle shows the work involved in taking an idea through
+                design, development, deployment, launch, and the troubleshooting
+                that comes with a real product.
               </p>
 
               <p>
