@@ -18,17 +18,17 @@ function Footer() {
             </h4>
 
             <p>
-              Helping pet owners and pet caregivers connect
-              directly within their communities.
+              Originally built to help pet owners and independent pet-care
+              providers connect directly in their communities.
             </p>
-            </div>
+          </div>
 
           <div className="footer__column">
             <h4>Explore</h4>
             <Link to="/">Home</Link>
             <Link to="/services">Services</Link>
-            <Link to="/membership">Product Concept</Link>
-            <Link to="/for-providers">For Pet Care Providers</Link>
+            <Link to="/membership">Product Demo</Link>
+            <Link to="/for-providers">Provider Experience</Link>
             <Link to="/demo">Explore the Demo</Link>
           </div>
 
@@ -43,8 +43,8 @@ function Footer() {
           <div className="footer__column">
             <h4>Legal</h4>
             <Link to="/terms">Terms of Use</Link>
-           <Link to="/privacy">Privacy Policy</Link>
-           <Link to="/code">Code of Conduct </Link>
+            <Link to="/privacy">Privacy Policy</Link>
+            <Link to="/code">Code of Conduct</Link>
           </div>
         </div>
 
