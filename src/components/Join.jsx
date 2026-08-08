@@ -26,8 +26,8 @@ function Join() {
           <span className="section__tag">No signup required</span>
           <h1>Choose how you want to explore PawCircle</h1>
           <p className="demo-entry-page__intro">
-            The original paid membership has closed. This public portfolio
-            version lets you inspect the product concept safely using fictional data.
+            The original paid membership has closed. This public version lets
+            you explore how PawCircle worked using fictional data.
           </p>
 
           <div className="demo-role-grid">

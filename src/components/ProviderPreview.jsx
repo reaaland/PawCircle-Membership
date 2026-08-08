@@ -9,11 +9,11 @@ function ProviderPreview() {
       <div className="container">
         <div className="row row__column">
           <h2>
-            Meet Local <span className="purple">Pet Care Providers</span>
+            Preview Local <span className="purple">Pet Care Providers</span>
           </h2>
 
           <p className="directory__notice">
-            <span className="purple">PawCircle Membership</span> demonstrates how users could search provider profiles, send an introductory message, and connect directly.
+            <span className="purple">PawCircle Membership</span> shows how pet owners could browse provider profiles, compare local options, and start a direct conversation.
           </p>
 
           <div className="provider-preview__grid">
@@ -34,13 +34,13 @@ function ProviderPreview() {
                 </p>
               </div>
             ))}
-        </div>
+          </div>
 
           <Link to="/demo?role=owner" className="btn">Explore the Owner Demo</Link>
-                        
-            <p className="provider-preview__disclaimer">
-            Provider profiles shown are sample profiles for demonstration purposes and do not represent actual members of PawCircle Membership.
-        </p>
+
+          <p className="provider-preview__disclaimer">
+            These are fictional sample profiles created to demonstrate the original PawCircle experience.
+          </p>
         </div>
       </div>
     </section>

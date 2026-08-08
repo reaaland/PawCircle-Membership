@@ -24,39 +24,49 @@ function About({ fullVersion }) {
               </h3>
 
               <p>
-                <span className="purple">PawCircle Membership</span> is a portfolio demonstration of a local platform concept for pet owners and pet service providers.
+                PawCircle Membership began as a real paid platform designed to
+                help pet owners and independent pet-care providers connect
+                directly in their communities.
               </p>
 
               <p>
-                Local discovery. Direct introductions. Clear, role-based experiences.
-              </p>
-            </div>
-
-            <div className="about__card">
-              <h3>Our Mission</h3>
-
-              <p>
-                <span className="purple">PawCircle Membership</span> was created to explore how pet owners and independent providers could connect more directly within their local communities.
-              </p>
-
-              <p>
-                The current goal is to demonstrate the product thinking, interface design, and full-stack implementation behind that idea.
+                The paid membership is now closed, and the application is
+                preserved as an interactive portfolio project.
               </p>
             </div>
 
             <div className="about__card">
-              <h3>What the Project Demonstrates</h3>
+              <h3>Why I Built It</h3>
 
               <p>
-                <span className="purple">PawCircle Membership</span> began with a simple idea: helping pet owners and pet service providers connect directly in their communities.
+                I was already working in pet care and saw how much large
+                platforms could control fees, discovery, and communication. I
+                wanted to see if there was a simpler way for local pet owners
+                and independent providers to find each other and connect
+                directly.
               </p>
 
               <p>
-              The project demonstrates local discovery, detailed profiles, privacy preferences, direct introductions, responsive design, and distinct owner and provider workflows.
+                That idea grew into a working product with distinct owner and
+                provider experiences, memberships, profiles, messaging, privacy
+                controls, and payments.
+              </p>
+            </div>
+
+            <div className="about__card">
+              <h3>What I Built</h3>
+
+              <p>
+                PawCircle included local discovery, detailed profiles,
+                role-based experiences, privacy preferences, direct messaging,
+                responsive design, authentication, database policies, and a
+                Stripe subscription flow.
               </p>
 
               <p>
-                The public version uses fictional data and does not create accounts, send messages, arrange services, or accept payments.
+                The current public demo uses fictional data so visitors can
+                explore the product without creating an account or entering
+                payment information.
               </p>
             </div>
 
@@ -64,22 +74,24 @@ function About({ fullVersion }) {
               <h3>Why Keep It Online?</h3>
 
               <p>
-                PawCircle is a substantial working example of how PawCircle LLC approaches business strategy, user experience, frontend development, and backend integration.
+                PawCircle shows the work involved in taking an idea through
+                design, development, deployment, launch, and the troubleshooting
+                that comes with a real product.
               </p>
 
               <p>
-                Keeping a safe demonstration online allows prospective web-design clients to explore the work instead of seeing only static screenshots.
+                Keeping the demo online lets prospective clients and employers
+                explore the work instead of seeing only screenshots.
               </p>
             </div>
           </div>
 
           {fullVersion && (
             <p className="about__disclaimer">
-            <span className="purple">PawCircle Membership</span>{" "}
-            is a fictional portfolio demonstration. It does not provide pet
-            care, list active providers, conduct background checks, send
-            messages, arrange services, or accept payments.
-          </p>
+              The current PawCircle Membership demo uses fictional data. It
+              does not provide pet care, list active providers, send messages,
+              arrange services, or accept payments.
+            </p>
           )}
         </div>
       </div>

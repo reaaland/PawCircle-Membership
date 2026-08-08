@@ -29,12 +29,12 @@ function Membership() {
     <section id="membership">
       <div className="container">
         <div className="row row__column">
-          <span className="section__tag">Product concept</span>
-          <h2>Choose a PawCircle demo perspective</h2>
+          <span className="section__tag">Explore the demo</span>
+          <h2>Choose a PawCircle perspective</h2>
           <p className="pricing__intro">
-            PawCircle Membership is now presented as a portfolio demonstration.
-            These views use fictional information and do not create accounts,
-            memberships, bookings, or payments.
+            Choose a view to explore how the original PawCircle product worked.
+            Everything in the public demo is fictional, and no accounts,
+            memberships, bookings, or payments are created.
           </p>
 
           <div className="pricing__wrapper demo-role-grid">

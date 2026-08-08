@@ -16,11 +16,12 @@ function CaseStudyPage() {
         <div className="container">
           <div className="row row__narrow">
             <span className="section__tag">PawCircle LLC case study</span>
-            <h1>Designing a direct local connection platform for pet care.</h1>
+            <h1>Taking a local pet-care platform from idea to launch.</h1>
             <p>
-              PawCircle Membership began as a real membership product and
-              evolved into a portfolio demonstration of product strategy,
-              interface design, frontend engineering, and backend integration.
+              PawCircle Membership was a real paid product I designed, built,
+              launched, and supported. It is now preserved as an interactive
+              portfolio demo showing the product decisions and full-stack work
+              behind it.
             </p>
             <div className="hero__actions">
               <Link to="/demo" className="btn">Explore the Product Demo</Link>
@@ -39,27 +40,31 @@ function CaseStudyPage() {
               <span>01</span>
               <h2>The problem</h2>
               <p>
-                Independent pet-care providers often rely on large platforms
-                that control discovery, communication, and booking economics.
-                Pet owners also need a clearer way to discover nearby options.
+                The idea grew out of my own work in pet care. I wanted a simpler
+                way for local pet owners and independent providers to find one
+                another and communicate directly without another platform taking
+                a piece of each job.
               </p>
             </article>
             <article>
               <span>02</span>
-              <h2>The product response</h2>
+              <h2>What I built</h2>
               <p>
-                PawCircle explored a simpler directory-and-introduction model:
-                local profiles, transparent availability, privacy controls, and
-                direct communication without managing the service transaction.
+                I turned that idea into a working membership product with
+                role-based profiles, local discovery, privacy preferences,
+                direct messaging, authentication, payments, and responsive
+                owner and provider experiences.
               </p>
             </article>
             <article>
               <span>03</span>
-              <h2>The business lesson</h2>
+              <h2>Outcome &amp; what I learned</h2>
               <p>
-                A polished platform still needs concentrated supply, demand,
-                trust, and distribution. The paid product was responsibly
-                closed and refunded; the software now demonstrates the work.
+                After launch, I found several free platforms already offered
+                much of the same core value. That made it difficult to justify
+                charging for PawCircle without stronger differentiation, so I
+                closed the paid membership, refunded the members, and kept the
+                application as a portfolio project.
               </p>
             </article>
           </div>
@@ -81,7 +86,7 @@ function CaseStudyPage() {
               <div><strong>Frontend</strong><span>React, Vite, responsive CSS</span></div>
               <div><strong>Backend</strong><span>Supabase Postgres, Auth, RLS, Edge Functions</span></div>
               <div><strong>Deployment</strong><span>GitHub workflow and Vercel previews</span></div>
-              <div><strong>Current state</strong><span>Public demo with fictional data and no payments</span></div>
+              <div><strong>Current state</strong><span>Interactive public demo with fictional data and no payments</span></div>
             </div>
           </div>
         </div>
@@ -91,7 +96,11 @@ function CaseStudyPage() {
         <div className="container">
           <div className="row row__narrow">
             <h2>Have a service business that needs a clearer website?</h2>
-            <p>PawCircle LLC turns business ideas into focused, usable web experiences.</p>
+            <p>
+              I bring the same practical approach to website projects: understand
+              what someone actually needs, build a clear solution, and fix or
+              improve it when real use shows something needs to change.
+            </p>
             <a href="mailto:pawcirclellc@gmail.com" className="btn">
               Start a Conversation
             </a>

@@ -4,12 +4,12 @@ const questions = [
   {
     question: "Is PawCircle Membership accepting new members?",
     answer:
-      "No. The original paid membership has closed. The current website is a public portfolio demonstration and does not accept payments or create member accounts.",
+      "No. The original paid membership has closed. The current website is a public portfolio demo and does not accept payments or create member accounts.",
   },
   {
     question: "Are the providers shown on the website real?",
     answer:
-      "No. Every provider, owner, message, location detail, and availability status in the public demo is fictional and exists only to demonstrate the interface.",
+      "No. Every provider, owner, message, location detail, and availability status in the public demo is fictional and exists only to show how the product worked.",
   },
   {
     question: "Can I book pet care through the demo?",
@@ -17,19 +17,19 @@ const questions = [
       "No. The demo does not send messages, arrange services, process bookings, or connect visitors with real providers.",
   },
   {
-    question: "What was the original product concept?",
+    question: "What was the original idea?",
     answer:
-      "PawCircle explored a local directory and direct-introduction model for pet owners and independent pet service providers, without controlling the service transaction.",
+      "PawCircle was designed to give pet owners and independent pet-care providers another local way to find each other and communicate directly, without PawCircle taking a commission or managing the pet-care job itself.",
   },
   {
     question: "What technology was used?",
     answer:
-      "The product was built with React and Vite, Supabase authentication and Postgres data, row-level security, Edge Functions, responsive CSS, GitHub, Vercel, and an original Stripe subscription flow that has been retired.",
+      "I built the product with React and Vite, Supabase authentication and Postgres data, row-level security, Edge Functions, responsive CSS, GitHub, Vercel, and a Stripe subscription flow that has since been retired.",
   },
   {
     question: "Why keep the website online?",
     answer:
-      "It demonstrates PawCircle LLC’s ability to turn a business idea into a responsive, full-stack product with thoughtful roles, profiles, privacy controls, discovery, and messaging flows.",
+      "Because PawCircle shows much more than a landing page. It is a working example of the design, development, database, authentication, payments, privacy decisions, and troubleshooting involved in taking a product from idea to launch.",
   },
 ];
 

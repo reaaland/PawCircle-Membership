@@ -5,15 +5,15 @@ import "./ForProvidersPage.css";
 const benefits = [
   {
     title: "Keep what you earn",
-    text: "PawCircle Membership does not take a percentage of the work you arrange with pet owners.",
+    text: "The original model was designed without a per-job PawCircle commission.",
   },
   {
     title: "Be found locally",
-    text: "Create a profile that helps nearby pet owners discover your services and availability.",
+    text: "Providers could create a profile showing their services, availability, and service area.",
   },
   {
     title: "Connect directly",
-    text: "Start the conversation through PawCircle, then decide together whether you are a good fit.",
+    text: "Pet owners and providers could start a conversation and decide together whether the fit made sense.",
   },
 ];
 
@@ -23,29 +23,31 @@ function ForProvidersPage() {
       <section className="providers-hero">
         <div className="container providers-hero__grid">
           <div className="providers-hero__copy">
-            <span className="providers-eyebrow">For pet service providers</span>
+            <span className="providers-eyebrow">Original provider experience</span>
             <h1>
-              Keep more of <span className="purple">what you earn.</span>
+              Designed to help independent providers keep more of <span className="purple">what they earn.</span>
             </h1>
             <p className="providers-hero__lead">
-              Give local pet owners another way to find you—without PawCircle
-              taking a commission from every job.
+              This page preserves the provider side of the original PawCircle
+              product: a local profile, clear service information, and a direct
+              way for pet owners to start a conversation without PawCircle
+              taking a commission on each job.
             </p>
             <p className="providers-hero__support">
-              You do not have to leave Rover, Wag, or the client relationships
-              you already have. Add PawCircle as another path to build your
-              local presence and connect directly.
+              PawCircle was meant to be another way for local pet owners to find
+              independent providers, not a replacement for Rover, Wag, or the
+              client relationships a provider had already built.
             </p>
             <div className="providers-hero__actions">
               <Link to="/demo?role=provider" className="btn">
                 Explore the Provider Demo
               </Link>
               <a href="#how-it-works-for-providers" className="btn btn--outline">
-                See How It Works
+                See the Original Flow
               </a>
             </div>
             <p className="providers-hero__note">
-              Portfolio demonstration only—no membership or payment required.
+              Interactive demo with fictional data—no signup required.
             </p>
           </div>
 
@@ -62,11 +64,12 @@ function ForProvidersPage() {
       <section className="providers-benefits" aria-labelledby="provider-benefits-title">
         <div className="container">
           <div className="providers-section-heading">
-            <span className="providers-eyebrow">A simple additional channel</span>
+            <span className="providers-eyebrow">What I wanted the provider side to do</span>
             <h2 id="provider-benefits-title">Your work. Your relationships. Your earnings.</h2>
             <p>
-              PawCircle is built to help independent pet care providers become
-              visible in the communities they serve.
+              The provider side of PawCircle was built to give independent pet
+              care providers a simple local presence and another way for pet
+              owners to find them and start a conversation.
             </p>
           </div>
 
@@ -91,12 +94,12 @@ function ForProvidersPage() {
       >
         <div className="container providers-how__grid">
           <div>
-            <span className="providers-eyebrow">Start without starting over</span>
-            <h2 id="providers-how-title">Use PawCircle alongside what already works.</h2>
+            <span className="providers-eyebrow">Designed to work alongside existing tools</span>
+            <h2 id="providers-how-title">Another local option without starting over.</h2>
             <p>
-              Keep the profiles and clients you have built elsewhere. PawCircle
-              gives you an additional local profile and a direct way to hear
-              from pet owners who find you here.
+              Providers could keep the profiles and clients they already had
+              elsewhere while using PawCircle as another place to show their
+              services and hear from local pet owners.
             </p>
           </div>
 
@@ -111,15 +114,15 @@ function ForProvidersPage() {
             <li>
               <span>2</span>
               <div>
-                <h3>Build your local profile</h3>
-                <p>Add your services, area, experience, and availability.</p>
+                <h3>See the profile experience</h3>
+                <p>Explore how services, area, experience, and availability were presented.</p>
               </div>
             </li>
             <li>
               <span>3</span>
               <div>
-                <h3>Connect with pet owners</h3>
-                <p>Talk directly and decide whether each opportunity fits.</p>
+                <h3>Preview a direct introduction</h3>
+                <p>See how an owner could start a conversation with a provider.</p>
               </div>
             </li>
           </ol>
@@ -129,7 +132,7 @@ function ForProvidersPage() {
       <section className="providers-founder" aria-labelledby="providers-founder-title">
         <div className="container">
           <div className="providers-founder__card">
-            <span className="providers-founder__badge">Portfolio Demo</span>
+            <span className="providers-founder__badge">Interactive Demo</span>
             <p className="providers-founder__kicker">Provider Experience</p>
             <h2 id="providers-founder-title">No signup required</h2>
             <p>
@@ -137,9 +140,9 @@ function ForProvidersPage() {
               availability, and a service area to nearby pet owners.
             </p>
             <ul>
-              <li>No PawCircle commission on your work</li>
+              <li>No PawCircle commission on provider work</li>
               <li>A local provider profile</li>
-              <li>Direct member-to-member messaging</li>
+              <li>Direct member-to-member introductions</li>
             </ul>
             <Link to="/demo?role=provider" className="btn">
               Open Provider Demo
@@ -151,9 +154,9 @@ function ForProvidersPage() {
       <section className="providers-disclaimer">
         <div className="container">
           <p>
-            This page demonstrates the original provider-facing product
-            concept. PawCircle Membership is not currently operating as a
-            directory, agency, booking platform, or membership service.
+            This is a preserved demo of the original provider experience.
+            PawCircle Membership is no longer an active membership or provider
+            directory.
           </p>
         </div>
       </section>
