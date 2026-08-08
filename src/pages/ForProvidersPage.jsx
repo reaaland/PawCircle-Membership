@@ -13,7 +13,7 @@ const benefits = [
   },
   {
     title: "Connect directly",
-    text: "Members could start a direct introduction and decide together whether the fit made sense.",
+    text: "Pet owners and providers could start a conversation and decide together whether the fit made sense.",
   },
 ];
 
@@ -28,14 +28,15 @@ function ForProvidersPage() {
               Designed to help independent providers keep more of <span className="purple">what they earn.</span>
             </h1>
             <p className="providers-hero__lead">
-              This page preserves the provider-facing experience from the
-              original PawCircle product: local visibility, clear profiles, and
-              direct introductions without a PawCircle commission on each job.
+              This page preserves the provider side of the original PawCircle
+              product: a local profile, clear service information, and a direct
+              way for pet owners to start a conversation without PawCircle
+              taking a commission on each job.
             </p>
             <p className="providers-hero__support">
-              The concept was designed as an additional local discovery channel,
-              not a replacement for Rover, Wag, or the client relationships a
-              provider had already built.
+              PawCircle was meant to be another way for local pet owners to find
+              independent providers, not a replacement for Rover, Wag, or the
+              client relationships a provider had already built.
             </p>
             <div className="providers-hero__actions">
               <Link to="/demo?role=provider" className="btn">
@@ -63,12 +64,12 @@ function ForProvidersPage() {
       <section className="providers-benefits" aria-labelledby="provider-benefits-title">
         <div className="container">
           <div className="providers-section-heading">
-            <span className="providers-eyebrow">What the model was designed to do</span>
+            <span className="providers-eyebrow">What I wanted the provider side to do</span>
             <h2 id="provider-benefits-title">Your work. Your relationships. Your earnings.</h2>
             <p>
-              The provider side of PawCircle focused on giving independent pet
-              care providers a simple local presence and a direct path to new
-              conversations.
+              The provider side of PawCircle was built to give independent pet
+              care providers a simple local presence and another way for pet
+              owners to find them and start a conversation.
             </p>
           </div>
 
@@ -94,11 +95,11 @@ function ForProvidersPage() {
         <div className="container providers-how__grid">
           <div>
             <span className="providers-eyebrow">Designed to work alongside existing tools</span>
-            <h2 id="providers-how-title">Another local path without starting over.</h2>
+            <h2 id="providers-how-title">Another local option without starting over.</h2>
             <p>
               Providers could keep the profiles and clients they already had
-              elsewhere while using PawCircle as another local profile and
-              direct introduction channel.
+              elsewhere while using PawCircle as another place to show their
+              services and hear from local pet owners.
             </p>
           </div>
 
@@ -153,9 +154,9 @@ function ForProvidersPage() {
       <section className="providers-disclaimer">
         <div className="container">
           <p>
-            This is a preserved demonstration of the original provider-facing
-            experience. PawCircle Membership is no longer an active membership
-            or provider directory.
+            This is a preserved demo of the original provider experience.
+            PawCircle Membership is no longer an active membership or provider
+            directory.
           </p>
         </div>
       </section>
