@@ -13,9 +13,9 @@ function Footer() {
               className="footer__logo"
             />
 
-            <h4>
+            <h2>
               <span className="purple">PawCircle Membership</span>
-            </h4>
+            </h2>
 
             <p>
               Helping pet owners and pet caregivers connect
@@ -24,7 +24,7 @@ function Footer() {
             </div>
 
           <div className="footer__column">
-            <h4>Explore</h4>
+            <h2>Explore</h2>
             <Link to="/">Home</Link>
             <Link to="/services">Services</Link>
             <Link to="/membership">Product Concept</Link>
@@ -33,7 +33,7 @@ function Footer() {
           </div>
 
           <div className="footer__column">
-            <h4>Company</h4>
+            <h2>Company</h2>
             <Link to="/about">About</Link>
             <Link to="/case-study">Case Study</Link>
             <Link to="/contact">Contact</Link>
@@ -41,7 +41,7 @@ function Footer() {
           </div>
 
           <div className="footer__column">
-            <h4>Legal</h4>
+            <h2>Legal</h2>
             <Link to="/terms">Terms of Use</Link>
            <Link to="/privacy">Privacy Policy</Link>
            <Link to="/code">Code of Conduct </Link>

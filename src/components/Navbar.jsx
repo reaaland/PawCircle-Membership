@@ -8,7 +8,11 @@ function Navbar() {
   return (
     <nav className="nav__container">
       <Link to="/" className="nav__logo">
-        <img className="nav__logo--img" src={logo} alt="PawCircle Membership Logo" />
+        <img
+          className="nav__logo--img"
+          src={logo}
+          alt="PawCircle Membership Logo"
+        />
 
         <div className="nav__logo--title">
           <span className="purple">PawCircle Membership</span>
@@ -16,18 +20,34 @@ function Navbar() {
       </Link>
 
       <div className="nav__links">
-        <Link to="/" className="nav__link">Home</Link>
-        <Link to="/about" className="nav__link">About</Link>
-        <Link to="/membership" className="nav__link">Product</Link>
-        <Link to="/services" className="nav__link">Services</Link>
-        <Link to="/for-providers" className="nav__link">For Providers</Link>
-        <Link to="/case-study" className="nav__link">Case Study</Link>
+        <Link to="/" className="nav__link">
+          Home
+        </Link>
+        <Link to="/about" className="nav__link">
+          About
+        </Link>
+        <Link to="/membership" className="nav__link">
+          Product
+        </Link>
+        <Link to="/services" className="nav__link">
+          Services
+        </Link>
+        <Link to="/for-providers" className="nav__link">
+          For Providers
+        </Link>
+        <Link to="/case-study" className="nav__link">
+          Case Study
+        </Link>
         <Link to="/demo" className="nav__link nav__link--primary">
           Explore Demo
         </Link>
       </div>
 
-      <button className="btn__menu" onClick={() => setMenuOpen(true)}>
+      <button
+        className="btn__menu"
+        aria-label="Open navigation menu"
+        onClick={() => setMenuOpen(true)}
+      >
         <i className="fa-solid fa-bars"></i>
       </button>
 
@@ -35,13 +55,18 @@ function Navbar() {
         <div className="menu__backdrop">
           <button
             className="btn__menu btn__menu--close"
+            aria-label="Close navigation menu"
             onClick={() => setMenuOpen(false)}
           >
             ×
           </button>
 
-          <Link to="/" onClick={() => setMenuOpen(false)}>Home</Link>
-          <Link to="/about" onClick={() => setMenuOpen(false)}>About</Link>
+          <Link to="/" onClick={() => setMenuOpen(false)}>
+            Home
+          </Link>
+          <Link to="/about" onClick={() => setMenuOpen(false)}>
+            About
+          </Link>
           <Link to="/membership" onClick={() => setMenuOpen(false)}>
             Product
           </Link>
