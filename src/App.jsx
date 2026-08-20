@@ -2,6 +2,7 @@ import "./App.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import DemoBanner from "./components/DemoBanner";
+import RouteMetadata from "./components/RouteMetadata";
 import Home from "./pages/Home";
 import AboutPage from "./pages/AboutPage";
 import MembershipPage from "./pages/MembershipPage";
@@ -27,6 +28,7 @@ function AppLayout() {
   return (
     <>
       <ScrollToTop />
+      <RouteMetadata />
       <DemoBanner />
       <Navbar />
 

@@ -23,23 +23,20 @@ function Navbar() {
         <Link to="/" className="nav__link">
           Home
         </Link>
-        <Link to="/about" className="nav__link">
-          About
-        </Link>
         <Link to="/membership" className="nav__link">
           Product
         </Link>
-        <Link to="/services" className="nav__link">
-          Services
-        </Link>
-        <Link to="/for-providers" className="nav__link">
-          For Providers
+        <Link to="/demo" className="nav__link nav__link--primary">
+          Explore Demo
         </Link>
         <Link to="/case-study" className="nav__link">
           Case Study
         </Link>
-        <Link to="/demo" className="nav__link nav__link--primary">
-          Explore Demo
+        <Link to="/about" className="nav__link">
+          About
+        </Link>
+        <Link to="/contact" className="nav__link">
+          Contact
         </Link>
       </div>
 
@@ -64,23 +61,20 @@ function Navbar() {
           <Link to="/" onClick={() => setMenuOpen(false)}>
             Home
           </Link>
-          <Link to="/about" onClick={() => setMenuOpen(false)}>
-            About
-          </Link>
           <Link to="/membership" onClick={() => setMenuOpen(false)}>
             Product
           </Link>
-          <Link to="/services" onClick={() => setMenuOpen(false)}>
-            Services
-          </Link>
-          <Link to="/for-providers" onClick={() => setMenuOpen(false)}>
-            For Providers
+          <Link to="/demo" onClick={() => setMenuOpen(false)}>
+            Explore Demo
           </Link>
           <Link to="/case-study" onClick={() => setMenuOpen(false)}>
             Case Study
           </Link>
-          <Link to="/demo" onClick={() => setMenuOpen(false)}>
-            Explore Demo
+          <Link to="/about" onClick={() => setMenuOpen(false)}>
+            About
+          </Link>
+          <Link to="/contact" onClick={() => setMenuOpen(false)}>
+            Contact
           </Link>
         </div>
       )}
