@@ -19,7 +19,7 @@ function Messages() {
   const [currentUserName, setCurrentUserName] = useState("PawCircle Membership Member");
   const [messages, setMessages] = useState([]);
   const [conversationPreferences, setConversationPreferences] = useState({});
-  const [selectedMember, setSelectedMember] = useState(null);
+  const [selectedMemberChoice, setSelectedMember] = useState(null);
   const [newMessage, setNewMessage] = useState("");
   const [showSavedConversations, setShowSavedConversations] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -139,21 +139,12 @@ function Messages() {
     showSavedConversations,
   ]);
 
-  useEffect(() => {
-    if (conversationSummaries.length === 0) {
-      setSelectedMember(null);
-      return;
-    }
-
-    if (
-      !selectedMember ||
-      !conversationSummaries.some(
-        ({ member }) => member.id === selectedMember.id
-      )
-    ) {
-      setSelectedMember(conversationSummaries[0].member);
-    }
-  }, [conversationSummaries, selectedMember]);
+  const selectedMember =
+  conversationSummaries.find(
+    ({ member }) => member.id === selectedMemberChoice?.id
+  )?.member ??
+  conversationSummaries[0]?.member ??
+  null;
 
   const conversationMessages = useMemo(() => {
     if (!selectedMember) return [];
