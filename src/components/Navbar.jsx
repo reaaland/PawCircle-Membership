@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import logo from "../assets/pawcircle-logo.webp";
+import logo from "../assets/pawcircle-logo-ui.webp";
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);

@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import trailWalk from "../assets/dog-walking-trail.webp";
-import catCare from "../assets/cat-window.webp";
-import boarding from "../assets/boarding-two-pups.webp";
+import trailWalkCard from "../assets/dog-walking-trail-card.webp";
+import catCareCard from "../assets/cat-window-card.webp";
+import boardingCard from "../assets/boarding-two-pups-card.webp";
 
 const roleOptions = [
   { key: "owner", label: "Pet Owner" },
@@ -16,21 +17,21 @@ const providers = [
     location: "Minneapolis, MN",
     service: "Dog Walking · Drop-In Visits",
     availability: "Accepting new clients",
-    image: trailWalk,
+    image: trailWalkCard,
   },
   {
     name: "Whisker Watch",
     location: "St. Paul, MN",
     service: "Cat Care · Medication Visits",
     availability: "Limited availability",
-    image: catCare,
+    image: catCareCard,
   },
   {
     name: "Lakeside Home Boarding",
     location: "Bloomington, MN",
     service: "Boarding · Overnight Care",
     availability: "Accepting new clients",
-    image: boarding,
+    image: boardingCard,
   },
 ];
 
