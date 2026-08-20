@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import logo from "../assets/pawcircle-logo.webp";
+import logo from "../assets/pawcircle-logo-ui.webp";
 
 function Footer() {
   return (
