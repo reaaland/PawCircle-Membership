@@ -9,7 +9,7 @@ PawCircle Membership is a React application originally built as a membership pla
 - **Interactive Demo:** https://pawcirclemembership.com/demo
 - **Case Study:** https://pawcirclemembership.com/case-study
 
- ## What the Demo Demonstrates
+## What the Demo Demonstrates
 
 - Role-based experiences for pet owners, service providers, and combined accounts
 - Provider discovery and profile browsing
@@ -21,7 +21,7 @@ PawCircle Membership is a React application originally built as a membership pla
 - Automated testing with Vitest and React Testing Library
 - Continuous integration with GitHub Actions
 
- ## Tech Stack
+## Tech Stack
 
 - React 19
 - Vite
@@ -35,7 +35,7 @@ PawCircle Membership is a React application originally built as a membership pla
 - GitHub Actions
 - Vercel
 
- ## Testing, Accessibility, and Performance
+## Testing, Accessibility, and Performance
 
 ### Automated Testing
 
