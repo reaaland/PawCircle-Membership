@@ -1,1 +1,0 @@
-drop index if exists public.account_deletion_requests_requested_at_idx;
