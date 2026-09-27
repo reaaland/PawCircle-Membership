@@ -23,17 +23,23 @@ PawCircle Membership is a React application originally built as a membership pla
 
 ## Tech Stack
 
+### Current portfolio demo
 - React 19
 - Vite
 - JavaScript
 - React Router
-- Supabase
 - CSS
 - Vitest
 - React Testing Library
 - ESLint
 - GitHub Actions
 - Vercel
+
+### Original production application
+- Supabase Postgres, Auth, Storage, Row Level Security, and Edge Functions
+- Stripe subscriptions and webhooks
+
+The live portfolio demo no longer connects to Supabase or Stripe. Those technologies remain documented here and in the case study because they were part of the original production application.
 
 ## Testing, Accessibility, and Performance
 
@@ -97,12 +103,7 @@ Clone the repository and install dependencies:
 npm ci
 ```
 
-Create a local `.env.local` file in the project root. This file is ignored by Git and should not be committed:
-
-```env
-VITE_SUPABASE_URL=your_supabase_url
-VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
-```
+No Supabase or Stripe environment variables are required for the current portfolio demo.
 
 Start the development server:
 
